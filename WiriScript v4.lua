@@ -190,7 +190,7 @@ function cage_player(pos, type)
 	object[2] = OBJECT.CREATE_OBJECT(hash, pos.x, pos.y, pos.z, true, true, true)
 	for k, v in pairs(object) do
 		if v == 0 then --if 'CREATE_OBJECT' fails to create one of the objects
-			shownotification("~r~Something went wrong creating cage")
+			shownotification("~r~创建cage时出错了")
 			return
 		end
 		cages[#cages+1] = v
