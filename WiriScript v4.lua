@@ -39,7 +39,7 @@ local version = "4"
 
 util.async_http_get("pastebin.com", "/raw/EhH1C6Dh", function(output)
     if version < output then
-        shownotification("~r~WiriScript v"..output.." is available")
+        shownotification("~r~WiriScript v"..output.." 已经可供下载")
     end
 end,
 function ()
@@ -79,11 +79,11 @@ local weapons = {						--here you can modify which weapons are available to choo
 	{"电击枪", "weapon_stungun"},
 	{"原子能枪", "weapon_raypistol"},
 	{"卡宾步枪", "weapon_specialcarbine"},
-	{"泵式霰弹枪", "weapon_pumpshotgun"},
+	{"泵动式霰弹枪", "weapon_pumpshotgun"},
 	{"战斗机枪", "weapon_combatmg"},
 	{"重型狙击步枪", "weapon_heavysniper"},
-	{"加特林", "weapon_minigun"},
-	{"RPG(火箭筒)", "weapon_rpg"}
+	{"火神机枪", "weapon_minigun"},
+	{"火箭炮（RPG）", "weapon_rpg"}
 }
 
 local random_weapons = {
@@ -96,12 +96,12 @@ local random_weapons = {
 }
 
 local melee_weapons = {
-	{"空手", "weapon_unarmed"}, --{'name shown in Stand', 'weapon ID'}
+	{"徒手", "weapon_unarmed"}, --{'name shown in Stand', 'weapon ID'}
 	{"小刀", "weapon_knife"},
-	{"弯刀", "weapon_machete"},
-	{"战斧", "weapon_battleaxe"},
-	{"扳手", "weapon_wrench"},
-	{"锤子", "weapon_hammer"},
+	{"开山刀", "weapon_machete"},
+	{"战斗斧", "weapon_battleaxe"},
+	{"管钳扳手", "weapon_wrench"},
+	{"铁锤", "weapon_hammer"},
 	{"棒球棒", "weapon_bat"}
 }
 
