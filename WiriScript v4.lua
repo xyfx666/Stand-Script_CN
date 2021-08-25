@@ -419,10 +419,10 @@ function delete_all_entities(list, name)
 		end
 	end
 	if deleted ~= 0 then
-		shownotification("~r~"..deleted.." ~s~entities were succesfully deleted")
+		shownotification("~r~"..deleted.." ~s~实体已成功删除")
 	end
 	if #list ~= 0 then
-		shownotification("~r~"..#list.." ~s~entities couldn't be deleted")
+		shownotification("~r~"..#list.." ~s~无法删除实体")
 	end
 end
 
@@ -434,16 +434,16 @@ local function get_rid(pid)
   	return rid
 end
 
-settings = menu.list(menu.my_root(), "Settings", {}, "")
+settings = menu.list(menu.my_root(), "设置", {}, "")
 
-menu.divider(settings, "Settings")
+menu.divider(settings, "设置")
 
 local display = true
-menu.toggle(settings, "Display Health Info When Modding Health", {}, "", function(on)
+menu.toggle(settings, "在修改血量的时候显示血量信息", {}, "", function(on)
 	display = on
 end, true)
 
-menu.toggle(settings, "Use Stand's notifications", {}, "Allows you to return to Stand's notification appearance", function(on)
+menu.toggle(settings, "使用Stand的通知", {}, "允许您返回到Stand的通知外观", function(on)
 	standlike = on
 end)
 
@@ -454,21 +454,21 @@ nameloaddata = (scriptdir.."\\savednames.data")
 
 function namesload()
 	if not filesystem.exists(nameloaddata) then return end
-	local savednames = menu.list(menu.my_root(), "Saved Names", {}, "")
+	local savednames = menu.list(menu.my_root(), "保存信息", {}, "")
 
 	local function add_name_to_savednames(name)
-		menu.action(savednames, name, {}, "Click to paste name in Online/Spoofing/Name Spoofing/Spoofed Name. You should use Stand\'s 'Get Spoofed RID From Spoofed Name' option before RID spoofing.", function() 
+		menu.action(savednames, name, {}, "单击以将名称粘贴到 在线/虚假信息/虚假名称/虚假名称 中。在虚假RID之前，您应该使用Stand的“从虚假的名称获取RID”选项。", function() 
 			menu.trigger_commands("spoofedname "..name)
 			shownotification("Spoofed name: ~r~"..name.."~s~")
 		end)
 	end
 	
-	menu.divider(savednames,"Saved Names")
+	menu.divider(savednames,"保存信息")
     for line in io.lines(nameloaddata) do namedata[#namedata + 1] = line end
     for i = 1, #namedata do
     	add_name_to_savednames(namedata[i])
 	end
-	shownotification("Saved names loaded: ~r~"..#namedata.."~s~")
+	shownotification("已加载保存的信息： ~r~"..#namedata.."~s~")
 end
 namesload()
 
