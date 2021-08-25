@@ -474,17 +474,17 @@ namesload()
 
 -----------------------------------------------------------SPOOFING PROFILE STUFF--------------------------------------------------------------------
 
-local profiles = menu.list(menu.my_root(), "虚假信息配置文件", {}, "")
+local profiles = menu.list(menu.my_root(), "虚假信息配置", {}, "")
 local usingprofile = false
 
-menu.action(profiles, "禁用当前虚假信息配置文件", {}, "", function()
+menu.action(profiles, "禁用当前配置", {}, "", function()
 	if usingprofile then 
 		menu.trigger_commands("spoofname off")
 		menu.trigger_commands("spoofrid off")
-		shownotification("已禁用虚假信息配置文件。您需要更改战局，以便其他人看到更改")
+		shownotification("已禁用虚假信息配置，欲使其生效请更换战局")
 		usingprofile = false
 	else
-		shownotification("~r~您没有使用任何虚假信息配置文件")
+		shownotification("~r~您当前没有启用任何虚假信息配置")
 	end
 end)
 
@@ -495,7 +495,7 @@ wiriscript_folder = (scriptdir.."\\WiriScript")
 --WiriScript folder exists? 
 -----------------------------
 if not filesystem.exists(wiriscript_folder) then
-	shownotification("~r~WiriScript 文件夹不存在。为了使用 WiriScript，请将它从下载的文件拖到 Lua Scripts 中")
+	shownotification("~r~WiriScript 文件夹不存在。欲使用 WiriScript，请将压缩包中所有文件拖到 Lua Scripts文件夹中")
 	util.stop_script()
 end
 -----------------------------
@@ -511,7 +511,7 @@ function add_profile_to_list(array)
 	profiles_command_ids[j] = profile_actions
 	menu.divider(profile_actions, name)
 	
-	menu.action(profile_actions, "启用虚假信息配置文件", {}, "", function()
+	menu.action(profile_actions, "启用配置", {}, "", function()
 		usingprofile = true 
 		if spoofname then
 			menu.trigger_commands("spoofedname "..name)
@@ -521,12 +521,12 @@ function add_profile_to_list(array)
 			menu.trigger_commands("spoofedrid "..rid)
 			menu.trigger_commands("spoofrid hard")
 		end
-		shownotification("应用的配置文件: ~r~"..name.."~s~. 你需要更换一个战局来让其他人看到更改")
+		shownotification("启用的配置: ~r~"..name.."~s~. 欲使其生效请更换战局")
 	end)
 
 	menu.action(profile_actions, "Delete", {}, "", function()
 		if click_counter == 1 then
-			shownotification("~r~是否确实要删除此欺骗虚假信息文件？再次单击以继续")
+			shownotification("~r~是否确实要删除此配置？再次单击以继续")
 			util.yield(2500)
 			click_counter = click_counter + 1
 			return
@@ -547,11 +547,11 @@ function add_profile_to_list(array)
 		menu.trigger_commands("clearnotifications")
 	end)
 	
-	menu.divider(profile_actions, "虚假选项")
-	menu.toggle(profile_actions, "Name", {}, "", function(on)
+	menu.divider(profile_actions, "选项")
+	menu.toggle(profile_actions, "启用名称", {}, "", function(on)
 		spoofname = on
 	end, true)
-	menu.toggle(profile_actions, "SCID: "..rid, {}, "", function(on)
+	menu.toggle(profile_actions, "启用R* ID: "..rid, {}, "", function(on)
 		spoofrid = on
 	end, true)
 end
@@ -564,11 +564,11 @@ function save_spoofing_profile(name, scid)
 		profiles_data:write(json.encode(profiles_list[i]).."\n")
 		profiles_data:close()
 		add_profile_to_list(profiles_list[i])
-		shownotification("已创建虚假信息配置文件: ~r~"..profiles_list[i].name.."~s~")
+		shownotification("已创建虚假信息配置: ~r~"..profiles_list[i].name.."~s~")
 	else
 		for k, v in pairs(profiles_list) do 
 			if profiles_list[k].name == name or profiles_list[k].rid == scid then 
-				shownotification("~r~虚假信息配置文件已存在")
+				shownotification("~r~虚假信息配置已存在")
 				return
 			end
 		end
@@ -577,7 +577,7 @@ function save_spoofing_profile(name, scid)
 		profiles_data:write(json.encode(profiles_list[i]).."\n")
 		profiles_data:close()
 		add_profile_to_list(profiles_list[i])
-		shownotification("已创建虚假信息配置文件: ~r~"..profiles_list[i].name.."~s~")
+		shownotification("已创建虚假信息配置: ~r~"..profiles_list[i].name.."~s~")
 	end
 end
 
@@ -586,10 +586,10 @@ end
 -----------------------------------
 local newname
 local newrid
-local newprofile = menu.list(profiles, "添加配置文件", {}, "允许您手动创建新的虚假信息配置文件")
-menu.divider(newprofile, "创建新的")
+local newprofile = menu.list(profiles, "添加配置文件", {}, "创建新的虚假信息配置")
+menu.divider(newprofile, "创建新的虚假信息配置")
 
-menu.action(newprofile, "名字", {"profilename"}, "输入配置文件的名字。", function()
+menu.action(newprofile, "名称", {"profilename"}, "输入冒充的名称", function()
 	if newname ~= nil then 
 		menu.show_command_box("profilename "..newname)
 	else
@@ -599,7 +599,7 @@ end, function(name)
 	newname = name
 end)
 
-menu.action(newprofile, "SCID", {"profilerid"}, "接下来输入配置文件的SCID", function()
+menu.action(newprofile, "R* ID", {"profilerid"}, "接下来输入冒充的R* ID", function()
 	if newrid ~= nil then 
 		menu.show_command_box("profilerid "..newrid)
 	else
@@ -609,16 +609,16 @@ end, function(rid)
 	newrid = rid
 end)
 
-menu.action(newprofile, "保存虚假信息配置文件", {}, "", function()
+menu.action(newprofile, "保存配置", {}, "", function()
 	if newname == nil or newrid == nil then
-		shownotification("~r~名字 和 SCID 是必须的")
+		shownotification("~r~名称或R* ID不能为空")
 		return
 	end
 	save_spoofing_profile(newname, newrid)
 end)
 ----------------------------------------
 
-menu.divider(profiles, "虚假信息配置文件")
+menu.divider(profiles, "已保存的配置")
 
 function profilesload()
 	if not filesystem.exists(profiles_load_data) then return end
@@ -626,7 +626,7 @@ function profilesload()
 	for i = 1, #profiles_list do
 		add_profile_to_list(profiles_list[i])
 	end
-	shownotification("已加载虚假信息配置文件: ~r~"..#profiles_list.."~s~")
+	shownotification("已加载虚假信息配置: ~r~"..#profiles_list.."~s~")
 end
 profilesload()
 
