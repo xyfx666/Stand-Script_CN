@@ -190,7 +190,7 @@ function cage_player(pos, type)
 	object[2] = OBJECT.CREATE_OBJECT(hash, pos.x, pos.y, pos.z, true, true, true)
 	for k, v in pairs(object) do
 		if v == 0 then --if 'CREATE_OBJECT' fails to create one of the objects
-			shownotification("~r~创建cage时出错了")
+			shownotification("~r~创建笼子时出错了")
 			return
 		end
 		cages[#cages+1] = v
@@ -286,7 +286,7 @@ function spawn_buzzard(pid, gunner_weapon)
 	end
 	local heli = util.create_vehicle(heli_hash, pos, CAM.GET_GAMEPLAY_CAM_ROT(0).z)
 	if not ENTITY.DOES_ENTITY_EXIST(heli) then 
-		shownotification("~r~Failed to create buzzard. Please try again")
+		shownotification("~r~未能创建秃鹰。请再试一次")
 		return
 	end
 	buzzard_entities[#buzzard_entities + 1] = heli
