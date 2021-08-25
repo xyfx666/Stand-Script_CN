@@ -524,7 +524,7 @@ function add_profile_to_list(array)
 		shownotification("启用的配置: ~r~"..name.."~s~. 欲使其生效请更换战局")
 	end)
 
-	menu.action(profile_actions, "Delete", {}, "", function()
+	menu.action(profile_actions, "删除配置", {}, "", function()
 		if click_counter == 1 then
 			shownotification("~r~是否确实要删除此配置？再次单击以继续")
 			util.yield(2500)
@@ -548,10 +548,10 @@ function add_profile_to_list(array)
 	end)
 	
 	menu.divider(profile_actions, "选项")
-	menu.toggle(profile_actions, "启用名称", {}, "", function(on)
+	menu.toggle(profile_actions, "冒充名称", {}, "", function(on)
 		spoofname = on
 	end, true)
-	menu.toggle(profile_actions, "启用R* ID: "..rid, {}, "", function(on)
+	menu.toggle(profile_actions, "冒充R* ID: "..rid, {}, "", function(on)
 		spoofrid = on
 	end, true)
 end
@@ -564,7 +564,7 @@ function save_spoofing_profile(name, scid)
 		profiles_data:write(json.encode(profiles_list[i]).."\n")
 		profiles_data:close()
 		add_profile_to_list(profiles_list[i])
-		shownotification("已创建虚假信息配置: ~r~"..profiles_list[i].name.."~s~")
+		shownotification("已创建新的虚假信息配置: ~r~"..profiles_list[i].name.."~s~")
 	else
 		for k, v in pairs(profiles_list) do 
 			if profiles_list[k].name == name or profiles_list[k].rid == scid then 
@@ -577,7 +577,7 @@ function save_spoofing_profile(name, scid)
 		profiles_data:write(json.encode(profiles_list[i]).."\n")
 		profiles_data:close()
 		add_profile_to_list(profiles_list[i])
-		shownotification("已创建虚假信息配置: ~r~"..profiles_list[i].name.."~s~")
+		shownotification("已创建新的虚假信息配置: ~r~"..profiles_list[i].name.."~s~")
 	end
 end
 
@@ -599,7 +599,7 @@ end, function(name)
 	newname = name
 end)
 
-menu.action(newprofile, "R* ID", {"profilerid"}, "接下来输入冒充的R* ID", function()
+menu.action(newprofile, "R* ID", {"profilerid"}, "输入冒充的R* ID", function()
 	if newrid ~= nil then 
 		menu.show_command_box("profilerid "..newrid)
 	else
@@ -611,7 +611,7 @@ end)
 
 menu.action(newprofile, "保存配置", {}, "", function()
 	if newname == nil or newrid == nil then
-		shownotification("~r~名称或R* ID不能为空")
+		shownotification("~r~名称和R* ID不能为空")
 		return
 	end
 	save_spoofing_profile(newname, newrid)
