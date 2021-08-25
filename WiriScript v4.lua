@@ -586,10 +586,10 @@ end
 -----------------------------------
 local newname
 local newrid
-local newprofile = menu.list(profiles, "添加配置文件", {}, "允许您手动创建新的虚假信息配置文件。")
+local newprofile = menu.list(profiles, "添加配置文件", {}, "允许您手动创建新的虚假信息配置文件")
 menu.divider(newprofile, "创建新的")
 
-menu.action(newprofile, "Name", {"profilename"}, "Type the profile's name.", function()
+menu.action(newprofile, "名字", {"profilename"}, "输入配置文件的名字。", function()
 	if newname ~= nil then 
 		menu.show_command_box("profilename "..newname)
 	else
@@ -599,7 +599,7 @@ end, function(name)
 	newname = name
 end)
 
-menu.action(newprofile, "SCID", {"profilerid"}, "Type then profile's SCID.", function()
+menu.action(newprofile, "SCID", {"profilerid"}, "接下来输入配置文件的SCID", function()
 	if newrid ~= nil then 
 		menu.show_command_box("profilerid "..newrid)
 	else
@@ -609,16 +609,16 @@ end, function(rid)
 	newrid = rid
 end)
 
-menu.action(newprofile, "Save Spoofing Profile", {}, "", function()
+menu.action(newprofile, "保存虚假信息配置文件", {}, "", function()
 	if newname == nil or newrid == nil then
-		shownotification("~r~Name and SCID are required")
+		shownotification("~r~名字 和 SCID 是必须的")
 		return
 	end
 	save_spoofing_profile(newname, newrid)
 end)
 ----------------------------------------
 
-menu.divider(profiles, "Spoofing Profiles")
+menu.divider(profiles, "虚假信息配置文件")
 
 function profilesload()
 	if not filesystem.exists(profiles_load_data) then return end
@@ -626,7 +626,7 @@ function profilesload()
 	for i = 1, #profiles_list do
 		add_profile_to_list(profiles_list[i])
 	end
-	shownotification("Spoofing profiles loaded: ~r~"..#profiles_list.."~s~")
+	shownotification("已加载虚假信息配置文件: ~r~"..#profiles_list.."~s~")
 end
 profilesload()
 
@@ -636,7 +636,7 @@ GenerateFeatures = function(pid)
 	
 ---------------------------------------------------CREATE SPOOFING PROFILE-----------------------------------------------------------------------
 
-	menu.action(menu.player_root(pid), "Create Spoofing Profile", {}, "", function()
+	menu.action(menu.player_root(pid), "创建虚假信息配置文件", {}, "", function()
 		local player_name = PLAYER.GET_PLAYER_NAME(pid)
 		local player_rid = get_rid(pid)
 		save_spoofing_profile(player_name, player_rid)
@@ -644,37 +644,37 @@ GenerateFeatures = function(pid)
 
 --------------------------------------------EXPLOSION AND LOOP STUFF----------------------------------------------------------------------------
 	
-	trolling_list = menu.list(menu.player_root(pid), "Trolling & Griefing", {}, "")
+	trolling_list = menu.list(menu.player_root(pid), "拖拽 & 抱怨", {}, "")
 
-	explo_settings = menu.list(trolling_list, "Custom Explosion", {}, "")
+	explo_settings = menu.list(trolling_list, "自定义爆炸", {}, "")
 
-	menu.divider(explo_settings, "Custom Explosion")
+	menu.divider(explo_settings, "自定义爆炸")
 
-	menu.slider(explo_settings, "Type", {"explotype"}, "",0,72,0,1, function(value)
+	menu.slider(explo_settings, "类型", {"explotype"}, "",0,72,0,1, function(value)
 		type = value
 	end)
-	menu.toggle(explo_settings, "Invisible", {}, "", function(on)
+	menu.toggle(explo_settings, "看不见的", {}, "", function(on)
 		invisible = on
 	end, false)
-	menu. toggle(explo_settings, "Audible", {}, "", function(on)
+	menu. toggle(explo_settings, "可听的", {}, "", function(on)
 		audible = on
 	end, true)
-	menu.slider(explo_settings, "Camera Shake", {"shake"}, "",0,100,1,1, function(value)
+	menu.slider(explo_settings, "相机抖动", {"shake"}, "",0,100,1,1, function(value)
 		shake = value
 	end)
-	menu.toggle(explo_settings, "Owned Explosions", {}, "", function(on)
+	menu.toggle(explo_settings, "自有爆炸", {}, "", function(on)
 		owned = on
 	end)
 
-	menu.action(explo_settings, "Explode", {}, "", function()
+	menu.action(explo_settings, "突然爆发", {}, "", function()
 		explode(pid, type, owned)
 	end)
 
-	menu.slider(explo_settings, "Loop Delay", {"delay"}, "Allows you to change how fast the loops are.",50,1000,300,10, function(value)
+	menu.slider(explo_settings, "循环延迟", {"delay"}, "允许您更改循环的速度.",50,1000,300,10, function(value)
 		delay = value
 	end)
 		
-	menu.toggle(explo_settings, "Explosion Loop", {},"", function(on)
+	menu.toggle(explo_settings, "循环爆炸", {},"", function(on)
 		explosion_loop = on
 		while explosion_loop do
 			explode(pid, type, owned)
@@ -682,7 +682,7 @@ GenerateFeatures = function(pid)
 		end
 	end, false)
 	
-	menu.toggle(trolling_list, "Water Hydrant Loop", {},"", function(on)
+	menu.toggle(trolling_list, "喷水循环", {},"", function(on)
 		hydrant_loop = on
 		while hydrant_loop do
 			explode(pid, 13, false)
@@ -690,7 +690,7 @@ GenerateFeatures = function(pid)
 		end
 	end, false)
 
-	menu.action(trolling_list, "Kill as Orbital Cannon", {}, "", function()
+	menu.action(trolling_list, "作为轨道加农炮杀戮", {}, "", function()
 		menu.trigger_commands("becomeorbitalcannon on") 
 		util.yield(200)
 		local pos = ENTITY.GET_ENTITY_COORDS(PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid))
@@ -709,7 +709,7 @@ GenerateFeatures = function(pid)
 		menu.trigger_commands("becomeorbitalcannon off")
 	end)
 
-	menu.toggle(trolling_list, "Flame Loop", {},"", function(on)
+	menu.toggle(trolling_list, "火焰循环", {},"", function(on)
 		fire_loop = on
 		while fire_loop do
 			explode(pid, 12, false)
@@ -719,7 +719,7 @@ GenerateFeatures = function(pid)
 
 -------------------------------------------------SHAKE CAM-----------------------------------------------------------------------
 
-	menu.toggle(trolling_list, "Shake Camera", {}, "", function(on)
+	menu.toggle(trolling_list, "摇晃相机", {}, "", function(on)
 		shakecam = on
 		while shakecam do
 			local pos = ENTITY.GET_ENTITY_COORDS(PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid))
@@ -730,58 +730,58 @@ GenerateFeatures = function(pid)
 
 -------------------------------------------ATTACKER AND CLONE OPTIONS-----------------------------------------------------------------------------
 
-	local attacker_options = menu.list(trolling_list, "Spawn Attacker", {}, "")
+	local attacker_options = menu.list(trolling_list, "生成攻击者", {}, "")
 
-	menu.divider(attacker_options, "Spawn Attacker")
+	menu.divider(attacker_options, "生成攻击者")
 
-	local ped_weapon_list = menu.list(attacker_options, "Weapon", {}, "Allows you to change the attacker/clone weapon. Default: Pistol.")	
-	menu.divider(ped_weapon_list, "Attacker/Clone Weapon List")										
-	local ped_melee_list = menu.list(ped_weapon_list, "Melee", {}, "")
+	local ped_weapon_list = menu.list(attacker_options, "武器", {}, "允许您更改攻击者/克隆人武器。默认：手枪。")	
+	menu.divider(ped_weapon_list, "攻击者/克隆人武器列表")										
+	local ped_melee_list = menu.list(ped_weapon_list, "近战武器", {}, "")
 
 	for i = 1, #weapons do 								--creates the attacker weapon list
 		menu.action(ped_weapon_list, weapons[i][1], {}, "", function()
 			ped_weapon = weapons[i][2]
-			shownotification("Attacker weapon: "..weapons[i][1])
+			shownotification("攻击者武器: "..weapons[i][1])
 		end)
 	end
 
 	for i = 1, #melee_weapons do  --creates the attacker melee weapon list
 		menu.action(ped_melee_list, melee_weapons[i][1], {}, "", function()
 			ped_weapon = melee_weapons[i][2]
-			shownotification("Attacker weapon: "..melee_weapons[i][1])
+			shownotification("攻击者武器: "..melee_weapons[i][1])
 		end)
 	end
 
-	local ped_list = menu.list(attacker_options, "Attacker Appearance", {}, "Allows to change the attacker appearance. Default: Female Cop.")
+	local ped_list = menu.list(attacker_options, "攻击者外观", {}, "允许更改攻击者的外观。默认：女警察。")
 
-	menu.divider(ped_list, "Attacker Appearance List")
+	menu.divider(ped_list, "攻击者外观列表")
 
 	for i = 1, #peds do					--creates the attacker appearance list
 		menu.action(ped_list, peds[i][1], {}, "", function()
 			ped_type = peds[i][2]
-			shownotification("Attacker appearance: "..peds[i][1])
+			shownotification("攻击者外观: "..peds[i][1])
 		end)
 	end
 
-	menu.toggle(attacker_options, "Invincible", {}, "Makes attacker/clone invincible when enabled.", function(on_godmode)
+	menu.toggle(attacker_options, "无敌", {}, "当开启时 攻击者/克隆人 将会无敌", function(on_godmode)
 		godmode = on_godmode
 	end, false)
 
-	menu.toggle(attacker_options, "Stationary", {}, "Use it to make the attacker stationary.", function(on)
+	menu.toggle(attacker_options, "冻结", {}, "当开启时攻击者会静止不动", function(on)
 		stationary = on
 	end, false)
 
-	menu.action(attacker_options, "Send Attacker", {}, "", function()
+	menu.action(attacker_options, "派遣攻击者", {}, "", function()
 		spawn_attacker(pid, ped_type, ped_weapon, godmode, stationary)
-		shownotification("Attacker sent to "..PLAYER.GET_PLAYER_NAME(pid))
+		shownotification("攻击者被派往 "..PLAYER.GET_PLAYER_NAME(pid))
 	end)
 
-	menu.action(attacker_options, "Send Random Attacker", {}, "", function()
+	menu.action(attacker_options, "发送随机攻击者", {}, "", function()
 		spawn_attacker(pid, random_peds[math.random(#random_peds)], ped_weapon, godmode, stationary)
-		shownotification("Attacker sent to "..PLAYER.GET_PLAYER_NAME(pid))
+		shownotification("攻击者被派往 "..PLAYER.GET_PLAYER_NAME(pid))
 	end)
 
-	menu.action(attacker_options, "Clone Player (enemy)", {}, "", function()
+	menu.action(attacker_options, "克隆玩家（敌人）", {}, "", function()
 		local pos = ENTITY.GET_ENTITY_COORDS(PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid))
 		
 		pos.x  = pos.x + math.random(-3, 3)
@@ -801,7 +801,7 @@ GenerateFeatures = function(pid)
 		if stationary then
 			PED.SET_PED_COMBAT_MOVEMENT(clone, 0)
 		end
-		shownotification("Enemy clone sent to "..PLAYER.GET_PLAYER_NAME(pid))
+		shownotification("敌对的的克隆人被派往"..PLAYER.GET_PLAYER_NAME(pid))
 	end)
 ------------------------------------------------------
 --ENEMY CHOP
