@@ -403,7 +403,7 @@ function delete_all_entities(list, name)
 	local tick = 0
 	local deleted = 0
 	if #list == 0 then
-		shownotification("~r~No spawned "..name.." found")
+		shownotification("~r~未能找到 "..name.."")
 		return
 	end
 	for key, value in pairs(list) do
@@ -443,7 +443,7 @@ menu.toggle(settings, "在修改血量的时候显示血量信息", {}, "", func
 	display = on
 end, true)
 
-menu.toggle(settings, "使用Stand的通知", {}, "允许您返回到Stand的通知外观", function(on)
+menu.toggle(settings, "使用Stand的通知", {}, "使用Stand的通知样式和系统", function(on)
 	standlike = on
 end)
 
