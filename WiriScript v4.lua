@@ -107,16 +107,16 @@ local melee_weapons = {
 
 local peds = {									--here you can modify which peds are available to choose
 	{"囚犯", "s_m_y_prismuscl_01"}, --{'name shown in Stand', 'ped model ID'}
-	{"哑剧表演者", "s_m_y_mime"},
+	{"哑剧演员", "s_m_y_mime"},
 	{"宇航员", "s_m_m_movspace_01"},
-	{"黑色行动士兵", "s_m_y_blackops_01"},
+	{"特种兵", "s_m_y_blackops_01"},
 	{"特警", "s_m_y_swat_01"},
-	{"巴拉斯·甘斯特", "csb_ballasog"},
+	{"巴勒帮成员", "csb_ballasog"},
 	{"女警官", "s_f_y_cop_01"},
 	{"男警官", "s_m_y_cop_01"},
 	{"上帝", "u_m_m_jesus_01"},
 	{"僵尸", "u_m_y_zombie_01"},
-	{"重型卡车", "u_m_y_juggernaut_01"},
+	{"重装兵", "u_m_y_juggernaut_01"},
 	{"小丑", "s_m_y_clown_01"}
 }
 
@@ -145,7 +145,7 @@ local random_peds = {				--add IDs here if you want
 
 local gunner_weapon_list = {              --these are the buzzard's gunner weapons. You can include some (make sure gunners can use them from heli :O)
 	{"战斗机枪", "weapon_combatmg"},
-	{"RPG(火箭筒)", "weapon_rpg"}
+	{"火箭炮（RPG）", "weapon_rpg"}
 }
 
 function set_ent_face_ent(ent1, ent2) --All credits to Ren for suggesting me this function
@@ -190,7 +190,7 @@ function cage_player(pos, type)
 	object[2] = OBJECT.CREATE_OBJECT(hash, pos.x, pos.y, pos.z, true, true, true)
 	for k, v in pairs(object) do
 		if v == 0 then --if 'CREATE_OBJECT' fails to create one of the objects
-			shownotification("~r~创建笼子时出错了")
+			shownotification("~r~未能创建物体")
 			return
 		end
 		cages[#cages+1] = v
@@ -286,7 +286,7 @@ function spawn_buzzard(pid, gunner_weapon)
 	end
 	local heli = util.create_vehicle(heli_hash, pos, CAM.GET_GAMEPLAY_CAM_ROT(0).z)
 	if not ENTITY.DOES_ENTITY_EXIST(heli) then 
-		shownotification("~r~未能创建秃鹰直升机。请再试一次")
+		shownotification("~r~未能创建秃鹰直升机，请再试一次")
 		return
 	end
 	buzzard_entities[#buzzard_entities + 1] = heli
@@ -348,7 +348,7 @@ function spawn_buzzard(pid, gunner_weapon)
 	end)
 	STREAMING.SET_MODEL_AS_NO_LONGER_NEEDED(heli_hash)
 	STREAMING.SET_MODEL_AS_NO_LONGER_NEEDED(ped_hash)
-	shownotification("秃鹰直升机被送到了 "..PLAYER.GET_PLAYER_NAME(pid))
+	shownotification("秃鹰直升机已送至 "..PLAYER.GET_PLAYER_NAME(pid))
 end	
 
 function request_control_ent(entity)
