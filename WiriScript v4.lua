@@ -807,7 +807,7 @@ GenerateFeatures = function(pid)
 --ENEMY CHOP
 ------------------------------------------------------
 
-	menu.action(attacker_options, "Enemy Chop", {}, "", function()
+	menu.action(attacker_options, "敌对小查", {}, "", function()
 		local player_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
 		local pos = ENTITY.GET_ENTITY_COORDS(player_ped)
 		pos.z = pos.z - 0.9
@@ -828,14 +828,14 @@ GenerateFeatures = function(pid)
 		PED.SET_PED_COMBAT_ATTRIBUTES(ped, 46, 1)
 		STREAMING.SET_MODEL_AS_NO_LONGER_NEEDED(ped_hash)
 		
-		shownotification("Chop sent to "..PLAYER.GET_PLAYER_NAME(pid))
+		shownotification("小查被派往 "..PLAYER.GET_PLAYER_NAME(pid))
 	end)
 
 -------------------------------------------------------
 --SEND POLICE CAR
 -------------------------------------------------------
 
-	menu.action(attacker_options, "Send Police Car", {}, "Creates a police car which is going to chase and shoot player. ", function()
+	menu.action(attacker_options, "发送警车", {}, "Creates a police car which is going to chase and shoot player. ", function()
 		local player_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
 		local pos = ENTITY.GET_ENTITY_COORDS(player_ped)
 		local coords_ptr = memory.alloc()
