@@ -636,7 +636,7 @@ GenerateFeatures = function(pid)
 	
 ---------------------------------------------------CREATE SPOOFING PROFILE-----------------------------------------------------------------------
 
-	menu.action(menu.player_root(pid), "创建虚假信息配置文件", {}, "", function()
+	menu.action(menu.player_root(pid), "创建当前玩家的虚假信息配置", {}, "", function()
 		local player_name = PLAYER.GET_PLAYER_NAME(pid)
 		local player_rid = get_rid(pid)
 		save_spoofing_profile(player_name, player_rid)
@@ -644,37 +644,37 @@ GenerateFeatures = function(pid)
 
 --------------------------------------------EXPLOSION AND LOOP STUFF----------------------------------------------------------------------------
 	
-	trolling_list = menu.list(menu.player_root(pid), "拖拽 & 抱怨", {}, "")
+	trolling_list = menu.list(menu.player_root(pid), "整人选项", {}, "")
 
 	explo_settings = menu.list(trolling_list, "自定义爆炸", {}, "")
 
 	menu.divider(explo_settings, "自定义爆炸")
 
-	menu.slider(explo_settings, "类型", {"explotype"}, "",0,72,0,1, function(value)
+	menu.slider(explo_settings, "爆炸类型", {"explotype"}, "",0,72,0,1, function(value)
 		type = value
 	end)
-	menu.toggle(explo_settings, "看不见的", {}, "", function(on)
+	menu.toggle(explo_settings, "是否可见", {}, "", function(on)
 		invisible = on
 	end, false)
-	menu. toggle(explo_settings, "可听的", {}, "", function(on)
+	menu. toggle(explo_settings, "音效", {}, "", function(on)
 		audible = on
 	end, true)
-	menu.slider(explo_settings, "相机抖动", {"shake"}, "",0,100,1,1, function(value)
+	menu.slider(explo_settings, "视角抖动", {"shake"}, "",0,100,1,1, function(value)
 		shake = value
 	end)
-	menu.toggle(explo_settings, "自有爆炸", {}, "", function(on)
+	menu.toggle(explo_settings, "自爆", {}, "", function(on)
 		owned = on
 	end)
 
-	menu.action(explo_settings, "突然爆发", {}, "", function()
+	menu.action(explo_settings, "炸！", {}, "", function()
 		explode(pid, type, owned)
 	end)
 
-	menu.slider(explo_settings, "循环延迟", {"delay"}, "允许您更改循环的速度.",50,1000,300,10, function(value)
+	menu.slider(explo_settings, "循环延迟", {"delay"}, "更改每次爆炸的间隔（单位：毫秒）",50,1000,300,10, function(value)
 		delay = value
 	end)
 		
-	menu.toggle(explo_settings, "循环爆炸", {},"", function(on)
+	menu.toggle(explo_settings, "启用循环爆炸", {},"", function(on)
 		explosion_loop = on
 		while explosion_loop do
 			explode(pid, type, owned)
@@ -690,7 +690,7 @@ GenerateFeatures = function(pid)
 		end
 	end, false)
 
-	menu.action(trolling_list, "作为轨道加农炮杀戮", {}, "", function()
+	menu.action(trolling_list, "向玩家发射天基炮", {}, "", function()
 		menu.trigger_commands("becomeorbitalcannon on") 
 		util.yield(200)
 		local pos = ENTITY.GET_ENTITY_COORDS(PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid))
@@ -719,7 +719,7 @@ GenerateFeatures = function(pid)
 
 -------------------------------------------------SHAKE CAM-----------------------------------------------------------------------
 
-	menu.toggle(trolling_list, "摇晃相机", {}, "", function(on)
+	menu.toggle(trolling_list, "摇晃视角", {}, "", function(on)
 		shakecam = on
 		while shakecam do
 			local pos = ENTITY.GET_ENTITY_COORDS(PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid))
@@ -730,58 +730,58 @@ GenerateFeatures = function(pid)
 
 -------------------------------------------ATTACKER AND CLONE OPTIONS-----------------------------------------------------------------------------
 
-	local attacker_options = menu.list(trolling_list, "生成攻击者", {}, "")
+	local attacker_options = menu.list(trolling_list, "生成敌对NPC", {}, "")
 
-	menu.divider(attacker_options, "生成攻击者")
+	menu.divider(attacker_options, "生成敌对NPC")
 
-	local ped_weapon_list = menu.list(attacker_options, "武器", {}, "允许您更改攻击者/克隆人武器。默认：手枪。")	
-	menu.divider(ped_weapon_list, "攻击者/克隆人武器列表")										
+	local ped_weapon_list = menu.list(attacker_options, "武器", {}, "更改敌对NPC的武器，默认为手枪。")	
+	menu.divider(ped_weapon_list, "NPC武器列表")										
 	local ped_melee_list = menu.list(ped_weapon_list, "近战武器", {}, "")
 
 	for i = 1, #weapons do 								--creates the attacker weapon list
 		menu.action(ped_weapon_list, weapons[i][1], {}, "", function()
 			ped_weapon = weapons[i][2]
-			shownotification("攻击者武器: "..weapons[i][1])
+			shownotification("生成的NPC将会使用: "..weapons[i][1])
 		end)
 	end
 
 	for i = 1, #melee_weapons do  --creates the attacker melee weapon list
 		menu.action(ped_melee_list, melee_weapons[i][1], {}, "", function()
 			ped_weapon = melee_weapons[i][2]
-			shownotification("攻击者武器: "..melee_weapons[i][1])
+			shownotification("生成的NPC将会使用: "..melee_weapons[i][1])
 		end)
 	end
 
-	local ped_list = menu.list(attacker_options, "攻击者外观", {}, "允许更改攻击者的外观。默认：女警察。")
+	local ped_list = menu.list(attacker_options, "NPC模型", {}, "更改NPC的模型，默认为女警官")
 
-	menu.divider(ped_list, "攻击者外观列表")
+	menu.divider(ped_list, "NPC模型列表")
 
 	for i = 1, #peds do					--creates the attacker appearance list
 		menu.action(ped_list, peds[i][1], {}, "", function()
 			ped_type = peds[i][2]
-			shownotification("攻击者外观: "..peds[i][1])
+			shownotification("NPC将会使用的模型: "..peds[i][1])
 		end)
 	end
 
-	menu.toggle(attacker_options, "无敌", {}, "当开启时 攻击者/克隆人 将会无敌", function(on_godmode)
+	menu.toggle(attacker_options, "无敌", {}, "生成的NPC拥有无限血量", function(on_godmode)
 		godmode = on_godmode
 	end, false)
 
-	menu.toggle(attacker_options, "冻结", {}, "当开启时攻击者会静止不动", function(on)
+	menu.toggle(attacker_options, "冻结", {}, "生成的NPC将不会移动", function(on)
 		stationary = on
 	end, false)
 
-	menu.action(attacker_options, "派遣攻击者", {}, "", function()
+	menu.action(attacker_options, "派遣敌对NPC", {}, "", function()
 		spawn_attacker(pid, ped_type, ped_weapon, godmode, stationary)
-		shownotification("攻击者被派往 "..PLAYER.GET_PLAYER_NAME(pid))
+		shownotification("敌对NPC被派遣至: "..PLAYER.GET_PLAYER_NAME(pid))
 	end)
 
-	menu.action(attacker_options, "发送随机攻击者", {}, "", function()
+	menu.action(attacker_options, "派遣随机敌对NPC", {}, "", function()
 		spawn_attacker(pid, random_peds[math.random(#random_peds)], ped_weapon, godmode, stationary)
-		shownotification("攻击者被派往 "..PLAYER.GET_PLAYER_NAME(pid))
+		shownotification("随机敌对NPC被派遣至: "..PLAYER.GET_PLAYER_NAME(pid))
 	end)
 
-	menu.action(attacker_options, "克隆玩家（敌人）", {}, "", function()
+	menu.action(attacker_options, "派遣敌对的玩家克隆", {}, "", function()
 		local pos = ENTITY.GET_ENTITY_COORDS(PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid))
 		
 		pos.x  = pos.x + math.random(-3, 3)
@@ -801,13 +801,13 @@ GenerateFeatures = function(pid)
 		if stationary then
 			PED.SET_PED_COMBAT_MOVEMENT(clone, 0)
 		end
-		shownotification("敌对的的克隆人被派往"..PLAYER.GET_PLAYER_NAME(pid))
+		shownotification("敌对的玩家克隆被派遣至: "..PLAYER.GET_PLAYER_NAME(pid))
 	end)
 ------------------------------------------------------
 --ENEMY CHOP
 ------------------------------------------------------
 
-	menu.action(attacker_options, "敌对小查", {}, "", function()
+	menu.action(attacker_options, "派遣敌对小查", {}, "", function()
 		local player_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
 		local pos = ENTITY.GET_ENTITY_COORDS(player_ped)
 		pos.z = pos.z - 0.9
@@ -828,14 +828,14 @@ GenerateFeatures = function(pid)
 		PED.SET_PED_COMBAT_ATTRIBUTES(ped, 46, 1)
 		STREAMING.SET_MODEL_AS_NO_LONGER_NEEDED(ped_hash)
 		
-		shownotification("小查被派往 "..PLAYER.GET_PLAYER_NAME(pid))
+		shownotification("敌对小查被派遣至: "..PLAYER.GET_PLAYER_NAME(pid))
 	end)
 
 -------------------------------------------------------
 --SEND POLICE CAR
 -------------------------------------------------------
 
-	menu.action(attacker_options, "发送警车", {}, "Creates a police car which is going to chase and shoot player. ", function()
+	menu.action(attacker_options, "派遣警车", {}, "Creates a police car which is going to chase and shoot player. ", function()
 		local player_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
 		local pos = ENTITY.GET_ENTITY_COORDS(player_ped)
 		local coords_ptr = memory.alloc()
@@ -902,27 +902,27 @@ GenerateFeatures = function(pid)
 		end)
 		STREAMING.SET_MODEL_AS_NO_LONGER_NEEDED(ped_hash)
 		STREAMING.SET_MODEL_AS_NO_LONGER_NEEDED(veh_hash)
-		shownotification("Police car sent to "..PLAYER.GET_PLAYER_NAME(pid))
+		shownotification("警用巡逻车正在前往 "..PLAYER.GET_PLAYER_NAME(pid).."的位置")
 	end)
 	
-	menu.action(attacker_options, "Delete Attackers", {}, "Tries to delete all attackers and clones you\'ve spawned.", function()
+	menu.action(attacker_options, "删除敌对NPC", {}, "删除所有已生成的敌对NPC和克隆人", function()
 		delete_all_entities(attackers, "attackers")
 	end)
 
 ------------------------------------------CAGE OPTIONS------------------------------------------------------------------------------
 	
-	local cage_options = menu.list(trolling_list, "Cage", {}, "")
+	local cage_options = menu.list(trolling_list, "套笼", {}, "")
 	
-	menu.divider(cage_options, "Cage")
+	menu.divider(cage_options, "套笼选项")
 
-	menu.action(cage_options, "Simple", {"cage"}, "", function()
+	menu.action(cage_options, "简易套笼", {"cage"}, "", function()
 		local player_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
 		local pos = ENTITY.GET_ENTITY_COORDS(player_ped) 
 		if PED.IS_PED_IN_ANY_VEHICLE(player_ped, false) then
 			menu.trigger_commands("freeze"..PLAYER.GET_PLAYER_NAME(pid).." on")
 			util.yield(300)
 			if PED.IS_PED_IN_ANY_VEHICLE(player_ped, false) then
-				shownotification("~r~Failed to kick player out of the vehicle")
+				shownotification("~r~未能将玩家踢出载具")
 				menu.trigger_commands("freeze"..PLAYER.GET_PLAYER_NAME(pid).." off")
 				return
 			end
@@ -936,7 +936,7 @@ GenerateFeatures = function(pid)
 --AUTOMATIC
 ---------------------------------------------------
 	
-	menu.toggle(cage_options, "Atomatic", {"autocage"}, "Trap them in a cage. If they get out... Do it again. No, I\'ll do it for you actually.", function(on)
+	menu.toggle(cage_options, "循环套笼", {"autocage"}, "如果玩家逃出笼子，脚本会再次套笼", function(on)
 		local player_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
 		local a = ENTITY.GET_ENTITY_COORDS(player_ped) --first position
 		cage_loop = on
@@ -945,7 +945,7 @@ GenerateFeatures = function(pid)
 				menu.trigger_commands("freeze"..PLAYER.GET_PLAYER_NAME(pid).." on")
 				util.yield(300)
 				if PED.IS_PED_IN_ANY_VEHICLE(player_ped, false) then
-					shownotification("~r~Failed to kick player out of the vehicle")
+					shownotification("~r~未能成功将玩家踢出载具")
 					menu.trigger_commands("freeze"..PLAYER.GET_PLAYER_NAME(pid).." off")
 					return
 				end
@@ -963,7 +963,7 @@ GenerateFeatures = function(pid)
 					goto continue
 				end
 				cage_player(a, cage_type)
-				shownotification(PLAYER.GET_PLAYER_NAME(pid).." was out of the cage. Doing it again")
+				shownotification(PLAYER.GET_PLAYER_NAME(pid).." 逃出了笼子，正在重新套笼...")
 				::continue::
 			end
 			util.yield(1000)
@@ -974,7 +974,7 @@ GenerateFeatures = function(pid)
 --FENCE
 ------------------------------------------------------
 
-	menu.action(cage_options, "Fence", {}, "", function()
+	menu.action(cage_options, "围栏套笼", {}, "", function()
 		local player_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
 		local pos = ENTITY.GET_ENTITY_COORDS(player_ped)
 		local object_hash = util.joaat("prop_fnclink_03e")
@@ -1000,7 +1000,7 @@ GenerateFeatures = function(pid)
 		for key, value in pairs(object) do
 			ENTITY.FREEZE_ENTITY_POSITION(value, true)
 			if value == 0 then 
-				shownotification("~r~Something went wrong creating cage")
+				shownotification("~r~未能成功生成笼子模型")
 			end
 			cages[#cages + 1] = value
 		end
@@ -1011,7 +1011,7 @@ GenerateFeatures = function(pid)
 --STUNT TUBE
 -------------------------------------------------------
 
-	menu.action(cage_options, "Stunt Tube", {}, "", function()
+	menu.action(cage_options, "特技竞赛道具", {}, "", function()
 		local pos = ENTITY.GET_ENTITY_COORDS(PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid))
 		local hash = util.joaat("stt_prop_stunt_tube_s")
 		STREAMING.REQUEST_MODEL(hash)
@@ -1032,17 +1032,17 @@ GenerateFeatures = function(pid)
 --SIMPLE/AUTOMATIC VERSION
 --------------------------------------------------------
 
-	local cage_type_list = menu.list(cage_options, "Simple/Automatic Version", {}, "Allows you to change cage type for Simple and Automatic options.")
+	local cage_type_list = menu.list(cage_options, "简易/循环笼子模型", {}, "更改简单套笼和循环套笼使用的笼子模型")
 	menu.divider(cage_type_list, "Cage Type")
 
 	for i = 1,2 do
 		menu.action(cage_type_list, "Trolly V"..i, {}, "", function()
 			cage_type = i
-			shownotification("Cage type: Trolly V"..i)
+			shownotification("已更改笼子模型: 笼子 "..i)
 		end)
 	end
 
-	menu.action(cage_options, "Delete Traps", {}, "Tries to deletes all traps you\'ve spawned.", function()
+	menu.action(cage_options, "删除套笼", {}, "删除所有已生成的笼子模型", function()
 		delete_all_entities(cages, "traps")
 	end)
 
