@@ -286,7 +286,7 @@ function spawn_buzzard(pid, gunner_weapon)
 	end
 	local heli = util.create_vehicle(heli_hash, pos, CAM.GET_GAMEPLAY_CAM_ROT(0).z)
 	if not ENTITY.DOES_ENTITY_EXIST(heli) then 
-		shownotification("~r~未能创建秃鹰。请再试一次")
+		shownotification("~r~未能创建秃鹰直升机。请再试一次")
 		return
 	end
 	buzzard_entities[#buzzard_entities + 1] = heli
@@ -348,7 +348,7 @@ function spawn_buzzard(pid, gunner_weapon)
 	end)
 	STREAMING.SET_MODEL_AS_NO_LONGER_NEEDED(heli_hash)
 	STREAMING.SET_MODEL_AS_NO_LONGER_NEEDED(ped_hash)
-	shownotification("Buzzard sent to "..PLAYER.GET_PLAYER_NAME(pid))
+	shownotification("秃鹰直升机被送到了 "..PLAYER.GET_PLAYER_NAME(pid))
 end	
 
 function request_control_ent(entity)
