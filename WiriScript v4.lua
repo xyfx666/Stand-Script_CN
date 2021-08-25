@@ -454,7 +454,7 @@ nameloaddata = (scriptdir.."\\savednames.data")
 
 function namesload()
 	if not filesystem.exists(nameloaddata) then return end
-	local savednames = menu.list(menu.my_root(), "保存信息", {}, "")
+	local savednames = menu.list(menu.my_root(), "保存的名称", {}, "")
 
 	local function add_name_to_savednames(name)
 		menu.action(savednames, name, {}, "单击以将名称粘贴到 在线/虚假信息/虚假名称/虚假名称 中。在虚假RID之前，您应该使用Stand的“从虚假的名称获取RID”选项。", function() 
@@ -463,28 +463,28 @@ function namesload()
 		end)
 	end
 	
-	menu.divider(savednames,"保存信息")
+	menu.divider(savednames,"保存的名称")
     for line in io.lines(nameloaddata) do namedata[#namedata + 1] = line end
     for i = 1, #namedata do
     	add_name_to_savednames(namedata[i])
 	end
-	shownotification("已加载保存的信息： ~r~"..#namedata.."~s~")
+	shownotification("已加载保存的名称： ~r~"..#namedata.."~s~")
 end
 namesload()
 
 -----------------------------------------------------------SPOOFING PROFILE STUFF--------------------------------------------------------------------
 
-local profiles = menu.list(menu.my_root(), "Spoofing Profiles", {}, "")
+local profiles = menu.list(menu.my_root(), "虚假信息配置文件", {}, "")
 local usingprofile = false
 
-menu.action(profiles, "Disable Current Spoofing Profile", {}, "", function()
+menu.action(profiles, "禁用当前虚假信息配置文件", {}, "", function()
 	if usingprofile then 
 		menu.trigger_commands("spoofname off")
 		menu.trigger_commands("spoofrid off")
-		shownotification("Spoofing profile disabled. You will need to change sessions for others to see the change")
+		shownotification("已禁用虚假信息配置文件。您需要更改战局，以便其他人看到更改")
 		usingprofile = false
 	else
-		shownotification("~r~You are not using any spoofing profile")
+		shownotification("~r~您没有使用任何虚假信息配置文件")
 	end
 end)
 
