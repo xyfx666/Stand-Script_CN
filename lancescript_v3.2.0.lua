@@ -139,7 +139,7 @@ scaleform_thread = util.create_thread(function (thr)
                 show_custom_alert_until_enter(text)
                 show_custom_alert_until_enter(text2)
                 file = io.open(filesystem.scripts_dir() .. 'disclaimer_viewed.txt', "w")
-                file:write("此文件存在于您的Lua脚本中，用于告诉Lancescript您已查看有关Toxiccessentials的免责声明。如果删除它，您将再次看到免责声明。")
+                file:write("此文件存在于您的Lua脚本中 ,用于告诉Lancescript您已查看有关Toxiccessentials的免责声明 .如果删除它 ,您将再次看到免责声明 .")
                 file:close()
             end
             util.stop_thread()
@@ -181,12 +181,12 @@ function dispatch_griefer_jesus(target)
             end
             -- if jesus disappears we can just make another lmao
             if not ENTITY.DOES_ENTITY_EXIST(jesus) then
-                util.toast("耶稣显然不再存在了。阻止耶稣的线程。")
+                util.toast("耶稣显然不再存在了 .阻止耶稣的线程 .")
                 util.stop_thread()
             end
             local target_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(target)
             if not players.exists(target) then
-                util.toast("玩家目标已丢失。悲伤的耶稣之线正在停止。")
+                util.toast("玩家目标已丢失 .悲伤的耶稣之线正在停止 .")
                 util.stop_thread()
             else
                 TASK.TASK_COMBAT_PED(jesus, target_ped, 0, 16)
@@ -415,7 +415,7 @@ menu.click_slider(noclip_root, "垂直速度", {"noclipvspeed"}, "无碰撞的�
     noclip_vspeed = s * 0.1
   end)
   
-menu.toggle(self_root, "让我当警察", {"makemecop"}, "将你设定为警察。为了让你不再是警察，这会让你自杀。几乎所有的警察都看不见你，但你会报告自己的罪行，有警察的声音，有一个视觉锥，并且不能向其他警察开枪。特警队和军队仍然会向你开枪。", function(on)
+menu.toggle(self_root, "让我当警察", {"makemecop"}, "将你设定为警察 .为了让你不再是警察 ,这会让你自杀 .几乎所有的警察都看不见你 ,但你会报告自己的罪行 ,有警察的声音 ,有一个视觉锥 ,并且不能向其他警察开枪 .特警队和军队仍然会向你开枪 .", function(on)
     ped = PLAYER.PLAYER_PED_ID()
     if on then
         PED.SET_PED_AS_COP(ped, true)
@@ -427,7 +427,7 @@ end)
 
 
 hud_rainbow = false
-menu.toggle(gametweaks_root, "RGB hud", {"rgbhud"}, "RGB\'s your hud. This is AIDS, and requires a game restart to reset.", function(on)
+menu.toggle(gametweaks_root, "RGB hud", {"rgbhud"}, "让你的游戏界面RGB起来 !这是辅助工具 ,需要重新启动游戏才能重置 .", function(on)
     if on then
         hud_rainbow = true
     else
@@ -436,11 +436,11 @@ menu.toggle(gametweaks_root, "RGB hud", {"rgbhud"}, "RGB\'s your hud. This is AI
 end)
 
 lodscale = 1
-menu.click_slider(gametweaks_root, "LOD Scale Override", {"lodscale"}, "Overrides extended distance scaling, lets you make distant objects \"look more HD\". This is an oversimplified explanation. May also make your game run like shit.", 1, 200, 1, 1, function(s)
+menu.click_slider(gametweaks_root, "LOD比例覆盖", {"lodscale"}, "覆盖扩展距离缩放 ,使远程对象“看起来更高清” .这是一个过于简单的解释 .也可能会让你的游戏像狗屎一样运行 .", 1, 200, 1, 1, function(s)
     lodscale = s
   end)
 
-menu.toggle(radio_root, "Music-only radio", {"musiconly"}, "Forces radio stations to only play music. No bullshit.", function(on)
+menu.toggle(radio_root, "只有音乐的电台", {"musiconly"}, "强制电台只播放音乐 .没有废话 .", function(on)
     num_unlocked = AUDIO.GET_NUM_UNLOCKED_RADIO_STATIONS()
     if on then
         for i=1, num_unlocked do
@@ -471,7 +471,7 @@ menu.action(radio_root, "Tracklist override - \"Don\'t come close\"", {"dontcome
     AUDIO.SET_CUSTOM_RADIO_TRACK_LIST(station, "END_CREDITS_KILL_TREVOR", true)
 end)
 
-menu.action(radio_root, "Next track", {"radioskip"}, "Skips the current track", function(on_click)
+menu.action(radio_root, "下一轨道", {"radioskip"}, "跳过当前轨迹", function(on_click)
     AUDIO.SKIP_RADIO_FORWARD()
 end)
 
@@ -480,20 +480,20 @@ end)
 ban_msg = "HUD_ROSBANPERM"
 --_SET_WARNING_MESSAGE_WITH_ALERT(char* labelTitle, char* labelMsg, int p2, int p3, char* labelMsg2, BOOL p5, int p6, int p7, char* p8, char* p9, BOOL background, int errorCode)
 
-menu.action(fakemessages_root, "Fake ban message 1", {"fakeban"}, "Shows a completely fake ban message. Maybe use this to get free accounts from cheat devs or cause a scare on r/Gta5modding.", function(on_click)
+menu.action(fakemessages_root, "虚假的封号消息 1", {"fakeban"}, "显示了一条完全虚假的禁令信息 .也许可以用它从作弊开发者那里获得免费帐户 ,或者在r/GTA5Moding上引起恐慌 .", function(on_click)
     show_custom_alert_until_enter("You have been banned from Grand Theft Auto Online.~n~Return to Grand Theft Auto V.")
 end)
 
-menu.action(fakemessages_root, "Fake ban message 2", {"fakeban"}, "Shows a completely fake ban message. Maybe use this to get free accounts from cheat devs or cause a scare on r/Gta5modding.", function(on_click)
+menu.action(fakemessages_root, "虚假的封号消息 2", {"fakeban"}, "显示了一条完全虚假的禁令信息 .也许可以用它从作弊开发者那里获得免费帐户 ,或者在r/GTA5Moding上引起恐慌 .", function(on_click)
     show_custom_alert_until_enter("You have been banned from Grand Theft Auto Online permanently.~n~Return to Grand Theft Auto V.")
 end)
 --0x252F03F2
 
-menu.action(fakemessages_root, "Services unavailable", {"fakeservicedown"}, "rOcKstaR GaMe ServICeS ArE UnAvAiLAbLe RiGht NoW", function(on_click)
+menu.action(fakemessages_root, "服务不可用", {"fakeservicedown"}, "rOcKstaR GaMe ServICeS ArE UnAvAiLAbLe RiGht NoW", function(on_click)
     show_custom_alert_until_enter("The Rockstar game services are unavailable right now.~n~Please return to Grand Theft Auto V.")
 end)
 
-menu.action(fakemessages_root, "Suspended until xyz", {"suspendeduntil"}, "Suspended until xyz. It will ask you to input the date to show, don\'t worry.", function(on_click)
+menu.action(fakemessages_root, "封号到 xyz", {"suspendeduntil"}, "Suspended until xyz. It will ask you to input the date to show, don\'t worry.", function(on_click)
     util.toast("Input the date your \"suspension\" should end.")
     menu.show_command_box("suspendeduntil ")
 end, function(on_command)
@@ -509,7 +509,7 @@ menu.action(fakemessages_root, "Yeeyee ass haircut", {"yeeyee"}, "maybe", functi
     show_custom_alert_until_enter("Maybe if you got rid of that old ~r~yee yee ass haircut~w~ you'd get some bitches on your dick")
 end)
 
-menu.action(fakemessages_root, "Welcome to the Black Parade", {"blackparade"}, "", function(on_click)
+menu.action(fakemessages_root, "欢迎加入黑暗行军", {"blackparade"}, "", function(on_click)
     show_custom_alert_until_enter("When I was a young boy, my father~n~"..
     "Took me into the city to see a marching band~n~"..
     "He said, \"Son, when you grow up would you be~n~"..
@@ -541,19 +541,19 @@ menu.action(fakemessages_root, "Exit scam", {"exitscam"}, "you know the vibes", 
 )
 end)
 
-menu.action(fakemessages_root, "Custom alert", {"customalert"}, "Shows a custom alert of your liking. Credit to QuickNUT and Sainan for help with this.", function(on_click)
+menu.action(fakemessages_root, "自定义警报", {"customalert"}, "显示您喜欢的自定义提醒 .这要归功于QuickNUT和Sainan的帮助 .", function(on_click)
     util.toast("Please type what you want the alert to say. Type ~n~ for new line, ie foo~n~bar will show up as 2 lines.")
     menu.show_command_box("customalert ")
 end, function(on_command)
     show_custom_alert_until_enter(on_command)
 end)
 
-menu.action(menu.my_root(), "Players shortcut", {}, "Quickly opens session players list, for convenience", function(on_click)
+menu.action(menu.my_root(), "玩家捷径", {}, "为方便起见 ,快速打开会话玩家列表", function(on_click)
     menu.trigger_commands("playerlist")
 end)
 
 make_peds_cops = false
-menu.toggle(npc_root, "Make nearby peds cops", {"makecops"}, "They\'re not actually real cops, but kind of are. They seem to flee very easily, but will snitch on you. Sort of like mall cops.", function(on)
+menu.toggle(npc_root, "叫附近的警察来", {"makecops"}, "他们不是真正的警察 ,但有点像 .他们似乎很容易逃跑 ,但会告密你 .有点像商场警察 .", function(on)
     if on then
         make_peds_cops = true
         ped_uses = ped_uses + 1
@@ -563,7 +563,7 @@ menu.toggle(npc_root, "Make nearby peds cops", {"makecops"}, "They\'re not actua
     end
 end, false)
 --SET_RIOT_MODE_ENABLED(BOOL toggle)
-menu.toggle(npc_root, "Riot mode", {"riotmode"}, "All nearby NPC\'s duel it out and are given weapons. Surprisingly this is handled by the game itself.", function(on)
+menu.toggle(npc_root, "暴动模式", {"riotmode"}, "所有附近的NPC都决斗了 ,并获得了武器 .令人惊讶的是 ,这是由游戏本身处理的 .", function(on)
     if on then
         MISC.SET_RIOT_MODE_ENABLED(true)
     else
@@ -571,7 +571,7 @@ menu.toggle(npc_root, "Riot mode", {"riotmode"}, "All nearby NPC\'s duel it out 
     end
 end, false)
 
-menu.action(npc_root, "Make nearby peds musicians", {}, "now here\'s wonderwall", function(on_click)
+menu.action(npc_root, "让附近的行人成为音乐家", {}, "现在这里是神奇墙", function(on_click)
     local peds = util.get_all_peds()
     for k,ped in pairs(peds) do
         if not is_ped_player(ped) then
@@ -582,7 +582,7 @@ menu.action(npc_root, "Make nearby peds musicians", {}, "now here\'s wonderwall"
 end)
 
 roast_voicelines = false
-menu.toggle(npc_root, "Roast voicelines", {"npcroasts"}, "Very unethical.", function(on)
+menu.toggle(npc_root, "烧烤语音线", {"npcroasts"}, "非常不道德 .", function(on)
     --make_all_peds_say("GENERIC_INSULT_MED", "SPEECH_PARAMS_FORCE_SHOUTED")
     if on then
         ped_uses = ped_uses + 1
@@ -594,7 +594,7 @@ menu.toggle(npc_root, "Roast voicelines", {"npcroasts"}, "Very unethical.", func
 end, false)
 
 sex_voicelines = false
-menu.toggle(npc_root, "Sex voicelines", {"sexlines"}, "oH FuCK YeAh", function(on)
+menu.toggle(npc_root, "性爱语音线", {"sexlines"}, "哦 ,我操你妈的 ,这真是爽翻了", function(on)
     if on then
         ped_uses = ped_uses + 1
         sex_voicelines = true
@@ -605,7 +605,7 @@ menu.toggle(npc_root, "Sex voicelines", {"sexlines"}, "oH FuCK YeAh", function(o
 end, false)
 
 gluck_voicelines = false
-menu.toggle(npc_root, "Gluck gluck 9000 voicelines", {"gluckgluck9000"}, "I\'m begging you, touch some grass.", function(on)
+menu.toggle(npc_root, "Gluck gluck 9000 语音线", {"gluckgluck9000"}, "我求你 ,摸摸草 .", function(on)
     if on then
         ped_uses = ped_uses + 1
         gluck_voicelines = true
@@ -616,7 +616,7 @@ menu.toggle(npc_root, "Gluck gluck 9000 voicelines", {"gluckgluck9000"}, "I\'m b
 end, false)
 
 screamall = false
-menu.toggle(npc_root, "Scream", {"screamall"}, "Makes all nearby peds scream horrifically. Awesome.", function(on)
+menu.toggle(npc_root, "尖叫", {"screamall"}, "让附近所有的行人惨叫 .这真是太让人兴奋了 .", function(on)
     if on then
         ped_uses = ped_uses + 1
         screamall = true
@@ -627,7 +627,7 @@ menu.toggle(npc_root, "Scream", {"screamall"}, "Makes all nearby peds scream hor
 end, false)
 
 play_ped_ringtones = false
-menu.toggle(npc_root, "Ring all peds phones", {"ringtones"}, "Turns all nearby ped ringtones on", function(on)
+menu.toggle(npc_root, "给所有行人打电话", {"ringtones"}, "打开附近所有的行人铃声", function(on)
     if on then
         play_ped_ringtones = true
         ped_uses = ped_uses +1
@@ -638,7 +638,7 @@ menu.toggle(npc_root, "Ring all peds phones", {"ringtones"}, "Turns all nearby p
 end, false)
 
 dumb_peds = false
-menu.toggle(npc_root, "Make all peds dumb", {"dumbpeds"}, "Makes nearby peds dumb / marks them as \"not highly perceptive\" in the engine. Whatever that means tbh.", function(on)
+menu.toggle(npc_root, "使所有的人哑口无言", {"dumbpeds"}, "使附近的行人变哑/在发动机中将其标记为“非高度感知” .不管那意味着什么 ,tbh .", function(on)
     if on then
         dumb_peds = true
         ped_uses = ped_uses + 1
@@ -649,7 +649,7 @@ menu.toggle(npc_root, "Make all peds dumb", {"dumbpeds"}, "Makes nearby peds dum
 end, false)
 
 safe_peds = false
-menu.toggle(npc_root, "Give peds helmets", {"safepeds"}, "First-time drivers need safety.", function(on)
+menu.toggle(npc_root, "给行人头盔", {"safepeds"}, "第一次开车的人需要安全 .", function(on)
     if on then
         safe_peds = true
         ped_uses = ped_uses + 1
@@ -660,7 +660,7 @@ menu.toggle(npc_root, "Give peds helmets", {"safepeds"}, "First-time drivers nee
 end, false)
 
 deaf_peds= false
-menu.toggle(npc_root, "Make all peds deaf", {"deafpeds"}, "Makes nearby peds deaf. Probably only noticeable for stealth missions.", function(on)
+menu.toggle(npc_root, "让所有的行人都聋", {"deafpeds"}, "使附近的行人聋了 .可能只有在执行隐形任务时才引人注目 .", function(on)
     if on then
         deaf_peds = true
         ped_uses = ped_uses + 1
@@ -671,7 +671,7 @@ menu.toggle(npc_root, "Make all peds deaf", {"deafpeds"}, "Makes nearby peds dea
 end, false)
 
 kill_peds= false
-menu.toggle(npc_root, "Kill peds", {"killpeds"}, "Stand already does this, but whatever. Ours is more dramatic I think.", function(on)
+menu.toggle(npc_root, "杀死行人", {"killpeds"}, "Stand已经这么做了 ,但不管怎样 .我认为我们的更具戏剧性.", function(on)
     if on then
         kill_peds = true
         ped_uses = ped_uses + 1
