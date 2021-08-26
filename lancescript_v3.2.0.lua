@@ -130,14 +130,15 @@ scaleform_thread = util.create_thread(function (thr)
         if os.time() - starttime >= 5 then
             AUDIO.PLAY_SOUND_FRONTEND(55, "FocusOut", "HintCamSounds", true)
             if file_exists(filesystem.scripts_dir() .. 'Tox1cEssent1als.lua') and not file_exists(filesystem.scripts_dir() .. 'disclaimer_viewed.txt') then
-                local text = "~g~你没有被禁止。 ~w~这是Lancescript的通知。 已检测到有毒物质 (Tox1cEssent1als.lua)。 请阅读。~n~我不会阻止你使用 ToxicEssentials，那会越界。 但请注意，开发人员是一个他妈的混蛋。~n~" .. 
-                "Toxisentials 包括开发人员 (pnn) 从其他人那里偷来的辛勤工作，并在没有利润或什至没有给予这些开发人员信用的情况下继续出售。"
-                local text2 = "Toxisentials 包括开发人员 (pnn) 从其他人那里偷来的辛勤工作，并在没有利润或什至没有给予这些开发人员信用的情况下继续出售。有毒物质包括开发人员（pnn）从其他人那里偷来的辛勤工作，并且没有收益或什至没有通知这些开发人员信用的情况下继续进行索赔。" .. 
-                "强烈建议您使用 Phoenixscript 和/或 Lancescript 来代替 pnn 的滑行、被盗作品。 ~n~Phoenixscript 是 Toxicessentials，毕竟。~n~"..
-                "我鼓励您不再向人们提供 Toxic Essentials 的下载。 你不必听我的。 但是 Toxic Essentials 写得很差，没有维护，混淆，被盗的代码。~n~"..
-                "这将是您唯一一次看到此消息。 谢谢你的时间。"
+                local text = "~g~阁下没有被禁止进入GTA线上模式~n~ ~w~请注意， 这是来自Lancescript开发者的一则声明，恳请您仔细阅读。~n~我已注意到您或许在使用ToxicEssentials(ToxicEssent1als.lua)。~n~我不能强迫您不再使用ToxicEssentials，但它的制作组不是他妈的什么好东西。~n~" .. 
+                "ToxicEssentials的内容中包括其他Lua脚本作者的辛苦创作。而它的制作组成员，pnn，在未有标明原作者，或征得原作者同意的情况下剽窃代码，并将其用于商业行为。~n~产生的任何盈利也没有回馈给这些代码的作者。"
+                local text2 = "您可以继续使用ToxicEssentials。但制作ToxicEssential的成员之一，~n~ICYPhoenix，相较其他制作组成员拥有良好的品德。~n~他/她过去几个月来一直在维护一个没有混淆过代码，并标注代码来源的版本。" .. 
+                "我强烈建议您使用Phoenixscript和/或 Lancescript 来代替pnn剽窃来的作品 ~n~毕竟Phoenixscript 本来就是 Toxicessentials。~n~"..
+                "我鼓励您不再向别人分享ToxicEssentials，因为ToxicEssentials的代码是剽窃来的，被混淆过的，且质量很差。但您也可以选择忽视这条信息，并继续分享。"
+                local text3 = "您之后不会再看到这则声明，感谢阁下抽出您宝贵的时间阅读此声明。"
                 show_custom_alert_until_enter(text)
                 show_custom_alert_until_enter(text2)
+                show_custom_alert_until_enter(text3)
                 file = io.open(filesystem.scripts_dir() .. 'disclaimer_viewed.txt', "w")
                 file:write("该文件存在于您的 Lua 脚本中，用于告诉 Lancescript 您已查看关于 Toxicessentials 的免责声明。 如果删除它，您将再次看到免责声明。")
                 file:close()
