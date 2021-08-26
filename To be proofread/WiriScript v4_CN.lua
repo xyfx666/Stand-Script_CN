@@ -78,7 +78,7 @@ local weapons = {						--here you can modify which weapons are available to choo
 	{"手枪", "weapon_pistol"}, --{'name shown in Stand', 'weapon ID'}
 	{"电击枪", "weapon_stungun"},
 	{"原子能枪", "weapon_raypistol"},
-	{"卡宾步枪", "weapon_specialcarbine"},
+	{"特制卡宾步枪", "weapon_specialcarbine"},
 	{"泵动式霰弹枪", "weapon_pumpshotgun"},
 	{"战斗机枪", "weapon_combatmg"},
 	{"重型狙击步枪", "weapon_heavysniper"},
@@ -114,7 +114,7 @@ local peds = {									--here you can modify which peds are available to choose
 	{"巴勒帮成员", "csb_ballasog"},
 	{"女警官", "s_f_y_cop_01"},
 	{"男警官", "s_m_y_cop_01"},
-	{"上帝", "u_m_m_jesus_01"},
+	{"耶稣", "u_m_m_jesus_01"},
 	{"僵尸", "u_m_y_zombie_01"},
 	{"重装兵", "u_m_y_juggernaut_01"},
 	{"小丑", "s_m_y_clown_01"}
@@ -443,7 +443,7 @@ menu.toggle(settings, "在修改血量的时候显示血量信息", {}, "", func
 	display = on
 end, true)
 
-menu.toggle(settings, "使用Stand的通知", {}, "使用Stand的通知样式和系统", function(on)
+menu.toggle(settings, "使用Stand的通知", {}, "使用Stand的通知样式", function(on)
 	standlike = on
 end)
 
@@ -457,9 +457,9 @@ function namesload()
 	local savednames = menu.list(menu.my_root(), "保存的名称", {}, "")
 
 	local function add_name_to_savednames(name)
-		menu.action(savednames, name, {}, "单击以将名称粘贴到 在线/虚假信息/虚假名称/虚假名称 中。在虚假RID之前，您应该使用Stand的“从虚假的名称获取RID”选项。", function() 
+		menu.action(savednames, name, {}, "单击以将名称粘贴到 在线/虚假信息/虚假名称/虚假的名称 中。在伪装RID之前，您应该使用Stand的“从虚假的名称获取RID”选项。", function() 
 			menu.trigger_commands("spoofedname "..name)
-			shownotification("Spoofed name: ~r~"..name.."~s~")
+			shownotification("虚假的名称: ~r~"..name.."~s~")
 		end)
 	end
 	
@@ -495,7 +495,7 @@ wiriscript_folder = (scriptdir.."\\WiriScript")
 --WiriScript folder exists? 
 -----------------------------
 if not filesystem.exists(wiriscript_folder) then
-	shownotification("~r~WiriScript 文件夹不存在。欲使用 WiriScript，请将压缩包中所有文件拖到 Lua Scripts文件夹中")
+	shownotification("~r~WiriScript 文件夹不存在。欲使用 WiriScript，请将你下载的压缩包中所有文件拖到 Lua Scripts文件夹中")
 	util.stop_script()
 end
 -----------------------------
@@ -547,11 +547,11 @@ function add_profile_to_list(array)
 		menu.trigger_commands("clearnotifications")
 	end)
 	
-	menu.divider(profile_actions, "选项")
-	menu.toggle(profile_actions, "冒充名称", {}, "", function(on)
+	menu.divider(profile_actions, "伪装选项")
+	menu.toggle(profile_actions, "名称", {}, "", function(on)
 		spoofname = on
 	end, true)
-	menu.toggle(profile_actions, "冒充R* ID: "..rid, {}, "", function(on)
+	menu.toggle(profile_actions, "R* ID: "..rid, {}, "", function(on)
 		spoofrid = on
 	end, true)
 end
@@ -644,7 +644,7 @@ GenerateFeatures = function(pid)
 
 --------------------------------------------EXPLOSION AND LOOP STUFF----------------------------------------------------------------------------
 	
-	trolling_list = menu.list(menu.player_root(pid), "整人选项", {}, "")
+	trolling_list = menu.list(menu.player_root(pid), "恶搞选项", {}, "")
 
 	explo_settings = menu.list(trolling_list, "自定义爆炸", {}, "")
 
@@ -682,7 +682,7 @@ GenerateFeatures = function(pid)
 		end
 	end, false)
 	
-	menu.toggle(trolling_list, "喷水循环", {},"", function(on)
+	menu.toggle(trolling_list, "循环喷水", {},"", function(on)
 		hydrant_loop = on
 		while hydrant_loop do
 			explode(pid, 13, false)
@@ -709,7 +709,7 @@ GenerateFeatures = function(pid)
 		menu.trigger_commands("becomeorbitalcannon off")
 	end)
 
-	menu.toggle(trolling_list, "火焰循环", {},"", function(on)
+	menu.toggle(trolling_list, "循环喷火", {},"", function(on)
 		fire_loop = on
 		while fire_loop do
 			explode(pid, 12, false)
@@ -735,39 +735,39 @@ GenerateFeatures = function(pid)
 	menu.divider(attacker_options, "生成敌对NPC")
 
 	local ped_weapon_list = menu.list(attacker_options, "武器", {}, "更改敌对NPC的武器，默认为手枪。")	
-	menu.divider(ped_weapon_list, "NPC武器列表")										
+	menu.divider(ped_weapon_list, "敌对NPC武器列表")										
 	local ped_melee_list = menu.list(ped_weapon_list, "近战武器", {}, "")
 
 	for i = 1, #weapons do 								--creates the attacker weapon list
 		menu.action(ped_weapon_list, weapons[i][1], {}, "", function()
 			ped_weapon = weapons[i][2]
-			shownotification("生成的NPC将会使用: "..weapons[i][1])
+			shownotification("敌对NPC将会使用: "..weapons[i][1])
 		end)
 	end
 
 	for i = 1, #melee_weapons do  --creates the attacker melee weapon list
 		menu.action(ped_melee_list, melee_weapons[i][1], {}, "", function()
 			ped_weapon = melee_weapons[i][2]
-			shownotification("生成的NPC将会使用: "..melee_weapons[i][1])
+			shownotification("敌对NPC将会使用: "..melee_weapons[i][1])
 		end)
 	end
 
-	local ped_list = menu.list(attacker_options, "NPC模型", {}, "更改NPC的模型，默认为女警官")
+	local ped_list = menu.list(attacker_options, "敌对NPC模型", {}, "更改NPC的模型，默认为女警官")
 
-	menu.divider(ped_list, "NPC模型列表")
+	menu.divider(ped_list, "敌对NPC模型列表")
 
 	for i = 1, #peds do					--creates the attacker appearance list
 		menu.action(ped_list, peds[i][1], {}, "", function()
 			ped_type = peds[i][2]
-			shownotification("NPC将会使用的模型: "..peds[i][1])
+			shownotification("敌对NPC将会使用的模型: "..peds[i][1])
 		end)
 	end
 
-	menu.toggle(attacker_options, "无敌", {}, "生成的NPC拥有无限血量", function(on_godmode)
+	menu.toggle(attacker_options, "无敌", {}, "使敌对NPC拥有无限血量", function(on_godmode)
 		godmode = on_godmode
 	end, false)
 
-	menu.toggle(attacker_options, "冻结", {}, "生成的NPC将不会移动", function(on)
+	menu.toggle(attacker_options, "冻结", {}, "使敌对NPC不会移动", function(on)
 		stationary = on
 	end, false)
 
@@ -778,10 +778,10 @@ GenerateFeatures = function(pid)
 
 	menu.action(attacker_options, "派遣随机敌对NPC", {}, "", function()
 		spawn_attacker(pid, random_peds[math.random(#random_peds)], ped_weapon, godmode, stationary)
-		shownotification("随机敌对NPC被派遣至: "..PLAYER.GET_PLAYER_NAME(pid))
+		shownotification("敌对NPC派遣至玩家: "..PLAYER.GET_PLAYER_NAME(pid))
 	end)
 
-	menu.action(attacker_options, "派遣敌对的玩家克隆", {}, "", function()
+	menu.action(attacker_options, "派遣敌对克隆玩家", {}, "", function()
 		local pos = ENTITY.GET_ENTITY_COORDS(PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid))
 		
 		pos.x  = pos.x + math.random(-3, 3)
@@ -801,7 +801,7 @@ GenerateFeatures = function(pid)
 		if stationary then
 			PED.SET_PED_COMBAT_MOVEMENT(clone, 0)
 		end
-		shownotification("敌对的玩家克隆被派遣至: "..PLAYER.GET_PLAYER_NAME(pid))
+		shownotification("克隆的敌对npc派遣至玩家: "..PLAYER.GET_PLAYER_NAME(pid))
 	end)
 ------------------------------------------------------
 --ENEMY CHOP
@@ -828,14 +828,14 @@ GenerateFeatures = function(pid)
 		PED.SET_PED_COMBAT_ATTRIBUTES(ped, 46, 1)
 		STREAMING.SET_MODEL_AS_NO_LONGER_NEEDED(ped_hash)
 		
-		shownotification("敌对小查被派遣至: "..PLAYER.GET_PLAYER_NAME(pid))
+		shownotification("敌对小查派遣至: "..PLAYER.GET_PLAYER_NAME(pid))
 	end)
 
 -------------------------------------------------------
 --SEND POLICE CAR
 -------------------------------------------------------
 
-	menu.action(attacker_options, "派遣警车", {}, "Creates a police car which is going to chase and shoot player. ", function()
+	menu.action(attacker_options, "派遣警车", {}, "创建一辆追赶和射击玩家的警车. ", function()
 		local player_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
 		local pos = ENTITY.GET_ENTITY_COORDS(player_ped)
 		local coords_ptr = memory.alloc()
@@ -1011,7 +1011,7 @@ GenerateFeatures = function(pid)
 --STUNT TUBE
 -------------------------------------------------------
 
-	menu.action(cage_options, "特技竞赛道具", {}, "", function()
+	menu.action(cage_options, "特技竞赛管道", {}, "", function()
 		local pos = ENTITY.GET_ENTITY_COORDS(PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid))
 		local hash = util.joaat("stt_prop_stunt_tube_s")
 		STREAMING.REQUEST_MODEL(hash)
@@ -1189,7 +1189,7 @@ GenerateFeatures = function(pid)
 		shoot_owned_bullet(pid, "weapon_heavysniper", damage_value)
 	end)
 
-	menu.action(damage, "泵动式散弹枪", {}, "", function()
+	menu.action(damage, "泵动式霰弹枪", {}, "", function()
 		shoot_owned_bullet(pid, "weapon_pumpshotgun", damage_value)
 	end)
 
@@ -1261,7 +1261,7 @@ GenerateFeatures = function(pid)
 	
 	spawned_minitank = {}
 	local minitank_godmode = false
-	local hostile_rc_vehicles = menu.list(trolling_list, "手推RC载具")
+	local hostile_rc_vehicles = menu.list(trolling_list, "RC载具恶搞")
 	menu.divider(hostile_rc_vehicles, "RC 坦克")
 	local minitank_godmode = false
 	menu.action(hostile_rc_vehicles, "发送 RC 坦克", {}, "", function()
@@ -1517,7 +1517,7 @@ GenerateFeatures = function(pid)
 
 ----------------------------------------------------------PIGGY BACK-------------------------------------------------------------
 	
-	menu.toggle(trolling_list, "驮运", {}, "", function(on)
+	menu.toggle(trolling_list, "骑在玩家肩上", {}, "", function(on)
 		piggyback = on
 		local player_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
 		local user_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(players.user())
@@ -1678,7 +1678,7 @@ menu.action(self_options, "恢复血量", {}, "", function()
 end)
 
 local refillincover
-menu.toggle(self_options, "在墙边回血", {}, "", function(on)
+menu.toggle(self_options, "位于掩体时回血", {}, "", function(on)
 	refillincover = on
 	while refillincover do
 		local player_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(players.user())
@@ -1699,11 +1699,11 @@ end)
 
 --------------------------------------------FORCEFIELD-------------------------------------------------------------------------------------
 
-menu.toggle(self_options, "力场", {"forcefield"}, "降附近的实体推开.", function(on)
+menu.toggle(self_options, "力场", {"forcefield"}, "将附近的实体推开.", function(on)
 	forcefield = on
 	util.create_thread(function()
 		if forcefield then
-			shownotification("力场 ~r~开始~s~")
+			shownotification("力场 ~r~开启~s~")
 		end
 		while forcefield do
 			local a = ENTITY.GET_ENTITY_COORDS(PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(players.user()))
@@ -1732,11 +1732,11 @@ end, false)
 
 -----------------------------------------------FORCE-------------------------------------------------------------------------------------
 
-menu.toggle(self_options, "控制车辆", {"force"}, "控制附近车辆上下. 通过数字（9）（6）控制.", function(on)
+menu.toggle(self_options, "原力", {"force"}, "使用原力控制附近车辆. 通过数字（9）（6）控制.", function(on)
 	force = on
 	util.create_thread(function()
 		if force then
-			shownotification("控制车辆 ~r~开启~s~. 控制附近车辆上下. 通过数字（9）（6）控制")
+			shownotification("绝地武士模式 ~r~开启~s~. 化身绝地武士. 通过数字（9）（6）控制")
 			local player_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(players.user())
 			local pos = ENTITY.GET_ENTITY_COORDS(player_ped)
 
@@ -1772,12 +1772,12 @@ menu.toggle(self_options, "控制车辆", {"force"}, "控制附近车辆上下. 
 		end
 		util.yield()
 	end
-	shownotification("控制车辆 ~r~关闭~s~")	
+	shownotification("绝地武士模式 ~r~关闭~s~")	
 end)
 
 ---------------------------------------------------KILL KILLERS---------------------------------------------------------------------
 
-menu.toggle(self_options, "杀死杀死你的人", {"killkillers"}, "爆炸杀死你的人.", function(on)
+menu.toggle(self_options, "杀死杀你的人", {"killkillers"}, "让杀你的人原地爆炸", function(on)
 	kill_killers = on
 	while kill_killers do
 		local user_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(players.user())
@@ -1796,7 +1796,7 @@ end)
 
 ---------------------------------------------------UNDEAD OFFRADAR-------------------------------------------------------------------
 
-menu.toggle(self_options, "亡灵雷达", {}, "降低你的最大生命值，让你不会被雷达侦测。当使用这个选项时，显示雷达外的玩家对你不起作用。有些菜单会将你标记为作弊者 ", function(on)
+menu.toggle(self_options, "幽灵雷达匿踪", {}, "降低你的最大生命值，让你不会被雷达侦测。当使用这个选项时，显示雷达外的玩家对你不起作用。有些菜单会将你标记为作弊者 ", function(on)
 	undead = on
 	local player_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(players.user())
 	local defaulthealth = ENTITY.GET_ENTITY_MAX_HEALTH(player_ped)
@@ -1857,7 +1857,7 @@ local shooting_effects = {
 		0
 	},
 	{
-		"可汗嘉丽的子弹", "veh_khanjali", "muz_xm_khanjali_railgun", 
+		"可汗贾利的子弹", "veh_khanjali", "muz_xm_khanjali_railgun", 
 		1,
 		0,
 		0,
@@ -2163,7 +2163,7 @@ local vehicle_laser
 --VEHICLE LASER
 ---------------------------------------------------
 
-menu.toggle(vehicle_weapon, "Vehicle Lasers", {"vehiclelasers"}, "", function(on)
+menu.toggle(vehicle_weapon, "载具激光瞄准线", {"vehiclelasers"}, "", function(on)
 	vehicle_laser = on
 	if vehicle_laser then
 		menu.trigger_commands("airstrikeplanes off")
@@ -2195,17 +2195,17 @@ end)
 --VEHICLE WEAPONS
 ---------------------------------------------------
 
-menu.toggle(vehicle_weapon, "Toggle Vehicle Weapons", {"vehicleweapons"}, "Allows you to shoot bullets with cars. Controls: E.", function(on)
+menu.toggle(vehicle_weapon, "车载武器", {"vehicleweapons"}, "允许你的车辆射击子弹。控制键: E.", function(on)
 	veh_rockets = on
 	if veh_rockets then
 		menu.trigger_commands("airstrikeplanes off")
 		if selected_veh_weapon == nil then
-			shownotification("~r~Please choose a weapon")
+			shownotification("~r~请选择武器")
 			while selected_veh_weapon == nil do
 				util.yield()
 			end
 		end
-		shownotification("Vehicle weapon is ~r~on~s~")
+		shownotification("载具武器 ~r~开启~s~")
 	end
 	local player_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(players.user())
 	util.create_thread(function()
@@ -2247,7 +2247,7 @@ menu.divider(vehicle_weapon, "车辆武器")
 
 local veh_weapons_list = {
 	['火箭'] = "weapon_rpg",
-	['Up-n-Atomizer'] = "weapon_raypistol",
+	['原子能枪'] = "weapon_raypistol",
 	['烟花'] = "weapon_firework"
 }
 
