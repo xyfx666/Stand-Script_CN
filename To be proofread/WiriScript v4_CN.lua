@@ -1961,9 +1961,9 @@ local rgb_colour = {
 	['b'] = 68
 }
 
-local trails_options = menu.list(self_options, "Trails")
+local trails_options = menu.list(self_options, "轨迹")
 
-menu.toggle(trails_options, "Toggle Trails", {"trails"}, "", function(on)
+menu.toggle(trails_options, "启用轨迹", {"trails"}, "", function(on)
 	trails = on
 	local trailAsset = "scr_rcpaparazzo1"
 	local trailName = "scr_mich4_firework_sparkle_spawn"
@@ -2024,7 +2024,7 @@ menu.toggle(trails_options, "Toggle Trails", {"trails"}, "", function(on)
 	end
 end)
 
-menu.rainbow(menu.colour(trails_options, "Colour", {"trails"}, "", {['r'] = 255/255, ['g'] = 0, ['b'] = 255/255, ['a'] = 1.0}, false, function(colour)
+menu.rainbow(menu.colour(trails_options, "颜色", {"trails"}, "", {['r'] = 255/255, ['g'] = 0, ['b'] = 255/255, ['a'] = 1.0}, false, function(colour)
 	rgb_colour = colour
 end))
 
