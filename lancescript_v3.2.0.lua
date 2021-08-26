@@ -118,7 +118,7 @@ end
 
 scaleform_thread = util.create_thread(function (thr)
     name = os.getenv("USERNAME")
-    util.toast("hello " .. name .. "!")
+    util.toast("你好 " .. name .. "!")
     scaleForm = GRAPHICS.REQUEST_SCALEFORM_MOVIE("MP_BIG_MESSAGE_FREEMODE")
     GRAPHICS.BEGIN_SCALEFORM_MOVIE_METHOD(scaleForm, "SHOW_SHARD_WASTED_MP_MESSAGE")
     GRAPHICS.SCALEFORM_MOVIE_METHOD_ADD_PARAM_PLAYER_NAME_STRING("~p~lancescript")
@@ -726,7 +726,7 @@ menu.action(tasks_root, "Writhe me", {"writheme"}, "Makes peds infinitely suffer
     task_handler("writheme")
 end)
 
-menu.action(entity_root, "Teleport into closest vehicle", {"closestvehicle"}, "Teleports into closest vehicle (excludes any you might be in already). If the closest vehicle has a player driver, it will put you in the next available seat, if any. Keep in mind that nearby vehicles may not actually be \"real\" vehicles and may just be LOD\'s.", function(on_click)
+menu.action(entity_root, "传送进最近的一个车辆", {"closestvehicle"}, "传送到最近的车辆(不包括你可能已经在的车辆)。如果最近的车有玩家司机，它会把你安排到下一个空位(如果有的话)。记住，附近的车辆可能不是“真正的”车辆，而可能只是LOD的。", function(on_click)
     local coords = ENTITY.GET_ENTITY_COORDS(PLAYER.PLAYER_PED_ID(), true)
     local vehicles = util.get_all_vehicles()
     -- init this at some ridiculously large number we will never reach, ez
@@ -756,16 +756,16 @@ menu.action(entity_root, "Teleport into closest vehicle", {"closestvehicle"}, "T
                 end
             end
         else
-            util.toast("No nearby vehicles with available seats found :(")
+            util.toast("附近没有空座位的车辆:(")
         end
     end
 end)
 
 blackhole = false
-menu.toggle(entity_root, "Vehicle blackhole", {"blackhole"}, "A SUPER laggy but fun blackhole. When you toggle it on, it will set the blackhole position above you. Retoggle it to change the position. Oh also, this is very resource taxing and may temporarily fuck up collisions.", function(on)
+menu.toggle(entity_root, "车辆黑洞", {"blackhole"}, "一个超级落后但有趣的黑洞。当你打开它时，它会设置你上方的黑洞位置。可重新启动它以改变位置。哦，还有，这是非常耗费cpu，可能会导致游戏崩溃.", function(on)
     if on then
         holecoords = ENTITY.GET_ENTITY_COORDS(PLAYER.PLAYER_PED_ID(), true)
-        util.toast("Blackhole position has been set 50 units above your position. Retoggle this on and off to change the position.")
+        util.toast("黑洞位置在你的位置上方50单位。重新开关这个开关来改变位置.")
         blackhole = true
         vehicle_uses = vehicle_uses + 1
     else
@@ -775,12 +775,12 @@ menu.toggle(entity_root, "Vehicle blackhole", {"blackhole"}, "A SUPER laggy but 
 end, false)
 
 hole_zoff = 50
-menu.click_slider(entity_root, "Blackhole Z-offset", {"blackholeoffset"}, "How far above you to place the blackhole. Recommended to keep this fairly high.", 0, 100, 50, 10, function(s)
+menu.click_slider(entity_root, "黑洞离你有多远", {"blackholeoffset"}, "黑洞离你多远。建议保持这个数值相当高.", 0, 100, 50, 10, function(s)
     hole_zoff = s
   end)
 
 vehicle_fuckup = false
-menu.toggle(entity_root, "Fuck up all cars", {"fuckupcars"}, "Beats the SHIT out of all nearby cars. But this damage is only local.", function(on)
+menu.toggle(entity_root, "附近所有车变扁", {"fuckupcars"}, "比附近所有的车都厉害。但这种损害只是局部的。", function(on)
     if on then
         vehicle_fuckup = true
         vehicle_uses = vehicle_uses + 1
@@ -791,7 +791,7 @@ menu.toggle(entity_root, "Fuck up all cars", {"fuckupcars"}, "Beats the SHIT out
 end, false)
 
 inferno = false
-menu.toggle(entity_root, "Inferno", {"inferno"}, "An overdramatic \"blow up all cars\" option. Will continue to blow up all cars even when they\'re dead, just so you get that classic modder feel.", function(on)
+menu.toggle(entity_root, "爆炸汽车", {"inferno"}, "爆炸附近汽车，是持续的，就算他已经损坏.", function(on)
     if on then
         inferno = true
         vehicle_uses = vehicle_uses + 1
@@ -803,7 +803,7 @@ end, false)
 
 
 godmode_vehicles = false
-menu.toggle(entity_root, "Godmode all vehicles nearby", {"godmodecars"}, "Makes all cars nearby undamageable. Built for NPC cars, so don\'t whine when Mr. ||||||||||| sticky bombs your itali.", function(on)
+menu.toggle(entity_root, "npc车辆无敌", {"godmodecars"}, "使附近所有的汽车不会损坏。这是为NPC车设计的，所以当人炸了你的意大利车时，不要抱怨.", function(on)
     if on then
         godmode_vehicles = true
         vehicle_uses = vehicle_uses + 1
@@ -814,7 +814,7 @@ menu.toggle(entity_root, "Godmode all vehicles nearby", {"godmodecars"}, "Makes 
 end)
 
 disable_veh_colls = false
-menu.toggle(entity_root, "Hole all nearby cars", {"nocolcars"}, "Makes all nearby cars fall through the world, or \"into a hole\".", function(on)
+menu.toggle(entity_root, "附近汽车沉底", {"nocolcars"}, "让附近所有的汽车掉入世界，或者“掉进一个洞里”.", function(on)
     if on then
         disable_veh_colls = true
         vehicle_uses = vehicle_uses + 1
@@ -826,7 +826,7 @@ end)
 
 
 vehicle_rainbow = false
-menu.toggle(entity_root, "Rainbow vehicles", {"rainbowvehicles"}, "Rainbows all nearby vehicles!", function(on)
+menu.toggle(entity_root, "彩虹车辆", {"rainbowvehicles"}, "附近所有汽车变成彩虹汽车!", function(on)
     if on then
         vehicle_rainbow = true
         vehicle_uses = vehicle_uses + 1
@@ -876,7 +876,7 @@ menu.toggle(world_root, "混乱的交通灯", {"beep boop"}, "ITS TIME TO PARTY!
 end, false)
 
 object_rainbow = false
-menu.toggle(world_root, "Rainbow world lights", {"rainbowlights"}, "Rainbows all embedded light sources. EXTREME FPS KILLER, so use wisely.", function(on)
+menu.toggle(world_root, "世界彩虹灯", {"rainbowlights"}, "可以尝试自己的cpu有多好.", function(on)
     if on then
         object_rainbow = true
         object_uses = object_uses + 1
@@ -896,7 +896,7 @@ menu.click_slider(world_root, "世界的重力水平", {"worldgravity"}, "World 
 end)
 
 firework_spam = false
-menu.toggle(world_root, "Firework spam", {"fireworkspam"}, "airplanes in the night sky are like shooting stars", function(on)
+menu.toggle(world_root, "视角晃动", {"fireworkspam"}, "airplanes in the night sky are like shooting stars", function(on)
     if on then
         firework_spam = true
     else
@@ -905,7 +905,7 @@ menu.toggle(world_root, "Firework spam", {"fireworkspam"}, "airplanes in the nig
 end, false)
 --FORCE_LIGHTNING_FLASH()
 lightning_spam = false
-menu.toggle(world_root, "Lightning spam", {"lightningspam"}, "epileptic-hating zeus. not sure if its networked or not, probably not.", function(on)
+menu.toggle(world_root, "电闪雷鸣", {"lightningspam"}, "epileptic-hating zeus. not sure if its networked or not, probably not.", function(on)
     if on then
         lightning_spam = true
     else
@@ -914,7 +914,7 @@ menu.toggle(world_root, "Lightning spam", {"lightningspam"}, "epileptic-hating z
 end, false)
 
 
-effects_root = menu.list(world_root, "Screen effects", {"lancescriptfx"}, "")
+effects_root = menu.list(world_root, "视觉效果", {"lancescriptfx"}, "")
 
 menu.toggle(effects_root, "DMT", {"dmt"}, "", function(on)
     if on then
@@ -924,7 +924,7 @@ menu.toggle(effects_root, "DMT", {"dmt"}, "", function(on)
     end
 end, false)
 
-menu.toggle(effects_root, "Clowns", {"clowns"}, "", function(on)
+menu.toggle(effects_root, "小丑", {"clowns"}, "", function(on)
     if on then
         GRAPHICS.ANIMPOSTFX_PLAY("DrugsTrevorClownsFight", 0, true)
     else
@@ -932,7 +932,7 @@ menu.toggle(effects_root, "Clowns", {"clowns"}, "", function(on)
     end
 end, false)
 
-menu.toggle(effects_root, "Dog vision", {"dogvision"}, "", function(on)
+menu.toggle(effects_root, "狗", {"dogvision"}, "", function(on)
     if on then
         GRAPHICS.ANIMPOSTFX_PLAY("ChopVision", 0, true)
     else
@@ -940,7 +940,7 @@ menu.toggle(effects_root, "Dog vision", {"dogvision"}, "", function(on)
     end
 end, false)
 
-menu.toggle(effects_root, "Rampage", {"rampage"}, "", function(on)
+menu.toggle(effects_root, "模糊的的", {"rampage"}, "", function(on)
     if on then
         GRAPHICS.ANIMPOSTFX_PLAY("Rampage", 0, true)
     else
@@ -948,14 +948,14 @@ menu.toggle(effects_root, "Rampage", {"rampage"}, "", function(on)
     end
 end, false)
 
-menu.action(effects_root, "Input custom effect", {"effectinput"}, "Input a custom animpostFX to play.", function(on_click)
+menu.action(effects_root, "输入自定义视觉", {"effectinput"}, "Input a custom animpostFX to play.", function(on_click)
     util.toast("Please type the effect name")
     menu.show_command_box("effectinput ")
 end, function(on_command)
     GRAPHICS.ANIMPOSTFX_PLAY(on_command, 0, true)
 end)
 
-menu.action(effects_root, "Stop all effects", {"stopfx"}, "Use only as emergency, to stop custom inputted effects, or to stop regularly-triggered effects. If you can, try untoggling the effect first here.", function(on_click)
+menu.action(effects_root, "停止所有效果", {"stopfx"}, "Use only as emergency, to stop custom inputted effects, or to stop regularly-triggered effects. If you can, try untoggling the effect first here.", function(on_click)
     GRAPHICS.ANIMPOSTFX_STOP_ALL()
 end)
 
@@ -994,7 +994,7 @@ menu.toggle(entity_root, "Entity reap", {"entityreap"}, "Reap all nearby entitie
 end, false)
 
 ascend_vehicles = false
-menu.toggle(entity_root, "Ascend all nearby vehicles", {"ascendvehicles"}, "It\'s supposed to neatly make them levitate.. but it just spends them spinning in mid air. Which is fucking hilarious.", function(on)
+menu.toggle(entity_root, "附近所有车辆飞天", {"ascendvehicles"}, "这应该能让他们飘浮起来。但它只是让它们在半空中旋转。这糟糕的代码了。", function(on)
     if on then
         ascend_vehicles = true
         vehicle_uses = vehicle_uses + 1
@@ -1005,7 +1005,7 @@ menu.toggle(entity_root, "Ascend all nearby vehicles", {"ascendvehicles"}, "It\'
 end)
 
 no_radio = false
-menu.toggle(entity_root, "Disable radio on all cars", {"noradio"}, "serenity.", function(on)
+menu.toggle(entity_root, "关闭所有车辆的无线电", {"noradio"}, "serenity.", function(on)
     if on then
         no_radio = true
         vehicle_uses = vehicle_uses + 1
@@ -1016,7 +1016,7 @@ menu.toggle(entity_root, "Disable radio on all cars", {"noradio"}, "serenity.", 
 end)
 
 loud_radio = false
-menu.toggle(entity_root, "Loud radio on all cars", {"loudradio"}, "I CAN\'T HEAR YOU OVER ALL THIS BULLSHIT", function(on)
+menu.toggle(entity_root, "所有的车都开大声的收音机", {"loudradio"}, "I CAN\'T HEAR YOU OVER ALL THIS BULLSHIT", function(on)
     if on then
         loud_radio = true
         vehicle_uses = vehicle_uses + 1
