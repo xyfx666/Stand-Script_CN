@@ -1732,7 +1732,7 @@ end, false)
 
 -----------------------------------------------FORCE-------------------------------------------------------------------------------------
 
-menu.toggle(self_options, "原力", {"force"}, "使用原力控制附近车辆. 通过数字（9）（6）控制.", function(on)
+menu.toggle(self_options, "原力", {"force"}, "使用原力控制附近载具. 通过数字（9）（6）控制.", function(on)
 	force = on
 	util.create_thread(function()
 		if force then
@@ -1818,10 +1818,10 @@ local weapons_options = menu.list(menu.my_root(), "武器")
 
 menu.divider(weapons_options, "武器")
 
-menu.toggle(weapons_options, "车辆更改颜色枪", {}, "对车辆随机更改颜色", function(on)
+menu.toggle(weapons_options, "载具更改颜色枪", {}, "对载具随机更改颜色", function(on)
 	paintgun = on
 	if paintgun then
-		shownotification("车辆颜色更改 ~r~开启~s~")
+		shownotification("载具颜色更改 ~r~开启~s~")
 	end
 	local user = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(players.user())
 	while paintgun do
@@ -2047,12 +2047,12 @@ end)
 
 ---------------------------------------------------------------------------------
 
-local vehicle_weapon = menu.list(weapons_options, "车辆武器")
+local vehicle_weapon = menu.list(weapons_options, "载具武器")
 
-menu.toggle(vehicle_weapon, "空袭飞机", {"airstrikeplanes"}, "使用任何飞机或直升机进行空袭。控制:E.", function(on)
+menu.toggle(vehicle_weapon, "空袭飞机", {"airstrikeplanes"}, "按E使用任何飞机或直升机进行空袭", function(on)
 	airstrike_plane = on
 	if airstrike_plane then
-		menu.trigger_commands("车辆武器 关闭")
+		menu.trigger_commands("vehicleweapons off")
 		menu.trigger_commands("vehiclelasers off")
 	end
 	while airstrike_plane do
@@ -2195,7 +2195,7 @@ end)
 --VEHICLE WEAPONS
 ---------------------------------------------------
 
-menu.toggle(vehicle_weapon, "车载武器", {"vehicleweapons"}, "允许你的车辆射击子弹。控制键: E.", function(on)
+menu.toggle(vehicle_weapon, "车载武器", {"vehicleweapons"}, "按E使你的车辆射击指定的弹药", function(on)
 	veh_rockets = on
 	if veh_rockets then
 		menu.trigger_commands("airstrikeplanes off")
@@ -2205,7 +2205,7 @@ menu.toggle(vehicle_weapon, "车载武器", {"vehicleweapons"}, "允许你的车
 				util.yield()
 			end
 		end
-		shownotification("载具武器 ~r~开启~s~")
+		shownotification("车载武器 ~r~开启~s~")
 	end
 	local player_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(players.user())
 	util.create_thread(function()
@@ -2246,7 +2246,7 @@ end)
 menu.divider(vehicle_weapon, "车辆武器")
 
 local veh_weapons_list = {
-	['火箭'] = "weapon_rpg",
+	['火箭炮 (RPG)'] = "weapon_rpg",
 	['原子能枪'] = "weapon_raypistol",
 	['烟花'] = "weapon_firework"
 }
