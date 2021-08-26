@@ -10,9 +10,9 @@ end
 
 self_root = menu.list(menu.my_root(), "自我", {"lancescriptself"}, "")
 weapons_root = menu.list(menu.my_root(), "武器", {"lancescriptweapons"}, "")
-shootentity_root = menu.list(weapons_root, "Shoot entity", {"lancescriptweapons"}, "")
+shootentity_root = menu.list(weapons_root, "射出实体", {"lancescriptweapons"}, "")
 protections_root = menu.list(menu.my_root(), "保护", {"lancescriptprotections"}, "")
-noclip_root = menu.list(self_root, "Noclip", {"lancescriptnoclip"}, "")
+noclip_root = menu.list(self_root, "无碰撞", {"lancescriptnoclip"}, "")
 world_root = menu.list(menu.my_root(), "世界", {"lancescriptworld"}, "")
 entity_root = menu.list(menu.my_root(), "附近的车辆/物体", {"lancescriptentity"}, "")
 npc_root = menu.list(menu.my_root(), "附近的NPCs", {"lancescriptnpcs"}, "")
