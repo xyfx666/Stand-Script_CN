@@ -1348,7 +1348,7 @@ GenerateFeatures = function(pid)
 	bandito_entities = {}
 	local bandito_godmode = false
 	menu.divider(hostile_rc_vehicles, "RC 匪徒")
-	menu.action(hostile_rc_vehicles, "Send RC Bandito", {}, "You may hit this option twice the very first time you use it after game startup", function()
+	menu.action(hostile_rc_vehicles, "发送 RC 匪徒", {}, "游戏启动后第一次使用此选项时，您可能会点击两次", function()
 		local player_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
 		local pos = ENTITY.GET_ENTITY_COORDS(player_ped)
 		local coords_ptr = memory.alloc()
@@ -1376,7 +1376,7 @@ GenerateFeatures = function(pid)
 		
 		local bandito = util.create_vehicle(bandito_hash, coords, CAM.GET_GAMEPLAY_CAM_ROT(0).z)
 		if not ENTITY.DOES_ENTITY_EXIST(bandito) then --SOMETIMES BANDITO IS NOT SPAWNED THE VERY FIRST TIME YOU USE THE OPTION AFTER A GAME RESTART
-			shownotification("~r~Failed to create bandito. Please try again")
+			shownotification("~r~未能创建 RC 匪徒。请再试一次")
 			return
 		end
 		bandito_entities[#bandito_entities+1] = bandito
@@ -1420,18 +1420,18 @@ GenerateFeatures = function(pid)
 		end)
 		STREAMING.SET_MODEL_AS_NO_LONGER_NEEDED(ped_hash)
 		STREAMING.SET_MODEL_AS_NO_LONGER_NEEDED(bandito_hash)
-		shownotification("Bandito sent to "..PLAYER.GET_PLAYER_NAME(pid))
+		shownotification("RC 匪徒 已经被发送到了 "..PLAYER.GET_PLAYER_NAME(pid))
 	end)
 
-	menu.toggle(hostile_rc_vehicles, "Explode When Nearby", {}, "Bandito will explode and kill the player as you when it\'s close enough.", function(on)
+	menu.toggle(hostile_rc_vehicles, "在附近时爆炸", {}, "RC 匪徒 将会在他离玩家足够近是爆炸并杀死玩家", function(on)
 		explode_bandito = on
 	end, false)
 
-	menu.toggle(hostile_rc_vehicles, "Invincible", {}, "", function(on)
+	menu.toggle(hostile_rc_vehicles, "无敌", {}, "", function(on)
 		bandito_godmode = on
 	end, false)
 
-	menu.action(hostile_rc_vehicles, "Delete Banditos", {}, "Tries to delete all banditos you\'ve spawned.", function()
+	menu.action(hostile_rc_vehicles, "删除RC匪徒", {}, "尝试删除您生成的所有 RC 匪徒。", function()
 		delete_all_entities(bandito_entities, "Bandito")
 	end)
 
@@ -1439,9 +1439,9 @@ GenerateFeatures = function(pid)
 
 	local jet_entities = {}
 
-	menu.divider(enemy_vehicles, "Lazer")
+	menu.divider(enemy_vehicles, "天煞")
 
-	menu.action(enemy_vehicles, "Send Lazer", {}, "", function()
+	menu.action(enemy_vehicles, "发送天煞", {}, "", function()
 		local player_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
 		local pos = ENTITY.GET_ENTITY_COORDS(player_ped)
 		pos.z = pos.z + 550
@@ -1456,7 +1456,7 @@ GenerateFeatures = function(pid)
 
 		local pilot = util.create_ped(5, ped_hash, pos, CAM.GET_GAMEPLAY_CAM_ROT(0).z)
 		if not ENTITY.DOES_ENTITY_EXIST(pilot) then 
-			shownotification("~r~Failed to create jet. Please try again")
+			shownotification("~r~未能创建天煞。请再试一次")
 			return
 		end
 		jet_entities[#jet_entities+1] = pilot
@@ -1465,7 +1465,7 @@ GenerateFeatures = function(pid)
 				--DOING THINGS WITH JET
 		local jet = util.create_vehicle(jet_hash, pos, CAM.GET_GAMEPLAY_CAM_ROT(0).z)
 		if not ENTITY.DOES_ENTITY_EXIST(jet) then 
-			shownotification("~r~Failed to create jet. Please try again")
+			shownotification("~r~未能创建天煞。请再试一次")
 			util.delete_entity(pilot)
 			return
 		end
@@ -1488,11 +1488,11 @@ GenerateFeatures = function(pid)
 		STREAMING.SET_MODEL_AS_NO_LONGER_NEEDED(jet_hash)
 	end)
 
-	menu.toggle(enemy_vehicles, "Invincible", {}, "", function(on)
+	menu.toggle(enemy_vehicles, "无敌", {}, "", function(on)
 		jet_godmode = on
 	end, jet_godmode)
 
-	menu.action(enemy_vehicles, "Delete Lazers", {}, "", function()
+	menu.action(enemy_vehicles, "删除天煞", {}, "", function()
 		delete_all_entities(jet_entities, "jets")
 	end)
 
