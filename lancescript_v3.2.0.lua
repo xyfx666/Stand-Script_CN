@@ -8,24 +8,24 @@ if online_v > ocoded_for then
     util.toast("This script is outdated for the current GTA:O version (" .. online_v .. ", coded for " .. ocoded_for .. "). Some options may not work, but most should.")
 end
 
-self_root = menu.list(menu.my_root(), "Self", {"lancescriptself"}, "")
-weapons_root = menu.list(menu.my_root(), "Weapons", {"lancescriptweapons"}, "")
+self_root = menu.list(menu.my_root(), "自我", {"lancescriptself"}, "")
+weapons_root = menu.list(menu.my_root(), "武器", {"lancescriptweapons"}, "")
 shootentity_root = menu.list(weapons_root, "Shoot entity", {"lancescriptweapons"}, "")
-protections_root = menu.list(menu.my_root(), "Protections", {"lancescriptprotections"}, "")
+protections_root = menu.list(menu.my_root(), "保护", {"lancescriptprotections"}, "")
 noclip_root = menu.list(self_root, "Noclip", {"lancescriptnoclip"}, "")
-world_root = menu.list(menu.my_root(), "World", {"lancescriptworld"}, "")
-entity_root = menu.list(menu.my_root(), "Nearby vehicles/objects", {"lancescriptentity"}, "")
-npc_root = menu.list(menu.my_root(), "Nearby NPCs", {"lancescriptnpcs"}, "")
-tasks_root = menu.list(npc_root, "Tasks", {"lancescripttasks"}, "")
-vehicle_root = menu.list(menu.my_root(), "Vehicle", {"lanceobjecttroll"}, "")
-online_root = menu.list(menu.my_root(), "Online", {"lancescriptonline"}, "")
-allplayers_root = menu.list(menu.my_root(), "All players", {"lancescriptallplayers"}, "")
-business_root = menu.list(online_root, "Business management", {"lancescriptbusiness"}, "")
-gametweaks_root = menu.list(menu.my_root(), "Game tweaks", {"lancescriptgametweaks"}, "")
-fakemessages_root = menu.list(gametweaks_root, "Fake messages", {"lancescriptfakemessages"}, "")
-radio_root = menu.list(gametweaks_root, "Radio", {"lancescriptradio"}, "")
+world_root = menu.list(menu.my_root(), "世界", {"lancescriptworld"}, "")
+entity_root = menu.list(menu.my_root(), "附近的车辆/物体", {"lancescriptentity"}, "")
+npc_root = menu.list(menu.my_root(), "附近的NPCs", {"lancescriptnpcs"}, "")
+tasks_root = menu.list(npc_root, "任务", {"lancescripttasks"}, "")
+vehicle_root = menu.list(menu.my_root(), "车辆", {"lanceobjecttroll"}, "")
+online_root = menu.list(menu.my_root(), "在线", {"lancescriptonline"}, "")
+allplayers_root = menu.list(menu.my_root(), "所有玩家", {"lancescriptallplayers"}, "")
+business_root = menu.list(online_root, "自动产业", {"lancescriptbusiness"}, "")
+gametweaks_root = menu.list(menu.my_root(), "游戏调整", {"lancescriptgametweaks"}, "")
+fakemessages_root = menu.list(gametweaks_root, "虚假消息", {"lancescriptfakemessages"}, "")
+radio_root = menu.list(gametweaks_root, "广播", {"lancescriptradio"}, "")
 lancescript_root = menu.list(menu.my_root(), "LanceScript", {"lancescriptutil"}, "")
-sounds_root = menu.list(lancescript_root, "Sounds", {"lancescriptsounds"}, "")
+sounds_root = menu.list(lancescript_root, "声音", {"lancescriptsounds"}, "")
 
 punchlines = {"we do not care", "3take2", "mIRroR On ThE WAlL", "i wont exit scam- you never paid a dollar for me!", "stand on top top top", "sainan based", "also check out phoenixscript!", "also check out wiriscript!", "¦", "sponsored by kiddions. jk", "NOT luna v2!", "ACTUALLY real!!!",
 "another wonderful product by taketwo interactive", "if you like lancescript you\'ll LOVE lancescript live", "NOT $140!!!!", "optimized by the gods", "actually god", "this is a cry for help", "bring your wife. we\'ll fuck her! WE\'LL FUCK YOUR WIFE!", "doing your mom doing doing your mom",
@@ -51,7 +51,7 @@ function file_exists(path)
 end
 
 if not file_exists(file_name) then
-  util.toast(file_name .. ' was not found, please make sure the script is installed correctly. READ THE INSTALL.TXT!!! AND FOLLOW THE INSTRUCTIONS IN THE FOLDER NAME.')
+  util.toast(file_name .. ' 未找到，请确保脚本安装正确。阅读 INSTALL.TXT!!! 并按照文件夹名称中的说明进行操作。')
   util.stop_script()
 else
     file = io.open(file_name, "r")
@@ -79,14 +79,14 @@ end
 --update checker
 util.async_http_get("pastebin.com", "/raw/YK0P06yC", function(result)
     if version < result then
-        util.toast("An update is available for Lancescript! Bringing you there now.")
+        util.toast("Lancescript 有更新可用！可前往网站更新.")
         os.execute("start \"\" \"https://www.guilded.gg/stand/groups/x3ZgB10D/channels/7430c963-e9ee-40e3-ab20-190b8e4a4752/docs/265965\"")
     else
-        util.toast("Lancescript is up to date!")
+        util.toast("Lancescript 是最新的!")
     end
 end,
 function (fail)
-    util.toast("Could not check for updates.")
+    util.toast("无法检查更新.")
 end)
 
 function show_custom_alert_until_enter(l1)
@@ -117,8 +117,8 @@ function show_custom_alert_until_enter(l1)
 end
 
 scaleform_thread = util.create_thread(function (thr)
-    name = os.getenv("USERNAME")
-    util.toast("Hello " .. name .. "!")
+    name = os.getenv("用户名")
+    util.toast("你好 " .. name .. "!")
     scaleForm = GRAPHICS.REQUEST_SCALEFORM_MOVIE("MP_BIG_MESSAGE_FREEMODE")
     GRAPHICS.BEGIN_SCALEFORM_MOVIE_METHOD(scaleForm, "SHOW_SHARD_WASTED_MP_MESSAGE")
     GRAPHICS.SCALEFORM_MOVIE_METHOD_ADD_PARAM_PLAYER_NAME_STRING("~p~lancescript")
@@ -167,7 +167,7 @@ function dispatch_griefer_jesus(target)
         PED.SET_PED_COMBAT_ATTRIBUTES(jesus, 5, true)
 	    PED.SET_PED_COMBAT_ATTRIBUTES(jesus, 46, true)
         PED.SET_PED_CAN_RAGDOLL(jesus, false)
-        WEAPON.GIVE_WEAPON_TO_PED(jesus, util.joaat("WEAPON_RAILGUN"), 9999, true, true)
+        WEAPON.GIVE_WEAPON_TO_PED(jesus, util.joaat("武器轨道炮"), 9999, true, true)
         TASK.TASK_GO_TO_ENTITY(jesus, target_ped, -1, -1, 100.0, 0.0, 0)
     	TASK.TASK_COMBAT_PED(jesus, target_ped, 0, 16)
         --pretty much just a respawn/rationale check
@@ -195,7 +195,7 @@ function dispatch_griefer_jesus(target)
         end
     end)
 end
-menu.toggle(lancescript_root, "Show active entity pools", {"entitypoolupdates"}, "Toasts what entity pools are being updated every tick. The more you see, the more performance loss; getting all entities is a heavy task.", function(on)
+menu.toggle(lancescript_root, "显示活动的实体池", {"entitypoolupdates"}, "正在更新实体池，你看到的越多，都会加重cpu的负核;建议不要长期开启", function(on)
     if on then
         show_updates = true
     else
@@ -213,7 +213,7 @@ menu.action(lancescript_root, "Tweet about Lancescript", {"tweet"}, "", function
 end)
 
 joinsound = false
-menu.toggle(sounds_root, "Sound on player join", {"joinsound"}, "", function(on)
+menu.toggle(sounds_root, "玩家加入时的声音", {"joinsound"}, "", function(on)
     if on then
         joinsound = true
     else
@@ -222,7 +222,7 @@ menu.toggle(sounds_root, "Sound on player join", {"joinsound"}, "", function(on)
 end)
 
 leavesound = false
-menu.toggle(sounds_root, "Sound on player leave", {"leavesound"}, "", function(on)
+menu.toggle(sounds_root, "玩家离开时的声音", {"leavesound"}, "", function(on)
     if on then
         leavesound = true
     else
@@ -297,16 +297,16 @@ end
 function request_model_load(hash)
     request_time = os.time()
     if not STREAMING.IS_MODEL_VALID(hash) then
-        util.toast("Requested model was invalid and could not be loaded.")
+        util.toast("请求的模型无效，无法加载.")
         return
     end
     STREAMING.REQUEST_MODEL(hash)
     while not STREAMING.HAS_MODEL_LOADED(hash) do
         if os.time() - request_time >= 10 then
-            util.toast("Model failed to load in 10 seconds.")
+            util.toast("模型将在十秒内加载.")
             break
         end
-        util.toast("Loading model hash " .. hash)
+        util.toast("加载模组哈希 " .. hash)
         util.yield()
     end
 end
@@ -316,10 +316,10 @@ function request_ptfx_load(hash)
     STREAMING.REQUEST_NAMED_PTFX_ASSET(hash)
     while not STREAMING.HAS_PTFX_ASSET_LOADED(hash) do
         if os.time() - request_time >= 10 then
-            util.toast("PTFX failed to load in 5 seconds.")
+            util.toast("PTFX 没能在5秒内加载.")
             break
         end
-        util.toast("Loading PTFX hash " .. hash)
+        util.toast("正在加载 PTFX 哈希 " .. hash)
         util.yield()
     end
 end
@@ -351,7 +351,7 @@ function spawn_object_in_front_of_ped(ped, hash, ang, room, zoff, setonground)
 end
 
 rainbow_tint = false
-menu.toggle(weapons_root, "Rainbow weapon tint", {"rainbowtint"}, "boogie", function(on)
+menu.toggle(weapons_root, "彩虹色武器", {"rainbowtint"}, "boogie", function(on)
     plyr = PLAYER.PLAYER_PED_ID()
     if on then
         local last_tint = WEAPON.GET_PED_WEAPON_TINT_INDEX(PLAYER.PLAYER_PED_ID(), WEAPON.GET_SELECTED_PED_WEAPON(PLAYER.PLAYER_PED_ID()))
@@ -362,7 +362,7 @@ menu.toggle(weapons_root, "Rainbow weapon tint", {"rainbowtint"}, "boogie", func
     end
 end, false)
 
-menu.toggle(weapons_root, "Invisible weapons", {"invisguns"}, "Makes your weapons invisible. Might be local only. You need to retoggle when switching weapons.", function(on)
+menu.toggle(weapons_root, "隐藏武器", {"invisguns"}, "让你的武器不可见。可能只是本地的。切换武器时你需要重新切换.", function(on)
     plyr = PLAYER.PLAYER_PED_ID()
     if on then
         WEAPON.SET_PED_CURRENT_WEAPON_VISIBLE(plyr, false, false, false, false) 
@@ -372,7 +372,7 @@ menu.toggle(weapons_root, "Invisible weapons", {"invisguns"}, "Makes your weapon
 end, false)
 
 noexplosives = false
-menu.toggle(protections_root, "No explosives", {"noexplosives"}, "Automatically removes all explosive projectiles from the world when they spawn, even rockets. Not sure if this works nicely on other players. This is not an extensive list, and only includes some player weapons; vehicle weapons may be unaffected.", function(on)
+menu.toggle(protections_root, "禁止爆炸", {"noexplosives"}, "开启时自动从世界中移除所有爆炸性射弹，甚至是火箭。不确定这是否适用于其他玩家。并不包括所有爆炸，只是包括一些玩家武器；车辆武器可能不受影响.", function(on)
     plyr = PLAYER.PLAYER_PED_ID()
     if on then
         noexplosives = true
@@ -383,7 +383,7 @@ end, false)
 
 noclip = false
 noclip_height = 0
-menu.toggle(noclip_root, "Noclip", {"noclip"}, "Simple but smart noclip. Works for vehicles too.", function(on)
+menu.toggle(noclip_root, "穿墙", {"noclip"}, "车辆也同样适用.", function(on)
     plyr = PLAYER.PLAYER_PED_ID()
     veh = PED.GET_VEHICLE_PED_IS_IN(plyr, false)
     if on then
