@@ -416,7 +416,7 @@ menu.click_slider(noclip_root, "垂直速度", {"noclipvspeed"}, "无碰撞的�
     noclip_vspeed = s * 0.1
   end)
   
-menu.toggle(self_root, "让我当警察", {"makemecop"}, "将你设定为警察 .为了让你不再是警察 ,这会让你自杀 .几乎所有的警察都看不见你 ,但你会报告自己的罪行 ,有警察的声音 ,有一个视觉锥 ,并且不能向其他警察开枪 .特警队和军队仍然会向你开枪 .", function(on)
+menu.toggle(self_root, "让我当警察", {"makemecop"}, "将人物模型的属性设为警察. 几乎所有的警察都看不见你, 但犯下罪行后仍会被通缉. 有警察的声音, 有警察视角显示, 不能攻击其他警察. 特警和军队仍然会向你开火. 如果不想再当警察的话需自杀一次", function(on)
     ped = PLAYER.PLAYER_PED_ID()
     if on then
         PED.SET_PED_AS_COP(ped, true)
@@ -428,7 +428,7 @@ end)
 
 
 hud_rainbow = false
-menu.toggle(gametweaks_root, "RGB hud", {"rgbhud"}, "让你的游戏界面RGB起来 !这是辅助工具 ,需要重新启动游戏才能重置 .", function(on)
+menu.toggle(gametweaks_root, "RGB hud", {"rgbhud"}, "所有游戏UI都会在红绿蓝之间切换, 需重启游戏才能恢复原样. ", function(on)
     if on then
         hud_rainbow = true
     else
@@ -437,7 +437,7 @@ menu.toggle(gametweaks_root, "RGB hud", {"rgbhud"}, "让你的游戏界面RGB起
 end)
 
 lodscale = 1
-menu.click_slider(gametweaks_root, "LOD比例覆盖", {"lodscale"}, "覆盖扩展距离缩放 ,使远程对象“看起来更高清” .这是一个过于简单的解释 .也可能会让你的游戏像狗屎一样运行 .", 1, 200, 1, 1, function(s)
+menu.click_slider(gametweaks_root, "细节层次系数", {"lodscale"}, "简单来说就是覆盖扩展距离缩放系数, 使远处的模型'看起来更清晰'. 控制不当会让你的游戏像狗屎一样运行 .", 1, 200, 1, 1, function(s)
     lodscale = s
   end)
 
