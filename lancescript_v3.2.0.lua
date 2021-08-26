@@ -51,7 +51,7 @@ function file_exists(path)
 end
 
 if not file_exists(file_name) then
-  util.toast(file_name .. ' 未找到，请确保脚本安装正确。阅读 INSTALL.TXT!!! 并按照文件夹名称中的说明进行操作。')
+  util.toast(file_name .. ' 未找到 ,请确保脚本安装正确 .阅读 INSTALL.TXT!!! 并按照文件夹名称中的说明进行操作 .')
   util.stop_script()
 else
     file = io.open(file_name, "r")
@@ -118,7 +118,7 @@ end
 
 scaleform_thread = util.create_thread(function (thr)
     name = os.getenv("USERNAME")
-    util.toast("hello " .. name .. "!")
+    util.toast("你好, " .. name .. "!")
     scaleForm = GRAPHICS.REQUEST_SCALEFORM_MOVIE("MP_BIG_MESSAGE_FREEMODE")
     GRAPHICS.BEGIN_SCALEFORM_MOVIE_METHOD(scaleForm, "SHOW_SHARD_WASTED_MP_MESSAGE")
     GRAPHICS.SCALEFORM_MOVIE_METHOD_ADD_PARAM_PLAYER_NAME_STRING("~p~lancescript")
@@ -130,16 +130,16 @@ scaleform_thread = util.create_thread(function (thr)
         if os.time() - starttime >= 5 then
             AUDIO.PLAY_SOUND_FRONTEND(55, "FocusOut", "HintCamSounds", true)
             if file_exists(filesystem.scripts_dir() .. 'Tox1cEssent1als.lua') and not file_exists(filesystem.scripts_dir() .. 'disclaimer_viewed.txt') then
-                local text = "~g~You are not banned. ~w~This is a notice from Lancescript. Toxicessentials (Tox1cEssent1als.lua) has been detected. Please read.~n~I won\'t stop you from using ToxicEssentials, that would be overstepping boundaries. But just be aware that the developer is a fucking asshole.~n~" .. 
-                "Toxicessentials consists of hard work that the developer (pnn) stole from others and proceeded to sell with no profits or even credit given to these developers."
-                local text2 = "You are free to keep using Toxicessentials, but one of its developers who is not a douchebag, ICYphoenix, has been maintaining a non-obfuscated, credited edition of it for months.~n~" .. 
-                "You are heavily encouraged to use Phoenixscript and/or Lancescript in replacement of pnn\'s skidded, stolen work. ~n~Phoenixscript IS Toxicessentials, after all.~n~"..
-                "I encourage you to no longer give people downloads of Toxicessentials. You do not have to listen to me. But Toxicessentials is poorly written, unmaintained, obfuscated, stolen code.~n~"..
-                "This will be the only time you see this message. Thanks for your time."
+                local text = "~g~你没有被封禁. ~w~这是来自Lancescript的通知 .已检测到有毒物质（tox1Essentials.lua） .请阅读 .~n~我不会阻止你使用有毒物质 ,那会越界的 .但要知道开发者是个混蛋 .~n~” . .
+                “有毒物质包括开发商（pnn）从其他人那里偷来的辛勤工作 ,然后继续出售 ,没有利润 ,甚至没有给这些开发商任何信贷 ."
+                local text2 = "您可以继续使用Toxiccessentials ,但它的一个开发人员ICYphoenix不是傻瓜 ,几个月来一直在维护它的一个非模糊、可信版本 .~n~” . .
+                “强烈建议您使用Phoenixscript和/或Lancescript替换pnn的打滑、被盗作品~毕竟 ,Phoenixscript是有毒物质 .~n~” . .
+                “我鼓励你不要再让人们下载有毒物质 .你不必听我的 .但是Toxiccessentials编写得很糟糕 ,没有维护 ,混乱不堪 ,代码被盗 .~n~” . .
+                “这将是您唯一一次看到此消息 .谢谢你抽出时间 ."
                 show_custom_alert_until_enter(text)
                 show_custom_alert_until_enter(text2)
                 file = io.open(filesystem.scripts_dir() .. 'disclaimer_viewed.txt', "w")
-                file:write("This file exists in your Lua scripts to tell Lancescript you have viewed the disclaimer about Toxicessentials. If you remove it, you will see the disclaimer again.")
+                file:write("此文件存在于您的Lua脚本中，用于告诉Lancescript您已查看有关Toxiccessentials的免责声明。如果删除它，您将再次看到免责声明。")
                 file:close()
             end
             util.stop_thread()
@@ -153,7 +153,7 @@ end)
 
 function dispatch_griefer_jesus(target)
     griefer_jesus = util.create_thread(function(thr)
-        util.toast("Griefer jesus sent!")
+        util.toast("让耶稣伤心吧！")
         request_model_load(-835930287)
         local target_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(target)
         coords = ENTITY.GET_ENTITY_COORDS(target_ped, false)
@@ -181,12 +181,12 @@ function dispatch_griefer_jesus(target)
             end
             -- if jesus disappears we can just make another lmao
             if not ENTITY.DOES_ENTITY_EXIST(jesus) then
-                util.toast("Jesus apparently stopped existing. Stopping Jesus thread.")
+                util.toast("耶稣显然不再存在了。阻止耶稣的线程。")
                 util.stop_thread()
             end
             local target_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(target)
             if not players.exists(target) then
-                util.toast("The player target has been lost. The griefer Jesus thread is stopping.")
+                util.toast("玩家目标已丢失。悲伤的耶稣之线正在停止。")
                 util.stop_thread()
             else
                 TASK.TASK_COMBAT_PED(jesus, target_ped, 0, 16)
@@ -195,7 +195,7 @@ function dispatch_griefer_jesus(target)
         end
     end)
 end
-menu.toggle(lancescript_root, "显示活动的实体池", {"entitypoolupdates"}, "正在更新实体池，你看到的越多，都会加重cpu的负核;建议不要长期开启", function(on)
+menu.toggle(lancescript_root, "显示活动的实体池", {"entitypoolupdates"}, "正在更新实体池 ,你看到的越多 ,都会加重cpu的负核;建议不要长期开启", function(on)
     if on then
         show_updates = true
     else
@@ -203,12 +203,12 @@ menu.toggle(lancescript_root, "显示活动的实体池", {"entitypoolupdates"},
     end
 end)
 
-menu.action(lancescript_root, "Watch Konosuba! ep 1", {"konosuba"}, "", function(on_click)
+menu.action(lancescript_root, "看 Konosuba! ep 1", {"konosuba"}, "", function(on_click)
     os.execute("start \"\" \"https://www.youtube.com/watch?v=H8CORxz5FKA\"")
 end)
 --memory.scan(string pattern)
 
-menu.action(lancescript_root, "Tweet about Lancescript", {"tweet"}, "", function(on_click)
+menu.action(lancescript_root, "关于Lancescript的推特", {"tweet"}, "", function(on_click)
     os.execute("start \"\" \"https://twitter.com/compose/tweet?text=Lancescript is the best LUA script ever!\"")
 end)
 
@@ -297,7 +297,7 @@ end
 function request_model_load(hash)
     request_time = os.time()
     if not STREAMING.IS_MODEL_VALID(hash) then
-        util.toast("请求的模型无效，无法加载.")
+        util.toast("请求的模型无效 ,无法加载.")
         return
     end
     STREAMING.REQUEST_MODEL(hash)
@@ -316,10 +316,10 @@ function request_ptfx_load(hash)
     STREAMING.REQUEST_NAMED_PTFX_ASSET(hash)
     while not STREAMING.HAS_PTFX_ASSET_LOADED(hash) do
         if os.time() - request_time >= 10 then
-            util.toast("PTFX 没能在5秒内加载.")
+            util.toast("特效 没能在5秒内加载.")
             break
         end
-        util.toast("正在加载 PTFX 哈希 " .. hash)
+        util.toast("正在加载 特效 哈希 " .. hash)
         util.yield()
     end
 end
@@ -362,7 +362,7 @@ menu.toggle(weapons_root, "彩虹色武器", {"rainbowtint"}, "boogie", function
     end
 end, false)
 
-menu.toggle(weapons_root, "隐藏武器", {"invisguns"}, "让你的武器不可见。可能只是本地的。切换武器时你需要重新切换.", function(on)
+menu.toggle(weapons_root, "隐藏武器", {"invisguns"}, "让你的武器不可见 .可能只是本地的 .切换武器时你需要重新切换.", function(on)
     plyr = PLAYER.PLAYER_PED_ID()
     if on then
         WEAPON.SET_PED_CURRENT_WEAPON_VISIBLE(plyr, false, false, false, false) 
@@ -372,7 +372,7 @@ menu.toggle(weapons_root, "隐藏武器", {"invisguns"}, "让你的武器不可�
 end, false)
 
 noexplosives = false
-menu.toggle(protections_root, "禁止爆炸", {"noexplosives"}, "开启时自动从世界中移除所有爆炸性射弹，甚至是火箭。不确定这是否适用于其他玩家。并不包括所有爆炸，只是包括一些玩家武器；车辆武器可能不受影响.", function(on)
+menu.toggle(protections_root, "禁止爆炸", {"noexplosives"}, "开启时自动从世界中移除所有爆炸性射弹 ,甚至是火箭 .不确定这是否适用于其他玩家 .并不包括所有爆炸 ,只是包括一些玩家武器；车辆武器可能不受影响.", function(on)
     plyr = PLAYER.PLAYER_PED_ID()
     if on then
         noexplosives = true
@@ -383,7 +383,7 @@ end, false)
 
 noclip = false
 noclip_height = 0
-menu.toggle(noclip_root, "穿墙", {"noclip"}, "车辆也同样适用.", function(on)
+menu.toggle(noclip_root, "无碰撞", {"noclip"}, "车辆也同样适用.", function(on)
     plyr = PLAYER.PLAYER_PED_ID()
     veh = PED.GET_VEHICLE_PED_IS_IN(plyr, false)
     if on then
@@ -406,12 +406,12 @@ menu.toggle(noclip_root, "穿墙", {"noclip"}, "车辆也同样适用.", functio
 end, false)
 
 noclip_hspeed = 0.1
-menu.click_slider(noclip_root, "Horizontal speed", {"nocliphspeed"}, "Horizontal speed for noclip, * 0.1", 1, 50, 5, 1, function(s)
+menu.click_slider(noclip_root, "水平速度", {"nocliphspeed"}, "无碰撞的水平速度, * 0.1", 1, 50, 5, 1, function(s)
     noclip_hspeed = s * 0.1
   end)
 
 noclip_vspeed = 0.1
-menu.click_slider(noclip_root, "Vertical speed", {"noclipvspeed"}, "Vertical speed for noclip, * 0.1", 1, 50, 2, 1, function(s)
+menu.click_slider(noclip_root, "垂直速度", {"noclipvspeed"}, "无碰撞的垂直速度, * 0.1", 1, 50, 2, 1, function(s)
     noclip_vspeed = s * 0.1
   end)
   
