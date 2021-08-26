@@ -130,16 +130,16 @@ scaleform_thread = util.create_thread(function (thr)
         if os.time() - starttime >= 5 then
             AUDIO.PLAY_SOUND_FRONTEND(55, "FocusOut", "HintCamSounds", true)
             if file_exists(filesystem.scripts_dir() .. 'Tox1cEssent1als.lua') and not file_exists(filesystem.scripts_dir() .. 'disclaimer_viewed.txt') then
-                local text = "~g~你没有被封禁. ~w~这是来自Lancescript的通知 .已检测到有毒物质（tox1Essentials.lua） .请阅读 .~n~我不会阻止你使用有毒物质 ,那会越界的 .但要知道开发者是个混蛋 .~n~” . .
-                “有毒物质包括开发商（pnn）从其他人那里偷来的辛勤工作 ,然后继续出售 ,没有利润 ,甚至没有给这些开发商任何信贷 ."
-                local text2 = "您可以继续使用Toxiccessentials ,但它的一个开发人员ICYphoenix不是傻瓜 ,几个月来一直在维护它的一个非模糊、可信版本 .~n~” . .
-                “强烈建议您使用Phoenixscript和/或Lancescript替换pnn的打滑、被盗作品~毕竟 ,Phoenixscript是有毒物质 .~n~” . .
-                “我鼓励你不要再让人们下载有毒物质 .你不必听我的 .但是Toxiccessentials编写得很糟糕 ,没有维护 ,混乱不堪 ,代码被盗 .~n~” . .
-                “这将是您唯一一次看到此消息 .谢谢你抽出时间 ."
+                local text = "~g~你没有被禁止。 ~w~这是Lancescript的通知。 已检测到有毒物质 (Tox1cEssent1als.lua)。 请阅读。~n~我不会阻止你使用 ToxicEssentials，那会越界。 但请注意，开发人员是一个他妈的混蛋。~n~" .. 
+                "Toxisentials 包括开发人员 (pnn) 从其他人那里偷来的辛勤工作，并在没有利润或什至没有给予这些开发人员信用的情况下继续出售。"
+                local text2 = "Toxisentials 包括开发人员 (pnn) 从其他人那里偷来的辛勤工作，并在没有利润或什至没有给予这些开发人员信用的情况下继续出售。有毒物质包括开发人员（pnn）从其他人那里偷来的辛勤工作，并且没有收益或什至没有通知这些开发人员信用的情况下继续进行索赔。" .. 
+                "强烈建议您使用 Phoenixscript 和/或 Lancescript 来代替 pnn 的滑行、被盗作品。 ~n~Phoenixscript 是 Toxicessentials，毕竟。~n~"..
+                "我鼓励您不再向人们提供 Toxic Essentials 的下载。 你不必听我的。 但是 Toxic Essentials 写得很差，没有维护，混淆，被盗的代码。~n~"..
+                "这将是您唯一一次看到此消息。 谢谢你的时间。"
                 show_custom_alert_until_enter(text)
                 show_custom_alert_until_enter(text2)
                 file = io.open(filesystem.scripts_dir() .. 'disclaimer_viewed.txt', "w")
-                file:write("此文件存在于您的Lua脚本中 ,用于告诉Lancescript您已查看有关Toxiccessentials的免责声明 .如果删除它 ,您将再次看到免责声明 .")
+                file:write("该文件存在于您的 Lua 脚本中，用于告诉 Lancescript 您已查看关于 Toxicessentials 的免责声明。 如果删除它，您将再次看到免责声明。")
                 file:close()
             end
             util.stop_thread()
