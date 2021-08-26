@@ -1857,7 +1857,7 @@ local shooting_effects = {
 		0
 	},
 	{
-		"电磁枪", "veh_khanjali", "muz_xm_khanjali_railgun", 
+		"可汗嘉丽的子弹", "veh_khanjali", "muz_xm_khanjali_railgun", 
 		1,
 		0,
 		0,
