@@ -1048,7 +1048,7 @@ GenerateFeatures = function(pid)
 
 ------------------------------------------------GUITAR-----------------------------------------------------------------------
 
-	menu.action(trolling_list, "Attach Guitar", {}, "Attaches a guitar to their ped causing crazy things if they\'re in a vehicle and looks nice.", function()
+	menu.action(trolling_list, "套吉他", {}, "在他们的模型上贴上吉他, 如果他们在车里, 就会引起疯狂的事情, 那看起来真是太棒了!", function()
 		local player_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
 		local pos = ENTITY.GET_ENTITY_COORDS(player_ped)
 		pos.z = pos.z - 0.9
@@ -1059,13 +1059,13 @@ GenerateFeatures = function(pid)
 		end
 		local object = OBJECT.CREATE_OBJECT(object_hash, pos.x, pos.y, pos.z, true, true, true)
 		if object == 0 then 
-			shownotification("~r~Failure creating the entity")
+			shownotification("~r~创建实体失败")
 		end
 		ENTITY.ATTACH_ENTITY_TO_ENTITY(object, PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid), PED.GET_PED_BONE_INDEX(PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid), 0x5c01), 0.5, -0.2, 0.1, 0, 70, 0, false, true, true --[[Collision - This causes glitch when in vehicle]], false, 0, true)
 		--ENTITY.SET_ENTITY_VISIBLE(object, false, 0) --turns guitar invisible
 		util.yield(3000)
 		if player_ped ~= ENTITY.GET_ENTITY_ATTACHED_TO(object) then
-			shownotification("~r~The entity is not attached. ~s~Meaby "..PLAYER.GET_PLAYER_NAME(pid).." has attactment protections")
+			shownotification("~r~实体未附加。 ~s~可能 "..PLAYER.GET_PLAYER_NAME(pid).." 有附加保护")
 			return
 		end
 		STREAMING.SET_MODEL_AS_NO_LONGER_NEEDED(object_hash)
@@ -1074,9 +1074,9 @@ GenerateFeatures = function(pid)
 ----------------------------------------------------RAPE--------------------------------------------------------------------
 
 	local rape_options = menu.list(trolling_list, "Rape")
-	menu.divider(rape_options, "Rape")
+	menu.divider(rape_options, "强奸")
 
-	menu.action(rape_options, "Monkey", {}, "Other players may not see the animation.", function()
+	menu.action(rape_options, "猴子", {}, "其他玩家可能看不到动画。", function()
 		local player_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
 		local pos = ENTITY.GET_ENTITY_COORDS(player_ped)
 		local ped_hash = util.joaat("a_c_chimp")
@@ -1094,7 +1094,7 @@ GenerateFeatures = function(pid)
 		ENTITY.SET_ENTITY_COMPLETELY_DISABLE_COLLISION(ped, false, false) --for ped not to be beaten with a melee weapon (because ped ditaches from player)
 		util.yield(3000)
 		if player_ped ~= ENTITY.GET_ENTITY_ATTACHED_TO(ped) then
-			shownotification("~r~The entity is not attached. ~s~Meaby "..PLAYER.GET_PLAYER_NAME(pid).." has attactment protections")
+			shownotification("~r~实体未附加。 ~s~可能 "..PLAYER.GET_PLAYER_NAME(pid).." 有附加保护")
 			return
 		end
 		while player_ped == ENTITY.GET_ENTITY_ATTACHED_TO(ped) do
@@ -1106,7 +1106,7 @@ GenerateFeatures = function(pid)
 		STREAMING.SET_MODEL_AS_NO_LONGER_NEEDED(ped_hash)
 	end)
 
-	menu.toggle(rape_options, "By Me", {}, "", function(on)
+	menu.toggle(rape_options, "由我", {}, "", function(on)
 		rape = on
 		if pid ~= players.user() then
 			if rape then
@@ -1134,44 +1134,44 @@ GenerateFeatures = function(pid)
 
 ---------------------------------------------------ENEMY BUZZARD---------------------------------------------------------------------
 
-	local enemy_vehicles = menu.list(trolling_list, "Enemy Vehicles", {}, "")
+	local enemy_vehicles = menu.list(trolling_list, "敌方车辆", {}, "")
 
-	menu.divider(enemy_vehicles, "Buzzard")
+	menu.divider(enemy_vehicles, "秃鹰直升机")
 
 	buzzard_visible = true
 	local gunner_weapon = "weapon_combatmg"
 	
-	menu.action(enemy_vehicles, "Send Buzzard", {}, "", function()
+	menu.action(enemy_vehicles, "派秃鹰直升机", {}, "", function()
 		spawn_buzzard(pid, gunner_weapon)
 	end)
 
-	menu.toggle(enemy_vehicles, "Invincible", {}, "", function(on)
+	menu.toggle(enemy_vehicles, "无敌", {}, "", function(on)
 		buzzard_godmode = on
 	end, false)
 	
-	local menu_gunner_weapon_list = menu.list(enemy_vehicles, "Gunners Weapon")
-	menu.divider(menu_gunner_weapon_list, "Gunner Weapon List")
+	local menu_gunner_weapon_list = menu.list(enemy_vehicles, "炮手武器")
+	menu.divider(menu_gunner_weapon_list, "炮手武器列表")
 
 	for i = 1, #gunner_weapon_list do
 		menu.action(menu_gunner_weapon_list, gunner_weapon_list[i][1], {}, "", function()
 			gunner_weapon = gunner_weapon_list[i][2]
-			shownotification("Now gunners will shoot with "..gunner_weapon_list[i][1].."s")
+			shownotification("现在炮手们将用枪射击 "..gunner_weapon_list[i][1].."s")
 		end)
 	end
 
-	menu.toggle(enemy_vehicles, "Visible", {}, "You shouldn\'t be that toxic to turn this off.", function(on)
+	menu.toggle(enemy_vehicles, "可视的", {}, "你不应该那么过分，把它关掉。", function(on)
 		buzzard_visible = on
 	end, true)
 
-	menu.action(enemy_vehicles, "Delete Buzzards", {}, "Tries to delete all Buzzards you\'ve spawned.", function()
+	menu.action(enemy_vehicles, "删除秃鹰直升机", {}, "尝试删除您生成的所有秃鹰直升机。", function()
 		delete_all_entities(buzzard_entities, "buzzards")
 	end)
 
 -----------------------------------------------DAMAGE----------------------------------------------------------------------------
 
-	local damage = menu.list(trolling_list, "Damage", {}, "Choose the weapon and shoot \'em no matter where you are.")
+	local damage = menu.list(trolling_list, "损坏", {}, "选择武器，无论你在哪里都要射杀他们。")
 	
-	menu.toggle(damage, "Spectate", {}, "If player is not visible or far enough, you\'ll need to spectate before using Demage. This is just Stand\'s option duplicated.", function(on)
+	menu.toggle(damage, "观看", {}, "若玩家不可见或距离不够远，你们需要在使用 损坏 之前进行观察。这只是Stand的选项重复。", function(on)
 		spectate = on
 		if spectate then
 			menu.trigger_commands("spectate "..PLAYER.GET_PLAYER_NAME(pid).." on")
@@ -1180,24 +1180,24 @@ GenerateFeatures = function(pid)
 		end
 	end)
 
-	menu.divider(damage, "Damage")
+	menu.divider(damage, "损坏")
 	local isBulletOwned = true
 	
 
 	local damage_value = 200 --default damage value
-	menu.action(damage, "Heavy Sniper", {}, "", function()
+	menu.action(damage, "重狙击手", {}, "", function()
 		shoot_owned_bullet(pid, "weapon_heavysniper", damage_value)
 	end)
 
-	menu.action(damage, "Shotgun", {}, "", function()
+	menu.action(damage, "猎枪", {}, "", function()
 		shoot_owned_bullet(pid, "weapon_pumpshotgun", damage_value)
 	end)
 
-	menu.slider(damage, "Damage Amount", {"damagevalue"}, "The bullet demages player with the given value. ", 10, 1000, 200, 50, function(value)
+	menu.slider(damage, "损害金额", {"damagevalue"}, "The bullet demages player with the given value. ", 10, 1000, 200, 50, function(value)
 		damage_value = value
 	end)
 
-	menu.toggle(damage, "Tase", {}, "", function(on)
+	menu.toggle(damage, "钥匙", {}, "", function(on)
 		tase = on
 		while tase do 
 			shoot_owned_bullet(pid, "weapon_stungun", 1)
@@ -1207,7 +1207,7 @@ GenerateFeatures = function(pid)
 
 -----------------------------------------------------HOSTILE PEDS------------------------------------------------------------------
 
-	menu.action(trolling_list, "Hostile Peds", {}, "All on foot peds will combat player.", function()
+	menu.action(trolling_list, "敌对的NPC", {}, "所有徒步NPC将与玩家战斗。", function()
 		local player_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
 		local pos = ENTITY.GET_ENTITY_COORDS(player_ped)
 		local peds = get_nearby_entities(pid, 80, true, false)
@@ -1227,7 +1227,7 @@ GenerateFeatures = function(pid)
 
 --------------------------------------------------HOSTILE TRAFFIC-----------------------------------------------------------------
 
-	menu.action(trolling_list, "Hostile Traffic", {}, "", function()
+	menu.action(trolling_list, "敌对交通", {}, "", function()
 		local player_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
 		local pos  = ENTITY.GET_ENTITY_COORDS(player_ped)
 		local vehicles = {}
@@ -1261,10 +1261,10 @@ GenerateFeatures = function(pid)
 	
 	spawned_minitank = {}
 	local minitank_godmode = false
-	local hostile_rc_vehicles = menu.list(trolling_list, "Trolly RC Vehicles")
-	menu.divider(hostile_rc_vehicles, "RC Tank")
+	local hostile_rc_vehicles = menu.list(trolling_list, "手推RC载具")
+	menu.divider(hostile_rc_vehicles, "RC 坦克")
 	local minitank_godmode = false
-	menu.action(hostile_rc_vehicles, "Send RC Tank", {}, "", function()
+	menu.action(hostile_rc_vehicles, "发送 RC 坦克", {}, "", function()
 		local player_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
 		local pos = ENTITY.GET_ENTITY_COORDS(player_ped)
 		local coords_ptr = memory.alloc()
@@ -1291,7 +1291,7 @@ GenerateFeatures = function(pid)
 			--DOING THINGS WITH MINITANK
 		local minitank = util.create_vehicle(minitank_hash, coords, CAM.GET_GAMEPLAY_CAM_ROT(0).z)
 		if not ENTITY.DOES_ENTITY_EXIST(minitank) then 
-			shownotification("~r~Failed to create minitank. Please try again")
+			shownotification("~r~未能创建 RC 坦克。请再试一次")
 			return
 		end
 		spawned_minitank[#spawned_minitank + 1] = minitank
@@ -1332,14 +1332,14 @@ GenerateFeatures = function(pid)
 		end)
 		STREAMING.SET_MODEL_AS_NO_LONGER_NEEDED(ped_hash)
 		STREAMING.SET_MODEL_AS_NO_LONGER_NEEDED(minitank_hash)
-		shownotification("RC Tank sent to "..PLAYER.GET_PLAYER_NAME(pid))
+		shownotification("RC 坦克 已经被发送到了"..PLAYER.GET_PLAYER_NAME(pid))
 	end)
 
-	menu.toggle(hostile_rc_vehicles, "Invincible", {}, "", function(on)
+	menu.toggle(hostile_rc_vehicles, "无敌", {}, "", function(on)
 		minitank_godmode = on
 	end, false)
 
-	menu.action(hostile_rc_vehicles, "Delete Minitanks", {}, "Tries to delete all minitanks you\'ve spawned.", function()
+	menu.action(hostile_rc_vehicles, "删除 RC 坦克", {}, "尝试删除您生成的所有 RC 坦克。", function()
 		delete_all_entities(spawned_minitank, "minitanks")
 	end)
 
@@ -1347,7 +1347,7 @@ GenerateFeatures = function(pid)
 	
 	bandito_entities = {}
 	local bandito_godmode = false
-	menu.divider(hostile_rc_vehicles, "RC Bandito")
+	menu.divider(hostile_rc_vehicles, "RC 匪徒")
 	menu.action(hostile_rc_vehicles, "Send RC Bandito", {}, "You may hit this option twice the very first time you use it after game startup", function()
 		local player_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
 		local pos = ENTITY.GET_ENTITY_COORDS(player_ped)
