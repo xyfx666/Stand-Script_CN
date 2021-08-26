@@ -118,11 +118,7 @@ end
 
 scaleform_thread = util.create_thread(function (thr)
     name = os.getenv("USERNAME")
-<<<<<<< HEAD
     util.toast("你好 " .. name .. "!")
-=======
-    util.toast("你好, " .. name .. "!")
->>>>>>> 426ebf161e9816e6601dceab1bfbbcbf2eb3869c
     scaleForm = GRAPHICS.REQUEST_SCALEFORM_MOVIE("MP_BIG_MESSAGE_FREEMODE")
     GRAPHICS.BEGIN_SCALEFORM_MOVIE_METHOD(scaleForm, "SHOW_SHARD_WASTED_MP_MESSAGE")
     GRAPHICS.SCALEFORM_MOVIE_METHOD_ADD_PARAM_PLAYER_NAME_STRING("~p~lancescript")
