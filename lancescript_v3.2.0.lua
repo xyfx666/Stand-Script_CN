@@ -415,7 +415,7 @@ menu.click_slider(noclip_root, "垂直速度", {"noclipvspeed"}, "无碰撞的�
     noclip_vspeed = s * 0.1
   end)
   
-menu.toggle(self_root, "Make me a cop", {"makemecop"}, "Sets your ped as a cop. To make you not a cop, it will suicide you. Will make you invisible to almost all cops, but you will report your own crimes, get a cop voice, have a vision cone, and will not be able to shoot at other cops. SWAT and army will still shoot you.", function(on)
+menu.toggle(self_root, "让我当警察", {"makemecop"}, "将你设定为警察。为了让你不再是警察，这会让你自杀。几乎所有的警察都看不见你，但你会报告自己的罪行，有警察的声音，有一个视觉锥，并且不能向其他警察开枪。特警队和军队仍然会向你开枪。", function(on)
     ped = PLAYER.PLAYER_PED_ID()
     if on then
         PED.SET_PED_AS_COP(ped, true)
