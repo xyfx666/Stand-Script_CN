@@ -481,16 +481,16 @@ ban_msg = "HUD_ROSBANPERM"
 --_SET_WARNING_MESSAGE_WITH_ALERT(char* labelTitle, char* labelMsg, int p2, int p3, char* labelMsg2, BOOL p5, int p6, int p7, char* p8, char* p9, BOOL background, int errorCode)
 
 menu.action(fakemessages_root, "虚假的封号消息 1", {"fakeban"}, "显示了一条完全虚假的禁令信息 .也许可以用它从作弊开发者那里获得免费帐户 ,或者在r/GTA5Moding上引起恐慌 .", function(on_click)
-    show_custom_alert_until_enter("You have been banned from Grand Theft Auto Online.~n~Return to Grand Theft Auto V.")
+    show_custom_alert_until_enter("你已被永久禁止进入GTA线上模式。~n~返回 Grand Theft Auto V。")
 end)
 
 menu.action(fakemessages_root, "虚假的封号消息 2", {"fakeban"}, "显示了一条完全虚假的禁令信息 .也许可以用它从作弊开发者那里获得免费帐户 ,或者在r/GTA5Moding上引起恐慌 .", function(on_click)
-    show_custom_alert_until_enter("You have been banned from Grand Theft Auto Online permanently.~n~Return to Grand Theft Auto V.")
+    show_custom_alert_until_enter("你已被永久禁止进入GTA线上模式。~n~返回 Grand Theft Auto V。")
 end)
 --0x252F03F2
 
 menu.action(fakemessages_root, "服务不可用", {"fakeservicedown"}, "rOcKstaR GaMe ServICeS ArE UnAvAiLAbLe RiGht NoW", function(on_click)
-    show_custom_alert_until_enter("The Rockstar game services are unavailable right now.~n~Please return to Grand Theft Auto V.")
+    show_custom_alert_until_enter("Rockstar 游戏服务现在不可用。~n~返回 Grand Theft Auto V。")
 end)
 
 menu.action(fakemessages_root, "封号到 xyz", {"suspendeduntil"}, "Suspended until xyz. It will ask you to input the date to show, don\'t worry.", function(on_click)
@@ -498,7 +498,7 @@ menu.action(fakemessages_root, "封号到 xyz", {"suspendeduntil"}, "Suspended u
     menu.show_command_box("suspendeduntil ")
 end, function(on_command)
     -- fuck it lol
-    show_custom_alert_until_enter("You have been suspended from Grand Theft Auto Online until " .. on_command .. ".~n~In addition, your Grand Theft Auto Online character(s) will be reset.~n~Return to Grand Theft Auto V.")
+    show_custom_alert_until_enter("你已被禁止进入gta线上模式，直到 " .. on_command .. ".~n~另外，您GTA线上模式的角色会将被重置。~n~返回 Grand Theft Auto V。")
 end)
 
 menu.action(fakemessages_root, "Stand on TOP!", {"stand on top"}, "yep", function(on_click)
