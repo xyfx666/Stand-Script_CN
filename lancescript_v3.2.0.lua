@@ -498,7 +498,7 @@ menu.action(fakemessages_root, "封号到 xyz", {"suspendeduntil"}, "Suspended u
     menu.show_command_box("suspendeduntil ")
 end, function(on_command)
     -- fuck it lol
-    show_custom_alert_until_enter("你已被禁止进入gta线上模式，直到 " .. on_command .. ".~n~另外，您GTA线上模式的角色会将被重置。~n~返回 Grand Theft Auto V。")
+    show_custom_alert_until_enter("你已被禁止进入GTA线上模式，直到 " .. on_command .. ".~n~另外，您GTA线上模式的角色会将被重置。~n~返回 Grand Theft Auto V。")
 end)
 
 menu.action(fakemessages_root, "Stand on TOP!", {"stand on top"}, "yep", function(on_click)
