@@ -51,8 +51,8 @@ function file_exists(path)
 end
 
 if not file_exists(file_name) then
-  util.toast(file_name .. ' 未找到 ,请确保脚本安装正确 .阅读 INSTALL.TXT!!! 并按照文件夹名称中的说明进行操作 .')
-  util.stop_script()
+    util.toast('未能找到'..file_name .. ' 请确保您已过目INSTALL.TXT, 并按指示正确安装脚本.')
+    util.stop_script()
 else
     file = io.open(file_name, "r")
     i = 0
@@ -132,7 +132,7 @@ scaleform_thread = util.create_thread(function (thr)
             if file_exists(filesystem.scripts_dir() .. 'Tox1cEssent1als.lua') and not file_exists(filesystem.scripts_dir() .. 'disclaimer_viewed.txt') then
                 local text = "~g~阁下没有被禁止进入GTA线上模式~n~ ~w~请注意， 这是来自Lancescript开发者的一则声明，恳请您仔细阅读。~n~我已注意到您或许在使用ToxicEssentials(ToxicEssent1als.lua)。~n~我不能强迫您不再使用ToxicEssentials，但它的制作组不是他妈的什么好东西。~n~" .. 
                 "ToxicEssentials的内容中包括其他Lua脚本作者的辛苦创作。而它的制作组成员，pnn，在未有标明原作者，或征得原作者同意的情况下剽窃代码，并将其用于商业行为。~n~产生的任何盈利也没有回馈给这些代码的作者。"
-                local text2 = "您可以继续使用ToxicEssentials。但制作ToxicEssential的成员之一，~n~ICYPhoenix，相较其他制作组成员拥有良好的品德。~n~他/她过去几个月来一直在维护一个没有混淆过代码，并标注代码来源的版本。" .. 
+                local text2 = "您可以继续使用ToxicEssentials。但制作ToxicEssential的成员之一，~n~ICYPhoenix，相较其他制作组成员拥有良好的品德。~n~他/她过去几个月来一直在维护一个没有混淆过代码，并标注代码来源的版本。~n~" .. 
                 "我强烈建议您使用Phoenixscript和/或 Lancescript 来代替pnn剽窃来的作品 ~n~毕竟Phoenixscript 本来就是 Toxicessentials。~n~"..
                 "我鼓励您不再向别人分享ToxicEssentials，因为ToxicEssentials的代码是剽窃来的，被混淆过的，且质量很差。但您也可以选择忽视这条信息，并继续分享。"
                 local text3 = "您之后不会再看到这则声明，感谢阁下抽出您宝贵的时间阅读此声明。"
@@ -168,7 +168,7 @@ function dispatch_griefer_jesus(target)
         PED.SET_PED_COMBAT_ATTRIBUTES(jesus, 5, true)
 	    PED.SET_PED_COMBAT_ATTRIBUTES(jesus, 46, true)
         PED.SET_PED_CAN_RAGDOLL(jesus, false)
-        WEAPON.GIVE_WEAPON_TO_PED(jesus, util.joaat("武器轨道炮"), 9999, true, true)
+        WEAPON.GIVE_WEAPON_TO_PED(jesus, util.joaat("WEAPON_RAILGUN"), 9999, true, true)
         TASK.TASK_GO_TO_ENTITY(jesus, target_ped, -1, -1, 100.0, 0.0, 0)
     	TASK.TASK_COMBAT_PED(jesus, target_ped, 0, 16)
         --pretty much just a respawn/rationale check
@@ -182,12 +182,12 @@ function dispatch_griefer_jesus(target)
             end
             -- if jesus disappears we can just make another lmao
             if not ENTITY.DOES_ENTITY_EXIST(jesus) then
-                util.toast("耶稣显然不再存在了 .阻止耶稣的线程 .")
+                util.toast("耶稣不再在人间显灵了, 正在阻止耶稣的线程.")
                 util.stop_thread()
             end
             local target_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(target)
             if not players.exists(target) then
-                util.toast("玩家目标已丢失 .悲伤的耶稣之线正在停止 .")
+                util.toast("玩家已离开, 伤心的耶稣停止了思考.")
                 util.stop_thread()
             else
                 TASK.TASK_COMBAT_PED(jesus, target_ped, 0, 16)
@@ -196,7 +196,7 @@ function dispatch_griefer_jesus(target)
         end
     end)
 end
-menu.toggle(lancescript_root, "显示活动的实体池", {"entitypoolupdates"}, "正在更新实体池 ,你看到的越多 ,都会加重cpu的负核;建议不要长期开启", function(on)
+menu.toggle(lancescript_root, "显示活动的实体池", {"entitypoolupdates"}, "正在更新实体池. 你看到的越多, CPU的负载越重. 建议不要长期开启", function(on)
     if on then
         show_updates = true
     else
@@ -204,17 +204,17 @@ menu.toggle(lancescript_root, "显示活动的实体池", {"entitypoolupdates"},
     end
 end)
 
-menu.action(lancescript_root, "看 Konosuba! ep 1", {"konosuba"}, "", function(on_click)
+menu.action(lancescript_root, "在YouTube上观看为美好的世界献上祝福！的第一集", {"konosuba"}, "", function(on_click)
     os.execute("start \"\" \"https://www.youtube.com/watch?v=H8CORxz5FKA\"")
 end)
 --memory.scan(string pattern)
 
-menu.action(lancescript_root, "关于Lancescript的推特", {"tweet"}, "", function(on_click)
+menu.action(lancescript_root, "查看Lancescript的推特", {"tweet"}, "", function(on_click)
     os.execute("start \"\" \"https://twitter.com/compose/tweet?text=Lancescript is the best LUA script ever!\"")
 end)
 
 joinsound = false
-menu.toggle(sounds_root, "玩家加入时的声音", {"joinsound"}, "", function(on)
+menu.toggle(sounds_root, "玩家加入时的音效", {"joinsound"}, "", function(on)
     if on then
         joinsound = true
     else
@@ -223,7 +223,7 @@ menu.toggle(sounds_root, "玩家加入时的声音", {"joinsound"}, "", function
 end)
 
 leavesound = false
-menu.toggle(sounds_root, "玩家离开时的声音", {"leavesound"}, "", function(on)
+menu.toggle(sounds_root, "玩家离开时的音效", {"leavesound"}, "", function(on)
     if on then
         leavesound = true
     else
@@ -298,7 +298,7 @@ end
 function request_model_load(hash)
     request_time = os.time()
     if not STREAMING.IS_MODEL_VALID(hash) then
-        util.toast("请求的模型无效 ,无法加载.")
+        util.toast("请求的模型无效, 无法加载.")
         return
     end
     STREAMING.REQUEST_MODEL(hash)
@@ -307,7 +307,7 @@ function request_model_load(hash)
             util.toast("模型将在十秒内加载.")
             break
         end
-        util.toast("加载模组哈希 " .. hash)
+        util.toast("正在加载模组HASH值..." .. hash)
         util.yield()
     end
 end
@@ -317,10 +317,10 @@ function request_ptfx_load(hash)
     STREAMING.REQUEST_NAMED_PTFX_ASSET(hash)
     while not STREAMING.HAS_PTFX_ASSET_LOADED(hash) do
         if os.time() - request_time >= 10 then
-            util.toast("特效 没能在5秒内加载.")
+            util.toast("粒子特效 未能在5秒内加载完成.")
             break
         end
-        util.toast("正在加载 特效 哈希 " .. hash)
+        util.toast("正在加载粒子特效HASH " .. hash)
         util.yield()
     end
 end
@@ -352,7 +352,7 @@ function spawn_object_in_front_of_ped(ped, hash, ang, room, zoff, setonground)
 end
 
 rainbow_tint = false
-menu.toggle(weapons_root, "彩虹色武器", {"rainbowtint"}, "boogie", function(on)
+menu.toggle(weapons_root, "彩虹武器涂装", {"rainbowtint"}, "boogie", function(on)
     plyr = PLAYER.PLAYER_PED_ID()
     if on then
         local last_tint = WEAPON.GET_PED_WEAPON_TINT_INDEX(PLAYER.PLAYER_PED_ID(), WEAPON.GET_SELECTED_PED_WEAPON(PLAYER.PLAYER_PED_ID()))
@@ -363,7 +363,7 @@ menu.toggle(weapons_root, "彩虹色武器", {"rainbowtint"}, "boogie", function
     end
 end, false)
 
-menu.toggle(weapons_root, "隐藏武器", {"invisguns"}, "让你的武器不可见 .可能只是本地的 .切换武器时你需要重新切换.", function(on)
+menu.toggle(weapons_root, "隐藏武器", {"invisguns"}, "让你的武器不可见. 或许只对自己可见, 切换武器后需重新开启.", function(on)
     plyr = PLAYER.PLAYER_PED_ID()
     if on then
         WEAPON.SET_PED_CURRENT_WEAPON_VISIBLE(plyr, false, false, false, false) 
@@ -373,7 +373,7 @@ menu.toggle(weapons_root, "隐藏武器", {"invisguns"}, "让你的武器不可�
 end, false)
 
 noexplosives = false
-menu.toggle(protections_root, "禁止爆炸", {"noexplosives"}, "开启时自动从世界中移除所有爆炸性射弹 ,甚至是火箭 .不确定这是否适用于其他玩家 .并不包括所有爆炸 ,只是包括一些玩家武器；车辆武器可能不受影响.", function(on)
+menu.toggle(protections_root, "禁止爆炸", {"noexplosives"}, "自动从世界中移除所有爆炸弹药, 包括火箭. 或许只对自己可见. 并不包括所有爆炸, 只包括一些玩家武器. 车载武器可能不受影响. ", function(on)
     plyr = PLAYER.PLAYER_PED_ID()
     if on then
         noexplosives = true
