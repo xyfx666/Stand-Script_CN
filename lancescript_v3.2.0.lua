@@ -51,7 +51,7 @@ function file_exists(path)
 end
 
 if not file_exists(file_name) then
-  util.toast(file_name .. ' 未找到，请确保脚本安装正确。阅读 INSTALL.TXT!!! 并按照文件夹名称中的说明进行操作。')
+  util.toast(file_name .. ' 未找到 ,请确保脚本安装正确 .阅读 INSTALL.TXT!!! 并按照文件夹名称中的说明进行操作 .')
   util.stop_script()
 else
     file = io.open(file_name, "r")
@@ -118,7 +118,11 @@ end
 
 scaleform_thread = util.create_thread(function (thr)
     name = os.getenv("USERNAME")
+<<<<<<< HEAD
     util.toast("你好 " .. name .. "!")
+=======
+    util.toast("你好, " .. name .. "!")
+>>>>>>> 426ebf161e9816e6601dceab1bfbbcbf2eb3869c
     scaleForm = GRAPHICS.REQUEST_SCALEFORM_MOVIE("MP_BIG_MESSAGE_FREEMODE")
     GRAPHICS.BEGIN_SCALEFORM_MOVIE_METHOD(scaleForm, "SHOW_SHARD_WASTED_MP_MESSAGE")
     GRAPHICS.SCALEFORM_MOVIE_METHOD_ADD_PARAM_PLAYER_NAME_STRING("~p~lancescript")
@@ -130,16 +134,16 @@ scaleform_thread = util.create_thread(function (thr)
         if os.time() - starttime >= 5 then
             AUDIO.PLAY_SOUND_FRONTEND(55, "FocusOut", "HintCamSounds", true)
             if file_exists(filesystem.scripts_dir() .. 'Tox1cEssent1als.lua') and not file_exists(filesystem.scripts_dir() .. 'disclaimer_viewed.txt') then
-                local text = "~g~You are not banned. ~w~This is a notice from Lancescript. Toxicessentials (Tox1cEssent1als.lua) has been detected. Please read.~n~I won\'t stop you from using ToxicEssentials, that would be overstepping boundaries. But just be aware that the developer is a fucking asshole.~n~" .. 
-                "Toxicessentials consists of hard work that the developer (pnn) stole from others and proceeded to sell with no profits or even credit given to these developers."
-                local text2 = "You are free to keep using Toxicessentials, but one of its developers who is not a douchebag, ICYphoenix, has been maintaining a non-obfuscated, credited edition of it for months.~n~" .. 
-                "You are heavily encouraged to use Phoenixscript and/or Lancescript in replacement of pnn\'s skidded, stolen work. ~n~Phoenixscript IS Toxicessentials, after all.~n~"..
-                "I encourage you to no longer give people downloads of Toxicessentials. You do not have to listen to me. But Toxicessentials is poorly written, unmaintained, obfuscated, stolen code.~n~"..
-                "This will be the only time you see this message. Thanks for your time."
+                local text = "~g~你没有被封禁. ~w~这是来自Lancescript的通知 .已检测到有毒物质（tox1Essentials.lua） .请阅读 .~n~我不会阻止你使用有毒物质 ,那会越界的 .但要知道开发者是个混蛋 .~n~” . .
+                “有毒物质包括开发商（pnn）从其他人那里偷来的辛勤工作 ,然后继续出售 ,没有利润 ,甚至没有给这些开发商任何信贷 ."
+                local text2 = "您可以继续使用Toxiccessentials ,但它的一个开发人员ICYphoenix不是傻瓜 ,几个月来一直在维护它的一个非模糊、可信版本 .~n~” . .
+                “强烈建议您使用Phoenixscript和/或Lancescript替换pnn的打滑、被盗作品~毕竟 ,Phoenixscript是有毒物质 .~n~” . .
+                “我鼓励你不要再让人们下载有毒物质 .你不必听我的 .但是Toxiccessentials编写得很糟糕 ,没有维护 ,混乱不堪 ,代码被盗 .~n~” . .
+                “这将是您唯一一次看到此消息 .谢谢你抽出时间 ."
                 show_custom_alert_until_enter(text)
                 show_custom_alert_until_enter(text2)
                 file = io.open(filesystem.scripts_dir() .. 'disclaimer_viewed.txt', "w")
-                file:write("This file exists in your Lua scripts to tell Lancescript you have viewed the disclaimer about Toxicessentials. If you remove it, you will see the disclaimer again.")
+                file:write("此文件存在于您的Lua脚本中 ,用于告诉Lancescript您已查看有关Toxiccessentials的免责声明 .如果删除它 ,您将再次看到免责声明 .")
                 file:close()
             end
             util.stop_thread()
@@ -153,7 +157,7 @@ end)
 
 function dispatch_griefer_jesus(target)
     griefer_jesus = util.create_thread(function(thr)
-        util.toast("Griefer jesus sent!")
+        util.toast("让耶稣伤心吧！")
         request_model_load(-835930287)
         local target_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(target)
         coords = ENTITY.GET_ENTITY_COORDS(target_ped, false)
@@ -181,12 +185,12 @@ function dispatch_griefer_jesus(target)
             end
             -- if jesus disappears we can just make another lmao
             if not ENTITY.DOES_ENTITY_EXIST(jesus) then
-                util.toast("Jesus apparently stopped existing. Stopping Jesus thread.")
+                util.toast("耶稣显然不再存在了 .阻止耶稣的线程 .")
                 util.stop_thread()
             end
             local target_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(target)
             if not players.exists(target) then
-                util.toast("The player target has been lost. The griefer Jesus thread is stopping.")
+                util.toast("玩家目标已丢失 .悲伤的耶稣之线正在停止 .")
                 util.stop_thread()
             else
                 TASK.TASK_COMBAT_PED(jesus, target_ped, 0, 16)
@@ -195,7 +199,7 @@ function dispatch_griefer_jesus(target)
         end
     end)
 end
-menu.toggle(lancescript_root, "显示活动的实体池", {"entitypoolupdates"}, "正在更新实体池，你看到的越多，都会加重cpu的负核;建议不要长期开启", function(on)
+menu.toggle(lancescript_root, "显示活动的实体池", {"entitypoolupdates"}, "正在更新实体池 ,你看到的越多 ,都会加重cpu的负核;建议不要长期开启", function(on)
     if on then
         show_updates = true
     else
@@ -203,12 +207,12 @@ menu.toggle(lancescript_root, "显示活动的实体池", {"entitypoolupdates"},
     end
 end)
 
-menu.action(lancescript_root, "Watch Konosuba! ep 1", {"konosuba"}, "", function(on_click)
+menu.action(lancescript_root, "看 Konosuba! ep 1", {"konosuba"}, "", function(on_click)
     os.execute("start \"\" \"https://www.youtube.com/watch?v=H8CORxz5FKA\"")
 end)
 --memory.scan(string pattern)
 
-menu.action(lancescript_root, "Tweet about Lancescript", {"tweet"}, "", function(on_click)
+menu.action(lancescript_root, "关于Lancescript的推特", {"tweet"}, "", function(on_click)
     os.execute("start \"\" \"https://twitter.com/compose/tweet?text=Lancescript is the best LUA script ever!\"")
 end)
 
@@ -297,7 +301,7 @@ end
 function request_model_load(hash)
     request_time = os.time()
     if not STREAMING.IS_MODEL_VALID(hash) then
-        util.toast("请求的模型无效，无法加载.")
+        util.toast("请求的模型无效 ,无法加载.")
         return
     end
     STREAMING.REQUEST_MODEL(hash)
@@ -316,10 +320,10 @@ function request_ptfx_load(hash)
     STREAMING.REQUEST_NAMED_PTFX_ASSET(hash)
     while not STREAMING.HAS_PTFX_ASSET_LOADED(hash) do
         if os.time() - request_time >= 10 then
-            util.toast("PTFX 没能在5秒内加载.")
+            util.toast("特效 没能在5秒内加载.")
             break
         end
-        util.toast("正在加载 PTFX 哈希 " .. hash)
+        util.toast("正在加载 特效 哈希 " .. hash)
         util.yield()
     end
 end
@@ -362,7 +366,7 @@ menu.toggle(weapons_root, "彩虹色武器", {"rainbowtint"}, "boogie", function
     end
 end, false)
 
-menu.toggle(weapons_root, "隐藏武器", {"invisguns"}, "让你的武器不可见。可能只是本地的。切换武器时你需要重新切换.", function(on)
+menu.toggle(weapons_root, "隐藏武器", {"invisguns"}, "让你的武器不可见 .可能只是本地的 .切换武器时你需要重新切换.", function(on)
     plyr = PLAYER.PLAYER_PED_ID()
     if on then
         WEAPON.SET_PED_CURRENT_WEAPON_VISIBLE(plyr, false, false, false, false) 
@@ -372,7 +376,7 @@ menu.toggle(weapons_root, "隐藏武器", {"invisguns"}, "让你的武器不可�
 end, false)
 
 noexplosives = false
-menu.toggle(protections_root, "禁止爆炸", {"noexplosives"}, "开启时自动从世界中移除所有爆炸性射弹，甚至是火箭。不确定这是否适用于其他玩家。并不包括所有爆炸，只是包括一些玩家武器；车辆武器可能不受影响.", function(on)
+menu.toggle(protections_root, "禁止爆炸", {"noexplosives"}, "开启时自动从世界中移除所有爆炸性射弹 ,甚至是火箭 .不确定这是否适用于其他玩家 .并不包括所有爆炸 ,只是包括一些玩家武器；车辆武器可能不受影响.", function(on)
     plyr = PLAYER.PLAYER_PED_ID()
     if on then
         noexplosives = true
@@ -383,7 +387,7 @@ end, false)
 
 noclip = false
 noclip_height = 0
-menu.toggle(noclip_root, "穿墙", {"noclip"}, "车辆也同样适用.", function(on)
+menu.toggle(noclip_root, "无碰撞", {"noclip"}, "车辆也同样适用.", function(on)
     plyr = PLAYER.PLAYER_PED_ID()
     veh = PED.GET_VEHICLE_PED_IS_IN(plyr, false)
     if on then
@@ -406,16 +410,16 @@ menu.toggle(noclip_root, "穿墙", {"noclip"}, "车辆也同样适用.", functio
 end, false)
 
 noclip_hspeed = 0.1
-menu.click_slider(noclip_root, "Horizontal speed", {"nocliphspeed"}, "Horizontal speed for noclip, * 0.1", 1, 50, 5, 1, function(s)
+menu.click_slider(noclip_root, "水平速度", {"nocliphspeed"}, "无碰撞的水平速度, * 0.1", 1, 50, 5, 1, function(s)
     noclip_hspeed = s * 0.1
   end)
 
 noclip_vspeed = 0.1
-menu.click_slider(noclip_root, "Vertical speed", {"noclipvspeed"}, "Vertical speed for noclip, * 0.1", 1, 50, 2, 1, function(s)
+menu.click_slider(noclip_root, "垂直速度", {"noclipvspeed"}, "无碰撞的垂直速度, * 0.1", 1, 50, 2, 1, function(s)
     noclip_vspeed = s * 0.1
   end)
   
-menu.toggle(self_root, "Make me a cop", {"makemecop"}, "Sets your ped as a cop. To make you not a cop, it will suicide you. Will make you invisible to almost all cops, but you will report your own crimes, get a cop voice, have a vision cone, and will not be able to shoot at other cops. SWAT and army will still shoot you.", function(on)
+menu.toggle(self_root, "让我当警察", {"makemecop"}, "将你设定为警察 .为了让你不再是警察 ,这会让你自杀 .几乎所有的警察都看不见你 ,但你会报告自己的罪行 ,有警察的声音 ,有一个视觉锥 ,并且不能向其他警察开枪 .特警队和军队仍然会向你开枪 .", function(on)
     ped = PLAYER.PLAYER_PED_ID()
     if on then
         PED.SET_PED_AS_COP(ped, true)
@@ -427,7 +431,7 @@ end)
 
 
 hud_rainbow = false
-menu.toggle(gametweaks_root, "RGB hud", {"rgbhud"}, "RGB\'s your hud. This is AIDS, and requires a game restart to reset.", function(on)
+menu.toggle(gametweaks_root, "RGB hud", {"rgbhud"}, "让你的游戏界面RGB起来 !这是辅助工具 ,需要重新启动游戏才能重置 .", function(on)
     if on then
         hud_rainbow = true
     else
@@ -436,11 +440,11 @@ menu.toggle(gametweaks_root, "RGB hud", {"rgbhud"}, "RGB\'s your hud. This is AI
 end)
 
 lodscale = 1
-menu.click_slider(gametweaks_root, "LOD Scale Override", {"lodscale"}, "Overrides extended distance scaling, lets you make distant objects \"look more HD\". This is an oversimplified explanation. May also make your game run like shit.", 1, 200, 1, 1, function(s)
+menu.click_slider(gametweaks_root, "LOD比例覆盖", {"lodscale"}, "覆盖扩展距离缩放 ,使远程对象“看起来更高清” .这是一个过于简单的解释 .也可能会让你的游戏像狗屎一样运行 .", 1, 200, 1, 1, function(s)
     lodscale = s
   end)
 
-menu.toggle(radio_root, "Music-only radio", {"musiconly"}, "Forces radio stations to only play music. No bullshit.", function(on)
+menu.toggle(radio_root, "只有音乐的电台", {"musiconly"}, "强制电台只播放音乐 .没有废话 .", function(on)
     num_unlocked = AUDIO.GET_NUM_UNLOCKED_RADIO_STATIONS()
     if on then
         for i=1, num_unlocked do
@@ -471,7 +475,7 @@ menu.action(radio_root, "Tracklist override - \"Don\'t come close\"", {"dontcome
     AUDIO.SET_CUSTOM_RADIO_TRACK_LIST(station, "END_CREDITS_KILL_TREVOR", true)
 end)
 
-menu.action(radio_root, "Next track", {"radioskip"}, "Skips the current track", function(on_click)
+menu.action(radio_root, "下一轨道", {"radioskip"}, "跳过当前轨迹", function(on_click)
     AUDIO.SKIP_RADIO_FORWARD()
 end)
 
@@ -480,20 +484,20 @@ end)
 ban_msg = "HUD_ROSBANPERM"
 --_SET_WARNING_MESSAGE_WITH_ALERT(char* labelTitle, char* labelMsg, int p2, int p3, char* labelMsg2, BOOL p5, int p6, int p7, char* p8, char* p9, BOOL background, int errorCode)
 
-menu.action(fakemessages_root, "Fake ban message 1", {"fakeban"}, "Shows a completely fake ban message. Maybe use this to get free accounts from cheat devs or cause a scare on r/Gta5modding.", function(on_click)
+menu.action(fakemessages_root, "虚假的封号消息 1", {"fakeban"}, "显示了一条完全虚假的禁令信息 .也许可以用它从作弊开发者那里获得免费帐户 ,或者在r/GTA5Moding上引起恐慌 .", function(on_click)
     show_custom_alert_until_enter("You have been banned from Grand Theft Auto Online.~n~Return to Grand Theft Auto V.")
 end)
 
-menu.action(fakemessages_root, "Fake ban message 2", {"fakeban"}, "Shows a completely fake ban message. Maybe use this to get free accounts from cheat devs or cause a scare on r/Gta5modding.", function(on_click)
+menu.action(fakemessages_root, "虚假的封号消息 2", {"fakeban"}, "显示了一条完全虚假的禁令信息 .也许可以用它从作弊开发者那里获得免费帐户 ,或者在r/GTA5Moding上引起恐慌 .", function(on_click)
     show_custom_alert_until_enter("You have been banned from Grand Theft Auto Online permanently.~n~Return to Grand Theft Auto V.")
 end)
 --0x252F03F2
 
-menu.action(fakemessages_root, "Services unavailable", {"fakeservicedown"}, "rOcKstaR GaMe ServICeS ArE UnAvAiLAbLe RiGht NoW", function(on_click)
+menu.action(fakemessages_root, "服务不可用", {"fakeservicedown"}, "rOcKstaR GaMe ServICeS ArE UnAvAiLAbLe RiGht NoW", function(on_click)
     show_custom_alert_until_enter("The Rockstar game services are unavailable right now.~n~Please return to Grand Theft Auto V.")
 end)
 
-menu.action(fakemessages_root, "Suspended until xyz", {"suspendeduntil"}, "Suspended until xyz. It will ask you to input the date to show, don\'t worry.", function(on_click)
+menu.action(fakemessages_root, "封号到 xyz", {"suspendeduntil"}, "Suspended until xyz. It will ask you to input the date to show, don\'t worry.", function(on_click)
     util.toast("Input the date your \"suspension\" should end.")
     menu.show_command_box("suspendeduntil ")
 end, function(on_command)
@@ -509,7 +513,7 @@ menu.action(fakemessages_root, "Yeeyee ass haircut", {"yeeyee"}, "maybe", functi
     show_custom_alert_until_enter("Maybe if you got rid of that old ~r~yee yee ass haircut~w~ you'd get some bitches on your dick")
 end)
 
-menu.action(fakemessages_root, "Welcome to the Black Parade", {"blackparade"}, "", function(on_click)
+menu.action(fakemessages_root, "欢迎加入黑暗行军", {"blackparade"}, "", function(on_click)
     show_custom_alert_until_enter("When I was a young boy, my father~n~"..
     "Took me into the city to see a marching band~n~"..
     "He said, \"Son, when you grow up would you be~n~"..
@@ -541,19 +545,19 @@ menu.action(fakemessages_root, "Exit scam", {"exitscam"}, "you know the vibes", 
 )
 end)
 
-menu.action(fakemessages_root, "Custom alert", {"customalert"}, "Shows a custom alert of your liking. Credit to QuickNUT and Sainan for help with this.", function(on_click)
+menu.action(fakemessages_root, "自定义警报", {"customalert"}, "显示您喜欢的自定义提醒 .这要归功于QuickNUT和Sainan的帮助 .", function(on_click)
     util.toast("Please type what you want the alert to say. Type ~n~ for new line, ie foo~n~bar will show up as 2 lines.")
     menu.show_command_box("customalert ")
 end, function(on_command)
     show_custom_alert_until_enter(on_command)
 end)
 
-menu.action(menu.my_root(), "Players shortcut", {}, "Quickly opens session players list, for convenience", function(on_click)
+menu.action(menu.my_root(), "玩家捷径", {}, "为方便起见 ,快速打开会话玩家列表", function(on_click)
     menu.trigger_commands("playerlist")
 end)
 
 make_peds_cops = false
-menu.toggle(npc_root, "Make nearby peds cops", {"makecops"}, "They\'re not actually real cops, but kind of are. They seem to flee very easily, but will snitch on you. Sort of like mall cops.", function(on)
+menu.toggle(npc_root, "叫附近的警察来", {"makecops"}, "他们不是真正的警察 ,但有点像 .他们似乎很容易逃跑 ,但会告密你 .有点像商场警察 .", function(on)
     if on then
         make_peds_cops = true
         ped_uses = ped_uses + 1
@@ -563,7 +567,7 @@ menu.toggle(npc_root, "Make nearby peds cops", {"makecops"}, "They\'re not actua
     end
 end, false)
 --SET_RIOT_MODE_ENABLED(BOOL toggle)
-menu.toggle(npc_root, "Riot mode", {"riotmode"}, "All nearby NPC\'s duel it out and are given weapons. Surprisingly this is handled by the game itself.", function(on)
+menu.toggle(npc_root, "暴动模式", {"riotmode"}, "所有附近的NPC都决斗了 ,并获得了武器 .令人惊讶的是 ,这是由游戏本身处理的 .", function(on)
     if on then
         MISC.SET_RIOT_MODE_ENABLED(true)
     else
@@ -571,7 +575,7 @@ menu.toggle(npc_root, "Riot mode", {"riotmode"}, "All nearby NPC\'s duel it out 
     end
 end, false)
 
-menu.action(npc_root, "Make nearby peds musicians", {}, "now here\'s wonderwall", function(on_click)
+menu.action(npc_root, "让附近的行人成为音乐家", {}, "现在这里是神奇墙", function(on_click)
     local peds = util.get_all_peds()
     for k,ped in pairs(peds) do
         if not is_ped_player(ped) then
@@ -582,7 +586,7 @@ menu.action(npc_root, "Make nearby peds musicians", {}, "now here\'s wonderwall"
 end)
 
 roast_voicelines = false
-menu.toggle(npc_root, "Roast voicelines", {"npcroasts"}, "Very unethical.", function(on)
+menu.toggle(npc_root, "烧烤语音线", {"npcroasts"}, "非常不道德 .", function(on)
     --make_all_peds_say("GENERIC_INSULT_MED", "SPEECH_PARAMS_FORCE_SHOUTED")
     if on then
         ped_uses = ped_uses + 1
@@ -594,7 +598,7 @@ menu.toggle(npc_root, "Roast voicelines", {"npcroasts"}, "Very unethical.", func
 end, false)
 
 sex_voicelines = false
-menu.toggle(npc_root, "Sex voicelines", {"sexlines"}, "oH FuCK YeAh", function(on)
+menu.toggle(npc_root, "性爱语音线", {"sexlines"}, "哦 ,我操你妈的 ,这真是爽翻了", function(on)
     if on then
         ped_uses = ped_uses + 1
         sex_voicelines = true
@@ -605,7 +609,7 @@ menu.toggle(npc_root, "Sex voicelines", {"sexlines"}, "oH FuCK YeAh", function(o
 end, false)
 
 gluck_voicelines = false
-menu.toggle(npc_root, "Gluck gluck 9000 voicelines", {"gluckgluck9000"}, "I\'m begging you, touch some grass.", function(on)
+menu.toggle(npc_root, "Gluck gluck 9000 语音线", {"gluckgluck9000"}, "我求你 ,摸摸草 .", function(on)
     if on then
         ped_uses = ped_uses + 1
         gluck_voicelines = true
@@ -616,7 +620,7 @@ menu.toggle(npc_root, "Gluck gluck 9000 voicelines", {"gluckgluck9000"}, "I\'m b
 end, false)
 
 screamall = false
-menu.toggle(npc_root, "Scream", {"screamall"}, "Makes all nearby peds scream horrifically. Awesome.", function(on)
+menu.toggle(npc_root, "尖叫", {"screamall"}, "让附近所有的行人惨叫 .这真是太让人兴奋了 .", function(on)
     if on then
         ped_uses = ped_uses + 1
         screamall = true
@@ -627,7 +631,7 @@ menu.toggle(npc_root, "Scream", {"screamall"}, "Makes all nearby peds scream hor
 end, false)
 
 play_ped_ringtones = false
-menu.toggle(npc_root, "Ring all peds phones", {"ringtones"}, "Turns all nearby ped ringtones on", function(on)
+menu.toggle(npc_root, "给所有行人打电话", {"ringtones"}, "打开附近所有的行人铃声", function(on)
     if on then
         play_ped_ringtones = true
         ped_uses = ped_uses +1
@@ -638,7 +642,7 @@ menu.toggle(npc_root, "Ring all peds phones", {"ringtones"}, "Turns all nearby p
 end, false)
 
 dumb_peds = false
-menu.toggle(npc_root, "Make all peds dumb", {"dumbpeds"}, "Makes nearby peds dumb / marks them as \"not highly perceptive\" in the engine. Whatever that means tbh.", function(on)
+menu.toggle(npc_root, "使所有的人哑口无言", {"dumbpeds"}, "使附近的行人变哑/在发动机中将其标记为“非高度感知” .不管那意味着什么 ,tbh .", function(on)
     if on then
         dumb_peds = true
         ped_uses = ped_uses + 1
@@ -649,7 +653,7 @@ menu.toggle(npc_root, "Make all peds dumb", {"dumbpeds"}, "Makes nearby peds dum
 end, false)
 
 safe_peds = false
-menu.toggle(npc_root, "Give peds helmets", {"safepeds"}, "First-time drivers need safety.", function(on)
+menu.toggle(npc_root, "给行人头盔", {"safepeds"}, "第一次开车的人需要安全 .", function(on)
     if on then
         safe_peds = true
         ped_uses = ped_uses + 1
@@ -660,7 +664,7 @@ menu.toggle(npc_root, "Give peds helmets", {"safepeds"}, "First-time drivers nee
 end, false)
 
 deaf_peds= false
-menu.toggle(npc_root, "Make all peds deaf", {"deafpeds"}, "Makes nearby peds deaf. Probably only noticeable for stealth missions.", function(on)
+menu.toggle(npc_root, "让所有的行人都聋", {"deafpeds"}, "使附近的行人聋了 .可能只有在执行隐形任务时才引人注目 .", function(on)
     if on then
         deaf_peds = true
         ped_uses = ped_uses + 1
@@ -671,7 +675,7 @@ menu.toggle(npc_root, "Make all peds deaf", {"deafpeds"}, "Makes nearby peds dea
 end, false)
 
 kill_peds= false
-menu.toggle(npc_root, "Kill peds", {"killpeds"}, "Stand already does this, but whatever. Ours is more dramatic I think.", function(on)
+menu.toggle(npc_root, "杀死行人", {"killpeds"}, "Stand已经这么做了 ,但不管怎样 .我认为我们的更具戏剧性.", function(on)
     if on then
         kill_peds = true
         ped_uses = ped_uses + 1
@@ -1781,7 +1785,7 @@ function get_business_stat(business, offset)
 end
 
 bm_meth = false
-menu.toggle(business_root, "Meth", {"bm_meth"}, "", function(on)
+menu.toggle(business_root, "冰毒", {"bm_meth"}, "", function(on)
     ped = PLAYER.PLAYER_PED_ID()
     if on then
         bm_meth = true
@@ -1793,7 +1797,7 @@ menu.toggle(business_root, "Meth", {"bm_meth"}, "", function(on)
 end, false)
 
 bm_weed = false
-menu.toggle(business_root, "Weed", {"bm_weed"}, "", function(on)
+menu.toggle(business_root, "大麻", {"bm_weed"}, "", function(on)
     ped = PLAYER.PLAYER_PED_ID()
     if on then
         bm_weed = true
@@ -1805,7 +1809,7 @@ menu.toggle(business_root, "Weed", {"bm_weed"}, "", function(on)
 end, false)
 
 bm_documents = false
-menu.toggle(business_root, "Forgery", {"bm_forgery"}, "", function(on)
+menu.toggle(business_root, "伪造证件", {"bm_forgery"}, "", function(on)
     ped = PLAYER.PLAYER_PED_ID()
     if on then
         bm_documents = true
@@ -1817,7 +1821,7 @@ menu.toggle(business_root, "Forgery", {"bm_forgery"}, "", function(on)
 end, false)
 
 bm_cocaine = false
-menu.toggle(business_root, "Cocaine", {"bm_cocaine"}, "", function(on)
+menu.toggle(business_root, "可卡因", {"bm_cocaine"}, "", function(on)
     ped = PLAYER.PLAYER_PED_ID()
     if on then
         bm_cocaine = true
@@ -1829,7 +1833,7 @@ menu.toggle(business_root, "Cocaine", {"bm_cocaine"}, "", function(on)
 end, false)
 
 bm_cocaine = false
-menu.toggle(business_root, "Bunker", {"bm_bunker"}, "", function(on)
+menu.toggle(business_root, "地堡", {"bm_bunker"}, "", function(on)
     ped = PLAYER.PLAYER_PED_ID()
     if on then
         bm_bunker = true
@@ -1840,7 +1844,7 @@ menu.toggle(business_root, "Bunker", {"bm_bunker"}, "", function(on)
     end
 end, false)
 
-attachall_root = menu.list(allplayers_root, "Attach", {"attach"}, "")
+attachall_root = menu.list(allplayers_root, "附加", {"attach"}, "")
 
 function attachall(hash, bone, isnpc)
     request_model_load(hash)
@@ -1860,19 +1864,19 @@ function attachall(hash, bone, isnpc)
     end
 end
 
-menu.action(attachall_root, "Ball", {"aaball"}, "The OG", function(on_click)
+menu.action(attachall_root, "球", {"aaball"}, "The OG", function(on_click)
     attachall(148511758, 0, false)
 end)
 
-menu.action(attachall_root, "Cone hat", {"aacone"}, "coneheads", function(on_click)
+menu.action(attachall_root, "锥形帽", {"aacone"}, "coneheads", function(on_click)
     attachall(3760607069, 98, false)
 end)
 
-menu.action(attachall_root, "Ferris wheel", {"aafwheel"}, "toxic", function(on_click)
+menu.action(attachall_root, "摩天轮", {"aafwheel"}, "toxic", function(on_click)
     attachall(3291218330, 0, false)
 end)
 
-menu.action(attachall_root, "Fuel tanker", {"aatanker"}, "boom", function(on_click)
+menu.action(attachall_root, "油罐车", {"aatanker"}, "boom", function(on_click)
     attachall(3763623269, 0, false)
 end)
 
@@ -1881,7 +1885,7 @@ menu.action(attachall_root, "NPC", {"aanpc"}, "toxic", function(on_click)
 end)
 
 show_voicechatters = false
-menu.toggle(online_root, "显示谁在用语音聊天", {"showvoicechat"}, "不过大多数不知道gta可以.", function(on)
+menu.toggle(online_root, "显示谁在用语音聊天", {"showvoicechat"}, "不过大多数人根本不知道GTA是支持语音聊天的.", function(on)
     ped = PLAYER.PLAYER_PED_ID()
     if on then
         show_voicechatters = true
@@ -1893,7 +1897,7 @@ menu.toggle(online_root, "显示谁在用语音聊天", {"showvoicechat"}, "不�
 end)
 
 aptloop = false
-menu.toggle(allplayers_root, "Apartment tp loop", {"apartmenttploop"}, "Please advise, extremely toxic", function(on)
+menu.toggle(allplayers_root, "公寓传送循环", {"apartmenttploop"}, "请使用它吧，有毒的人", function(on)
     if on then
         aptloop = true
     else
@@ -1901,12 +1905,12 @@ menu.toggle(allplayers_root, "Apartment tp loop", {"apartmenttploop"}, "Please a
     end
 end, false)
 
-menu.action(allplayers_root, "Session-wide chat", {"sessionwidechat"}, "Makes everyone in the session except you say something.", function(on_click)
-    util.toast("Please type what you want the entire session to say.")
+menu.action(allplayers_root, "会话范围的聊天", {"sessionwidechat"}, "使会议中的每个人都说一些话。", function(on_click)
+    util.toast("请输入您希望在整个会话中表达的内容。")
     menu.show_command_box("sessionwidechat ")
 end, function(on_command)
     if #on_command > 140 then
-        util.toast("That message is too long to show fully! I just saved you from humiliation.")
+        util.toast("该消息太长，无法完全显示！ 我只是把你从屈辱中救了出来。")
         return
     end
     for k,p in pairs(players.list(false, true, true)) do
@@ -2354,27 +2358,27 @@ while true do
     end
     local ct = 0
     if bm_meth then
-        directx.draw_text(1.0, ct, "Meth - product: " .. meth_info[1] .. "/20, supplies: " .. meth_info[2] .. "%", 3, 0.5, text_col, true)
+        directx.draw_text(1.0, ct, "冰毒 - 产品: " .. meth_info[1] .. "/20, 补给品: " .. meth_info[2] .. "%", 3, 0.5, text_col, true)
     end
 
     if bm_weed then
         ct = ct + 0.02
-        directx.draw_text(1.0, ct, "Weed - product: " .. weed_info[1] .. "/80, supplies: " .. weed_info[2] .. "%", 3, 0.5, text_col, true)
+        directx.draw_text(1.0, ct, "大麻 - 产品: " .. weed_info[1] .. "/80, 补给品: " .. weed_info[2] .. "%", 3, 0.5, text_col, true)
     end
 
     if bm_documents then
         ct = ct + 0.02
-        directx.draw_text(1.0, ct, "Forgery - product: " .. doc_info[1] .. "/60, supplies: " .. doc_info[2] .. "%", 3, 0.5, text_col, true)
+        directx.draw_text(1.0, ct, "伪造证件 - 产品: " .. doc_info[1] .. "/60, 补给品: " .. doc_info[2] .. "%", 3, 0.5, text_col, true)
     end
 
     if bm_cocaine then
         ct = ct + 0.02
-        directx.draw_text(1.0, ct, "Cocaine - product: " .. cocaine_info[1] .. "/10, supplies: " .. cocaine_info[2] .. "%", 3, 0.5, text_col, true)
+        directx.draw_text(1.0, ct, "可卡因 - 产品: " .. cocaine_info[1] .. "/10, 补给品: " .. cocaine_info[2] .. "%", 3, 0.5, text_col, true)
     end
 
     if bm_bunker then
         ct = ct + 0.02
-        directx.draw_text(1.0, ct, "Bunker - product: " .. bunker_info[1] .. "/100, supplies: " .. bunker_info[2] .. "%, research: " .. bunker_info[3] .. "%", 3, 0.5, text_col, true)
+        directx.draw_text(1.0, ct, "地堡 - 产品: " .. bunker_info[1] .. "/100, 补给品: " .. bunker_info[2] .. "%, 研究: " .. bunker_info[3] .. "%", 3, 0.5, text_col, true)
     end
 
     if earrape then
