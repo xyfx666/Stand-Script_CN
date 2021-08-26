@@ -1048,7 +1048,7 @@ GenerateFeatures = function(pid)
 
 ------------------------------------------------GUITAR-----------------------------------------------------------------------
 
-	menu.action(trolling_list, "套吉他", {}, "在他们的模型上贴上吉他, 如果他们在车里, 就会引起疯狂的事情, 那看起来真是太棒了!", function()
+	menu.action(trolling_list, "套吉他", {}, "在玩家背部附上吉他，观感很不错。但进入载具的时候会发生不可描述之事", function()
 		local player_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
 		local pos = ENTITY.GET_ENTITY_COORDS(player_ped)
 		pos.z = pos.z - 0.9
@@ -1059,13 +1059,13 @@ GenerateFeatures = function(pid)
 		end
 		local object = OBJECT.CREATE_OBJECT(object_hash, pos.x, pos.y, pos.z, true, true, true)
 		if object == 0 then 
-			shownotification("~r~创建实体失败")
+			shownotification("~r~未能成功创建物体")
 		end
 		ENTITY.ATTACH_ENTITY_TO_ENTITY(object, PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid), PED.GET_PED_BONE_INDEX(PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid), 0x5c01), 0.5, -0.2, 0.1, 0, 70, 0, false, true, true --[[Collision - This causes glitch when in vehicle]], false, 0, true)
 		--ENTITY.SET_ENTITY_VISIBLE(object, false, 0) --turns guitar invisible
 		util.yield(3000)
 		if player_ped ~= ENTITY.GET_ENTITY_ATTACHED_TO(object) then
-			shownotification("~r~实体未附加。 ~s~可能 "..PLAYER.GET_PLAYER_NAME(pid).." 有附加保护")
+			shownotification("~r~实体未能成功附着~s~也许玩家 "..PLAYER.GET_PLAYER_NAME(pid).." 有套模型保护")
 			return
 		end
 		STREAMING.SET_MODEL_AS_NO_LONGER_NEEDED(object_hash)
@@ -1076,7 +1076,7 @@ GenerateFeatures = function(pid)
 	local rape_options = menu.list(trolling_list, "Rape")
 	menu.divider(rape_options, "强奸")
 
-	menu.action(rape_options, "猴子", {}, "其他玩家可能看不到动画。", function()
+	menu.action(rape_options, "用猴子", {}, "在指定玩家的身上生成一只猴子并对其实施性行为，其他玩家可能看不到动作。", function()
 		local player_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
 		local pos = ENTITY.GET_ENTITY_COORDS(player_ped)
 		local ped_hash = util.joaat("a_c_chimp")
@@ -1094,7 +1094,7 @@ GenerateFeatures = function(pid)
 		ENTITY.SET_ENTITY_COMPLETELY_DISABLE_COLLISION(ped, false, false) --for ped not to be beaten with a melee weapon (because ped ditaches from player)
 		util.yield(3000)
 		if player_ped ~= ENTITY.GET_ENTITY_ATTACHED_TO(ped) then
-			shownotification("~r~实体未附加。 ~s~可能 "..PLAYER.GET_PLAYER_NAME(pid).." 有附加保护")
+			shownotification("~r~实体未能成功附着~s~也许玩家 "..PLAYER.GET_PLAYER_NAME(pid).." 有套模型保护")
 			return
 		end
 		while player_ped == ENTITY.GET_ENTITY_ATTACHED_TO(ped) do
@@ -1106,7 +1106,7 @@ GenerateFeatures = function(pid)
 		STREAMING.SET_MODEL_AS_NO_LONGER_NEEDED(ped_hash)
 	end)
 
-	menu.toggle(rape_options, "由我", {}, "", function(on)
+	menu.toggle(rape_options, "用自己的人物", {}, "在指定玩家的身上生成自己的人物模型并对其实施性行为，其他玩家可能看不到动作。", function(on)
 		rape = on
 		if pid ~= players.user() then
 			if rape then
@@ -1134,44 +1134,44 @@ GenerateFeatures = function(pid)
 
 ---------------------------------------------------ENEMY BUZZARD---------------------------------------------------------------------
 
-	local enemy_vehicles = menu.list(trolling_list, "敌方车辆", {}, "")
+	local enemy_vehicles = menu.list(trolling_list, "敌对载具", {}, "")
 
 	menu.divider(enemy_vehicles, "秃鹰直升机")
 
 	buzzard_visible = true
 	local gunner_weapon = "weapon_combatmg"
 	
-	menu.action(enemy_vehicles, "派秃鹰直升机", {}, "", function()
+	menu.action(enemy_vehicles, "派遣秃鹰直升机", {}, "", function()
 		spawn_buzzard(pid, gunner_weapon)
 	end)
 
-	menu.toggle(enemy_vehicles, "无敌", {}, "", function(on)
+	menu.toggle(enemy_vehicles, "载具无敌", {}, "", function(on)
 		buzzard_godmode = on
 	end, false)
 	
-	local menu_gunner_weapon_list = menu.list(enemy_vehicles, "炮手武器")
-	menu.divider(menu_gunner_weapon_list, "炮手武器列表")
+	local menu_gunner_weapon_list = menu.list(enemy_vehicles, "机上佣兵武器")
+	menu.divider(menu_gunner_weapon_list, "佣兵武器列表")
 
 	for i = 1, #gunner_weapon_list do
 		menu.action(menu_gunner_weapon_list, gunner_weapon_list[i][1], {}, "", function()
 			gunner_weapon = gunner_weapon_list[i][2]
-			shownotification("现在炮手们将用枪射击 "..gunner_weapon_list[i][1].."s")
+			shownotification("机上的佣兵将会使用: "..gunner_weapon_list[i][1].."s")
 		end)
 	end
 
-	menu.toggle(enemy_vehicles, "可视的", {}, "你不应该那么过分，把它关掉。", function(on)
+	menu.toggle(enemy_vehicles, "是否可见", {}, "你不应该那么过分, 把它关掉.", function(on)
 		buzzard_visible = on
 	end, true)
 
-	menu.action(enemy_vehicles, "删除秃鹰直升机", {}, "尝试删除您生成的所有秃鹰直升机。", function()
+	menu.action(enemy_vehicles, "删除秃鹰直升机", {}, "删除所有已生成的秃鹰直升机", function()
 		delete_all_entities(buzzard_entities, "buzzards")
 	end)
 
 -----------------------------------------------DAMAGE----------------------------------------------------------------------------
 
-	local damage = menu.list(trolling_list, "损坏", {}, "选择武器，无论你在哪里都要射杀他们。")
+	local damage = menu.list(trolling_list, "伤害", {}, "选择你的武器, 即使身处千里之外也能百步穿杨.")
 	
-	menu.toggle(damage, "观看", {}, "若玩家不可见或距离不够远，你们需要在使用 损坏 之前进行观察。这只是Stand的选项重复。", function(on)
+	menu.toggle(damage, "观看玩家", {}, "若玩家不可见或距离太远, 则需要先观看玩家才能造成伤害. 此选项和Stand原生的观看玩家选项一样", function(on)
 		spectate = on
 		if spectate then
 			menu.trigger_commands("spectate "..PLAYER.GET_PLAYER_NAME(pid).." on")
@@ -1180,24 +1180,24 @@ GenerateFeatures = function(pid)
 		end
 	end)
 
-	menu.divider(damage, "损坏")
+	menu.divider(damage, "伤害")
 	local isBulletOwned = true
 	
 
 	local damage_value = 200 --default damage value
-	menu.action(damage, "重狙击手", {}, "", function()
+	menu.action(damage, "重型狙击步枪", {}, "", function()
 		shoot_owned_bullet(pid, "weapon_heavysniper", damage_value)
 	end)
 
-	menu.action(damage, "猎枪", {}, "", function()
+	menu.action(damage, "泵动式散弹枪", {}, "", function()
 		shoot_owned_bullet(pid, "weapon_pumpshotgun", damage_value)
 	end)
 
-	menu.slider(damage, "损害金额", {"damagevalue"}, "The bullet demages player with the given value. ", 10, 1000, 200, 50, function(value)
+	menu.slider(damage, "子弹威力", {"damagevalue"}, "调整子弹对玩家造成的伤害", 10, 1000, 200, 50, function(value)
 		damage_value = value
 	end)
 
-	menu.toggle(damage, "钥匙", {}, "", function(on)
+	menu.toggle(damage, "电击", {}, "", function(on)
 		tase = on
 		while tase do 
 			shoot_owned_bullet(pid, "weapon_stungun", 1)
@@ -1207,7 +1207,7 @@ GenerateFeatures = function(pid)
 
 -----------------------------------------------------HOSTILE PEDS------------------------------------------------------------------
 
-	menu.action(trolling_list, "敌对的NPC", {}, "所有徒步NPC将与玩家战斗。", function()
+	menu.action(trolling_list, "使路人敌对", {}, "所有徒步的路人将与该玩家战斗。", function()
 		local player_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
 		local pos = ENTITY.GET_ENTITY_COORDS(player_ped)
 		local peds = get_nearby_entities(pid, 80, true, false)
@@ -1227,7 +1227,7 @@ GenerateFeatures = function(pid)
 
 --------------------------------------------------HOSTILE TRAFFIC-----------------------------------------------------------------
 
-	menu.action(trolling_list, "敌对交通", {}, "", function()
+	menu.action(trolling_list, "使驾驶车辆的路人敌对", {}, "所有驾驶车辆的路人将会对该玩家充满敌意", function()
 		local player_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
 		local pos  = ENTITY.GET_ENTITY_COORDS(player_ped)
 		local vehicles = {}
