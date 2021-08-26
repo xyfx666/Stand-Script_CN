@@ -117,8 +117,8 @@ function show_custom_alert_until_enter(l1)
 end
 
 scaleform_thread = util.create_thread(function (thr)
-    name = os.getenv("用户名")
-    util.toast("你好 " .. name .. "!")
+    name = os.getenv("USERNAME")
+    util.toast("hello " .. name .. "!")
     scaleForm = GRAPHICS.REQUEST_SCALEFORM_MOVIE("MP_BIG_MESSAGE_FREEMODE")
     GRAPHICS.BEGIN_SCALEFORM_MOVIE_METHOD(scaleForm, "SHOW_SHARD_WASTED_MP_MESSAGE")
     GRAPHICS.SCALEFORM_MOVIE_METHOD_ADD_PARAM_PLAYER_NAME_STRING("~p~lancescript")
@@ -843,20 +843,20 @@ function clear_area(radius)
     MISC.CLEAR_AREA(target_pos['x'], target_pos['y'], target_pos['z'], radius, true, false, false, false)
 end
 
-menu.action(world_root, "Clear area", {"cleararea"}, "Clears the nearby area of everything", function(on_click)
+menu.action(world_root, "清除区域", {"cleararea"}, "Clears the nearby area of everything", function(on_click)
     clear_area(clear_radius)
     util.toast('Area cleared :)')
 end)
 
 -- SET_PED_SHOOTS_AT_COORD(Ped ped, float x, float y, float z, BOOL toggle)
 
-menu.action(world_root, "Clear world", {"clearworfld"}, "Clears literally everything that can be cleared within the world (well, everything that\'s rendered in). Don\'t tell them, but it\'s really just a huge number as radius.", function(on_click)
+menu.action(world_root, "清除一切", {"clearworfld"}, "Clears literally everything that can be cleared within the world (well, everything that\'s rendered in). Don\'t tell them, but it\'s really just a huge number as radius.", function(on_click)
     clear_area(1000000)
     util.toast('World cleared :)')
 end)
 
 cont_clear = false
-menu.toggle(world_root, "Continuous area clear", {"contareaclear"}, "Area clear, but looped", function(on)
+menu.toggle(world_root, "持续清除区域", {"contareaclear"}, "Area clear, but looped", function(on)
     if on then
         cont_clear = true
     else
@@ -865,7 +865,7 @@ menu.toggle(world_root, "Continuous area clear", {"contareaclear"}, "Area clear,
 end, false)
 
 rapidtraffic = false
-menu.toggle(world_root, "Party traffic lights", {"beep boop"}, "ITS TIME TO PARTY!!!!!! probably local, also it doesnt affect traffic behavior", function(on)
+menu.toggle(world_root, "混乱的交通灯", {"beep boop"}, "ITS TIME TO PARTY!!!!!! probably local, also it doesnt affect traffic behavior", function(on)
     if on then
         rapidtraffic = true
         object_uses = object_uses + 1
@@ -887,11 +887,11 @@ menu.toggle(world_root, "Rainbow world lights", {"rainbowlights"}, "Rainbows all
 end)
 
 
-menu.click_slider(world_root, "Clear radius", {"clearradius"}, "Radius to clear things within", 100, 10000, 100, 100, function(s)
+menu.click_slider(world_root, "清除的半径", {"clearradius"}, "Radius to clear things within", 100, 10000, 100, 100, function(s)
     radius = s
   end)
 
-menu.click_slider(world_root, "World gravity level", {"worldgravity"}, "World gravity level (0 is normal, higher number = less gravity)", 0, 3, 1, 1, function(s)
+menu.click_slider(world_root, "世界的重力水平", {"worldgravity"}, "World gravity level (0 is normal, higher number = less gravity)", 0, 3, 1, 1, function(s)
   MISC.SET_GRAVITY_LEVEL(s)
 end)
 
@@ -1881,7 +1881,7 @@ menu.action(attachall_root, "NPC", {"aanpc"}, "toxic", function(on_click)
 end)
 
 show_voicechatters = false
-menu.toggle(online_root, "Show me who\'s using voicechat", {"showvoicechat"}, "Shows who is actually using GTA:O voice chat, in 2021. Which is likely to be nobody. So this is a bitch to test. but.", function(on)
+menu.toggle(online_root, "显示谁在用语音聊天", {"showvoicechat"}, "不过大多数不知道gta可以.", function(on)
     ped = PLAYER.PLAYER_PED_ID()
     if on then
         show_voicechatters = true
