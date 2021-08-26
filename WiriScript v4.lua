@@ -1498,7 +1498,7 @@ GenerateFeatures = function(pid)
 
 --------------------------------------------------------RAM PLAYER--------------------------------------------------------------
 
-	menu.action(trolling_list, "Ram Player", {}, "", function()
+	menu.action(trolling_list, "叫车撞死这逼", {}, "", function()
 		local player_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
 		local pos = ENTITY.GET_ENTITY_COORDS(player_ped)
 		local offset = {-12, 12}
@@ -1517,7 +1517,7 @@ GenerateFeatures = function(pid)
 
 ----------------------------------------------------------PIGGY BACK-------------------------------------------------------------
 	
-	menu.toggle(trolling_list, "Piggy Back", {}, "", function(on)
+	menu.toggle(trolling_list, "小猪回来", {}, "", function(on)
 		piggyback = on
 		local player_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
 		local user_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(players.user())
@@ -1546,7 +1546,7 @@ GenerateFeatures = function(pid)
 
 --------------------------------------------------------------ALIEN EGG------------------------------------------------------------------
 
-	menu.action(trolling_list, "Attach Alien Egg", {}, "", function()
+	menu.action(trolling_list, "屁股上有外星蛋", {}, "", function()
 		local player_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
 		local pos = ENTITY.GET_ENTITY_COORDS(player_ped)
 		local object_hash = util.joaat("prop_alien_egg_01")
@@ -1560,7 +1560,7 @@ GenerateFeatures = function(pid)
 
 --------------------------------------------------------------RAIN ROCKETS----------------------------------------------------------------
 
-	menu.toggle(trolling_list, "Rain Rockets", {}, "", function(on)
+	menu.toggle(trolling_list, "火箭雨，炸死这亚的", {}, "", function(on)
 		rainRockets = on
 		while rainRockets do
 			local pos = ENTITY.GET_ENTITY_COORDS(PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid))
@@ -1594,16 +1594,16 @@ end
 
 -------------------------------------------------HEALTH OPTIONS--------------------------------------------------------------------
 
-local self_options = menu.list(menu.my_root(), "Self", {}, "")
+local self_options = menu.list(menu.my_root(), "自我", {}, "")
 
-menu.toggle(self_options, "Mod Health", {"modhealth"}, "Changes your ped\'s max health. Some menus will tag you as modder. It returns to defaulf max health when it\'s disabled.", function(on)
+menu.toggle(self_options, "最大生命值", {"modhealth"}, "改变最大生命值，别人会检测到你是挂壁", function(on)
 	modhealth  = on
 	if modhealth then
 		local player_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(players.user())
 		PED.SET_PED_MAX_HEALTH(player_ped,  modded_health)
 		ENTITY.SET_ENTITY_HEALTH(player_ped, modded_health)
 		if PED.GET_PED_MAX_HEALTH(player_ped) == modded_health then
-			shownotification("Mod Health is ~r~on~s~")
+			shownotification("最大生命值 ~r~开启~s~")
 		else 
 			shownotification("~r~Something went wrong")
 			return
@@ -1616,7 +1616,7 @@ menu.toggle(self_options, "Mod Health", {"modhealth"}, "Changes your ped\'s max 
 			ENTITY.SET_ENTITY_HEALTH(player_ped, defaulthealth)
 		end
 		if PED.GET_PED_MAX_HEALTH(player_ped) == defaulthealth then
-			shownotification("Mod Health is ~r~off~s~. Default max health: "..defaulthealth)
+			shownotification("最大生命值 ~r~关闭~s~. 当前生命值: "..defaulthealth)
 		else 
 			shownotification("~r~Something went wrong")
 			return
@@ -1663,22 +1663,22 @@ menu.toggle(self_options, "Mod Health", {"modhealth"}, "Changes your ped\'s max 
 	end
 end, false)
 
-menu.slider(self_options, "Modded Health", {"maxhealth"}, "Health will be modded with the given value.", 100,9000,defaulthealth,50, function(value)
+menu.slider(self_options, "设置生命值", {"maxhealth"}, "生命值由自己设置.", 100,9000,defaulthealth,50, function(value)
 	modded_health = value
 end)
 
-menu.action(self_options, "Max Armour", {}, "", function()
+menu.action(self_options, "最大护甲", {}, "", function()
 	local player_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(players.user())
 	PED.SET_PED_ARMOUR(player_ped, 100)
 end)
 
-menu.action(self_options, "Max Health", {}, "", function()
+menu.action(self_options, "恢复血量", {}, "", function()
 	local player_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(players.user())
 	ENTITY.SET_ENTITY_HEALTH(player_ped, PED.GET_PED_MAX_HEALTH(player_ped))
 end)
 
 local refillincover
-menu.toggle(self_options, "Refill Health When in Cover", {}, "", function(on)
+menu.toggle(self_options, "在墙边回血", {}, "", function(on)
 	refillincover = on
 	while refillincover do
 		local player_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(players.user())
@@ -1699,11 +1699,11 @@ end)
 
 --------------------------------------------FORCEFIELD-------------------------------------------------------------------------------------
 
-menu.toggle(self_options, "Forcefield", {"forcefield"}, "Push nearby entities away.", function(on)
+menu.toggle(self_options, "力场", {"forcefield"}, "降附近的实体推开.", function(on)
 	forcefield = on
 	util.create_thread(function()
 		if forcefield then
-			shownotification("Forcefield is ~r~on~s~")
+			shownotification("力场 ~r~开始~s~")
 		end
 		while forcefield do
 			local a = ENTITY.GET_ENTITY_COORDS(PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(players.user()))
@@ -1725,18 +1725,18 @@ menu.toggle(self_options, "Forcefield", {"forcefield"}, "Push nearby entities aw
 			end
 			util.yield()
 		end
-		shownotification("Forcefield is ~r~off~s~")
+		shownotification("力场 ~r~关闭~s~")
 		util.stop_thread()
 	end)
 end, false)
 
 -----------------------------------------------FORCE-------------------------------------------------------------------------------------
 
-menu.toggle(self_options, "Force", {"force"}, "Use force in nearby vehicles. Controls: [NUM 9] & [NUM 6].", function(on)
+menu.toggle(self_options, "控制车辆", {"force"}, "控制附近车辆上下. 通过数字（9）（6）控制.", function(on)
 	force = on
 	util.create_thread(function()
 		if force then
-			shownotification("Force is ~r~on~s~. Use [NUM 9] & [NUM 6] to become a jedi")
+			shownotification("控制车辆 ~r~开启~s~. 控制附近车辆上下. 通过数字（9）（6）控制")
 			local player_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(players.user())
 			local pos = ENTITY.GET_ENTITY_COORDS(player_ped)
 
@@ -1772,12 +1772,12 @@ menu.toggle(self_options, "Force", {"force"}, "Use force in nearby vehicles. Con
 		end
 		util.yield()
 	end
-	shownotification("Jedi mode is ~r~off~s~")	
+	shownotification("控制车辆 ~r~关闭~s~")	
 end)
 
 ---------------------------------------------------KILL KILLERS---------------------------------------------------------------------
 
-menu.toggle(self_options, "Kill Killers", {"killkillers"}, "Explodes any player who kills you.", function(on)
+menu.toggle(self_options, "小人报仇", {"killkillers"}, "爆炸杀死你的人.", function(on)
 	kill_killers = on
 	while kill_killers do
 		local user_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(players.user())
@@ -1796,7 +1796,7 @@ end)
 
 ---------------------------------------------------UNDEAD OFFRADAR-------------------------------------------------------------------
 
-menu.toggle(self_options, "Undead Offradar", {}, "Decreases your ped max health to set you off the radar. Reveal Off Radar Players won't work on you when using this option. Some menus will tag you as modder. ", function(on)
+menu.toggle(self_options, "从地图上消失", {}, "降低你的ped最大生命值，让你远离雷达。当使用这个选项时，玩家将会对你不起作用。有些菜单会将你标记为作弊者 ", function(on)
 	undead = on
 	local player_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(players.user())
 	local defaulthealth = ENTITY.GET_ENTITY_MAX_HEALTH(player_ped)
@@ -1814,14 +1814,14 @@ end)
 
 ----------------------------------------------------PAINT GUN-----------------------------------------------------------
 
-local weapons_options = menu.list(menu.my_root(), "Weapons")
+local weapons_options = menu.list(menu.my_root(), "武器")
 
-menu.divider(weapons_options, "Weapons")
+menu.divider(weapons_options, "武器")
 
-menu.toggle(weapons_options, "Vehicle Paint Gun", {}, "Applies a random colour combination to the damaged vehicle.", function(on)
+menu.toggle(weapons_options, "车辆更改颜色枪", {}, "对车辆随机更改颜色", function(on)
 	paintgun = on
 	if paintgun then
-		shownotification("Vehicle paint gun is ~r~on~s~")
+		shownotification("车辆颜色更改 ~r~开启~s~")
 	end
 	local user = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(players.user())
 	while paintgun do
@@ -1843,21 +1843,21 @@ end)
 
 local shooting_effects = {
 	{
-		"Clown Flowers", "scr_rcbarry2", "scr_clown_bul", 
+		"鲜花", "scr_rcbarry2", "scr_clown_bul", 
 		0.3, 	--scale
 		0, 		--xRot
 		180, 	--yRot
 		0 		--zRot
 	},
 	{
-		"Clown Muzzel", "scr_rcbarry2", "muz_clown", 
+		"符号", "scr_rcbarry2", "muz_clown", 
 		0.8,
 		0,
 		0,
 		0
 	},
 	{
-		"Khanjali Railgun", "veh_khanjali", "muz_xm_khanjali_railgun", 
+		"杨永健（雷电法王", "veh_khanjali", "muz_xm_khanjali_railgun", 
 		1,
 		0,
 		0,
@@ -1865,22 +1865,22 @@ local shooting_effects = {
 	}
 }
 
-local cartoon_gun = menu.list(weapons_options, "Custom Shotting Effect")
+local cartoon_gun = menu.list(weapons_options, "自定义枪支射出效果")
 
 local GunEffectAsset
 local GunEffectName
 local scale = 0.4
 local effectRot = {x = 0, y =180, z = 0}
-menu.toggle(cartoon_gun, "Toggle Shotting Effect", {"shootingeffect"}, "Effects while shooting.", function(on)
+menu.toggle(cartoon_gun, "切换射击效果", {"shootingeffect"}, "切换射击效果.", function(on)
 	cartoon = on
 	if GunEffectAsset == nil then
-		shownotification("~r~Please choose a shooting effect")
+		shownotification("~r~请选择一个射击效果")
 		while GunEffectAsset == nil do
 			util.yield()
 		end
 	end
 	if cartoon then
-		shownotification("Shooting effect is ~r~on~s~")
+		shownotification("射击效果是 is ~r~开启~s~")
 	end
 	local user = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(players.user())
 	local effects = {}
@@ -1927,7 +1927,7 @@ menu.toggle(cartoon_gun, "Toggle Shotting Effect", {"shootingeffect"}, "Effects 
 	end
 end)
 
-menu.divider(cartoon_gun, "Custom Shotting Effect")
+menu.divider(cartoon_gun, "自定义射击效果")
 
 for j = 1, #shooting_effects do
 	menu.action(cartoon_gun, shooting_effects[j][1], {}, "", function()
@@ -1939,10 +1939,10 @@ for j = 1, #shooting_effects do
 			y = shooting_effects[j][6],
 			z = shooting_effects[j][7]
 		}
-		menu.trigger_commands("shootingeffect off")
-		shownotification("Shooting effect: ~r~"..shooting_effects[j][1].."~s~")
+		menu.trigger_commands("射击效果关闭")
+		shownotification("射击效果: ~r~"..shooting_effects[j][1].."~s~")
 		util.yield(500)
-		menu.trigger_commands("shootingeffect on")
+		menu.trigger_commands("射击效果开启")
 	end)
 end
 
@@ -2030,7 +2030,7 @@ end))
 
 --------------------------------------------------------------------------------------------------------------------------
 
-menu.action(weapons_options, "Airstrike At Waypoint", {}, "", function()
+menu.action(weapons_options, "空袭标记点", {}, "", function()
 	local pos = HUD.GET_BLIP_COORDS(HUD.GET_FIRST_BLIP_INFO_ID(8))
 	local startTime = os.time() 
 	while os.time()-startTime <= 15 do		
@@ -2047,12 +2047,12 @@ end)
 
 ---------------------------------------------------------------------------------
 
-local vehicle_weapon = menu.list(weapons_options, "Vehicle Weapons")
+local vehicle_weapon = menu.list(weapons_options, "车辆武器")
 
-menu.toggle(vehicle_weapon, "Airstrike Aircraft", {"airstrikeplanes"}, "Use any plane or helicopter to make airstrikes. Controls: E.", function(on)
+menu.toggle(vehicle_weapon, "空袭飞机", {"airstrikeplanes"}, "使用任何飞机或直升机进行空袭。控制:E.", function(on)
 	airstrike_plane = on
 	if airstrike_plane then
-		menu.trigger_commands("vehicleweapons off")
+		menu.trigger_commands("车辆武器 关闭")
 		menu.trigger_commands("vehiclelasers off")
 	end
 	while airstrike_plane do
@@ -2243,12 +2243,12 @@ menu.toggle(vehicle_weapon, "Toggle Vehicle Weapons", {"vehicleweapons"}, "Allow
 
 end)
 
-menu.divider(vehicle_weapon, "Vehicle Weapons")
+menu.divider(vehicle_weapon, "车辆武器")
 
 local veh_weapons_list = {
-	['Rockets'] = "weapon_rpg",
+	['火箭'] = "weapon_rpg",
 	['Up-n-Atomizer'] = "weapon_raypistol",
-	['Firework'] = "weapon_firework"
+	['烟花'] = "weapon_firework"
 }
 
 for k, weapon in pairs(veh_weapons_list) do
