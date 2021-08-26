@@ -1956,7 +1956,7 @@ menu.toggle(allplayers_root, "Mean antioppressor", {"meanantioppressor"}, "Requi
 end, false)
 
 chat_filter = false
-menu.toggle(online_root, "Chat filter", {"chatfilter"}, "Auto-kicks players who say words in your banned words list", function(on)
+menu.toggle(online_root, "自动踢广告机", {"chatfilter"}, "如果玩家说了你设置的违禁词将会被踢出", function(on)
     if on then
         chat_filter = true
     else
