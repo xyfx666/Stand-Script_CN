@@ -1781,7 +1781,7 @@ function get_business_stat(business, offset)
 end
 
 bm_meth = false
-menu.toggle(business_root, "Meth", {"bm_meth"}, "", function(on)
+menu.toggle(business_root, "冰毒", {"bm_meth"}, "", function(on)
     ped = PLAYER.PLAYER_PED_ID()
     if on then
         bm_meth = true
@@ -1793,7 +1793,7 @@ menu.toggle(business_root, "Meth", {"bm_meth"}, "", function(on)
 end, false)
 
 bm_weed = false
-menu.toggle(business_root, "Weed", {"bm_weed"}, "", function(on)
+menu.toggle(business_root, "大麻", {"bm_weed"}, "", function(on)
     ped = PLAYER.PLAYER_PED_ID()
     if on then
         bm_weed = true
@@ -1805,7 +1805,7 @@ menu.toggle(business_root, "Weed", {"bm_weed"}, "", function(on)
 end, false)
 
 bm_documents = false
-menu.toggle(business_root, "Forgery", {"bm_forgery"}, "", function(on)
+menu.toggle(business_root, "伪造证件", {"bm_forgery"}, "", function(on)
     ped = PLAYER.PLAYER_PED_ID()
     if on then
         bm_documents = true
@@ -1817,7 +1817,7 @@ menu.toggle(business_root, "Forgery", {"bm_forgery"}, "", function(on)
 end, false)
 
 bm_cocaine = false
-menu.toggle(business_root, "Cocaine", {"bm_cocaine"}, "", function(on)
+menu.toggle(business_root, "可卡因", {"bm_cocaine"}, "", function(on)
     ped = PLAYER.PLAYER_PED_ID()
     if on then
         bm_cocaine = true
@@ -1829,7 +1829,7 @@ menu.toggle(business_root, "Cocaine", {"bm_cocaine"}, "", function(on)
 end, false)
 
 bm_cocaine = false
-menu.toggle(business_root, "Bunker", {"bm_bunker"}, "", function(on)
+menu.toggle(business_root, "地堡", {"bm_bunker"}, "", function(on)
     ped = PLAYER.PLAYER_PED_ID()
     if on then
         bm_bunker = true
@@ -1840,7 +1840,7 @@ menu.toggle(business_root, "Bunker", {"bm_bunker"}, "", function(on)
     end
 end, false)
 
-attachall_root = menu.list(allplayers_root, "Attach", {"attach"}, "")
+attachall_root = menu.list(allplayers_root, "附加", {"attach"}, "")
 
 function attachall(hash, bone, isnpc)
     request_model_load(hash)
@@ -1860,19 +1860,19 @@ function attachall(hash, bone, isnpc)
     end
 end
 
-menu.action(attachall_root, "Ball", {"aaball"}, "The OG", function(on_click)
+menu.action(attachall_root, "球", {"aaball"}, "The OG", function(on_click)
     attachall(148511758, 0, false)
 end)
 
-menu.action(attachall_root, "Cone hat", {"aacone"}, "coneheads", function(on_click)
+menu.action(attachall_root, "锥形帽", {"aacone"}, "coneheads", function(on_click)
     attachall(3760607069, 98, false)
 end)
 
-menu.action(attachall_root, "Ferris wheel", {"aafwheel"}, "toxic", function(on_click)
+menu.action(attachall_root, "摩天轮", {"aafwheel"}, "toxic", function(on_click)
     attachall(3291218330, 0, false)
 end)
 
-menu.action(attachall_root, "Fuel tanker", {"aatanker"}, "boom", function(on_click)
+menu.action(attachall_root, "油罐车", {"aatanker"}, "boom", function(on_click)
     attachall(3763623269, 0, false)
 end)
 
@@ -1881,7 +1881,7 @@ menu.action(attachall_root, "NPC", {"aanpc"}, "toxic", function(on_click)
 end)
 
 show_voicechatters = false
-menu.toggle(online_root, "显示谁在用语音聊天", {"showvoicechat"}, "不过大多数不知道gta可以.", function(on)
+menu.toggle(online_root, "显示谁在用语音聊天", {"showvoicechat"}, "不过大多数人根本不知道GTA是支持语音聊天的.", function(on)
     ped = PLAYER.PLAYER_PED_ID()
     if on then
         show_voicechatters = true
@@ -1893,7 +1893,7 @@ menu.toggle(online_root, "显示谁在用语音聊天", {"showvoicechat"}, "不�
 end)
 
 aptloop = false
-menu.toggle(allplayers_root, "Apartment tp loop", {"apartmenttploop"}, "Please advise, extremely toxic", function(on)
+menu.toggle(allplayers_root, "公寓传送循环", {"apartmenttploop"}, "请使用它吧，有毒的人", function(on)
     if on then
         aptloop = true
     else
@@ -1901,12 +1901,12 @@ menu.toggle(allplayers_root, "Apartment tp loop", {"apartmenttploop"}, "Please a
     end
 end, false)
 
-menu.action(allplayers_root, "Session-wide chat", {"sessionwidechat"}, "Makes everyone in the session except you say something.", function(on_click)
-    util.toast("Please type what you want the entire session to say.")
+menu.action(allplayers_root, "会话范围的聊天", {"sessionwidechat"}, "使会议中的每个人都说一些话。", function(on_click)
+    util.toast("请输入您希望在整个会话中表达的内容。")
     menu.show_command_box("sessionwidechat ")
 end, function(on_command)
     if #on_command > 140 then
-        util.toast("That message is too long to show fully! I just saved you from humiliation.")
+        util.toast("该消息太长，无法完全显示！ 我只是把你从屈辱中救了出来。")
         return
     end
     for k,p in pairs(players.list(false, true, true)) do
@@ -2354,27 +2354,27 @@ while true do
     end
     local ct = 0
     if bm_meth then
-        directx.draw_text(1.0, ct, "Meth - product: " .. meth_info[1] .. "/20, supplies: " .. meth_info[2] .. "%", 3, 0.5, text_col, true)
+        directx.draw_text(1.0, ct, "冰毒 - 产品: " .. meth_info[1] .. "/20, 补给品: " .. meth_info[2] .. "%", 3, 0.5, text_col, true)
     end
 
     if bm_weed then
         ct = ct + 0.02
-        directx.draw_text(1.0, ct, "Weed - product: " .. weed_info[1] .. "/80, supplies: " .. weed_info[2] .. "%", 3, 0.5, text_col, true)
+        directx.draw_text(1.0, ct, "大麻 - 产品: " .. weed_info[1] .. "/80, 补给品: " .. weed_info[2] .. "%", 3, 0.5, text_col, true)
     end
 
     if bm_documents then
         ct = ct + 0.02
-        directx.draw_text(1.0, ct, "Forgery - product: " .. doc_info[1] .. "/60, supplies: " .. doc_info[2] .. "%", 3, 0.5, text_col, true)
+        directx.draw_text(1.0, ct, "伪造证件 - 产品: " .. doc_info[1] .. "/60, 补给品: " .. doc_info[2] .. "%", 3, 0.5, text_col, true)
     end
 
     if bm_cocaine then
         ct = ct + 0.02
-        directx.draw_text(1.0, ct, "Cocaine - product: " .. cocaine_info[1] .. "/10, supplies: " .. cocaine_info[2] .. "%", 3, 0.5, text_col, true)
+        directx.draw_text(1.0, ct, "可卡因 - 产品: " .. cocaine_info[1] .. "/10, 补给品: " .. cocaine_info[2] .. "%", 3, 0.5, text_col, true)
     end
 
     if bm_bunker then
         ct = ct + 0.02
-        directx.draw_text(1.0, ct, "Bunker - product: " .. bunker_info[1] .. "/100, supplies: " .. bunker_info[2] .. "%, research: " .. bunker_info[3] .. "%", 3, 0.5, text_col, true)
+        directx.draw_text(1.0, ct, "地堡 - 产品: " .. bunker_info[1] .. "/100, 补给品: " .. bunker_info[2] .. "%, 研究: " .. bunker_info[3] .. "%", 3, 0.5, text_col, true)
     end
 
     if earrape then
