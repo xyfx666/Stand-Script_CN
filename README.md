@@ -1,1 +1,1 @@
-# WiriScript_V4_CN
+# Stand-Script_CN
