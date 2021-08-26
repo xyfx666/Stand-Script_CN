@@ -1498,7 +1498,7 @@ GenerateFeatures = function(pid)
 
 --------------------------------------------------------RAM PLAYER--------------------------------------------------------------
 
-	menu.action(trolling_list, "叫车撞死这逼", {}, "", function()
+	menu.action(trolling_list, "撞死玩家", {}, "", function()
 		local player_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
 		local pos = ENTITY.GET_ENTITY_COORDS(player_ped)
 		local offset = {-12, 12}
@@ -1517,7 +1517,7 @@ GenerateFeatures = function(pid)
 
 ----------------------------------------------------------PIGGY BACK-------------------------------------------------------------
 	
-	menu.toggle(trolling_list, "小猪回来", {}, "", function(on)
+	menu.toggle(trolling_list, "驮运", {}, "", function(on)
 		piggyback = on
 		local player_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
 		local user_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(players.user())
@@ -1546,7 +1546,7 @@ GenerateFeatures = function(pid)
 
 --------------------------------------------------------------ALIEN EGG------------------------------------------------------------------
 
-	menu.action(trolling_list, "屁股上有外星蛋", {}, "", function()
+	menu.action(trolling_list, "附加外星蛋", {}, "", function()
 		local player_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
 		local pos = ENTITY.GET_ENTITY_COORDS(player_ped)
 		local object_hash = util.joaat("prop_alien_egg_01")
@@ -1560,7 +1560,7 @@ GenerateFeatures = function(pid)
 
 --------------------------------------------------------------RAIN ROCKETS----------------------------------------------------------------
 
-	menu.toggle(trolling_list, "火箭雨，炸死这亚的", {}, "", function(on)
+	menu.toggle(trolling_list, "火箭雨", {}, "", function(on)
 		rainRockets = on
 		while rainRockets do
 			local pos = ENTITY.GET_ENTITY_COORDS(PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid))
@@ -1596,7 +1596,7 @@ end
 
 local self_options = menu.list(menu.my_root(), "自我", {}, "")
 
-menu.toggle(self_options, "最大生命值", {"modhealth"}, "改变最大生命值，别人会检测到你是挂壁", function(on)
+menu.toggle(self_options, "最大生命值", {"modhealth"}, "改变最大生命值，某些菜单可能会将你标记为作弊者，当此选项关闭时，您的生命值会回到默认状态", function(on)
 	modhealth  = on
 	if modhealth then
 		local player_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(players.user())
@@ -1605,7 +1605,7 @@ menu.toggle(self_options, "最大生命值", {"modhealth"}, "改变最大生命�
 		if PED.GET_PED_MAX_HEALTH(player_ped) == modded_health then
 			shownotification("最大生命值 ~r~开启~s~")
 		else 
-			shownotification("~r~Something went wrong")
+			shownotification("~r~发生了一些错误")
 			return
 		end
 	else
@@ -1618,7 +1618,7 @@ menu.toggle(self_options, "最大生命值", {"modhealth"}, "改变最大生命�
 		if PED.GET_PED_MAX_HEALTH(player_ped) == defaulthealth then
 			shownotification("最大生命值 ~r~关闭~s~. 当前生命值: "..defaulthealth)
 		else 
-			shownotification("~r~Something went wrong")
+			shownotification("~r~发生了一些错误")
 			return
 		end
 	end
@@ -1631,7 +1631,7 @@ menu.toggle(self_options, "最大生命值", {"modhealth"}, "改变最大生命�
 								--thanks to boper skript
 		if display then
 			local logo = directx.create_texture(scriptdir.."\\WiriScript\\logo.png")
-			local text = "WiriScript | Player Health: "..ENTITY.GET_ENTITY_HEALTH(player_ped).."/"..PED.GET_PED_MAX_HEALTH(player_ped)
+			local text = "WiriScript | 玩家血量: "..ENTITY.GET_ENTITY_HEALTH(player_ped).."/"..PED.GET_PED_MAX_HEALTH(player_ped)
 			local wmtxt_x, wmtxt_y = directx.get_text_size(text, 0.75)
 			local wmposx,wmposy = _x(80),_y(25) + wmtxt_y*0.4 --change the text position here
 		
@@ -1777,7 +1777,7 @@ end)
 
 ---------------------------------------------------KILL KILLERS---------------------------------------------------------------------
 
-menu.toggle(self_options, "小人报仇", {"killkillers"}, "爆炸杀死你的人.", function(on)
+menu.toggle(self_options, "杀死杀死你的人", {"killkillers"}, "爆炸杀死你的人.", function(on)
 	kill_killers = on
 	while kill_killers do
 		local user_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(players.user())
@@ -1796,7 +1796,7 @@ end)
 
 ---------------------------------------------------UNDEAD OFFRADAR-------------------------------------------------------------------
 
-menu.toggle(self_options, "从地图上消失", {}, "降低你的ped最大生命值，让你远离雷达。当使用这个选项时，玩家将会对你不起作用。有些菜单会将你标记为作弊者 ", function(on)
+menu.toggle(self_options, "亡灵雷达", {}, "降低你的最大生命值，让你不会被雷达侦测。当使用这个选项时，显示雷达外的玩家对你不起作用。有些菜单会将你标记为作弊者 ", function(on)
 	undead = on
 	local player_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(players.user())
 	local defaulthealth = ENTITY.GET_ENTITY_MAX_HEALTH(player_ped)
@@ -1843,21 +1843,21 @@ end)
 
 local shooting_effects = {
 	{
-		"鲜花", "scr_rcbarry2", "scr_clown_bul", 
+		"小丑花", "scr_rcbarry2", "scr_clown_bul", 
 		0.3, 	--scale
 		0, 		--xRot
 		180, 	--yRot
 		0 		--zRot
 	},
 	{
-		"符号", "scr_rcbarry2", "muz_clown", 
+		"小丑音乐", "scr_rcbarry2", "muz_clown", 
 		0.8,
 		0,
 		0,
 		0
 	},
 	{
-		"杨永健（雷电法王", "veh_khanjali", "muz_xm_khanjali_railgun", 
+		"电磁枪", "veh_khanjali", "muz_xm_khanjali_railgun", 
 		1,
 		0,
 		0,
