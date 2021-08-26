@@ -1961,9 +1961,9 @@ local rgb_colour = {
 	['b'] = 68
 }
 
-local trails_options = menu.list(self_options, "Trails")
+local trails_options = menu.list(self_options, "轨迹")
 
-menu.toggle(trails_options, "Toggle Trails", {"trails"}, "", function(on)
+menu.toggle(trails_options, "切换轨迹", {"trails"}, "", function(on)
 	trails = on
 	local trailAsset = "scr_rcpaparazzo1"
 	local trailName = "scr_mich4_firework_sparkle_spawn"
@@ -2024,7 +2024,7 @@ menu.toggle(trails_options, "Toggle Trails", {"trails"}, "", function(on)
 	end
 end)
 
-menu.rainbow(menu.colour(trails_options, "Colour", {"trails"}, "", {['r'] = 255/255, ['g'] = 0, ['b'] = 255/255, ['a'] = 1.0}, false, function(colour)
+menu.rainbow(menu.colour(trails_options, "颜色", {"trails"}, "", {['r'] = 255/255, ['g'] = 0, ['b'] = 255/255, ['a'] = 1.0}, false, function(colour)
 	rgb_colour = colour
 end))
 
@@ -2163,7 +2163,7 @@ local vehicle_laser
 --VEHICLE LASER
 ---------------------------------------------------
 
-menu.toggle(vehicle_weapon, "Vehicle Lasers", {"vehiclelasers"}, "", function(on)
+menu.toggle(vehicle_weapon, "车载激光器", {"vehiclelasers"}, "", function(on)
 	vehicle_laser = on
 	if vehicle_laser then
 		menu.trigger_commands("airstrikeplanes off")
@@ -2195,7 +2195,7 @@ end)
 --VEHICLE WEAPONS
 ---------------------------------------------------
 
-menu.toggle(vehicle_weapon, "Toggle Vehicle Weapons", {"vehicleweapons"}, "Allows you to shoot bullets with cars. Controls: E.", function(on)
+menu.toggle(vehicle_weapon, "车载武器", {"vehicleweapons"}, "允许你用汽车射击子弹。快捷键：E.", function(on)
 	veh_rockets = on
 	if veh_rockets then
 		menu.trigger_commands("airstrikeplanes off")
@@ -2205,7 +2205,7 @@ menu.toggle(vehicle_weapon, "Toggle Vehicle Weapons", {"vehicleweapons"}, "Allow
 				util.yield()
 			end
 		end
-		shownotification("Vehicle weapon is ~r~on~s~")
+		shownotification("车载武器 ~r~开启~s~")
 	end
 	local player_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(players.user())
 	util.create_thread(function()
@@ -2243,11 +2243,11 @@ menu.toggle(vehicle_weapon, "Toggle Vehicle Weapons", {"vehicleweapons"}, "Allow
 
 end)
 
-menu.divider(vehicle_weapon, "车辆武器")
+menu.divider(vehicle_weapon, "车载武器")
 
 local veh_weapons_list = {
 	['火箭'] = "weapon_rpg",
-	['Up-n-Atomizer'] = "weapon_raypistol",
+	['原子能枪'] = "weapon_raypistol",
 	['烟花'] = "weapon_firework"
 }
 
@@ -2268,11 +2268,11 @@ function AddTextToSingleLine(scaleform, text, font, colour)
 	GRAPHICS.SCALEFORM_MOVIE_METHOD_ADD_PARAM_BOOL(true)
 	GRAPHICS.END_SCALEFORM_MOVIE_METHOD()
 end
-AUDIO.SET_AUDIO_FLAG("LoadMPData", true)
+AUDIO.SET_AUDIO_FLAG("加载多人游戏数据", true)
 
 local sounds = {
-	{"Out_Of_Ammo", "DLC_AW_Machine_Gun_Ammo_Counter_Sounds"},
-	{"End_Squelch", "CB_RADIO_SFX"}
+	{"弹药不足", "DLC_AW_Machine_Gun_Ammo_Counter_Sounds"},
+	{"结束噪音", "CB_RADIO_SFX"}
 }
 util. create_thread(function()
 	j = math.random(1, #sounds)
