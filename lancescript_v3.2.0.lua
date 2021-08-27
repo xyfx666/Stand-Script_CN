@@ -1623,12 +1623,8 @@ function set_up_player_actions(pid)
         local cage2 = OBJECT.CREATE_OBJECT_NO_OFFSET(hash, coords['x'], coords['y'], coords['z'], true, false, false)
         ENTITY.SET_ENTITY_ROTATION(cage2, 0.0, 90.0, 0.0, 1, true)
     end)
-
-<<<<<<< HEAD
+	
     menu.action(npctrolls_root, "抢车贼", {"npcjack"}, "派遣一个NPC去抢他们的车。如果他们不在车内，效果最好。.", function(on_click)
-=======
-    menu.action(npctrolls_root, "NPC偷车", {"npcjack"}, "派个NPC去偷他车. 车主不在最好（这特喵不是废话）.", function(on_click)
->>>>>>> 66b6fb550739bc01b0cd731dc8f1d84c8fbb6e05
         local player_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
         local last_veh = PED.GET_VEHICLE_PED_IS_IN(player_ped, true)
         local cur_veh = PED.GET_VEHICLE_PED_IS_IN(player_ped, false)
@@ -1655,11 +1651,7 @@ function set_up_player_actions(pid)
         end
     end)
 
-<<<<<<< HEAD
     menu.action(npctrolls_root, "派遣攻击者", {"british"}, "他们会接连攻击你.", function(on_click)
-=======
-    menu.action(npctrolls_root, "不列颠模式", {"british"}, "天佑女王（英国国歌）.", function(on_click)
->>>>>>> 66b6fb550739bc01b0cd731dc8f1d84c8fbb6e05
         local hash = 0x9C9EFFD8
         local player_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
         request_model_load(hash)
@@ -1679,11 +1671,7 @@ function set_up_player_actions(pid)
         end
     end)
 
-<<<<<<< HEAD
-    menu.action(npctrolls_root, "让附近的人逮捕", {"arrest"}, "告诉附近的行人，让他们逮捕玩家。很明显，GTAV中没有逮捕机制。所以他们并不真正逮捕。但他们会尝试.", function(on_click)
-=======
     menu.action(npctrolls_root, "让周围npc追捕", {"arrest"}, "让周围npc追捕玩家.不过gta5里面没有追捕这种玩法.所以他们也不能真的把玩家逮捕.不过他们会试试的.", function(on_click)
->>>>>>> 66b6fb550739bc01b0cd731dc8f1d84c8fbb6e05
         local player_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
         local all_peds = util.get_all_peds()
         for k, ped in pairs(all_peds) do
