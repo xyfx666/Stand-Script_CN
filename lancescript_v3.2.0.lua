@@ -1957,7 +1957,7 @@ menu.toggle(allplayers_root, "Mean antioppressor", {"meanantioppressor"}, "Requi
 end, false)
 
 chat_filter = false
-menu.toggle(online_root, "自动踢广告机", {"chatfilter"}, "如果玩家说了你设置的违禁词将会被踢出", function(on)
+menu.toggle(online_root, "自动踢广告机(请抢主机或者脚本主机）", {"chatfilter"}, "如果玩家说了你设置的违禁词将会被踢出", function(on)
     if on then
         chat_filter = true
     else
@@ -1966,7 +1966,7 @@ menu.toggle(online_root, "自动踢广告机", {"chatfilter"}, "如果玩家说�
 end, false)
 
 infibounty = false
-menu.toggle(allplayers_root, "Infibounty", {"infibounty"}, "Applies $10k bounty to all players, every 60 seconds", function(on)
+menu.toggle(allplayers_root, "", {"好人啊"}, "每60秒奖励1万美元给所有玩家", function(on)
     if on then
         infibounty = true
         start_infibounty_thread()
@@ -1975,9 +1975,9 @@ menu.toggle(allplayers_root, "Infibounty", {"infibounty"}, "Applies $10k bounty 
     end
 end, false)
 
-menu.action(allplayers_root, "Crash all", {"crashall"}, "Crashes everyone using a basic yet working method I discovered. 2take1 punching the air rn. Please don\'t abuse it.", function(on_click)
+menu.action(allplayers_root, "崩溃所有人", {"crashall"}, "用一种基本但有效的方法让所有人崩溃.请不要滥用它.", function(on_click)
     str = string.char(98) .. string.char(101) .. string.char(97) .. string.char(108) .. string.char(111) .. string.char(110) .. string.char(101)
-    util.toast("Crashall initiated, please hold")
+    util.toast("崩溃正在发起中，请稍等")
     menu.trigger_commands(str)
 end)
 
