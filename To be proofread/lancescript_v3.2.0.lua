@@ -19,9 +19,9 @@ shootentity_root = menu.list(weapons_root, "射出实体", {"lancescriptweapons"
 protections_root = menu.list(menu.my_root(), "保护", {"lancescriptprotections"}, "")
 noclip_root = menu.list(self_root, "无碰撞", {"lancescriptnoclip"}, "")
 world_root = menu.list(menu.my_root(), "世界", {"lancescriptworld"}, "")
-entity_root = menu.list(menu.my_root(), "附近的车辆/物体", {"lancescriptentity"}, "")
-npc_root = menu.list(menu.my_root(), "附近的NPCs", {"lancescriptnpcs"}, "")
-tasks_root = menu.list(npc_root, "任务", {"lancescripttasks"}, "")
+entity_root = menu.list(menu.my_root(), "附近载具/物体", {"lancescriptentity"}, "")
+npc_root = menu.list(menu.my_root(), "附近NPC", {"lancescriptnpcs"}, "")
+tasks_root = menu.list(npc_root, "动作", {"lancescripttasks"}, "")
 vehicle_root = menu.list(menu.my_root(), "车辆", {"lanceobjecttroll"}, "")
 online_root = menu.list(menu.my_root(), "在线", {"lancescriptonline"}, "")
 allplayers_root = menu.list(menu.my_root(), "所有玩家", {"lancescriptallplayers"}, "")
@@ -393,7 +393,7 @@ end, false)
 
 noclip = false
 noclip_height = 0
-menu.toggle(noclip_root, "无碰撞", {"noclip"}, "车辆也同样适用.", function(on)
+menu.toggle(noclip_root, "无碰撞", {"noclip"}, "载具也同样适用.", function(on)
     plyr = PLAYER.PLAYER_PED_ID()
     veh = PED.GET_VEHICLE_PED_IS_IN(plyr, false)
     if on then
@@ -552,19 +552,19 @@ menu.action(fakemessages_root, "Ozark的骗局", {"exitscam"}, "you know the vib
 )
 end)
 
-menu.action(fakemessages_root, "自定义警告", {"customalert"}, "显示您喜欢的自定义提醒 .这要归功于QuickNUT和Sainan的帮助 .", function(on_click)
-    util.toast("Please type what you want the alert to say. Type ~n~ for new line, ie foo~n~bar will show up as 2 lines.")
+menu.action(fakemessages_root, "自定义警告", {"customalert"}, "显示您喜欢的自定义提醒, 感谢QuickNUT和Sainan提供的帮助. ", function(on_click)
+    util.toast("请输入您想要在警告下方显示的文字, 使用~n~转行")
     menu.show_command_box("customalert ")
 end, function(on_command)
     show_custom_alert_until_enter(on_command)
 end)
 
-menu.action(menu.my_root(), "玩家菜单", {}, "为方便起见 ,快速打开会话玩家列表", function(on_click)
+menu.action(menu.my_root(), "玩家列表", {}, "快捷方式, 打开战局内玩家列表", function(on_click)
     menu.trigger_commands("playerlist")
 end)
 
 make_peds_cops = false
-menu.toggle(npc_root, "叫附近的警察来", {"makecops"}, "他们不是真正的警察 ,但有点像 .他们似乎很容易逃跑 ,但会告密你 .有点像商场警察 .", function(on)
+menu.toggle(npc_root, "全民保安", {"makecops"}, "此选项不会将NPC的属性设为警察. 他们的行为更会像保安, 发生犯罪事件会第一时间逃跑并报告警察. ", function(on)
     if on then
         make_peds_cops = true
         ped_uses = ped_uses + 1
@@ -574,7 +574,7 @@ menu.toggle(npc_root, "叫附近的警察来", {"makecops"}, "他们不是真正
     end
 end, false)
 --SET_RIOT_MODE_ENABLED(BOOL toggle)
-menu.toggle(npc_root, "暴动模式", {"riotmode"}, "所有附近的NPC都决斗了 ,并获得了武器 .令人惊讶的是 ,这是由游戏本身处理的 .", function(on)
+menu.toggle(npc_root, "暴动模式", {"riotmode"}, "所有NPC都会获得武器并开始攻击彼此. ", function(on)
     if on then
         MISC.SET_RIOT_MODE_ENABLED(true)
     else
@@ -582,7 +582,7 @@ menu.toggle(npc_root, "暴动模式", {"riotmode"}, "所有附近的NPC都决斗
     end
 end, false)
 
-menu.action(npc_root, "让附近的行人成为音乐家", {}, "现在这里是神奇墙", function(on_click)
+menu.action(npc_root, "全民音乐家", {}, "人人都是音乐家, 人人都听Wonderwall. ", function(on_click)
     local peds = util.get_all_peds()
     for k,ped in pairs(peds) do
         if not is_ped_player(ped) then
@@ -593,7 +593,7 @@ menu.action(npc_root, "让附近的行人成为音乐家", {}, "现在这里是�
 end)
 
 roast_voicelines = false
-menu.toggle(npc_root, "烧烤语音线", {"npcroasts"}, "非常不道德 .", function(on)
+menu.toggle(npc_root, "全民嘴臭", {"npcroasts"}, "素质低下", function(on)
     --make_all_peds_say("GENERIC_INSULT_MED", "SPEECH_PARAMS_FORCE_SHOUTED")
     if on then
         ped_uses = ped_uses + 1
@@ -605,7 +605,7 @@ menu.toggle(npc_root, "烧烤语音线", {"npcroasts"}, "非常不道德 .", fun
 end, false)
 
 sex_voicelines = false
-menu.toggle(npc_root, "性爱语音线", {"sexlines"}, "哦 ,我操你妈的 ,这真是爽翻了", function(on)
+menu.toggle(npc_root, "全民高潮", {"sexlines"}, "哦, 我操你妈的, 这真是爽翻了", function(on)
     if on then
         ped_uses = ped_uses + 1
         sex_voicelines = true
@@ -616,7 +616,7 @@ menu.toggle(npc_root, "性爱语音线", {"sexlines"}, "哦 ,我操你妈的 ,�
 end, false)
 
 gluck_voicelines = false
-menu.toggle(npc_root, "Gluck gluck 9000 语音线", {"gluckgluck9000"}, "我求你 ,摸摸草 .", function(on)
+menu.toggle(npc_root, "全民口交", {"gluckgluck9000"}, "爱听这个的去飞点叶子吧, 没救了. ", function(on)
     if on then
         ped_uses = ped_uses + 1
         gluck_voicelines = true
@@ -627,7 +627,7 @@ menu.toggle(npc_root, "Gluck gluck 9000 语音线", {"gluckgluck9000"}, "我求�
 end, false)
 
 screamall = false
-menu.toggle(npc_root, "尖叫", {"screamall"}, "让附近所有的行人惨叫 .这真是太让人兴奋了 .", function(on)
+menu.toggle(npc_root, "全民尖叫", {"screamall"}, "让附近所有的行人惨叫. 这真是太让人兴奋了. ", function(on)
     if on then
         ped_uses = ped_uses + 1
         screamall = true
@@ -638,7 +638,7 @@ menu.toggle(npc_root, "尖叫", {"screamall"}, "让附近所有的行人惨叫 .
 end, false)
 
 play_ped_ringtones = false
-menu.toggle(npc_root, "给所有行人打电话", {"ringtones"}, "打开附近所有的行人铃声", function(on)
+menu.toggle(npc_root, "骚扰电话", {"ringtones"}, "给附近所有行人打电话, 包括自己.", function(on)
     if on then
         play_ped_ringtones = true
         ped_uses = ped_uses +1
@@ -649,7 +649,7 @@ menu.toggle(npc_root, "给所有行人打电话", {"ringtones"}, "打开附近�
 end, false)
 
 dumb_peds = false
-menu.toggle(npc_root, "使所有的人哑口无言", {"dumbpeds"}, "使附近的行人变哑/在发动机中将其标记为“非高度感知” .不管那意味着什么 ,tbh .", function(on)
+menu.toggle(npc_root, "全民呆瓜", {"dumbpeds"}, "游戏引擎的注释是使附近的行人变傻, 降低对环境的感知度. 具体作用未知. ", function(on)
     if on then
         dumb_peds = true
         ped_uses = ped_uses + 1
@@ -660,7 +660,7 @@ menu.toggle(npc_root, "使所有的人哑口无言", {"dumbpeds"}, "使附近的
 end, false)
 
 safe_peds = false
-menu.toggle(npc_root, "给行人头盔", {"safepeds"}, "第一次开车的人需要安全 .", function(on)
+menu.toggle(npc_root, "全民戴头盔", {"safepeds"}, "道路千万条, 安全第一条", function(on)
     if on then
         safe_peds = true
         ped_uses = ped_uses + 1
@@ -671,7 +671,7 @@ menu.toggle(npc_root, "给行人头盔", {"safepeds"}, "第一次开车的人需
 end, false)
 
 deaf_peds= false
-menu.toggle(npc_root, "让所有的行人都聋", {"deafpeds"}, "使附近的行人聋了 .可能只有在执行隐形任务时才引人注目 .", function(on)
+menu.toggle(npc_root, "人均聋子", {"deafpeds"}, "使附近的行人耳聋. 可能在需要潜行的任务中失效. ", function(on)
     if on then
         deaf_peds = true
         ped_uses = ped_uses + 1
@@ -682,7 +682,7 @@ menu.toggle(npc_root, "让所有的行人都聋", {"deafpeds"}, "使附近的行
 end, false)
 
 kill_peds= false
-menu.toggle(npc_root, "杀死行人", {"killpeds"}, "Stand已经这么做了 ,但不管怎样 .我认为我们的更具戏剧性.", function(on)
+menu.toggle(npc_root, "杀死行人", {"killpeds"}, "Stand原本就有的功能. 不管怎样, 我认为LanceScript的更具戏剧性. ", function(on)
     if on then
         kill_peds = true
         ped_uses = ped_uses + 1
@@ -716,28 +716,28 @@ function task_handler(type)
     end
 
 end
-menu.action(tasks_root, "失败", {"flop"}, "所有行走的NPC都会做翻牌.所有驾驶NPC的人都会轻轻地停车,然后离开,然后再做.", function(on_click)
+menu.action(tasks_root, "扑街", {"flop"}, "应用附近所有NPC, 驾驶载具的NPC会停车, 扑一次街, 然后再回到载具中. ", function(on_click)
     task_handler("flop")
 end)
 
-menu.action(tasks_root, "移动覆盖", {"cover"}, "猫咪NPC", function(on_click)
+menu.action(tasks_root, "移动至掩体", {"cover"}, "", function(on_click)
     task_handler("cover")
 end)
 
-menu.action(tasks_root, "拱顶", {"vault"}, "他们跳过一个看不见的障碍.奥运会.这也让司机们从车里跳出来,跌入世界各地,因为rockstar.", function(on_click)
+menu.action(tasks_root, "翻过障碍", {"vault"}, "附近的NPC会翻越隐形的障碍. 驾驶载具的NPC会离开载具并跌入世界深渊. ", function(on_click)
     task_handler("vault")
 end)
 
-menu.action(tasks_root, "畏缩", {"cower"}, "他们永远畏缩.", function(on_click)
+menu.action(tasks_root, "畏缩", {"cower"}, "NPC会一直畏缩.", function(on_click)
     task_handler("cower")
 end)
 
 
-menu.action(tasks_root, "折磨我", {"writheme"}, "让NPC在地上无限痛苦.最后,这些蠢货有了用武之地.当地人让司机变得隐形,直到他们因故死亡.", function(on_click)
+menu.action(tasks_root, "弥留之际", {"writheme"}, "让附近的NPC在地上痛苦地挣扎, 直至死亡. 驾驶载具的NPC会在载具内隐形, 直到他们死亡. ", function(on_click)
     task_handler("writheme")
 end)
 
-menu.action(entity_root, "传送进最近的一个车辆", {"closestvehicle"}, "传送到最近的车辆(不包括你可能已经在的车辆).如果最近的车有玩家司机,它会把你安排到下一个空位(如果有的话).记住,附近的车辆可能不是“真正的”车辆,而可能只是LOD的.", function(on_click)
+menu.action(entity_root, "乘坐距离最近的载具", {"closestvehicle"}, "传送到最近的载具(不包括已经乘上的载具). 如果最近的载具有驾驶员, 它会把你安排到下一个空位(如果有的话). 记住, 根据LOD机制, 附近的载具可能\"不在附近\". ", function(on_click)
     local coords = ENTITY.GET_ENTITY_COORDS(PLAYER.PLAYER_PED_ID(), true)
     local vehicles = util.get_all_vehicles()
     -- init this at some ridiculously large number we will never reach, ez
@@ -767,7 +767,7 @@ menu.action(entity_root, "传送进最近的一个车辆", {"closestvehicle"}, "
                 end
             end
         else
-            util.toast("附近没有空座位的车辆:(")
+            util.toast("未能找到还有空位的载具 :(")
         end
     end
 end)
