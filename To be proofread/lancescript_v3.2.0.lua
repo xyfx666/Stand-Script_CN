@@ -25,7 +25,7 @@ tasks_root = menu.list(npc_root, "任务", {"lancescripttasks"}, "")
 vehicle_root = menu.list(menu.my_root(), "车辆", {"lanceobjecttroll"}, "")
 online_root = menu.list(menu.my_root(), "在线", {"lancescriptonline"}, "")
 allplayers_root = menu.list(menu.my_root(), "所有玩家", {"lancescriptallplayers"}, "")
-business_root = menu.list(online_root, "自动产业", {"lancescriptbusiness"}, "")
+business_root = menu.list(online_root, "产业管理", {"lancescriptbusiness"}, "")
 gametweaks_root = menu.list(menu.my_root(), "游戏调整", {"lancescriptgametweaks"}, "")
 fakemessages_root = menu.list(gametweaks_root, "虚假消息", {"lancescriptfakemessages"}, "")
 radio_root = menu.list(gametweaks_root, "广播", {"lancescriptradio"}, "")
@@ -515,24 +515,25 @@ menu.action(fakemessages_root, "Stand on TOP! (Stand 是最好的!)", {"stand on
     show_custom_alert_until_enter("Stand on TOP!")
 end)
 
-menu.action(fakemessages_root, "Yeeyee ass haircut", {"yeeyee"}, "maybe", function(on_click)
+menu.action(fakemessages_root, "拉玛嘴臭富兰克林", {"yeeyee"}, "maybe", function(on_click)
     show_custom_alert_until_enter("如果你能换掉那个 ~r~土老帽的发型~w~ 可能会有一些婊子愿意让你操")
 end)
 
-menu.action(fakemessages_root, "欢迎加入黑暗行军", {"blackparade"}, "", function(on_click)
-    show_custom_alert_until_enter("当我还是一个年轻的男孩的时候，我的父亲~n~"..
-    "带我进城去看游行乐队~n~"..
-    "他说: \"儿子,你长大后想成为什么样的人？\"~n~"..
-    "救世主，失败者，还是一个该死的人？\"~n~"..
-    "他说，\"你会打败他们吗？ 你的恶魔~n~"..
-    "所有没有信仰的，他们指定的计划？~n~"..
-    "因为有一天，我会给你留下一个幽灵~n~"..
-    "在夏天带领你参加黑人游行...\"~n~"..
-    "~n~"..
-    "当我还是一个年轻的男孩的时候，我的父亲~n~"..
-    "带我进城去看游行乐队~n~"..
-    "他说: \"儿子,你长大后想成为什么样的人？~n~"..
-    "救世主，失败者,还是一个该死的人？\"")
+menu.action(fakemessages_root, "欢迎加入The Black Parade", {"blackparade"}, "", function(on_click)
+    local blkprdlrc1 = "当我还是个小孩的时候，我的父亲~n~" ..
+    "领着我进城，去观赏游行乐队。~n~" ..
+    "他问道：\"儿子，你长大后是否会成为~n~" ..
+    "失败之人，落魄之人和诅咒之人的救世主？\"~n~" ..
+    "父亲又问，\"你会打败那些恶魔和不信任你的人吗, ~n~" ..
+    "会挫败他们所创造的阴谋和诡计吗? ~n~" ..
+    "因为有那么一天，爸爸会化作幽灵，化作幻象~n~" ..
+    "在夏天带领你参加The Black Parade...\""
+    local blkprdlrc2 = "当我还是个小孩的时候，我的父亲~n~" ..
+    "领着我进城，去观赏游行乐队。~n~" ..
+    "他问道：\"儿子，你长大后是否会成为~n~" ..
+    "失败之人，落魄之人和诅咒之人的救世主？\""
+    show_custom_alert_until_enter(blkprdlrc1)
+    show_custom_alert_until_enter(blkprdlrc2)
 end)
 
 
