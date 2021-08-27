@@ -1482,7 +1482,7 @@ function set_up_player_actions(pid)
     end)
 
 
-    menu.action(npctrolls_root, "发送攻击者耶稣", {"sendgrieferjesus"}, "生成一个耶稣,他有一把轨道枪,会不断地攻击玩家,甚至在他死后,如果他离得太远就会传送到他的身边.这有时会出现故障,这通常是由于网络的原因..", function(on_click)
+    menu.action(npctrolls_root, "发送攻击者耶稣", {"sendgrieferjesus"}, "生成一个无敌的耶稣,他有一把轨道枪,会不断地攻击玩家,甚至在他死后,如果他离得太远就会传送到他的身边.这有时会出现故障,这通常是由于网络的原因..", function(on_click)
         dispatch_griefer_jesus(pid)
     end)
 
@@ -1502,7 +1502,7 @@ function set_up_player_actions(pid)
         end
     end)
 
-    menu.action(npctrolls_root, "天煞恶搞", {"sendjets"}, "对于这个极其基本的功能,我们不收钱/然而,天煞只会在玩家死亡前瞄准玩家,否则我们需要另一端代码,但是我不想写.", function(on_click)
+    menu.action(npctrolls_root, "天煞恶搞", {"sendjets"}, "对于这个极其基本的功能,我们不收取140美元.然而,天煞只会在玩家死亡前瞄准玩家,否则我们需要另一段代码,但是我不想写.", function(on_click)
         local target_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
         coords = ENTITY.GET_OFFSET_FROM_ENTITY_IN_WORLD_COORDS(target_ped, 1.0, 0.0, 500.0)
         coords.x = coords['x']
