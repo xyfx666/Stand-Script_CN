@@ -1519,22 +1519,22 @@ function set_up_player_actions(pid)
         spam_entity_on_player(target_ped, 3760607069)
     end)
 
-    menu.action(entspam_root, "假阴茎", {"dildospam"}, "这太让人害羞了", function(on_click)
+    menu.action(entspam_root, "假阴茎", {"dildospam"}, "啊好羞耻", function(on_click)
         local target_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
         spam_entity_on_player(target_ped, 3872089630)
     end)
 
-    menu.action(entspam_root, "热狗", {"hotdogspam"}, "一个狗,他很热,于是它变成了热狗", function(on_click)
+    menu.action(entspam_root, "热狗", {"hotdogspam"}, "一个狗,他很热,于是它变成了热狗（有个东京也很热）", function(on_click)
         local target_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
         spam_entity_on_player(target_ped, 2565741261)
     end)
 
-    menu.action(entspam_root, "热狗摊", {"hotdogstandspam"}, "你知道我为什么把我做的事资本.", function(on_click)
+    menu.action(entspam_root, "热狗摊", {"hotdogstandspam"}, "你知道我为啥把STAND大写吗hhh.", function(on_click)
         local target_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
         spam_entity_on_player(target_ped, 2713464726)
     end)
 
-    menu.action(entspam_root, "摩天轮", {"ferriswheelspam"}, "小心", function(on_click)
+    menu.action(entspam_root, "摩天轮", {"ferriswheelspam"}, "小心点", function(on_click)
         local target_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
         spam_entity_on_player(target_ped, 3291218330)
     end)
@@ -1544,14 +1544,14 @@ function set_up_player_actions(pid)
         spam_entity_on_player(target_ped, 3413442113)
     end)
 
-    menu.action(entspam_root, "空中雷达", {"radarspam"}, "他们旋转", function(on_click)
+    menu.action(entspam_root, "对空雷达", {"radarspam"}, "雷达转啊转", function(on_click)
         local target_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
         spam_entity_on_player(target_ped, 2306058344)
     end)
     --1681875160
 
 
-    menu.action(entspam_root, "自定义实体", {"customentityspam"}, "输入自定义实体.尽量不要输入无效的散列,但是请求程序函数是智能的,如果您这样做,它应该是好的.", function(on_click)
+    menu.action(entspam_root, "自定义实体", {"customentityspam"}, "输入自定义实体.尽量不要输入无效的哈希值,但是程序是智能的,你输了无效值也没事.", function(on_click)
         util.toast("Please input the model hash")
         menu.show_command_box("customentityspam ")
     end, function(on_command)
@@ -1567,18 +1567,18 @@ function set_up_player_actions(pid)
         end
     end, true)
 
-    menu.click_slider(entspam_root, "实体数目", {"entspamnum"}, "发送垃圾邮件的邮件数.显然,将此设置为一个较高的数字将使您崩溃或无限期冻结您的游戏.", 1, 100, 30, 10, function(s)
+    menu.click_slider(entspam_root, "实体数目", {"entspamnum"}, "发送实体垃圾的数目.设置太高容易自崩.", 1, 100, 30, 10, function(s)
         num_of_spam = s
     end)
 
-    menu.action(objecttrolls_root, "在玩家前面的坡道", {"ramp"}, "在玩家正前方产生一个斜坡.当它们在车里时,使用得最方便.", function(on_click)
+    menu.action(objecttrolls_root, "在玩家前面的坡道", {"ramp"}, "在玩家正前方产生一个斜坡.玩家在车里时用起来最方便.", function(on_click)
         local target_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
         local hash = 2282807134
         request_model_load(hash)
         spawn_object_in_front_of_ped(target_ped, hash, 90, 50.0, -0.5, true)
     end)
 
-    menu.action(objecttrolls_root, "给玩家生成障碍物", {"barrier"}, "在玩家正前方产生一个 冻结 屏障.对造成事故有好处.", function(on_click)
+    menu.action(objecttrolls_root, "给玩家生成障碍物", {"barrier"}, "在玩家正前方产生一个一动不动的屏障.便于造成事故.", function(on_click)
         local target_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
         local hash = 3729169359
         local obj = spawn_object_in_front_of_ped(target_ped, hash, 0, 5.0, -0.5, false)
