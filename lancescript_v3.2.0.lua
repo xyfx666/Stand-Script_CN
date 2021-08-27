@@ -320,7 +320,7 @@ function request_ptfx_load(hash)
             util.toast("粒子特效 未能在5秒内加载完成.")
             break
         end
-        util.toast("正在加载粒子特效HASH " .. hash)
+        util.toast("正在加载粒子特效HASH..." .. hash)
         util.yield()
     end
 end
@@ -428,7 +428,7 @@ end)
 
 
 hud_rainbow = false
-menu.toggle(gametweaks_root, "RGB hud", {"rgbhud"}, "所有游戏UI都会在红绿蓝之间切换, 需重启游戏才能恢复原样. ", function(on)
+menu.toggle(gametweaks_root, "RGB HUD", {"rgbhud"}, "所有游戏UI都会在红绿蓝之间切换, 需重启游戏才能恢复原样. ", function(on)
     if on then
         hud_rainbow = true
     else
@@ -441,7 +441,7 @@ menu.click_slider(gametweaks_root, "细节层次系数", {"lodscale"}, "简单�
     lodscale = s
   end)
 
-menu.toggle(radio_root, "只有音乐的电台", {"musiconly"}, "强制电台只播放音乐 .没有废话 .", function(on)
+menu.toggle(radio_root, "只有音乐的电台", {"musiconly"}, "强制电台只播放音乐. 没有废话. ", function(on)
     num_unlocked = AUDIO.GET_NUM_UNLOCKED_RADIO_STATIONS()
     if on then
         for i=1, num_unlocked do
@@ -472,7 +472,7 @@ menu.action(radio_root, "Tracklist override - \"Don\'t come close\"", {"dontcome
     AUDIO.SET_CUSTOM_RADIO_TRACK_LIST(station, "END_CREDITS_KILL_TREVOR", true)
 end)
 
-menu.action(radio_root, "下一轨道", {"radioskip"}, "跳过当前轨迹", function(on_click)
+menu.action(radio_root, "下一首歌", {"radioskip"}, "跳过当前播放曲目", function(on_click)
     AUDIO.SKIP_RADIO_FORWARD()
 end)
 
@@ -507,7 +507,7 @@ menu.action(fakemessages_root, "Stand on TOP! (Stand 是最好的!)", {"stand on
 end)
 
 menu.action(fakemessages_root, "Yeeyee ass haircut", {"yeeyee"}, "maybe", function(on_click)
-    show_custom_alert_until_enter("Maybe if you got rid of that old ~r~yee yee ass haircut~w~ you'd get some bitches on your dick")
+    show_custom_alert_until_enter("如果你能换掉那个 ~r~土老帽的发型~w~ 可能会有一些婊子愿意让你操")
 end)
 
 menu.action(fakemessages_root, "欢迎加入黑暗行军", {"blackparade"}, "", function(on_click)
