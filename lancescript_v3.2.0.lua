@@ -130,17 +130,17 @@ scaleform_thread = util.create_thread(function (thr)
         if os.time() - starttime >= 5 then
             AUDIO.PLAY_SOUND_FRONTEND(55, "FocusOut", "HintCamSounds", true)
             if file_exists(filesystem.scripts_dir() .. 'Tox1cEssent1als.lua') and not file_exists(filesystem.scripts_dir() .. 'disclaimer_viewed.txt') then
-                local text = "~g~阁下没有被禁止进入GTA线上模式~n~ ~w~请注意， 这是来自Lancescript开发者的一则声明，恳请您仔细阅读。~n~我已注意到您或许在使用ToxicEssentials(ToxicEssent1als.lua)。~n~我不能强迫您不再使用ToxicEssentials，但它的制作组不是他妈的什么好东西。~n~" .. 
-                "ToxicEssentials的内容中包括其他Lua脚本作者的辛苦创作。而它的制作组成员，pnn，在未有标明原作者，或征得原作者同意的情况下剽窃代码，并将其用于商业行为。~n~产生的任何盈利也没有回馈给这些代码的作者。"
-                local text2 = "您可以继续使用ToxicEssentials。但制作ToxicEssential的成员之一，~n~ICYPhoenix，相较其他制作组成员拥有良好的品德。~n~他/她过去几个月来一直在维护一个没有混淆过代码，并标注代码来源的版本。~n~" .. 
-                "我强烈建议您使用Phoenixscript和/或 Lancescript 来代替pnn剽窃来的作品 ~n~毕竟Phoenixscript 本来就是 Toxicessentials。~n~"..
-                "我鼓励您不再向别人分享ToxicEssentials，因为ToxicEssentials的代码是剽窃来的，被混淆过的，且质量很差。但您也可以选择忽视这条信息，并继续分享。"
-                local text3 = "您之后不会再看到这则声明，感谢阁下抽出您宝贵的时间阅读此声明。"
+                local text = "~g~阁下没有被禁止进入GTA线上模式~n~ ~w~请注意, 这是来自Lancescript开发者的一则声明,恳请您仔细阅读.~n~我已注意到您或许在使用ToxicEssentials(ToxicEssent1als.lua).~n~我不能强迫您不再使用ToxicEssentials,但它的制作组不是他妈的什么好东西.~n~" .. 
+                "ToxicEssentials的内容中包括其他Lua脚本作者的辛苦创作.而它的制作组成员,pnn,在未有标明原作者,或征得原作者同意的情况下剽窃代码,并将其用于商业行为.~n~产生的任何盈利也没有回馈给这些代码的作者."
+                local text2 = "您可以继续使用ToxicEssentials.但制作ToxicEssential的成员之一,~n~ICYPhoenix,相较其他制作组成员拥有良好的品德.~n~他/她过去几个月来一直在维护一个没有混淆过代码,并标注代码来源的版本.~n~" .. 
+                "我强烈建议您使用Phoenixscript和/或 Lancescript 来代替pnn剽窃来的作品 ~n~毕竟Phoenixscript 本来就是 Toxicessentials.~n~"..
+                "我鼓励您不再向别人分享ToxicEssentials,因为ToxicEssentials的代码是剽窃来的,被混淆过的,且质量很差.但您也可以选择忽视这条信息,并继续分享."
+                local text3 = "您之后不会再看到这则声明,感谢阁下抽出您宝贵的时间阅读此声明."
                 show_custom_alert_until_enter(text)
                 show_custom_alert_until_enter(text2)
                 show_custom_alert_until_enter(text3)
                 file = io.open(filesystem.scripts_dir() .. 'disclaimer_viewed.txt', "w")
-                file:write("该文件存在于您的 Lua 脚本中，用于告诉 Lancescript 您已查看关于 Toxicessentials 的免责声明。 如果删除它，您将再次看到免责声明。")
+                file:write("该文件存在于您的 Lua 脚本中,用于告诉 Lancescript 您已查看关于 Toxicessentials 的免责声明. 如果删除它,您将再次看到免责声明.")
                 file:close()
             end
             util.stop_thread()
@@ -482,16 +482,16 @@ ban_msg = "HUD_ROSBANPERM"
 --_SET_WARNING_MESSAGE_WITH_ALERT(char* labelTitle, char* labelMsg, int p2, int p3, char* labelMsg2, BOOL p5, int p6, int p7, char* p8, char* p9, BOOL background, int errorCode)
 
 menu.action(fakemessages_root, "虚假的封号消息 1", {"fakeban"}, "显示了一条完全虚假的禁令信息 .也许可以用它从作弊开发者那里获得免费帐户 ,或者在r/GTA5Moding上引起恐慌 .", function(on_click)
-    show_custom_alert_until_enter("你已被永久禁止进入GTA线上模式。~n~返回 Grand Theft Auto V。")
+    show_custom_alert_until_enter("你已被永久禁止进入GTA线上模式.~n~返回 Grand Theft Auto V.")
 end)
 
 menu.action(fakemessages_root, "虚假的封号消息 2", {"fakeban"}, "显示了一条完全虚假的禁令信息 .也许可以用它从作弊开发者那里获得免费帐户 ,或者在r/GTA5Moding上引起恐慌 .", function(on_click)
-    show_custom_alert_until_enter("你已被永久禁止进入GTA线上模式。~n~返回 Grand Theft Auto V。")
+    show_custom_alert_until_enter("你已被永久禁止进入GTA线上模式.~n~返回 Grand Theft Auto V.")
 end)
 --0x252F03F2
 
 menu.action(fakemessages_root, "服务不可用", {"fakeservicedown"}, "Rockstar 游戏服务现在不可用.", function(on_click)
-    show_custom_alert_until_enter("Rockstar 游戏服务现在不可用。~n~返回 Grand Theft Auto V。")
+    show_custom_alert_until_enter("Rockstar 游戏服务现在不可用.~n~返回 Grand Theft Auto V.")
 end)
 
 menu.action(fakemessages_root, "封号到 xyz", {"suspendeduntil"}, "暂停至 xyz .它会要求您输入要显示的日期 ,不要担心 .", function(on_click)
@@ -499,7 +499,7 @@ menu.action(fakemessages_root, "封号到 xyz", {"suspendeduntil"}, "暂停至 x
     menu.show_command_box("suspendeduntil ")
 end, function(on_command)
     -- fuck it lol
-    show_custom_alert_until_enter("你已被禁止进入GTA线上模式，直到 " .. on_command .. ".~n~另外，您GTA线上模式的角色会将被重置。~n~返回 Grand Theft Auto V。")
+    show_custom_alert_until_enter("你已被禁止进入GTA线上模式,直到 " .. on_command .. ".~n~另外,您GTA线上模式的角色会将被重置.~n~返回 Grand Theft Auto V.")
 end)
 
 menu.action(fakemessages_root, "Stand on TOP! (Stand 是最好的!)", {"stand on top"}, "yep", function(on_click)
@@ -513,7 +513,7 @@ end)
 menu.action(fakemessages_root, "欢迎加入黑暗行军", {"blackparade"}, "", function(on_click)
     show_custom_alert_until_enter("当我还是一个年轻的男孩的时候 ,我的父亲~n~"..
     "带我进城去看游行乐队~n~"..
-    "他说: \"儿子，你长大后想成为什么样的人? \"~n~"..
+    "他说: \"儿子,你长大后想成为什么样的人? \"~n~"..
     "救世主,失败者,还是一个该死的人?\"~n~"..
     "他说, \"你会打败他们吗? 你的恶魔~n~"..
     "所有没有信仰的人,他们指定的计划?~n~"..
@@ -522,7 +522,7 @@ menu.action(fakemessages_root, "欢迎加入黑暗行军", {"blackparade"}, "", 
     "~n~"..
     "当我还是一个年轻的男孩的时候 ,我的父亲~n~"..
     "带我进城去看游行乐队~n~"..
-    "他说: \"儿子，你长大后想成为什么样的人?~n~"..
+    "他说: \"儿子,你长大后想成为什么样的人?~n~"..
     "救世主,失败者,还是一个该死的人?\"")
 end)
 
@@ -532,13 +532,13 @@ menu.action(fakemessages_root, "Reddit (国外论坛)", {"henlo"}, "他们会说
 end)
 
 menu.action(fakemessages_root, "Ozark的骗局", {"exitscam"}, "you know the vibes", function(on_click)
-    show_custom_alert_until_enter("亲爱的Ozark用户，请完整阅读此消息。~n~"..
+    show_custom_alert_until_enter("亲爱的Ozark用户,请完整阅读此消息.~n~"..
 
-    "我怀着沉重的心情写这封信。~n~"..
+    "我怀着沉重的心情写这封信.~n~"..
     
-    "今天我通过我所在国家的一家律师事务所收到 TakeTwo Interactive 的来信。~n~"..
+    "今天我通过我所在国家的一家律师事务所收到 TakeTwo Interactive 的来信.~n~"..
     
-    "Ozark已关闭并停止所有服务，立即生效。"
+    "Ozark已关闭并停止所有服务,立即生效."
 )
 end)
 
@@ -727,7 +727,7 @@ menu.action(tasks_root, "Writhe me", {"writheme"}, "Makes peds infinitely suffer
     task_handler("writheme")
 end)
 
-menu.action(entity_root, "传送进最近的一个车辆", {"closestvehicle"}, "传送到最近的车辆(不包括你可能已经在的车辆)。如果最近的车有玩家司机，它会把你安排到下一个空位(如果有的话)。记住，附近的车辆可能不是“真正的”车辆，而可能只是LOD的。", function(on_click)
+menu.action(entity_root, "传送进最近的一个车辆", {"closestvehicle"}, "传送到最近的车辆(不包括你可能已经在的车辆).如果最近的车有玩家司机,它会把你安排到下一个空位(如果有的话).记住,附近的车辆可能不是“真正的”车辆,而可能只是LOD的.", function(on_click)
     local coords = ENTITY.GET_ENTITY_COORDS(PLAYER.PLAYER_PED_ID(), true)
     local vehicles = util.get_all_vehicles()
     -- init this at some ridiculously large number we will never reach, ez
@@ -763,10 +763,10 @@ menu.action(entity_root, "传送进最近的一个车辆", {"closestvehicle"}, "
 end)
 
 blackhole = false
-menu.toggle(entity_root, "车辆黑洞", {"blackhole"}, "一个超级落后但有趣的黑洞。当你打开它时，它会设置你上方的黑洞位置。可重新启动它以改变位置。哦，还有，这是非常耗费cpu，可能会导致游戏崩溃.", function(on)
+menu.toggle(entity_root, "车辆黑洞", {"blackhole"}, "一个超级落后但有趣的黑洞.当你打开它时,它会设置你上方的黑洞位置.可重新启动它以改变位置.哦,还有,这是非常耗费cpu,可能会导致游戏崩溃.", function(on)
     if on then
         holecoords = ENTITY.GET_ENTITY_COORDS(PLAYER.PLAYER_PED_ID(), true)
-        util.toast("黑洞位置在你的位置上方50单位。重新开关这个开关来改变位置.")
+        util.toast("黑洞位置在你的位置上方50单位.重新开关这个开关来改变位置.")
         blackhole = true
         vehicle_uses = vehicle_uses + 1
     else
@@ -776,12 +776,12 @@ menu.toggle(entity_root, "车辆黑洞", {"blackhole"}, "一个超级落后但�
 end, false)
 
 hole_zoff = 50
-menu.click_slider(entity_root, "黑洞离你有多远", {"blackholeoffset"}, "黑洞离你多远。建议保持这个数值相当高.", 0, 100, 50, 10, function(s)
+menu.click_slider(entity_root, "黑洞离你有多远", {"blackholeoffset"}, "黑洞离你多远.建议保持这个数值相当高.", 0, 100, 50, 10, function(s)
     hole_zoff = s
   end)
 
 vehicle_fuckup = false
-menu.toggle(entity_root, "附近所有车变扁", {"fuckupcars"}, "比附近所有的车都厉害。但这种损害只是局部的。", function(on)
+menu.toggle(entity_root, "附近所有车变扁", {"fuckupcars"}, "比附近所有的车都厉害.但这种损害只是局部的.", function(on)
     if on then
         vehicle_fuckup = true
         vehicle_uses = vehicle_uses + 1
@@ -792,7 +792,7 @@ menu.toggle(entity_root, "附近所有车变扁", {"fuckupcars"}, "比附近所�
 end, false)
 
 inferno = false
-menu.toggle(entity_root, "爆炸汽车", {"inferno"}, "爆炸附近汽车，是持续的，就算他已经损坏.", function(on)
+menu.toggle(entity_root, "爆炸汽车", {"inferno"}, "爆炸附近汽车,是持续的,就算他已经损坏.", function(on)
     if on then
         inferno = true
         vehicle_uses = vehicle_uses + 1
@@ -804,7 +804,7 @@ end, false)
 
 
 godmode_vehicles = false
-menu.toggle(entity_root, "npc车辆无敌", {"godmodecars"}, "使附近所有的汽车不会损坏。这是为NPC车设计的，所以当人炸了你的意大利车时，不要抱怨.", function(on)
+menu.toggle(entity_root, "npc车辆无敌", {"godmodecars"}, "使附近所有的汽车不会损坏.这是为NPC车设计的,所以当人炸了你的意大利车时,不要抱怨.", function(on)
     if on then
         godmode_vehicles = true
         vehicle_uses = vehicle_uses + 1
@@ -815,7 +815,7 @@ menu.toggle(entity_root, "npc车辆无敌", {"godmodecars"}, "使附近所有的
 end)
 
 disable_veh_colls = false
-menu.toggle(entity_root, "附近汽车沉底", {"nocolcars"}, "让附近所有的汽车掉入世界，或者“掉进一个洞里”.", function(on)
+menu.toggle(entity_root, "附近汽车沉底", {"nocolcars"}, "让附近所有的汽车掉入世界,或者“掉进一个洞里”.", function(on)
     if on then
         disable_veh_colls = true
         vehicle_uses = vehicle_uses + 1
@@ -995,7 +995,7 @@ menu.toggle(entity_root, "Entity reap", {"entityreap"}, "Reap all nearby entitie
 end, false)
 
 ascend_vehicles = false
-menu.toggle(entity_root, "附近所有车辆飞天", {"ascendvehicles"}, "这应该能让他们飘浮起来。但它只是让它们在半空中旋转。这糟糕的代码了。", function(on)
+menu.toggle(entity_root, "附近所有车辆飞天", {"ascendvehicles"}, "这应该能让他们飘浮起来.但它只是让它们在半空中旋转.这糟糕的代码了.", function(on)
     if on then
         ascend_vehicles = true
         vehicle_uses = vehicle_uses + 1
@@ -1072,7 +1072,7 @@ menu.toggle(entity_root, "Vehicle chaos gravity", {"chaosgravity"}, "Gravity on/
 end, true)
 
 vc_speed = 100
-menu.click_slider(entity_root, "Vehicle chaos speed", {"chaosspeed"}, "The speed to force the vehicles to. Higher = more chaos.", 30, 300, 100, 10, function(s)
+menu.click_slider(entity_root, "车辆混沌速度", {"chaosspeed"}, "迫使车辆行驶的速度。越高=越混乱。", 30, 300, 100, 10, function(s)
   vc_speed = s
 end)
 
@@ -1094,16 +1094,16 @@ function spam_entity_on_player(ped, hash)
         ENTITY.SET_ENTITY_HAS_GRAVITY(obj, entity_grav)
         OBJECT.SET_ACTIVATE_OBJECT_PHYSICS_AS_SOON_AS_IT_IS_UNFROZEN(obj, true)
     end
-    util.toast('Done spamming entities.')
+    util.toast('完成垃圾邮件实体。')
 end
 
 aircraft_root = menu.list(vehicle_root, "飞机", {"lanceaircraft"}, "")
 
-menu.action(vehicle_root, "下车", {"forceleave"}, "Force leave vehicle, in case of emergency or stuckedness", function(on_click)
+menu.action(vehicle_root, "强制离开载具", {"forceleave"}, "在紧急情况下或车辆受阻时,强行离开车辆", function(on_click)
     TASK.TASK_LEAVE_ANY_VEHICLE(PLAYER.PLAYER_PED_ID(), 0, 16)
 end)
 
-menu.action(aircraft_root, "损害船", {"breakrudder"}, "破坏了方向舵。有利于特技表演.", function(on_click)
+menu.action(aircraft_root, "破坏船", {"breakrudder"}, "破坏了方向舵.有利于特技表演.", function(on_click)
     if player_cur_car then
         VEHICLE.SET_VEHICLE_RUDDER_BROKEN(player_cur_car, true)
     end
@@ -1112,7 +1112,7 @@ end)
 
 
 instantspinup = false
-menu.toggle(aircraft_root, "瞬间螺旋桨旋转起来", {"instantspinup"}, "螺旋桨立即旋转起来，无需等待.", function(on)
+menu.toggle(aircraft_root, "瞬时螺旋桨加速", {"instantspinup"}, "螺旋桨立即旋转起来,无需等待.", function(on)
     if not player_cur_car then
         return
     end
@@ -1127,7 +1127,7 @@ end, false)
 menu.click_slider(aircraft_root, "Turbulence", {"turbulence"}, "Sets turbulence. 0 = no turbulence, 1 = default turbulence, 2 = heavy turbulence", 0, 2, 1, 1, function(s)
     if not player_cur_car then
         return
-		end
+    end
     if s == 0 then
         VEHICLE.SET_PLANE_TURBULENCE_MULTIPLIER(player_cur_car, 0.0)
     elseif s == 1 then
@@ -1137,7 +1137,7 @@ menu.click_slider(aircraft_root, "Turbulence", {"turbulence"}, "Sets turbulence.
     end
 end)
 
-menu.toggle(vehicle_root, "隐身车辆", {"everythingproof"}, "使你的车辆隐身。但不是无敌的。不过玻璃似乎是防弹的.", function(on)
+menu.toggle(vehicle_root, "隐形载具", {"everythingproof"}, "使你的载具隐形.但不是无敌的.不过玻璃似乎是防弹的.", function(on)
     if not player_cur_car then
         return
     end
@@ -1150,7 +1150,7 @@ menu.toggle(vehicle_root, "隐身车辆", {"everythingproof"}, "使你的车辆�
     end
 end)
 
-menu.action(vehicle_root, "掉头", {"vehicle180"}, "使你的车辆转弯。 建议绑定这个.", function(on_click)
+menu.action(vehicle_root, "180度掉头", {"vehicle180"}, "在保持动力的情况下转弯.建议使用快捷键绑定此功能.", function(on_click)
     if player_cur_car then
         local rot = ENTITY.GET_ENTITY_ROTATION(player_cur_car, 0)
         local vel = ENTITY.GET_ENTITY_VELOCITY(player_cur_car)
@@ -1160,7 +1160,7 @@ menu.action(vehicle_root, "掉头", {"vehicle180"}, "使你的车辆转弯。 �
 end)
 
 racemode = false
-menu.toggle(vehicle_root, "车辆竞赛模式", {"racemode"}, "告诉游戏汽车处于 \"竞技模式\"实际上不知道它是做什么的.", function(on)
+menu.toggle(vehicle_root, "赛车模式", {"racemode"}, "告诉游戏汽车处于\"比赛模式\".不知道它到底是干什么的,哈哈.", function(on)
     if not player_cur_car then
         return
     end
@@ -1173,7 +1173,7 @@ menu.toggle(vehicle_root, "车辆竞赛模式", {"racemode"}, "告诉游戏汽�
 end)
 
 stickyground = false
-menu.toggle(vehicle_root, "贴地", {"stick2ground"}, "使你的车保持在地面上.", function(on)
+menu.toggle(vehicle_root, "坚守阵地", {"stick2ground"}, "使你的车保持在地面上.", function(on)
     if not player_cur_car then
         return
     end
@@ -1185,12 +1185,12 @@ menu.toggle(vehicle_root, "贴地", {"stick2ground"}, "使你的车保持在地�
 end)
 
 mph_plate = false
-menu.toggle(vehicle_root, "车牌速度表", {"speedplate"}, "不像Ozark，它有这个功能，我不退出骗局! 当你禁用时，会将你的车牌重置为原来的样子，也有KPH和MPH设置，所以这已经是比较好的了.", function(on)
+menu.toggle(vehicle_root, "车牌速度表", {"speedplate"}, "不像Ozark,它有这个功能,我不退出骗局! 当你禁用时,会将你的车牌重置为原来的样子,也有KPH和MPH设置,所以这已经是比较好的了.", function(on)
     if on then
         if player_cur_car then
             original_plate = VEHICLE.GET_VEHICLE_NUMBER_PLATE_TEXT(player_cur_car)
         else
-            util.toast("You were not in a vehicle when starting this. You won\'t be able to revert plate text.")
+            util.toast("启动时您不在车内。您将无法还原车牌号。")
             original_plate = "LANCE"
         end
         mph_plate = true
@@ -1206,7 +1206,7 @@ menu.toggle(vehicle_root, "车牌速度表", {"speedplate"}, "不像Ozark，它�
 end)
 
 mph_unit = "kph"
-menu.toggle(vehicle_root, "使用MPH的速度表板", {"usemph"}, "如果你不是美国人，请关掉.", function(on)
+menu.toggle(vehicle_root, "使用MPH的速度表板", {"usemph"}, "如果你不是美国人,请关掉.", function(on)
     if on then
         mph_unit = "mph"
     else
@@ -1215,7 +1215,7 @@ menu.toggle(vehicle_root, "使用MPH的速度表板", {"usemph"}, "如果你不�
 end, false)
 
 everythingproof = false
-menu.toggle(vehicle_root, "防弹模式", {"everythingproof"}, "使你的车辆万无一失。但不是无敌的。不过玻璃似乎是防弹的.", function(on)
+menu.toggle(vehicle_root, "防弹模式", {"everythingproof"}, "使你的车辆万无一失.但不是无敌的.不过玻璃似乎是防弹的.", function(on)
     if on then
         everythingproof = true
     else
@@ -1228,7 +1228,7 @@ menu.click_slider(vehicle_root, "载具最高速度", {"topspeed"}, "设定载�
 end)
 
 shift_drift = false
-menu.toggle(vehicle_root, "按shift键漂移", {"shiftdrift"}, "You heard me.", function(on)
+menu.toggle(vehicle_root, "按住Shift键漂移", {"shiftdrift"}, "你听到了.", function(on)
     if on then
         shift_drift = true
     else
@@ -1246,13 +1246,13 @@ menu.toggle(vehicle_root, "无限反追踪导弹烟雾", {"infinitecms"}, "让�
     end
 end)
 
-menu.click_slider(vehicle_root, "载具泥土程度", {"dirtlevel"}, "数值越高，泥土越多.", 0, 15.0, 0, 1, function(s)
+menu.click_slider(vehicle_root, "载具肮脏程度", {"dirtlevel"}, "数值越高,你的载具就越脏.", 0, 15.0, 0, 1, function(s)
     if player_cur_car then
         VEHICLE.SET_VEHICLE_DIRT_LEVEL(player_cur_car, s)
     end
 end)
 
-menu.click_slider(vehicle_root, "载具灯光亮度", {"lightmultiplier"}, "设定车内灯光的亮度。仅限本地.", 0, 1000000, 1, 1, function(s)
+menu.click_slider(vehicle_root, "载具灯光亮度", {"lightmultiplier"}, "设定车内灯光的亮度.仅限本地.", 0, 1000000, 1, 1, function(s)
     if player_cur_car then
         VEHICLE.SET_VEHICLE_LIGHT_MULTIPLIER(player_cur_car, s)
     end
@@ -1477,7 +1477,7 @@ function set_up_player_actions(pid)
         dispatch_griefer_jesus(pid)
     end)
 
-    menu.toggle(objecttrolls_root, "故障车辆", {"glitchveh"}, "他们所乘的车出了故障,如果他们进了车。", function(on)
+    menu.toggle(objecttrolls_root, "故障车辆", {"glitchveh"}, "他们所乘的车出了故障,如果他们进了车.", function(on)
         if on then
             local target_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
             local veh = PED.GET_VEHICLE_PED_IS_IN(target_ped, true)
@@ -1551,7 +1551,7 @@ function set_up_player_actions(pid)
     --1681875160
 
 
-    menu.action(entspam_root, "自定义实体", {"customentityspam"}, "输入自定义实体。尽量不要输入无效的散列，但是请求程序函数是智能的，如果您这样做，它应该是好的。", function(on_click)
+    menu.action(entspam_root, "自定义实体", {"customentityspam"}, "输入自定义实体.尽量不要输入无效的散列,但是请求程序函数是智能的,如果您这样做,它应该是好的.", function(on_click)
         util.toast("Please input the model hash")
         menu.show_command_box("customentityspam ")
     end, function(on_command)
@@ -1567,7 +1567,7 @@ function set_up_player_actions(pid)
         end
     end, true)
 
-    menu.click_slider(entspam_root, "实体数目", {"entspamnum"}, "发送垃圾邮件的邮件数。显然，将此设置为一个较高的数字将使您崩溃或无限期冻结您的游戏。", 1, 100, 30, 10, function(s)
+    menu.click_slider(entspam_root, "实体数目", {"entspamnum"}, "发送垃圾邮件的邮件数.显然,将此设置为一个较高的数字将使您崩溃或无限期冻结您的游戏.", 1, 100, 30, 10, function(s)
         num_of_spam = s
     end)
 
@@ -1578,7 +1578,7 @@ function set_up_player_actions(pid)
         spawn_object_in_front_of_ped(target_ped, hash, 90, 50.0, -0.5, true)
     end)
 
-    menu.action(objecttrolls_root, "玩家前面的障碍物", {"barrier"}, "在玩家正前方产生一个 冻结 屏障。对造成事故有好处.", function(on_click)
+    menu.action(objecttrolls_root, "玩家前面的障碍物", {"barrier"}, "在玩家正前方产生一个 冻结 屏障.对造成事故有好处.", function(on_click)
         local target_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
         local hash = 3729169359
         local obj = spawn_object_in_front_of_ped(target_ped, hash, 0, 5.0, -0.5, false)
@@ -1599,13 +1599,13 @@ function set_up_player_actions(pid)
         ENTITY.FREEZE_ENTITY_POSITION(obj, true)
     end)
 
-    menu.action(ls_proot, "自己狙击", {"snipe"}, "将玩家作为攻击者与你一起狙击[如果你与目标没有直瞄，则将不起作用]", function(on_click)
+    menu.action(ls_proot, "自己狙击", {"snipe"}, "将玩家作为攻击者与你一起狙击[如果你与目标没有直瞄,则将不起作用]", function(on_click)
         local owner = PLAYER.PLAYER_PED_ID()
         local target_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
         local target = ENTITY.GET_ENTITY_COORDS(target_ped)
         MISC.SHOOT_SINGLE_BULLET_BETWEEN_COORDS(target['x'], target['y'], target['z'], target['x'], target['y'], target['z']+0.1, 300.0, true, 100416529, owner, true, false, 100.0)
     end)
-    menu.action(ls_proot, "匿名狙击", {"selfsnipe"}, "匿名狙击玩家，就好像是随机选择的行人（我认为随机选择的行人需要有LOS）", function(on_click)
+    menu.action(ls_proot, "匿名狙击", {"selfsnipe"}, "匿名狙击玩家,就好像是随机选择的行人（我认为随机选择的行人需要有LOS）", function(on_click)
         local target_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
         local target = ENTITY.GET_ENTITY_COORDS(target_ped)
         local random_ped = get_random_ped()
@@ -1894,7 +1894,7 @@ menu.toggle(online_root, "显示谁在用语音聊天", {"showvoicechat"}, "不�
 end)
 
 aptloop = false
-menu.toggle(allplayers_root, "公寓传送循环", {"apartmenttploop"}, "请使用它吧，有毒的人", function(on)
+menu.toggle(allplayers_root, "公寓传送循环", {"apartmenttploop"}, "请使用它吧,有毒的人", function(on)
     if on then
         aptloop = true
     else
@@ -1902,12 +1902,12 @@ menu.toggle(allplayers_root, "公寓传送循环", {"apartmenttploop"}, "请使�
     end
 end, false)
 
-menu.action(allplayers_root, "会话范围的聊天", {"sessionwidechat"}, "使会议中的每个人都说一些话。", function(on_click)
-    util.toast("请输入您希望在整个会话中表达的内容。")
+menu.action(allplayers_root, "会话范围的聊天", {"sessionwidechat"}, "使会议中的每个人都说一些话.", function(on_click)
+    util.toast("请输入您希望在整个会话中表达的内容.")
     menu.show_command_box("sessionwidechat ")
 end, function(on_command)
     if #on_command > 140 then
-        util.toast("该消息太长，无法完全显示！ 我只是把你从屈辱中救了出来。")
+        util.toast("该消息太长,无法完全显示！ 我只是把你从屈辱中救了出来.")
         return
     end
     for k,p in pairs(players.list(false, true, true)) do
@@ -1957,7 +1957,7 @@ menu.toggle(allplayers_root, "Mean antioppressor", {"meanantioppressor"}, "Requi
 end, false)
 
 chat_filter = false
-menu.toggle(online_root, "自动踢广告机(请抢主机或者脚本主机）", {"chatfilter"}, "如果玩家说了你设置的违禁词将会被踢出", function(on)
+menu.toggle(online_root, "自动踢广告机", {"chatfilter"}, "如果玩家说了你设置的违禁词将会被踢出(请抢主机或者脚本主机）", function(on)
     if on then
         chat_filter = true
     else
@@ -1966,7 +1966,7 @@ menu.toggle(online_root, "自动踢广告机(请抢主机或者脚本主机）",
 end, false)
 
 infibounty = false
-menu.toggle(allplayers_root, "内奸", {"infibounty"}, "每60秒奖励1万美元给所有玩家", function(on)
+menu.toggle(allplayers_root, "自动全战局悬赏金", {"infibounty"}, "每60秒给全战局玩家1万美元的悬赏", function(on)
     if on then
         infibounty = true
         start_infibounty_thread()
@@ -1977,7 +1977,7 @@ end, false)
 
 menu.action(allplayers_root, "崩溃所有人", {"crashall"}, "用一种基本但有效的方法让所有人崩溃.请不要滥用它.", function(on_click)
     str = string.char(98) .. string.char(101) .. string.char(97) .. string.char(108) .. string.char(111) .. string.char(110) .. string.char(101)
-    util.toast("崩溃正在发起中，请稍等")
+    util.toast("崩溃正在发起中,请稍等")
     menu.trigger_commands(str)
 end)
 
