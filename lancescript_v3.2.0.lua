@@ -1578,34 +1578,34 @@ function set_up_player_actions(pid)
         spawn_object_in_front_of_ped(target_ped, hash, 90, 50.0, -0.5, true)
     end)
 
-    menu.action(objecttrolls_root, "玩家前面的障碍物", {"barrier"}, "在玩家正前方产生一个 冻结 屏障.对造成事故有好处.", function(on_click)
+    menu.action(objecttrolls_root, "给玩家生成障碍物", {"barrier"}, "在玩家正前方产生一个 冻结 屏障.对造成事故有好处.", function(on_click)
         local target_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
         local hash = 3729169359
         local obj = spawn_object_in_front_of_ped(target_ped, hash, 0, 5.0, -0.5, false)
         ENTITY.FREEZE_ENTITY_POSITION(obj, true)
     end)
 
-    menu.action(objecttrolls_root, "风车", {"windmill"}, "gotem.", function(on_click)
+    menu.action(objecttrolls_root, "给玩家生成风车", {"windmill"}, "搞他.", function(on_click)
         local target_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
         local hash = 1952396163
         local obj = spawn_object_in_front_of_ped(target_ped, hash, 0, 5.0, -30, false)
         ENTITY.FREEZE_ENTITY_POSITION(obj, true)
     end)
 
-    menu.action(objecttrolls_root, "雷达", {"radar"}, "also gotem.", function(on_click)
+    menu.action(objecttrolls_root, "雷达显示玩家", {"radar"}, "搞他+1.", function(on_click)
         local target_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
         local hash = 2306058344
         local obj = spawn_object_in_front_of_ped(target_ped, hash, 0, 0.0, -5.0, false)
         ENTITY.FREEZE_ENTITY_POSITION(obj, true)
     end)
 
-    menu.action(ls_proot, "自己狙击", {"snipe"}, "将玩家作为攻击者与你一起狙击[如果你与目标没有直瞄,则将不起作用]", function(on_click)
+    menu.action(ls_proot, "自己狙击", {"snipe"}, "将玩家作为攻击者与你一起狙击（你与玩家之间不能有遮挡物）", function(on_click)
         local owner = PLAYER.PLAYER_PED_ID()
         local target_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
         local target = ENTITY.GET_ENTITY_COORDS(target_ped)
         MISC.SHOOT_SINGLE_BULLET_BETWEEN_COORDS(target['x'], target['y'], target['z'], target['x'], target['y'], target['z']+0.1, 300.0, true, 100416529, owner, true, false, 100.0)
     end)
-    menu.action(ls_proot, "匿名狙击", {"selfsnipe"}, "匿名狙击玩家,就好像是随机选择的行人（我认为随机选择的行人需要有LOS）", function(on_click)
+    menu.action(ls_proot, "匿名狙击", {"selfsnipe"}, "匿名狙击玩家,就好像是个普通路人干的（这个路人跟玩家之间不能有遮挡物）", function(on_click)
         local target_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
         local target = ENTITY.GET_ENTITY_COORDS(target_ped)
         local random_ped = get_random_ped()
@@ -1613,7 +1613,7 @@ function set_up_player_actions(pid)
     end)
 
     --SET_VEHICLE_WHEEL_HEALTH(Vehicle vehicle, int wheelIndex, float health)
-    menu.action(ls_proot, "笼子", {"lscage"}, "基本的笼子.因为你无法控制自己.不过,在lance工作室,我们更具道德感,所以笼子有一些摆动的空间（我们特殊的笼子模型也意味着,没有菜单阻挡模型）.", function(on_click)
+    menu.action(ls_proot, "笼子", {"lscage"}, "基本的笼子选项.因为你无法控制自己.不过,在lance工作室,我们更具道德感,所以笼子里会有一些挪动的空间（我们特殊的笼子模型也意味着,没有菜单可以阻挡（2t：是吗我不信））.", function(on_click)
         local ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
         local coords = ENTITY.GET_ENTITY_COORDS(ped, true)
         local hash = 779277682
@@ -1624,7 +1624,7 @@ function set_up_player_actions(pid)
         ENTITY.SET_ENTITY_ROTATION(cage2, 0.0, 90.0, 0.0, 1, true)
     end)
 
-    menu.action(npctrolls_root, "NPC jack last car", {"npcjack"}, "Sends an NPC to steal their car. Works best if they are out of their car.", function(on_click)
+    menu.action(npctrolls_root, "NPC偷车", {"npcjack"}, "派个NPC去偷他车. 车主不在最好（这特喵不是废话）.", function(on_click)
         local player_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
         local last_veh = PED.GET_VEHICLE_PED_IS_IN(player_ped, true)
         local cur_veh = PED.GET_VEHICLE_PED_IS_IN(player_ped, false)
@@ -1651,7 +1651,7 @@ function set_up_player_actions(pid)
         end
     end)
 
-    menu.action(npctrolls_root, "Bri'ish mode", {"british"}, "God save the queen.", function(on_click)
+    menu.action(npctrolls_root, "不列颠模式", {"british"}, "天佑女王（英国国歌）.", function(on_click)
         local hash = 0x9C9EFFD8
         local player_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
         request_model_load(hash)
@@ -1671,7 +1671,7 @@ function set_up_player_actions(pid)
         end
     end)
 
-    menu.action(npctrolls_root, "让周围npc抓捕", {"arrest"}, "Tells nearby peds to arrest the player. Obviously there is no arrest mechanic in GTA:O. So they don\'t actually arrest. But they will try.", function(on_click)
+    menu.action(npctrolls_root, "让周围npc追捕", {"arrest"}, "让周围npc追捕玩家.不过gta5里面没有追捕这种玩法.所以他们也不能真的把玩家逮捕.不过他们会试试的.", function(on_click)
         local player_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
         local all_peds = util.get_all_peds()
         for k, ped in pairs(all_peds) do
@@ -1757,7 +1757,7 @@ function set_up_player_actions(pid)
         end
     end)
 
-    menu.toggle(ls_proot, "Swiss cheese", {"swisscheese"}, "Rains a shit ton of bullets on the player. Anonymously.", function(on)
+    menu.toggle(ls_proot, "枪林弹雨", {"swisscheese"}, "射爆玩家.匿名干他.", function(on)
         if on then
             bullet_rain = true
             bullet_rain_target = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
@@ -1767,7 +1767,7 @@ function set_up_player_actions(pid)
         end
     end)
 
-    menu.click_slider(ls_proot, "Swiss cheese damage", {"swisscheesedmg"}, "Sets what damage swiss cheese option should do", 0, 1000, 0, 100, function(s)
+    menu.click_slider(ls_proot, "枪林弹雨伤害", {"swisscheesedmg"}, "设置枪林弹雨可以实现的伤害", 0, 1000, 0, 100, function(s)
         swiss_cheese_dmg = s
       end)
 end
