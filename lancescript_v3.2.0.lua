@@ -490,11 +490,11 @@ menu.action(fakemessages_root, "虚假的封号消息 2", {"fakeban"}, "显示�
 end)
 --0x252F03F2
 
-menu.action(fakemessages_root, "服务不可用", {"fakeservicedown"}, "rOcKstaR GaMe ServICeS ArE UnAvAiLAbLe RiGht NoW", function(on_click)
+menu.action(fakemessages_root, "服务不可用", {"fakeservicedown"}, "Rockstar 游戏服务现在不可用.", function(on_click)
     show_custom_alert_until_enter("Rockstar 游戏服务现在不可用。~n~返回 Grand Theft Auto V。")
 end)
 
-menu.action(fakemessages_root, "封号到 xyz", {"suspendeduntil"}, "Suspended until xyz. It will ask you to input the date to show, don\'t worry.", function(on_click)
+menu.action(fakemessages_root, "封号到 xyz", {"suspendeduntil"}, "暂停至 xyz .它会要求您输入要显示的日期 ,不要担心 .", function(on_click)
     util.toast("Input the date your \"suspension\" should end.")
     menu.show_command_box("suspendeduntil ")
 end, function(on_command)
@@ -502,7 +502,7 @@ end, function(on_command)
     show_custom_alert_until_enter("你已被禁止进入GTA线上模式，直到 " .. on_command .. ".~n~另外，您GTA线上模式的角色会将被重置。~n~返回 Grand Theft Auto V。")
 end)
 
-menu.action(fakemessages_root, "Stand on TOP!", {"stand on top"}, "yep", function(on_click)
+menu.action(fakemessages_root, "Stand on TOP! (Stand 是最好的!)", {"stand on top"}, "yep", function(on_click)
     show_custom_alert_until_enter("Stand on TOP!")
 end)
 
@@ -511,45 +511,45 @@ menu.action(fakemessages_root, "Yeeyee ass haircut", {"yeeyee"}, "maybe", functi
 end)
 
 menu.action(fakemessages_root, "欢迎加入黑暗行军", {"blackparade"}, "", function(on_click)
-    show_custom_alert_until_enter("When I was a young boy, my father~n~"..
-    "Took me into the city to see a marching band~n~"..
-    "He said, \"Son, when you grow up would you be~n~"..
-    "The savior of the broken, the beaten and the damned?\"~n~"..
-    "He said, \"Will you defeat them? Your demons~n~"..
-    "And all the non-believers, the plans that they have made?~n~"..
-    "Because one day, I\'ll leave you a phantom~n~"..
-    "To lead you in the summer to join the black parade...\"~n~"..
+    show_custom_alert_until_enter("当我还是一个年轻的男孩的时候 ,我的父亲~n~"..
+    "带我进城去看游行乐队~n~"..
+    "他说: \"儿子，你长大后会成为什么样的人? \"~n~"..
+    "救世主,失败者,还是一个该死的人?\"~n~"..
+    "他说, \"你会打败他们吗? 你的恶魔~n~"..
+    "所有没有信仰的人,他们指定的计划?~n~"..
+    "因为有一天, 我会给你留下一个幽灵~n~"..
+    "在夏天带领你参加黑人游行...\"~n~"..
     "~n~"..
-    "When I was a young boy, my father~n~"..
-    "Took me into the city to see a marching band~n~"..
-    "He said, \"Son, when you grow up would you be~n~"..
-    "The savior of the broken, the beaten and the damned?\"")
+    "当我还是一个年轻的男孩的时候 ,我的父亲~n~"..
+    "带我进城去看游行乐队~n~"..
+    "他说: \"儿子，你长大后会成为什么样的人?~n~"..
+    "救世主,失败者,还是一个该死的人?\"")
 end)
 
 
-menu.action(fakemessages_root, "Reddit", {"henlo"}, "they be like \"um ackshully u should buy 2take1\"", function(on_click)
+menu.action(fakemessages_root, "Reddit (国外论坛)", {"henlo"}, "他们会说 \"嗯,你应该买2Take1的.\"", function(on_click)
     show_custom_alert_until_enter("Hello r/GTA5Modding!")
 end)
 
-menu.action(fakemessages_root, "Exit scam", {"exitscam"}, "you know the vibes", function(on_click)
-    show_custom_alert_until_enter("Dear beloved Ozark Users, PLEASE READ THIS MESSAGE IN ITS ENTIRETY.~n~"..
+menu.action(fakemessages_root, "Ozark的骗局", {"exitscam"}, "you know the vibes", function(on_click)
+    show_custom_alert_until_enter("亲爱的Ozark用户，请完整阅读此消息。~n~"..
 
-    "It is with a heavy heart I have to write this message.~n~"..
+    "我怀着沉重的心情写这封信。~n~"..
     
-    "I received correspondence today via a Law Firm in my local country from TakeTwo Interactive.~n~"..
+    "今天我通过我所在国家的一家律师事务所收到 TakeTwo Interactive 的来信。~n~"..
     
-    "Effective immediately, Ozark has shutdown and ceased all services."
+    "Ozark已关闭并停止所有服务，立即生效。"
 )
 end)
 
-menu.action(fakemessages_root, "自定义警报", {"customalert"}, "显示您喜欢的自定义提醒 .这要归功于QuickNUT和Sainan的帮助 .", function(on_click)
+menu.action(fakemessages_root, "自定义警告", {"customalert"}, "显示您喜欢的自定义提醒 .这要归功于QuickNUT和Sainan的帮助 .", function(on_click)
     util.toast("Please type what you want the alert to say. Type ~n~ for new line, ie foo~n~bar will show up as 2 lines.")
     menu.show_command_box("customalert ")
 end, function(on_command)
     show_custom_alert_until_enter(on_command)
 end)
 
-menu.action(menu.my_root(), "玩家捷径", {}, "为方便起见 ,快速打开会话玩家列表", function(on_click)
+menu.action(menu.my_root(), "玩家菜单", {}, "为方便起见 ,快速打开会话玩家列表", function(on_click)
     menu.trigger_commands("playerlist")
 end)
 
