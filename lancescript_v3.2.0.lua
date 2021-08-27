@@ -1671,7 +1671,7 @@ function set_up_player_actions(pid)
         end
     end)
 
-    menu.action(npctrolls_root, "Tell nearby peds to arrest", {"arrest"}, "Tells nearby peds to arrest the player. Obviously there is no arrest mechanic in GTA:O. So they don\'t actually arrest. But they will try.", function(on_click)
+    menu.action(npctrolls_root, "让周围npc抓捕", {"arrest"}, "Tells nearby peds to arrest the player. Obviously there is no arrest mechanic in GTA:O. So they don\'t actually arrest. But they will try.", function(on_click)
         local player_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
         local all_peds = util.get_all_peds()
         for k, ped in pairs(all_peds) do
