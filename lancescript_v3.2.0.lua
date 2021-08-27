@@ -1285,15 +1285,15 @@ end
 
 function set_up_player_actions(pid)
     menu.divider(menu.player_root(pid), "LanceScript")
-    ls_proot = menu.list(menu.player_root(pid), "Lancescript", {"entityspam"}, "")
+    ls_proot = menu.list(menu.player_root(pid), "恶搞选项", {"entityspam"}, "")
     entspam_root = menu.list(ls_proot, "实体垃圾邮件", {"entityspam"}, "")
-    npctrolls_root = menu.list(ls_proot, "NPC跟踪", {"npctrolls"}, "")
+    npctrolls_root = menu.list(ls_proot, "NPC追杀", {"npctrolls"}, "")
     objecttrolls_root = menu.list(ls_proot, "物体拖曳", {"objecttrolls"}, "")
     ram_root = menu.list(ls_proot, "内存", {"ram"}, "")
     attach_root = menu.list(ls_proot, "附加", {"attach"}, "")
 
     --AUDIO.PLAY_PED_RINGTONE("Dial_and_Remote_Ring", ped, true)
-    menu.action(ls_proot, "Infinite phone ring", {"infiphonering"}, "[EXPERIMENTAL] Infinitely plays a phone ringing sound, even if they join singleplayer. Still need adequate testing. I\'m no man of morals but please only do this to people who fuck with you.", function(on_click)
+    menu.action(ls_proot, "无限的电话铃声", {"infiphonering"}, "[试验性] 无限播放电话铃声，即使他们加入单人游戏。仍然需要充分的测试.", function(on_click)
         AUDIO.PLAY_PED_RINGTONE("Dial_and_Remote_Ring", PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid), true)
     end)
 
@@ -1359,7 +1359,7 @@ function set_up_player_actions(pid)
         end
     end, false)
 
-    menu.toggle(ls_proot, "Blackhole target", {"bhtarget"}, "A really toxic thing to do but you should do it anyways because it\'s fun. Obviously requires blackhole to be on.", function(on)
+    menu.toggle(ls_proot, "黑洞目标", {"bhtarget"}, "在目标上方50米开启汽车黑洞,谨慎使用，.", function(on)
         if on then
             bh_target = pid
             if not blackhole then
@@ -1375,7 +1375,7 @@ function set_up_player_actions(pid)
         end
     end, false)
 
-    menu.toggle(ls_proot, "Mock this player in chat", {"mockplayer"}, "Mocks them when they say a message by repeating it in chat lIkE ThiS", function(on)
+    menu.toggle(ls_proot, "在聊天中嘲讽这个玩家", {"mockplayer"}, "当他们说一个信息时，会在聊天中重复该信息来嘲笑他们。", function(on)
         if on then
             mock_target = pid
             mock = true
@@ -1385,7 +1385,7 @@ function set_up_player_actions(pid)
         end
     end)
     ---1788665315
-    menu.action(npctrolls_root, "Dog attack", {"dogatk"}, "arf uwu", function(on_click)
+    menu.action(npctrolls_root, "敌对的狗", {"dogatk"}, "arf uwu", function(on_click)
         local target_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
         local coords = ENTITY.GET_ENTITY_COORDS(target_ped, false)
         coords.x = coords['x']
@@ -1399,7 +1399,7 @@ function set_up_player_actions(pid)
     end)
 
 
-    menu.action(npctrolls_root, "Mountain lion attack", {"cougaratk"}, "rawr", function(on_click)
+    menu.action(npctrolls_root, "敌对的狮子", {"cougaratk"}, "rawr", function(on_click)
         local target_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
         coords = ENTITY.GET_ENTITY_COORDS(target_ped, false)
         coords.x = coords['x']
@@ -1413,13 +1413,13 @@ function set_up_player_actions(pid)
     end)
 
     --ATTACH_VEHICLE_TO_TOW_TRUCK(Vehicle towTruck, Vehicle vehicle, BOOL rear, float hookOffsetX, float hookOffsetY, float hookOffsetZ)
-    menu.action(npctrolls_root, "Tow last car", {"towtruck"}, "They didn\'t pay their lease. ONLY works on cars that the player is NOT in but WAS in (because you cant touch entities the player is driving).", function(on_click)
+    menu.action(npctrolls_root, "把他的车用拖车拖走", {"towtruck"}, "They didn\'t pay their lease. ONLY works on cars that the player is NOT in but WAS in (because you cant touch entities the player is driving).", function(on_click)
         local player_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
         local last_veh = PED.GET_VEHICLE_PED_IS_IN(player_ped, true)
         local cur_veh = PED.GET_VEHICLE_PED_IS_IN(player_ped, false)
         if last_veh ~= 0 then
             if last_veh == cur_veh then
-                util.toast("They are still inside the car. Wait until they leave it.")
+                util.toast("他们还在车内.等到他离开时候使用.")
                 return
             end
             tow_hash = -1323100960
@@ -1444,7 +1444,7 @@ function set_up_player_actions(pid)
     end)
 
     
-    menu.toggle(npctrolls_root, "Tow from behind", {"towbehind"}, "Toggle on if the front of the car is blocked", function(on)
+    menu.toggle(npctrolls_root, "从车尾拖走", {"towbehind"}, "如果车头被挡住，则开启这个选项", function(on)
         if on then
             towfrombehind = true
         else
@@ -1454,7 +1454,7 @@ function set_up_player_actions(pid)
 
 
 
-    menu.action(npctrolls_root, "Cat explosion", {"meow"}, "UWU", function(on_click)
+    menu.action(npctrolls_root, "发射猫咪", {"meow"}, "UWU", function(on_click)
         local target_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
         local coords = ENTITY.GET_ENTITY_COORDS(target_ped, false)
         coords.x = coords['x']
@@ -1473,7 +1473,7 @@ function set_up_player_actions(pid)
     end)
 
 
-    menu.action(npctrolls_root, "Send griefer Jesus", {"sendgrieferjesus"}, "Spawns an invincible Jesus with a railgun that will constantly attack the player, even after they die, teleporting to them if they are too far away. This tends to be super glitchy sometimes, but it\'s usually due to networking.", function(on_click)
+    menu.action(npctrolls_root, "发送攻击者耶稣", {"sendgrieferjesus"}, "生成一个无敌的耶稣，他有一把轨道枪，会不断地攻击玩家，甚至在他死后，如果他离得太远就会传送到他的身边。这有时会出现故障，这通常是由于网络的原因。.", function(on_click)
         dispatch_griefer_jesus(pid)
     end)
 
@@ -1624,7 +1624,7 @@ function set_up_player_actions(pid)
         ENTITY.SET_ENTITY_ROTATION(cage2, 0.0, 90.0, 0.0, 1, true)
     end)
 
-    menu.action(npctrolls_root, "NPC jack last car", {"npcjack"}, "Sends an NPC to steal their car. Works best if they are out of their car.", function(on_click)
+    menu.action(npctrolls_root, "抢车贼", {"npcjack"}, "派遣一个NPC去抢他们的车。如果他们不在车内，效果最好。.", function(on_click)
         local player_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
         local last_veh = PED.GET_VEHICLE_PED_IS_IN(player_ped, true)
         local cur_veh = PED.GET_VEHICLE_PED_IS_IN(player_ped, false)
@@ -1651,7 +1651,7 @@ function set_up_player_actions(pid)
         end
     end)
 
-    menu.action(npctrolls_root, "Bri'ish mode", {"british"}, "God save the queen.", function(on_click)
+    menu.action(npctrolls_root, "派遣攻击者", {"british"}, "他们会接连攻击你.", function(on_click)
         local hash = 0x9C9EFFD8
         local player_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
         request_model_load(hash)
@@ -1671,7 +1671,7 @@ function set_up_player_actions(pid)
         end
     end)
 
-    menu.action(npctrolls_root, "Tell nearby peds to arrest", {"arrest"}, "Tells nearby peds to arrest the player. Obviously there is no arrest mechanic in GTA:O. So they don\'t actually arrest. But they will try.", function(on_click)
+    menu.action(npctrolls_root, "让附近的人逮捕", {"arrest"}, "告诉附近的行人，让他们逮捕玩家。很明显，GTAV中没有逮捕机制。所以他们并不真正逮捕。但他们会尝试.", function(on_click)
         local player_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
         local all_peds = util.get_all_peds()
         for k, ped in pairs(all_peds) do
