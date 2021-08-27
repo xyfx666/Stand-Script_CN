@@ -214,13 +214,13 @@ menu.action(lancescript_root, "在YouTube上观看为美好的世界献上祝福
 end)
 --memory.scan(string pattern)
 
-menu.action(lancescript_root, "查看Lancescript的推特", {"tweet"}, "", function(on_click)
+menu.action(lancescript_root, "发送推特以示对LanceScript的支持", {"tweet"}, "", function(on_click)
     os.execute("start \"\" \"https://twitter.com/compose/tweet?text=Lancescript is the best LUA script ever!\"")
 end)
 
-menu.action(lancescript_root, "查看脚本汉化仓库", {"tweet"}, "", function(on_click)
-    os.execute("start \"\" \"https://github.com/xyfx666/Stand-Script_CN\"")
-end)
+--menu.action(lancescript_root, "查看脚本汉化仓库", {"github"}, "", function(on_click)
+--    os.execute("start \"\" \"https://github.com/xyfx666/Stand-Script_CN\"")
+--end)
 
 joinsound = false
 menu.toggle(sounds_root, "玩家加入时的音效", {"joinsound"}, "", function(on)
