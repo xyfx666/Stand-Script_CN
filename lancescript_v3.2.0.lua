@@ -79,7 +79,7 @@ end
 --update checker
 util.async_http_get("pastebin.com", "/raw/YK0P06yC", function(result)
     if version < result then
-        util.toast("Lancescript 有更新可用！可前往网站更新.")
+        util.toast("Lancescript 有更新可用!可前往网站更新.")
         os.execute("start \"\" \"https://www.guilded.gg/stand/groups/x3ZgB10D/channels/7430c963-e9ee-40e3-ab20-190b8e4a4752/docs/265965\"")
     else
         util.toast("Lancescript 是最新的!")
@@ -154,7 +154,7 @@ end)
 
 function dispatch_griefer_jesus(target)
     griefer_jesus = util.create_thread(function(thr)
-        util.toast("让耶稣伤心吧！")
+        util.toast("让耶稣伤心吧!")
         request_model_load(-835930287)
         local target_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(target)
         coords = ENTITY.GET_ENTITY_COORDS(target_ped, false)
@@ -204,13 +204,17 @@ menu.toggle(lancescript_root, "显示活动的实体池", {"entitypoolupdates"},
     end
 end)
 
-menu.action(lancescript_root, "在YouTube上观看为美好的世界献上祝福！的第一集", {"konosuba"}, "", function(on_click)
+menu.action(lancescript_root, "在YouTube上观看为美好的世界献上祝福!的第一集", {"konosuba"}, "", function(on_click)
     os.execute("start \"\" \"https://www.youtube.com/watch?v=H8CORxz5FKA\"")
 end)
 --memory.scan(string pattern)
 
 menu.action(lancescript_root, "查看Lancescript的推特", {"tweet"}, "", function(on_click)
     os.execute("start \"\" \"https://twitter.com/compose/tweet?text=Lancescript is the best LUA script ever!\"")
+end)
+
+menu.action(lancescript_root, "查看脚本汉化仓库", {"tweet"}, "", function(on_click)
+    os.execute("start \"\" \"https://github.com/xyfx666/Stand-Script_CN\"")
 end)
 
 joinsound = false
@@ -428,7 +432,7 @@ end)
 
 
 hud_rainbow = false
-menu.toggle(gametweaks_root, "RGB HUD", {"rgbhud"}, "所有游戏UI都会在红绿蓝之间切换, 需重启游戏才能恢复原样. ", function(on)
+menu.toggle(gametweaks_root, "RGB HUD", {"rgbhud"}, "让你的游戏UI变得RGB起来,可以提升100%的电脑性能,需重启游戏才能恢复原样. ", function(on)
     if on then
         hud_rainbow = true
     else
@@ -482,16 +486,16 @@ ban_msg = "HUD_ROSBANPERM"
 --_SET_WARNING_MESSAGE_WITH_ALERT(char* labelTitle, char* labelMsg, int p2, int p3, char* labelMsg2, BOOL p5, int p6, int p7, char* p8, char* p9, BOOL background, int errorCode)
 
 menu.action(fakemessages_root, "虚假的封号消息 1", {"fakeban"}, "显示了一条完全虚假的禁令信息 .也许可以用它从作弊开发者那里获得免费帐户 ,或者在r/GTA5Moding上引起恐慌 .", function(on_click)
-    show_custom_alert_until_enter("你已被永久禁止进入GTA线上模式.~n~返回 Grand Theft Auto V.")
+    show_custom_alert_until_enter("你已被永久禁止进入GTA线上模式。~n~返回 Grand Theft Auto V。")
 end)
 
 menu.action(fakemessages_root, "虚假的封号消息 2", {"fakeban"}, "显示了一条完全虚假的禁令信息 .也许可以用它从作弊开发者那里获得免费帐户 ,或者在r/GTA5Moding上引起恐慌 .", function(on_click)
-    show_custom_alert_until_enter("你已被永久禁止进入GTA线上模式.~n~返回 Grand Theft Auto V.")
+    show_custom_alert_until_enter("你已被永久禁止进入GTA线上模式。~n~返回 Grand Theft Auto V。")
 end)
 --0x252F03F2
 
 menu.action(fakemessages_root, "服务不可用", {"fakeservicedown"}, "Rockstar 游戏服务现在不可用.", function(on_click)
-    show_custom_alert_until_enter("Rockstar 游戏服务现在不可用.~n~返回 Grand Theft Auto V.")
+    show_custom_alert_until_enter("Rockstar 游戏服务现在不可用。~n~返回 Grand Theft Auto V。")
 end)
 
 menu.action(fakemessages_root, "封号到 xyz", {"suspendeduntil"}, "暂停至 xyz .它会要求您输入要显示的日期 ,不要担心 .", function(on_click)
@@ -499,7 +503,7 @@ menu.action(fakemessages_root, "封号到 xyz", {"suspendeduntil"}, "暂停至 x
     menu.show_command_box("suspendeduntil ")
 end, function(on_command)
     -- fuck it lol
-    show_custom_alert_until_enter("你已被禁止进入GTA线上模式,直到 " .. on_command .. ".~n~另外,您GTA线上模式的角色会将被重置.~n~返回 Grand Theft Auto V.")
+    show_custom_alert_until_enter("你已被禁止进入GTA线上模式，直到 " .. on_command .. ".~n~另外,您GTA线上模式的角色会将被重置.~n~返回 Grand Theft Auto V。")
 end)
 
 menu.action(fakemessages_root, "Stand on TOP! (Stand 是最好的!)", {"stand on top"}, "yep", function(on_click)
@@ -511,19 +515,19 @@ menu.action(fakemessages_root, "Yeeyee ass haircut", {"yeeyee"}, "maybe", functi
 end)
 
 menu.action(fakemessages_root, "欢迎加入黑暗行军", {"blackparade"}, "", function(on_click)
-    show_custom_alert_until_enter("当我还是一个年轻的男孩的时候 ,我的父亲~n~"..
+    show_custom_alert_until_enter("当我还是一个年轻的男孩的时候，我的父亲~n~"..
     "带我进城去看游行乐队~n~"..
-    "他说: \"儿子,你长大后想成为什么样的人? \"~n~"..
-    "救世主,失败者,还是一个该死的人?\"~n~"..
-    "他说, \"你会打败他们吗? 你的恶魔~n~"..
-    "所有没有信仰的人,他们指定的计划?~n~"..
-    "因为有一天, 我会给你留下一个幽灵~n~"..
+    "他说: \"儿子,你长大后想成为什么样的人？\"~n~"..
+    "救世主，失败者，还是一个该死的人？\"~n~"..
+    "他说，\"你会打败他们吗？ 你的恶魔~n~"..
+    "所有没有信仰的，他们指定的计划？~n~"..
+    "因为有一天，我会给你留下一个幽灵~n~"..
     "在夏天带领你参加黑人游行...\"~n~"..
     "~n~"..
-    "当我还是一个年轻的男孩的时候 ,我的父亲~n~"..
+    "当我还是一个年轻的男孩的时候，我的父亲~n~"..
     "带我进城去看游行乐队~n~"..
-    "他说: \"儿子,你长大后想成为什么样的人?~n~"..
-    "救世主,失败者,还是一个该死的人?\"")
+    "他说: \"儿子,你长大后想成为什么样的人？~n~"..
+    "救世主，失败者,还是一个该死的人？\"")
 end)
 
 
@@ -706,24 +710,24 @@ function task_handler(type)
     end
 
 end
-menu.action(tasks_root, "Do the FLOP", {"flop"}, "All walking NPC\'s will do the flop. All driving NPC\'s will gently park their car, leave it, and do it then.", function(on_click)
+menu.action(tasks_root, "失败", {"flop"}, "所有行走的NPC都会做翻牌.所有驾驶NPC的人都会轻轻地停车,然后离开,然后再做.", function(on_click)
     task_handler("flop")
 end)
 
-menu.action(tasks_root, "Move to cover", {"cover"}, "Pussy peds", function(on_click)
+menu.action(tasks_root, "移动覆盖", {"cover"}, "猫咪NPC", function(on_click)
     task_handler("cover")
 end)
 
-menu.action(tasks_root, "Vault", {"vault"}, "They vault/skip over an invisible hurdle. Olympics. It also makes drivers vault out of their vehicle and fall through the world, because rockstar.", function(on_click)
+menu.action(tasks_root, "拱顶", {"vault"}, "他们跳过一个看不见的障碍.奥运会.这也让司机们从车里跳出来,跌入世界各地,因为rockstar.", function(on_click)
     task_handler("vault")
 end)
 
-menu.action(tasks_root, "Cower", {"cower"}, "They cower for an eternity.", function(on_click)
+menu.action(tasks_root, "畏缩", {"cower"}, "他们永远畏缩.", function(on_click)
     task_handler("cower")
 end)
 
 
-menu.action(tasks_root, "Writhe me", {"writheme"}, "Makes peds infinitely suffer on the ground. Finally a use for those dumbasses. The native makes drivers become invisible until they die for some reason.", function(on_click)
+menu.action(tasks_root, "折磨我", {"writheme"}, "让NPC在地上无限痛苦.最后,这些蠢货有了用武之地.当地人让司机变得隐形,直到他们因故死亡.", function(on_click)
     task_handler("writheme")
 end)
 
@@ -844,20 +848,20 @@ function clear_area(radius)
     MISC.CLEAR_AREA(target_pos['x'], target_pos['y'], target_pos['z'], radius, true, false, false, false)
 end
 
-menu.action(world_root, "清除区域", {"cleararea"}, "Clears the nearby area of everything", function(on_click)
+menu.action(world_root, "清除区域", {"cleararea"}, "清除附近的一切", function(on_click)
     clear_area(clear_radius)
     util.toast('Area cleared :)')
 end)
 
 -- SET_PED_SHOOTS_AT_COORD(Ped ped, float x, float y, float z, BOOL toggle)
 
-menu.action(world_root, "清除一切", {"clearworfld"}, "Clears literally everything that can be cleared within the world (well, everything that\'s rendered in). Don\'t tell them, but it\'s really just a huge number as radius.", function(on_click)
+menu.action(world_root, "清除一切", {"clearworfld"}, "细致的地清除世界上可以清除的所有东西（好吧,在中渲染的所有东西）.不要告诉他们,但事实上这只是一个巨大的数字.", function(on_click)
     clear_area(1000000)
     util.toast('World cleared :)')
 end)
 
 cont_clear = false
-menu.toggle(world_root, "持续清除区域", {"contareaclear"}, "Area clear, but looped", function(on)
+menu.toggle(world_root, "持续清除区域", {"contareaclear"}, "区域清晰,但呈环形", function(on)
     if on then
         cont_clear = true
     else
@@ -866,7 +870,7 @@ menu.toggle(world_root, "持续清除区域", {"contareaclear"}, "Area clear, bu
 end, false)
 
 rapidtraffic = false
-menu.toggle(world_root, "混乱的交通灯", {"beep boop"}, "ITS TIME TO PARTY!!!!!! probably local, also it doesnt affect traffic behavior", function(on)
+menu.toggle(world_root, "混乱的交通灯", {"beep boop"}, "到了派对时间了!!!!!!可能是本地的,也不会影响交通行为", function(on)
     if on then
         rapidtraffic = true
         object_uses = object_uses + 1
@@ -877,7 +881,7 @@ menu.toggle(world_root, "混乱的交通灯", {"beep boop"}, "ITS TIME TO PARTY!
 end, false)
 
 object_rainbow = false
-menu.toggle(world_root, "世界彩虹灯", {"rainbowlights"}, "可以尝试自己的cpu有多好.", function(on)
+menu.toggle(world_root, "世界彩虹灯", {"rainbowlights"}, "可以尝试自己的CPU有多好.", function(on)
     if on then
         object_rainbow = true
         object_uses = object_uses + 1
@@ -888,16 +892,16 @@ menu.toggle(world_root, "世界彩虹灯", {"rainbowlights"}, "可以尝试自�
 end)
 
 
-menu.click_slider(world_root, "清除的半径", {"clearradius"}, "Radius to clear things within", 100, 10000, 100, 100, function(s)
+menu.click_slider(world_root, "清除的半径", {"clearradius"}, "清除内部事物的半径", 100, 10000, 100, 100, function(s)
     radius = s
   end)
 
-menu.click_slider(world_root, "世界的重力水平", {"worldgravity"}, "World gravity level (0 is normal, higher number = less gravity)", 0, 3, 1, 1, function(s)
+menu.click_slider(world_root, "世界的重力水平", {"worldgravity"}, "世界重力水平（0为正常值,数值越大=重力越小）", 0, 3, 1, 1, function(s)
   MISC.SET_GRAVITY_LEVEL(s)
 end)
 
 firework_spam = false
-menu.toggle(world_root, "视角晃动", {"fireworkspam"}, "airplanes in the night sky are like shooting stars", function(on)
+menu.toggle(world_root, "视角晃动", {"fireworkspam"}, "夜空中的飞机就像流星", function(on)
     if on then
         firework_spam = true
     else
@@ -906,7 +910,7 @@ menu.toggle(world_root, "视角晃动", {"fireworkspam"}, "airplanes in the nigh
 end, false)
 --FORCE_LIGHTNING_FLASH()
 lightning_spam = false
-menu.toggle(world_root, "电闪雷鸣", {"lightningspam"}, "epileptic-hating zeus. not sure if its networked or not, probably not.", function(on)
+menu.toggle(world_root, "电闪雷鸣", {"lightningspam"}, "憎恨癫痫的宙斯.不确定它是否联网,可能不会.", function(on)
     if on then
         lightning_spam = true
     else
@@ -941,7 +945,7 @@ menu.toggle(effects_root, "狗", {"dogvision"}, "", function(on)
     end
 end, false)
 
-menu.toggle(effects_root, "模糊的的", {"rampage"}, "", function(on)
+menu.toggle(effects_root, "模糊的", {"rampage"}, "", function(on)
     if on then
         GRAPHICS.ANIMPOSTFX_PLAY("Rampage", 0, true)
     else
@@ -949,14 +953,14 @@ menu.toggle(effects_root, "模糊的的", {"rampage"}, "", function(on)
     end
 end, false)
 
-menu.action(effects_root, "输入自定义视觉", {"effectinput"}, "Input a custom animpostFX to play.", function(on_click)
+menu.action(effects_root, "输入自定义视觉特效", {"effectinput"}, "输入要播放的自定义视觉特效.", function(on_click)
     util.toast("Please type the effect name")
     menu.show_command_box("effectinput ")
 end, function(on_command)
     GRAPHICS.ANIMPOSTFX_PLAY(on_command, 0, true)
 end)
 
-menu.action(effects_root, "停止所有效果", {"stopfx"}, "Use only as emergency, to stop custom inputted effects, or to stop regularly-triggered effects. If you can, try untoggling the effect first here.", function(on_click)
+menu.action(effects_root, "停止所有视觉特效", {"stopfx"}, "仅用于紧急情况,停止自定义输入效果,或停止定期触发的效果.如果可以,请先尝试在此处不改变效果.", function(on_click)
     GRAPHICS.ANIMPOSTFX_STOP_ALL()
 end)
 
@@ -979,9 +983,9 @@ function entity_reaper()
 end
 
 entity_reap = false
-menu.toggle(entity_root, "Entity reap", {"entityreap"}, "Reap all nearby entities (requests ownership)", function(on)
+menu.toggle(entity_root, "实体收割者", {"entityreap"}, "获取所有附近的实体（请求所有权）", function(on)
     if on then
-        util.toast("Entity reaper is ON. This may cause performance issues.")
+        util.toast("实体收割者开启.这可能会导致性能问题.")
         entity_reap = true
         vehicle_uses = vehicle_uses + 1
         ped_uses = ped_uses + 1
@@ -1017,7 +1021,7 @@ menu.toggle(entity_root, "关闭所有车辆的无线电", {"noradio"}, "serenit
 end)
 
 loud_radio = false
-menu.toggle(entity_root, "所有的车都开大声的收音机", {"loudradio"}, "I CAN\'T HEAR YOU OVER ALL THIS BULLSHIT", function(on)
+menu.toggle(entity_root, "所有的车都开大声的收音机", {"loudradio"}, "我听不见你说话在这些废话当中.", function(on)
     if on then
         loud_radio = true
         vehicle_uses = vehicle_uses + 1
@@ -1029,7 +1033,7 @@ end)
 
 
 halt_traffic = false
-menu.toggle(entity_root, "Halt traffic", {"halttraffic"}, "Prevents all nearby vehicles from moving, at all. Not even an inch. Irreversible so be careful.", function(on)
+menu.toggle(entity_root, "停止交通", {"halttraffic"}, "阻止附近所有车辆移动.连一英寸都没有.所以要小心使用.", function(on)
     if on then
         halt_traffic = true
         vehicle_uses = vehicle_uses + 1
@@ -1040,7 +1044,7 @@ menu.toggle(entity_root, "Halt traffic", {"halttraffic"}, "Prevents all nearby v
 end)
 
 reverse_traffic = false
-menu.toggle(entity_root, "Reverse traffic", {"reversetraffic"}, "Traffic, but flip it", function(on)
+menu.toggle(entity_root, "反向交通", {"reversetraffic"}, "交通,但翻转它", function(on)
     if on then
         reverse_traffic = true
         vehicle_uses = vehicle_uses + 1
@@ -1052,7 +1056,7 @@ end)
 
 
 vehicle_chaos = false
-menu.toggle(entity_root, "Vehicle chaos", {"chaos"}, "Enables the chaos...", function(on)
+menu.toggle(entity_root, "混乱的车辆", {"chaos"}, "开启即混乱混乱...", function(on)
     if on then
         vehicle_chaos = true
         vehicle_uses = vehicle_uses + 1
@@ -1063,7 +1067,7 @@ menu.toggle(entity_root, "Vehicle chaos", {"chaos"}, "Enables the chaos...", fun
 end, false)
 
 vc_gravity = true
-menu.toggle(entity_root, "Vehicle chaos gravity", {"chaosgravity"}, "Gravity on/off", function(on)
+menu.toggle(entity_root, "车辆混沌引力", {"chaosgravity"}, "重力 开/关", function(on)
     if on then
         vc_gravity = true
     else
@@ -1072,7 +1076,7 @@ menu.toggle(entity_root, "Vehicle chaos gravity", {"chaosgravity"}, "Gravity on/
 end, true)
 
 vc_speed = 100
-menu.click_slider(entity_root, "车辆混沌速度", {"chaosspeed"}, "迫使车辆行驶的速度。越高=越混乱。", 30, 300, 100, 10, function(s)
+menu.click_slider(entity_root, "车辆混沌速度", {"chaosspeed"}, "迫使车辆行驶的速度.越高=越混乱.", 30, 300, 100, 10, function(s)
   vc_speed = s
 end)
 
@@ -1094,7 +1098,7 @@ function spam_entity_on_player(ped, hash)
         ENTITY.SET_ENTITY_HAS_GRAVITY(obj, entity_grav)
         OBJECT.SET_ACTIVATE_OBJECT_PHYSICS_AS_SOON_AS_IT_IS_UNFROZEN(obj, true)
     end
-    util.toast('完成垃圾邮件实体。')
+    util.toast('完成垃圾邮件实体.')
 end
 
 aircraft_root = menu.list(vehicle_root, "飞机", {"lanceaircraft"}, "")
@@ -1124,7 +1128,7 @@ menu.toggle(aircraft_root, "瞬时螺旋桨加速", {"instantspinup"}, "螺旋�
 
 end, false)
 
-menu.click_slider(aircraft_root, "Turbulence", {"turbulence"}, "Sets turbulence. 0 = no turbulence, 1 = default turbulence, 2 = heavy turbulence", 0, 2, 1, 1, function(s)
+menu.click_slider(aircraft_root, "湍流", {"turbulence"}, "设置湍流.0=无湍流,1=默认湍流,2=严重湍流", 0, 2, 1, 1, function(s)
     if not player_cur_car then
         return
     end
@@ -1190,7 +1194,7 @@ menu.toggle(vehicle_root, "车牌速度表", {"speedplate"}, "不像Ozark,它有
         if player_cur_car then
             original_plate = VEHICLE.GET_VEHICLE_NUMBER_PLATE_TEXT(player_cur_car)
         else
-            util.toast("启动时您不在车内。您将无法还原车牌号。")
+            util.toast("启动时您不在车内.您将无法还原车牌号.")
             original_plate = "LANCE"
         end
         mph_plate = true
@@ -1293,11 +1297,11 @@ function set_up_player_actions(pid)
     attach_root = menu.list(ls_proot, "附加", {"attach"}, "")
 
     --AUDIO.PLAY_PED_RINGTONE("Dial_and_Remote_Ring", ped, true)
-    menu.action(ls_proot, "无限的电话铃声", {"infiphonering"}, "[试验性] 无限播放电话铃声，即使他们加入单人游戏。仍然需要充分的测试.", function(on_click)
+    menu.action(ls_proot, "无限的电话铃声", {"infiphonering"}, "[试验性] 无限播放电话铃声,即使他们加入单人游戏.仍然需要充分的测试.", function(on_click)
         AUDIO.PLAY_PED_RINGTONE("Dial_and_Remote_Ring", PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid), true)
     end)
 
-    menu.toggle(ram_root, "Set on ground", {"ramonground"}, "Leave off if the user is flying aircraft", function(on)
+    menu.toggle(ram_root, "落地", {"ramonground"}, "如果用户正在驾驶飞机,请关闭", function(on)
         if on then
             ram_onground = true
         else
@@ -1305,7 +1309,7 @@ function set_up_player_actions(pid)
         end
     end, true)
 
-    menu.action(ram_root, "Howard", {"ramhoward"}, "brrt", function(on_click)
+    menu.action(ram_root, "霍华德", {"ramhoward"}, "brrt", function(on_click)
         ram_ped_with(PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid), -1007528109, 10.0, true)
     end)
 
@@ -1359,7 +1363,7 @@ function set_up_player_actions(pid)
         end
     end, false)
 
-    menu.toggle(ls_proot, "黑洞目标", {"bhtarget"}, "在目标上方50米开启汽车黑洞,谨慎使用，.", function(on)
+    menu.toggle(ls_proot, "黑洞目标", {"bhtarget"}, "在目标上方50米开启汽车黑洞,谨慎使用,.", function(on)
         if on then
             bh_target = pid
             if not blackhole then
@@ -1375,7 +1379,7 @@ function set_up_player_actions(pid)
         end
     end, false)
 
-    menu.toggle(ls_proot, "在聊天中嘲讽这个玩家", {"mockplayer"}, "当他们说一个信息时，会在聊天中重复该信息来嘲笑他们。", function(on)
+    menu.toggle(ls_proot, "在聊天中嘲讽这个玩家", {"mockplayer"}, "当他们说一个信息时,会在聊天中重复该信息来嘲笑他们.", function(on)
         if on then
             mock_target = pid
             mock = true
@@ -1413,7 +1417,7 @@ function set_up_player_actions(pid)
     end)
 
     --ATTACH_VEHICLE_TO_TOW_TRUCK(Vehicle towTruck, Vehicle vehicle, BOOL rear, float hookOffsetX, float hookOffsetY, float hookOffsetZ)
-    menu.action(npctrolls_root, "把他的车用拖车拖走", {"towtruck"}, "They didn\'t pay their lease. ONLY works on cars that the player is NOT in but WAS in (because you cant touch entities the player is driving).", function(on_click)
+    menu.action(npctrolls_root, "把他的车用拖车拖走", {"towtruck"}, "他们没有付房租.仅适用于玩家不在但在的汽车（因为你不能触摸玩家正在驾驶的实体）.", function(on_click)
         local player_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
         local last_veh = PED.GET_VEHICLE_PED_IS_IN(player_ped, true)
         local cur_veh = PED.GET_VEHICLE_PED_IS_IN(player_ped, false)
@@ -1444,7 +1448,7 @@ function set_up_player_actions(pid)
     end)
 
     
-    menu.toggle(npctrolls_root, "从车尾拖走", {"towbehind"}, "如果车头被挡住，则开启这个选项", function(on)
+    menu.toggle(npctrolls_root, "从车尾拖走", {"towbehind"}, "如果车头被挡住,则开启这个选项", function(on)
         if on then
             towfrombehind = true
         else
@@ -1473,7 +1477,7 @@ function set_up_player_actions(pid)
     end)
 
 
-    menu.action(npctrolls_root, "发送攻击者耶稣", {"sendgrieferjesus"}, "生成一个无敌的耶稣，他有一把轨道枪，会不断地攻击玩家，甚至在他死后，如果他离得太远就会传送到他的身边。这有时会出现故障，这通常是由于网络的原因。.", function(on_click)
+    menu.action(npctrolls_root, "发送攻击者耶稣", {"sendgrieferjesus"}, "生成一个无敌的耶稣,他有一把轨道枪,会不断地攻击玩家,甚至在他死后,如果他离得太远就会传送到他的身边.这有时会出现故障,这通常是由于网络的原因..", function(on_click)
         dispatch_griefer_jesus(pid)
     end)
 
@@ -1624,7 +1628,7 @@ function set_up_player_actions(pid)
         ENTITY.SET_ENTITY_ROTATION(cage2, 0.0, 90.0, 0.0, 1, true)
     end)
 
-    menu.action(npctrolls_root, "抢车贼", {"npcjack"}, "派遣一个NPC去抢他们的车。如果他们不在车内，效果最好。.", function(on_click)
+    menu.action(npctrolls_root, "抢车贼", {"npcjack"}, "派遣一个NPC去抢他们的车.如果他们不在车内,效果最好..", function(on_click)
         local player_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
         local last_veh = PED.GET_VEHICLE_PED_IS_IN(player_ped, true)
         local cur_veh = PED.GET_VEHICLE_PED_IS_IN(player_ped, false)
@@ -1671,7 +1675,7 @@ function set_up_player_actions(pid)
         end
     end)
 
-    menu.action(npctrolls_root, "让附近的人逮捕", {"arrest"}, "告诉附近的行人，让他们逮捕玩家。很明显，GTAV中没有逮捕机制。所以他们并不真正逮捕。但他们会尝试.", function(on_click)
+    menu.action(npctrolls_root, "让附近的人逮捕", {"arrest"}, "告诉附近的行人,让他们逮捕玩家.很明显,GTAV中没有逮捕机制.所以他们并不真正逮捕.但他们会尝试.", function(on_click)
         local player_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
         local all_peds = util.get_all_peds()
         for k, ped in pairs(all_peds) do
@@ -1696,7 +1700,7 @@ function set_up_player_actions(pid)
                     --  sometimes peds fail to get seated, so we will have something to break after 10 attempts if things go south
                     local iteration = 0
                     if iteration >= 20 then
-                        util.toast("尝试20次后未能完全加注车辆。请再试一次。")
+                        util.toast("尝试20次后未能完全加注车辆.请再试一次.")
                         local success = false
                         iteration = 0
                         break
@@ -1894,7 +1898,7 @@ menu.toggle(online_root, "显示谁在用语音聊天", {"showvoicechat"}, "不�
 end)
 
 aptloop = false
-menu.toggle(allplayers_root, "循环公寓传送", {"apartmenttploop"}, "哟着点，这玩意就尼玛有毒", function(on)
+menu.toggle(allplayers_root, "循环公寓传送", {"apartmenttploop"}, "随便使用它吧,有毒的人类", function(on)
     if on then
         aptloop = true
     else
@@ -1907,7 +1911,7 @@ menu.action(allplayers_root, "战局范围的聊天", {"sessionwidechat"}, "使�
     menu.show_command_box("sessionwidechat ")
 end, function(on_command)
     if #on_command > 140 then
-        util.toast("该消息太长,无法完全显示！挽尊卡一张.")
+        util.toast("该消息太长,无法完全显示!挽尊卡一张.")
         return
     end
     for k,p in pairs(players.list(false, true, true)) do
@@ -1918,7 +1922,7 @@ end, function(on_command)
     end
 end)
 
-menu.action(allplayers_root, "献上最佳抢劫对象", {"best mug"}, "向你献上钱包最鼓的玩家，这样你就能愉快的抢枪抢了", function(on_click)
+menu.action(allplayers_root, "查找最佳的抢劫目标", {"best mug"}, "告诉你在这个战局里谁的钱包里钱最多,这样你就可以很好的抢劫他们了", function(on_click)
     local most = 0
     for k,p in pairs(players.list(false, true, true)) do
         cur_wallet = players.get_wallet(p)
