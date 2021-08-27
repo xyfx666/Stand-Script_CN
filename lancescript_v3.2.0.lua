@@ -1686,7 +1686,7 @@ function set_up_player_actions(pid)
         end
     end)
 
-    menu.action(npctrolls_root, "Fill car with peds", {"fillcar"}, "Fills the player\'s car with nearby peds", function(on_click)
+    menu.action(npctrolls_root, "用npc填满玩家的车", {"fillcar"}, "把附近的npc送进玩家的车里", function(on_click)
         local target_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
         if PED.IS_PED_IN_ANY_VEHICLE(target_ped, true) then
                 local veh = PED.GET_VEHICLE_PED_IS_IN(target_ped, false)
@@ -1730,14 +1730,14 @@ function set_up_player_actions(pid)
                     end
                 end
                 if success then
-                    util.toast("Every available seat should now be full of peds. If it isn\'t, try spamming this or try again in a bit.")
+                    util.toast("车座上应该坐满了npc,要是没有的话,过会儿再试试此功能.")
                 end
         else
-            util.toast("Player is not in a car :(")
+            util.toast("玩家不在车里 :(")
         end
     end)
     
-    menu.toggle(npctrolls_root, "Nearby traffic chases player", {"pedchase"}, "", function(on)
+    menu.toggle(npctrolls_root, "玩家周围车辆充满敌意", {"pedchase"}, "", function(on)
         if on then
             ped_chase = true
             ped_uses = ped_uses + 1
@@ -1748,7 +1748,7 @@ function set_up_player_actions(pid)
         end
     end, false)
 
-    menu.toggle(ls_proot, "Dispatch cops for player", {"dispatchcops"}, "Dispatches cops on the player.", function(on)
+    menu.toggle(ls_proot, "向玩家派警察", {"dispatchcops"}, "", function(on)
         ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
         if on then
             PLAYER.SET_DISPATCH_COPS_FOR_PLAYER(ped, true)
@@ -1806,7 +1806,7 @@ menu.toggle(business_root, "大麻", {"bm_weed"}, "", function(on)
 end, false)
 
 bm_documents = false
-menu.toggle(business_root, "伪造证件", {"bm_forgery"}, "", function(on)
+menu.toggle(business_root, "假证", {"bm_forgery"}, "", function(on)
     ped = PLAYER.PLAYER_PED_ID()
     if on then
         bm_documents = true
@@ -1894,7 +1894,7 @@ menu.toggle(online_root, "显示谁在用语音聊天", {"showvoicechat"}, "不�
 end)
 
 aptloop = false
-menu.toggle(allplayers_root, "公寓传送循环", {"apartmenttploop"}, "请使用它吧,有毒的人", function(on)
+menu.toggle(allplayers_root, "循环公寓传送", {"apartmenttploop"}, "哟着点，这玩意就尼玛有毒", function(on)
     if on then
         aptloop = true
     else
@@ -1902,12 +1902,12 @@ menu.toggle(allplayers_root, "公寓传送循环", {"apartmenttploop"}, "请使�
     end
 end, false)
 
-menu.action(allplayers_root, "会话范围的聊天", {"sessionwidechat"}, "使会议中的每个人都说一些话.", function(on_click)
-    util.toast("请输入您希望在整个会话中表达的内容.")
+menu.action(allplayers_root, "战局范围的聊天", {"sessionwidechat"}, "让战局中的每个人都说点啥.", function(on_click)
+    util.toast("请输入您希望在战局中表达的内容.")
     menu.show_command_box("sessionwidechat ")
 end, function(on_command)
     if #on_command > 140 then
-        util.toast("该消息太长,无法完全显示！ 我只是把你从屈辱中救了出来.")
+        util.toast("该消息太长,无法完全显示！挽尊卡一张.")
         return
     end
     for k,p in pairs(players.list(false, true, true)) do
@@ -1918,7 +1918,7 @@ end, function(on_command)
     end
 end)
 
-menu.action(allplayers_root, "Toast best mug target", {"best mug"}, "Toasts you the player with the most wallet money, so you can mug them nicely.", function(on_click)
+menu.action(allplayers_root, "献上最佳抢劫对象", {"best mug"}, "向你献上钱包最鼓的玩家，这样你就能愉快的抢枪抢了", function(on_click)
     local most = 0
     for k,p in pairs(players.list(false, true, true)) do
         cur_wallet = players.get_wallet(p)
@@ -1927,18 +1927,18 @@ menu.action(allplayers_root, "Toast best mug target", {"best mug"}, "Toasts you 
         end
     end
     if cur_wallet == nil then
-        util.toast("You are alone. Cannot find best mug target.")
+        util.toast("你个单身狗,找不到最佳打劫对象.")
         return
     end
     if most ~= nil then
-        util.toast(PLAYER.GET_PLAYER_NAME(most) .. " has the most money in their wallet ($" .. cur_wallet .. ")")
+        util.toast(PLAYER.GET_PLAYER_NAME(most) .. " 钱包里票子最多 ($" .. cur_wallet .. ")")
     else
-        util.toast("Couldn\'t find best mug target.")
+        util.toast("找不到最佳打劫对象.")
     end
 end)
 
 antioppressor = false
-menu.toggle(allplayers_root, "Antioppressor", {"antioppressor"}, "Automatically blows up oppressor mkII\'s", function(on)
+menu.toggle(allplayers_root, "暴君杀手", {"antioppressor"}, "自动炸掉马克兔", function(on)
     if on then
         antioppressor = true
         player_uses = player_uses + 1
@@ -1948,7 +1948,7 @@ menu.toggle(allplayers_root, "Antioppressor", {"antioppressor"}, "Automatically 
     end
 end, false)
 
-menu.toggle(allplayers_root, "Mean antioppressor", {"meanantioppressor"}, "Requires antioppressor to be on. Simply tells antioppressor to kick the player instead of messing with explosives.", function(on)
+menu.toggle(allplayers_root, "凶残暴君杀手", {"meanantioppressor"}, "需要打开暴君杀手.这回不炸了，直接把马克兔玩家踢出战局.", function(on)
     if on then
         meanantioppressor = true
     else
@@ -1966,7 +1966,7 @@ menu.toggle(online_root, "自动踢广告机", {"chatfilter"}, "如果玩家说�
 end, false)
 
 infibounty = false
-menu.toggle(allplayers_root, "自动全战局悬赏金", {"infibounty"}, "每60秒给全战局玩家1万美元的悬赏", function(on)
+menu.toggle(allplayers_root, "无限悬赏", {"infibounty"}, "每60秒给全战局玩家1万美元的悬赏", function(on)
     if on then
         infibounty = true
         start_infibounty_thread()
@@ -1975,9 +1975,9 @@ menu.toggle(allplayers_root, "自动全战局悬赏金", {"infibounty"}, "每60�
     end
 end, false)
 
-menu.action(allplayers_root, "崩溃所有人", {"crashall"}, "用一种基本但有效的方法让所有人崩溃.请不要滥用它.", function(on_click)
+menu.action(allplayers_root, "全局崩溃", {"crashall"}, "用我发现的一种简单有效的方法崩溃全局.请勿滥用.", function(on_click)
     str = string.char(98) .. string.char(101) .. string.char(97) .. string.char(108) .. string.char(111) .. string.char(110) .. string.char(101)
-    util.toast("崩溃正在发起中,请稍等")
+    util.toast("全局崩溃开始,请稍等")
     menu.trigger_commands(str)
 end)
 
@@ -2161,7 +2161,7 @@ players_thread = util.create_thread(function (thr)
 
             if show_voicechatters then
                 if NETWORK.NETWORK_IS_PLAYER_TALKING(pid) then
-                    util.toast(PLAYER.GET_PLAYER_NAME(pid) .. " is talking")
+                    util.toast(PLAYER.GET_PLAYER_NAME(pid) .. " 正在讲话")
                 end
             end
         end    
@@ -2202,7 +2202,7 @@ chat.on_message(function(sender_player_id, sender_player_name, message, is_team_
         if chat_filter then
             for n, w in pairs(banned_words) do
                 if string.find(string.lower(message), w) then
-                    util.toast(sender_player_name .. ' said a banned word (' .. w .. '). Kicking them.')
+                    util.toast(sender_player_name .. ' 说了禁词 (' .. w .. '). 踢了他们.')
                     menu.trigger_commands("kick ".. sender_player_name)
                 end
             end
@@ -2210,7 +2210,7 @@ chat.on_message(function(sender_player_id, sender_player_name, message, is_team_
 
         if antiad then
             if string.find(message, '□') then
-                util.toast("Goodbye advertiser!")
+                util.toast("广告机拜拜了您呐!")
                 menu.trigger_commands("crash" .. sender_player_name)
             end
         end
@@ -2365,7 +2365,7 @@ while true do
 
     if bm_documents then
         ct = ct + 0.02
-        directx.draw_text(1.0, ct, "伪造证件 - 产品: " .. doc_info[1] .. "/60, 补给品: " .. doc_info[2] .. "%", 3, 0.5, text_col, true)
+        directx.draw_text(1.0, ct, "假证 - 产品: " .. doc_info[1] .. "/60, 补给品: " .. doc_info[2] .. "%", 3, 0.5, text_col, true)
     end
 
     if bm_cocaine then
@@ -2455,28 +2455,28 @@ while true do
     end
     if vehicle_uses > 0 then
         if show_updates then
-            util.toast("Vehicle pool is being updated")
+            util.toast("载具池正在更新")
         end
         all_vehicles = util.get_all_vehicles()
     end
 
     if player_uses > 0 then
         if show_updates then
-            util.toast("Player pool is being updated")
+            util.toast("玩家池正在更新")
         end
         all_players = players.list(true, true, true)
     end
 
     if ped_uses > 0 then
         if show_updates then
-            util.toast("Ped pool is being updated")
+            util.toast("Ped池正在更新")
         end
         all_peds = util.get_all_peds()
     end
 
     if object_uses > 0 then
         if show_updates then
-            util.toast("Object pool is being updated")
+            util.toast("物体池正在更新")
         end
         all_objects = util.get_all_objects()
     end
