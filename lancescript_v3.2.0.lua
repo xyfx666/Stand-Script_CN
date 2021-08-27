@@ -1477,7 +1477,7 @@ function set_up_player_actions(pid)
         dispatch_griefer_jesus(pid)
     end)
 
-    menu.toggle(objecttrolls_root, "Glitch vehicle", {"glitchveh"}, "Glitches the car they\'re in/if they enter one.", function(on)
+    menu.toggle(objecttrolls_root, "故障车辆", {"glitchveh"}, "他们所乘的车出了故障,如果他们进了车。", function(on)
         if on then
             local target_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
             local veh = PED.GET_VEHICLE_PED_IS_IN(target_ped, true)
@@ -1493,7 +1493,7 @@ function set_up_player_actions(pid)
         end
     end)
 
-    menu.action(npctrolls_root, "Send jets", {"sendjets"}, "We don\'t charge $140 for this extremely basic feature. However the jets will only target the player until the player dies, otherwise we would need another thread, and I don\'t want to make one.", function(on_click)
+    menu.action(npctrolls_root, "派喷气式飞机", {"sendjets"}, "对于这个极其基本的功能,我们不收取140美元/然而,喷气机只会在玩家死亡前瞄准玩家,否则我们需要另一端代码,但是我不想写.", function(on_click)
         local target_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
         coords = ENTITY.GET_OFFSET_FROM_ENTITY_IN_WORLD_COORDS(target_ped, 1.0, 0.0, 500.0)
         coords.x = coords['x']
@@ -1514,44 +1514,44 @@ function set_up_player_actions(pid)
         end
     end)
 
-    menu.action(entspam_root, "Traffic cones", {"conespam"}, "Spams traffic cones", function(on_click)
+    menu.action(entspam_root, "交通锥", {"conespam"}, "垃圾桶", function(on_click)
         local target_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
         spam_entity_on_player(target_ped, 3760607069)
     end)
 
-    menu.action(entspam_root, "Dildo", {"dildospam"}, ":flushed:", function(on_click)
+    menu.action(entspam_root, "假阴茎", {"dildospam"}, "这太让人害羞了", function(on_click)
         local target_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
         spam_entity_on_player(target_ped, 3872089630)
     end)
 
-    menu.action(entspam_root, "Hot dog", {"hotdogspam"}, "a dog thats hot", function(on_click)
+    menu.action(entspam_root, "热狗", {"hotdogspam"}, "一个狗,他很热,于是它变成了热狗", function(on_click)
         local target_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
         spam_entity_on_player(target_ped, 2565741261)
     end)
 
-    menu.action(entspam_root, "Hot dog STAND", {"hotdogstandspam"}, "You know why I capitalized what I did.", function(on_click)
+    menu.action(entspam_root, "热狗摊", {"hotdogstandspam"}, "你知道我为什么把我做的事资本.", function(on_click)
         local target_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
         spam_entity_on_player(target_ped, 2713464726)
     end)
 
-    menu.action(entspam_root, "Ferris wheel", {"ferriswheelspam"}, "BE CAREFUL", function(on_click)
+    menu.action(entspam_root, "摩天轮", {"ferriswheelspam"}, "小心", function(on_click)
         local target_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
         spam_entity_on_player(target_ped, 3291218330)
     end)
 
-    menu.action(entspam_root, "Rollercoaster car", {"rollerspam"}, "fun times", function(on_click)
+    menu.action(entspam_root, "过山车", {"rollerspam"}, "游乐时刻!", function(on_click)
         local target_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
         spam_entity_on_player(target_ped, 3413442113)
     end)
 
-    menu.action(entspam_root, "Air radar", {"radarspam"}, "they spin", function(on_click)
+    menu.action(entspam_root, "空中雷达", {"radarspam"}, "他们旋转", function(on_click)
         local target_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
         spam_entity_on_player(target_ped, 2306058344)
     end)
     --1681875160
 
 
-    menu.action(entspam_root, "Custom entity", {"customentityspam"}, "Inputs a custom entity. Try not to input invalid hashes, but the requester function is smart and should be fine if you do.", function(on_click)
+    menu.action(entspam_root, "自定义实体", {"customentityspam"}, "输入自定义实体。尽量不要输入无效的散列，但是请求程序函数是智能的，如果您这样做，它应该是好的。", function(on_click)
         util.toast("Please input the model hash")
         menu.show_command_box("customentityspam ")
     end, function(on_command)
@@ -1559,7 +1559,7 @@ function set_up_player_actions(pid)
         spam_entity_on_player(target_ped, on_command)
     end)
 
-    menu.toggle(entspam_root, "Entities have gravity", {"entitygrav"}, "", function(on)
+    menu.toggle(entspam_root, "实体具有引力", {"entitygrav"}, "", function(on)
         if on then
             entity_grav = true
         else
@@ -1567,45 +1567,45 @@ function set_up_player_actions(pid)
         end
     end, true)
 
-    menu.click_slider(entspam_root, "Number of entities", {"entspamnum"}, "Number of ents to spam. Obviously, setting this to a high number will crash you or freeze your game indefinitely.", 1, 100, 30, 10, function(s)
+    menu.click_slider(entspam_root, "实体数目", {"entspamnum"}, "发送垃圾邮件的邮件数。显然，将此设置为一个较高的数字将使您崩溃或无限期冻结您的游戏。", 1, 100, 30, 10, function(s)
         num_of_spam = s
     end)
 
-    menu.action(objecttrolls_root, "Ramp in front of player", {"ramp"}, "Spawns a ramp right in front of the player. Most nicely used when they are in a car.", function(on_click)
+    menu.action(objecttrolls_root, "在玩家前面的坡道", {"ramp"}, "在玩家正前方产生一个斜坡.当它们在车里时,使用得最方便.", function(on_click)
         local target_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
         local hash = 2282807134
         request_model_load(hash)
         spawn_object_in_front_of_ped(target_ped, hash, 90, 50.0, -0.5, true)
     end)
 
-    menu.action(objecttrolls_root, "Barrier in front of player", {"barrier"}, "Spawns a *frozen* barrier right in front of the player. Good for causing accidents.", function(on_click)
+    menu.action(objecttrolls_root, "玩家前面的障碍物", {"barrier"}, "在玩家正前方产生一个 冻结 屏障。对造成事故有好处.", function(on_click)
         local target_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
         local hash = 3729169359
         local obj = spawn_object_in_front_of_ped(target_ped, hash, 0, 5.0, -0.5, false)
         ENTITY.FREEZE_ENTITY_POSITION(obj, true)
     end)
 
-    menu.action(objecttrolls_root, "Windmill player", {"windmill"}, "gotem.", function(on_click)
+    menu.action(objecttrolls_root, "风车", {"windmill"}, "gotem.", function(on_click)
         local target_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
         local hash = 1952396163
         local obj = spawn_object_in_front_of_ped(target_ped, hash, 0, 5.0, -30, false)
         ENTITY.FREEZE_ENTITY_POSITION(obj, true)
     end)
 
-    menu.action(objecttrolls_root, "Radar player", {"radar"}, "also gotem.", function(on_click)
+    menu.action(objecttrolls_root, "雷达", {"radar"}, "also gotem.", function(on_click)
         local target_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
         local hash = 2306058344
         local obj = spawn_object_in_front_of_ped(target_ped, hash, 0, 0.0, -5.0, false)
         ENTITY.FREEZE_ENTITY_POSITION(obj, true)
     end)
 
-    menu.action(ls_proot, "Owned snipe", {"snipe"}, "Snipes the player with you as the attacker [Will not work if you do not have LOS with the target]", function(on_click)
+    menu.action(ls_proot, "自己狙击", {"snipe"}, "将玩家作为攻击者与你一起狙击[如果你与目标没有直瞄，则将不起作用]", function(on_click)
         local owner = PLAYER.PLAYER_PED_ID()
         local target_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
         local target = ENTITY.GET_ENTITY_COORDS(target_ped)
         MISC.SHOOT_SINGLE_BULLET_BETWEEN_COORDS(target['x'], target['y'], target['z'], target['x'], target['y'], target['z']+0.1, 300.0, true, 100416529, owner, true, false, 100.0)
     end)
-    menu.action(ls_proot, "Anon snipe", {"selfsnipe"}, "Snipes the player anonymously, as if a random ped did it [The randomly selected ped needs to have LOS, I think]", function(on_click)
+    menu.action(ls_proot, "匿名狙击", {"selfsnipe"}, "匿名狙击玩家，就好像是随机选择的行人（我认为随机选择的行人需要有LOS）", function(on_click)
         local target_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
         local target = ENTITY.GET_ENTITY_COORDS(target_ped)
         local random_ped = get_random_ped()
@@ -1613,7 +1613,7 @@ function set_up_player_actions(pid)
     end)
 
     --SET_VEHICLE_WHEEL_HEALTH(Vehicle vehicle, int wheelIndex, float health)
-    menu.action(ls_proot, "Cage", {"lscage"}, "Basic cage option. Cause you cant handle yourself. We are a little more ethical here at Lance Studios though, so the cage has some wiggle room (our special cage model also means that like, no menu blocks the model).", function(on_click)
+    menu.action(ls_proot, "笼子", {"lscage"}, "基本的笼子.因为你无法控制自己.不过,在lance工作室,我们更具道德感,所以笼子有一些摆动的空间（我们特殊的笼子模型也意味着,没有菜单阻挡模型）.", function(on_click)
         local ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
         local coords = ENTITY.GET_ENTITY_COORDS(ped, true)
         local hash = 779277682
