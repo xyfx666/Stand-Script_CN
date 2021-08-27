@@ -1286,11 +1286,11 @@ end
 function set_up_player_actions(pid)
     menu.divider(menu.player_root(pid), "LanceScript")
     ls_proot = menu.list(menu.player_root(pid), "Lancescript", {"entityspam"}, "")
-    entspam_root = menu.list(ls_proot, "Entity spam", {"entityspam"}, "")
-    npctrolls_root = menu.list(ls_proot, "NPC trolling", {"npctrolls"}, "")
-    objecttrolls_root = menu.list(ls_proot, "Object trolling", {"objecttrolls"}, "")
-    ram_root = menu.list(ls_proot, "Ram", {"ram"}, "")
-    attach_root = menu.list(ls_proot, "Attach", {"attach"}, "")
+    entspam_root = menu.list(ls_proot, "实体垃圾邮件", {"entityspam"}, "")
+    npctrolls_root = menu.list(ls_proot, "NPC跟踪", {"npctrolls"}, "")
+    objecttrolls_root = menu.list(ls_proot, "物体拖曳", {"objecttrolls"}, "")
+    ram_root = menu.list(ls_proot, "内存", {"ram"}, "")
+    attach_root = menu.list(ls_proot, "附加", {"attach"}, "")
 
     --AUDIO.PLAY_PED_RINGTONE("Dial_and_Remote_Ring", ped, true)
     menu.action(ls_proot, "Infinite phone ring", {"infiphonering"}, "[EXPERIMENTAL] Infinitely plays a phone ringing sound, even if they join singleplayer. Still need adequate testing. I\'m no man of morals but please only do this to people who fuck with you.", function(on_click)
@@ -1309,30 +1309,30 @@ function set_up_player_actions(pid)
         ram_ped_with(PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid), -1007528109, 10.0, true)
     end)
 
-    menu.action(ram_root, "Rally truck", {"ramtruck"}, "vroom", function(on_click)
+    menu.action(ram_root, "拉力车", {"ramtruck"}, "vroom", function(on_click)
         ram_ped_with(PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid), -2103821244, 10.0, false)
     end)
 
-    menu.action(ram_root, "Cargo plane", {"ramcargo"}, "some menus might have this blocked lol", function(on_click)
+    menu.action(ram_root, "货机", {"ramcargo"}, "某些菜单可能会阻止此功能", function(on_click)
         ram_ped_with(PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid), 368211810, 15.0, false)
     end)
 
     -- 	368211810
     ---2103821244
 
-    menu.action(ls_proot, "Fire jet", {"firejet"}, "one of the classic trolls", function(on_click)
+    menu.action(ls_proot, "喷火", {"firejet"}, "经典恶搞之一", function(on_click)
         local target_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
         local coords = ENTITY.GET_ENTITY_COORDS(target_ped, false)
         FIRE.ADD_EXPLOSION(coords['x'], coords['y'], coords['z'], 12, 100.0, true, false, 0.0)
     end)
 
-    menu.action(ls_proot, "Water jet", {"waterjet"}, "one of the classic trolls", function(on_click)
+    menu.action(ls_proot, "喷水", {"waterjet"}, "经典恶搞之一", function(on_click)
         local target_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
         local coords = ENTITY.GET_ENTITY_COORDS(target_ped, false)
         FIRE.ADD_EXPLOSION(coords['x'], coords['y'], coords['z'], 13, 100.0, true, false, 0.0)
     end)
 
-    menu.toggle(attach_root, "Attach to player", {"attachto"}, "Useful, because if you\'re near the player your trolling works better", function(on)
+    menu.toggle(attach_root, "附加到玩家", {"attachto"}, "有用,因为如果你靠近玩家,你的恶搞效果会更好", function(on)
         if on then
             ENTITY.ATTACH_ENTITY_TO_ENTITY(PLAYER.PLAYER_PED_ID(), PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid), 0, 0.0, -0.20, 2.00, 1.0, 1.0,1, true, true, true, false, 0, true)
         else
@@ -1340,7 +1340,7 @@ function set_up_player_actions(pid)
         end
     end, false)
 
-    menu.toggle(attach_root, "Attach to player car", {"attachtocar"}, "Only works if they have a car/last car", function(on)
+    menu.toggle(attach_root, "附加到玩家的载具", {"attachtocar"}, "只有在他们有车/最后一辆车的情况下才有效", function(on)
         local lastveh = PED.GET_VEHICLE_PED_IS_IN(PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid), true)
         if on and lastveh ~= 0 then
             ENTITY.ATTACH_ENTITY_TO_ENTITY(PLAYER.PLAYER_PED_ID(), lastveh, 0, 0.0, -0.20, 2.00, 1.0, 1.0,1, true, true, true, false, 0, true)
@@ -1350,7 +1350,7 @@ function set_up_player_actions(pid)
     end, false)
 
 
-    menu.toggle(ls_proot, "Earrape", {"earrape"}, "Be evil.", function(on)
+    menu.toggle(ls_proot, "耳环", {"earrape"}, "Be evil.", function(on)
         if on then
             earrape = true
             earrape_target = pid
