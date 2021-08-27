@@ -20,6 +20,10 @@ PAD = {
 	["IS_CONTROL_PRESSED"]=function(--[[int]] padIndex,--[[int]] control)native_invoker.begin_call();native_invoker.push_arg_int(padIndex);native_invoker.push_arg_int(control);native_invoker.end_call("F3A21BCD95725A4A");return native_invoker.get_return_value_bool();end,
 }
 
+-- Stand汉化脚本Github仓库地址
+-- https://github.com/xyfx666/Stand-Script_CN/
+-- 欢迎来参与汉化
+
 local is_vehicle_flying = false
 local dont_stop = false
 local no_collision = false
