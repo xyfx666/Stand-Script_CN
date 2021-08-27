@@ -1624,11 +1624,7 @@ function set_up_player_actions(pid)
         ENTITY.SET_ENTITY_ROTATION(cage2, 0.0, 90.0, 0.0, 1, true)
     end)
 
-<<<<<<< HEAD
     menu.action(npctrolls_root, "抢车贼", {"npcjack"}, "派遣一个NPC去抢他们的车。如果他们不在车内，效果最好。.", function(on_click)
-=======
-    menu.action(npctrolls_root, "NPC偷车", {"npcjack"}, "派个NPC去偷他车. 车主不在最好（这特喵不是废话）.", function(on_click)
->>>>>>> 66b6fb550739bc01b0cd731dc8f1d84c8fbb6e05
         local player_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
         local last_veh = PED.GET_VEHICLE_PED_IS_IN(player_ped, true)
         local cur_veh = PED.GET_VEHICLE_PED_IS_IN(player_ped, false)
@@ -1655,11 +1651,7 @@ function set_up_player_actions(pid)
         end
     end)
 
-<<<<<<< HEAD
-    menu.action(npctrolls_root, "派遣攻击者", {"british"}, "他们会接连攻击你.", function(on_click)
-=======
     menu.action(npctrolls_root, "不列颠模式", {"british"}, "天佑女王（英国国歌）.", function(on_click)
->>>>>>> 66b6fb550739bc01b0cd731dc8f1d84c8fbb6e05
         local hash = 0x9C9EFFD8
         local player_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
         request_model_load(hash)
@@ -1679,11 +1671,7 @@ function set_up_player_actions(pid)
         end
     end)
 
-<<<<<<< HEAD
     menu.action(npctrolls_root, "让附近的人逮捕", {"arrest"}, "告诉附近的行人，让他们逮捕玩家。很明显，GTAV中没有逮捕机制。所以他们并不真正逮捕。但他们会尝试.", function(on_click)
-=======
-    menu.action(npctrolls_root, "让周围npc追捕", {"arrest"}, "让周围npc追捕玩家.不过gta5里面没有追捕这种玩法.所以他们也不能真的把玩家逮捕.不过他们会试试的.", function(on_click)
->>>>>>> 66b6fb550739bc01b0cd731dc8f1d84c8fbb6e05
         local player_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
         local all_peds = util.get_all_peds()
         for k, ped in pairs(all_peds) do
@@ -1698,7 +1686,7 @@ function set_up_player_actions(pid)
         end
     end)
 
-    menu.action(npctrolls_root, "用npc填满玩家的车", {"fillcar"}, "把附近的npc送进玩家的车里", function(on_click)
+    menu.action(npctrolls_root, "用NPC填满玩家的车", {"fillcar"}, "把附近的NPC送进玩家的车里", function(on_click)
         local target_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
         if PED.IS_PED_IN_ANY_VEHICLE(target_ped, true) then
                 local veh = PED.GET_VEHICLE_PED_IS_IN(target_ped, false)
@@ -1708,7 +1696,7 @@ function set_up_player_actions(pid)
                     --  sometimes peds fail to get seated, so we will have something to break after 10 attempts if things go south
                     local iteration = 0
                     if iteration >= 20 then
-                        util.toast("Failed to fully fill vehicle after 20 attempts. Please try again.")
+                        util.toast("尝试20次后未能完全加注车辆。请再试一次。")
                         local success = false
                         iteration = 0
                         break
@@ -1742,7 +1730,7 @@ function set_up_player_actions(pid)
                     end
                 end
                 if success then
-                    util.toast("车座上应该坐满了npc,要是没有的话,过会儿再试试此功能.")
+                    util.toast("车座上应该坐满了NPC,要是没有的话,过会儿再试试此功能.")
                 end
         else
             util.toast("玩家不在车里 :(")
@@ -1914,7 +1902,7 @@ menu.toggle(allplayers_root, "循环公寓传送", {"apartmenttploop"}, "哟着�
     end
 end, false)
 
-menu.action(allplayers_root, "战局范围的聊天", {"sessionwidechat"}, "让战局中的每个人都说点啥.", function(on_click)
+menu.action(allplayers_root, "战局范围的聊天", {"sessionwidechat"}, "使战局中的每个人都说一些话.", function(on_click)
     util.toast("请输入您希望在战局中表达的内容.")
     menu.show_command_box("sessionwidechat ")
 end, function(on_command)
@@ -1939,11 +1927,11 @@ menu.action(allplayers_root, "献上最佳抢劫对象", {"best mug"}, "向你�
         end
     end
     if cur_wallet == nil then
-        util.toast("你个单身狗,找不到最佳打劫对象.")
+        util.toast("这个战局里只有你一个人,我们无法帮助你找到最佳的抢劫对象.")
         return
     end
     if most ~= nil then
-        util.toast(PLAYER.GET_PLAYER_NAME(most) .. " 钱包里票子最多 ($" .. cur_wallet .. ")")
+        util.toast(PLAYER.GET_PLAYER_NAME(most) .. " 在他的钱包里拥有最多的钱 ($" .. cur_wallet .. ")")
     else
         util.toast("找不到最佳打劫对象.")
     end
@@ -1960,7 +1948,7 @@ menu.toggle(allplayers_root, "暴君杀手", {"antioppressor"}, "自动炸掉马
     end
 end, false)
 
-menu.toggle(allplayers_root, "凶残暴君杀手", {"meanantioppressor"}, "需要打开暴君杀手.这回不炸了，直接把马克兔玩家踢出战局.", function(on)
+menu.toggle(allplayers_root, "反 暴君Mk2", {"meanantioppressor"}, "您只需要打开这个选项.我们就会直接把马克兔玩家踢出战局.", function(on)
     if on then
         meanantioppressor = true
     else
@@ -1978,7 +1966,7 @@ menu.toggle(online_root, "自动踢广告机", {"chatfilter"}, "如果玩家说�
 end, false)
 
 infibounty = false
-menu.toggle(allplayers_root, "无限悬赏", {"infibounty"}, "每60秒给全战局玩家1万美元的悬赏", function(on)
+menu.toggle(allplayers_root, "自动全战局悬赏金", {"infibounty"}, "每60秒给全战局玩家1万美元的悬赏金", function(on)
     if on then
         infibounty = true
         start_infibounty_thread()
@@ -2214,7 +2202,7 @@ chat.on_message(function(sender_player_id, sender_player_name, message, is_team_
         if chat_filter then
             for n, w in pairs(banned_words) do
                 if string.find(string.lower(message), w) then
-                    util.toast(sender_player_name .. ' 说了禁词 (' .. w .. '). 踢了他们.')
+                    util.toast(sender_player_name .. ' 说了违禁词 (' .. w .. '). 我们会将他踢出的.')
                     menu.trigger_commands("kick ".. sender_player_name)
                 end
             end
@@ -2222,7 +2210,7 @@ chat.on_message(function(sender_player_id, sender_player_name, message, is_team_
 
         if antiad then
             if string.find(message, '□') then
-                util.toast("广告机拜拜了您呐!")
+                util.toast("再见了,该死的广告机!")
                 menu.trigger_commands("crash" .. sender_player_name)
             end
         end
