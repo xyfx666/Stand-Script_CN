@@ -1,6 +1,6 @@
 -- coded by lance#8213, from scratch
 -- if you are stealing my code to use it in another menu actually kys
---99999999999
+--9999999
 require("natives-1627063482")
 ocoded_for = 1.57
 version = "3.2.0"
