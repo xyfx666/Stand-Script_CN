@@ -1097,13 +1097,13 @@ function spam_entity_on_player(ped, hash)
     util.toast('Done spamming entities.')
 end
 
-aircraft_root = menu.list(vehicle_root, "Aircraft", {"lanceaircraft"}, "")
+aircraft_root = menu.list(vehicle_root, "飞机", {"lanceaircraft"}, "")
 
-menu.action(vehicle_root, "Force leave vehicle", {"forceleave"}, "Force leave vehicle, in case of emergency or stuckedness", function(on_click)
+menu.action(vehicle_root, "下车", {"forceleave"}, "Force leave vehicle, in case of emergency or stuckedness", function(on_click)
     TASK.TASK_LEAVE_ANY_VEHICLE(PLAYER.PLAYER_PED_ID(), 0, 16)
 end)
 
-menu.action(aircraft_root, "Break rudder", {"breakrudder"}, "Breaks rudder. Good for stunts.", function(on_click)
+menu.action(aircraft_root, "损害船", {"breakrudder"}, "破坏了方向舵。有利于特技表演.", function(on_click)
     if player_cur_car then
         VEHICLE.SET_VEHICLE_RUDDER_BROKEN(player_cur_car, true)
     end
@@ -1112,7 +1112,7 @@ end)
 
 
 instantspinup = false
-menu.toggle(aircraft_root, "Instant propeller spinup", {"instantspinup"}, "Immediately spins up the blades, with no wait", function(on)
+menu.toggle(aircraft_root, "瞬间螺旋桨旋转起来", {"instantspinup"}, "螺旋桨立即旋转起来，无需等待.", function(on)
     if not player_cur_car then
         return
     end
@@ -1127,7 +1127,7 @@ end, false)
 menu.click_slider(aircraft_root, "Turbulence", {"turbulence"}, "Sets turbulence. 0 = no turbulence, 1 = default turbulence, 2 = heavy turbulence", 0, 2, 1, 1, function(s)
     if not player_cur_car then
         return
-    end
+		end
     if s == 0 then
         VEHICLE.SET_PLANE_TURBULENCE_MULTIPLIER(player_cur_car, 0.0)
     elseif s == 1 then
@@ -1137,7 +1137,7 @@ menu.click_slider(aircraft_root, "Turbulence", {"turbulence"}, "Sets turbulence.
     end
 end)
 
-menu.toggle(vehicle_root, "Invisible boatmobile", {"everythingproof"}, "Makes your vehicle everything-proof. But not invincible. Glass seems to be bulletproof though. Don\'t judge me, I didn\'t make this native.", function(on)
+menu.toggle(vehicle_root, "隐身车辆", {"everythingproof"}, "使你的车辆隐身。但不是无敌的。不过玻璃似乎是防弹的.", function(on)
     if not player_cur_car then
         return
     end
@@ -1150,7 +1150,7 @@ menu.toggle(vehicle_root, "Invisible boatmobile", {"everythingproof"}, "Makes yo
     end
 end)
 
-menu.action(vehicle_root, "Vehicle 180", {"vehicle180"}, "Turns your vehicle around with momentum preserved. Recommended to bind this.", function(on_click)
+menu.action(vehicle_root, "掉头", {"vehicle180"}, "使你的车辆转弯。 建议绑定这个.", function(on_click)
     if player_cur_car then
         local rot = ENTITY.GET_ENTITY_ROTATION(player_cur_car, 0)
         local vel = ENTITY.GET_ENTITY_VELOCITY(player_cur_car)
@@ -1160,7 +1160,7 @@ menu.action(vehicle_root, "Vehicle 180", {"vehicle180"}, "Turns your vehicle aro
 end)
 
 racemode = false
-menu.toggle(vehicle_root, "Vehicle race mode", {"racemode"}, "Tells the game the car is in \"race mode\". Not actually sure what it does lol.", function(on)
+menu.toggle(vehicle_root, "车辆竞赛模式", {"racemode"}, "告诉游戏汽车处于 \"竞技模式\"实际上不知道它是做什么的.", function(on)
     if not player_cur_car then
         return
     end
@@ -1173,7 +1173,7 @@ menu.toggle(vehicle_root, "Vehicle race mode", {"racemode"}, "Tells the game the
 end)
 
 stickyground = false
-menu.toggle(vehicle_root, "Stick to ground", {"stick2ground"}, "Keeps your car on the ground.", function(on)
+menu.toggle(vehicle_root, "贴地", {"stick2ground"}, "使你的车保持在地面上.", function(on)
     if not player_cur_car then
         return
     end
@@ -1185,7 +1185,7 @@ menu.toggle(vehicle_root, "Stick to ground", {"stick2ground"}, "Keeps your car o
 end)
 
 mph_plate = false
-menu.toggle(vehicle_root, "Speedometer plate", {"speedplate"}, "Unlike Ozark, which had this feature, I don\'t exit scam! Will reset your plate to what it was originally when you disable, also has KPH and MPH settings, so this is already better.", function(on)
+menu.toggle(vehicle_root, "车牌速度表", {"speedplate"}, "不像Ozark，它有这个功能，我不退出骗局! 当你禁用时，会将你的车牌重置为原来的样子，也有KPH和MPH设置，所以这已经是比较好的了.", function(on)
     if on then
         if player_cur_car then
             original_plate = VEHICLE.GET_VEHICLE_NUMBER_PLATE_TEXT(player_cur_car)
@@ -1206,7 +1206,7 @@ menu.toggle(vehicle_root, "Speedometer plate", {"speedplate"}, "Unlike Ozark, wh
 end)
 
 mph_unit = "kph"
-menu.toggle(vehicle_root, "Use MPH for speedometer plate", {"usemph"}, "Toggle off if you aren\'t American.", function(on)
+menu.toggle(vehicle_root, "使用MPH的速度表板", {"usemph"}, "如果你不是美国人，请关掉.", function(on)
     if on then
         mph_unit = "mph"
     else
@@ -1215,7 +1215,7 @@ menu.toggle(vehicle_root, "Use MPH for speedometer plate", {"usemph"}, "Toggle o
 end, false)
 
 everythingproof = false
-menu.toggle(vehicle_root, "Everything-proof", {"everythingproof"}, "Makes your vehicle everything-proof. But not invincible. Glass seems to be bulletproof though. Don\'t judge me, I didn\'t make this native.", function(on)
+menu.toggle(vehicle_root, "防弹模式", {"everythingproof"}, "使你的车辆万无一失。但不是无敌的。不过玻璃似乎是防弹的.", function(on)
     if on then
         everythingproof = true
     else
@@ -1223,12 +1223,12 @@ menu.toggle(vehicle_root, "Everything-proof", {"everythingproof"}, "Makes your v
     end
 end)
 
-menu.click_slider(vehicle_root, "Vehicle top speed", {"topspeed"}, "Sets vehicle top speed (this is known as engine power multiplier elsewhere)", 1, 2000, 200, 50, function(s)
+menu.click_slider(vehicle_root, "载具最高速度", {"topspeed"}, "设定载具的最高速度（这在其他地方被称为发动机功率倍增器）)", 1, 2000, 200, 50, function(s)
     VEHICLE.MODIFY_VEHICLE_TOP_SPEED(player_cur_car, s)
 end)
 
 shift_drift = false
-menu.toggle(vehicle_root, "Hold shift to drift", {"shiftdrift"}, "You heard me.", function(on)
+menu.toggle(vehicle_root, "按shift键漂移", {"shiftdrift"}, "You heard me.", function(on)
     if on then
         shift_drift = true
     else
@@ -1238,7 +1238,7 @@ end)
 
 
 infcms = false
-menu.toggle(vehicle_root, "Infinite countermeasures", {"infinitecms"}, "We also don\'t charge $140 for this feature. It\'s a single native call lmao", function(on)
+menu.toggle(vehicle_root, "无限反追踪导弹烟雾", {"infinitecms"}, "让追踪导弹不会炸到载具上", function(on)
     if on then
         infcms = true
     else
@@ -1246,13 +1246,13 @@ menu.toggle(vehicle_root, "Infinite countermeasures", {"infinitecms"}, "We also 
     end
 end)
 
-menu.click_slider(vehicle_root, "Dirt level", {"dirtlevel"}, "Arctic Monkeys - Do I Wanna Know", 0, 15.0, 0, 1, function(s)
+menu.click_slider(vehicle_root, "载具泥土程度", {"dirtlevel"}, "数值越高，泥土越多.", 0, 15.0, 0, 1, function(s)
     if player_cur_car then
         VEHICLE.SET_VEHICLE_DIRT_LEVEL(player_cur_car, s)
     end
 end)
 
-menu.click_slider(vehicle_root, "Light multiplier", {"lightmultiplier"}, "Sets brightness of lights in the vehicle. Local only.", 0, 1000000, 1, 1, function(s)
+menu.click_slider(vehicle_root, "载具灯光亮度", {"lightmultiplier"}, "设定车内灯光的亮度。仅限本地.", 0, 1000000, 1, 1, function(s)
     if player_cur_car then
         VEHICLE.SET_VEHICLE_LIGHT_MULTIPLIER(player_cur_car, s)
     end
@@ -1966,7 +1966,7 @@ menu.toggle(online_root, "自动踢广告机(请抢主机或者脚本主机）",
 end, false)
 
 infibounty = false
-menu.toggle(allplayers_root, "", {"好人啊"}, "每60秒奖励1万美元给所有玩家", function(on)
+menu.toggle(allplayers_root, "好人啊", {"infibounty"}, "每60秒奖励1万美元给所有玩家", function(on)
     if on then
         infibounty = true
         start_infibounty_thread()
