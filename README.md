@@ -9,3 +9,5 @@ https://github.com/xyfx666/Stand-Script_CN/releases
 
 ## 三.如何参加翻译？  
 您只需在您翻译完后提交PR即可。
+
+喜欢的话欢迎给我们点个Star
