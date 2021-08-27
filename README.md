@@ -13,6 +13,6 @@ https://github.com/xyfx666/Stand-Script_CN/releases
 您只需在您翻译完后提交PR即可。
 
 ## 四.文件夹含义？
-根目录 正在翻译
-To be proofread 待校对/正在校对
-Completed 已完成
+根目录 正在翻译  
+To be proofread 待校对/正在校对  
+Completed 已完成  
