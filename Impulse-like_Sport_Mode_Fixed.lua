@@ -25,17 +25,17 @@ local dont_stop = false
 local no_collision = false
 local speed = 1
 
-menu.toggle(menu.my_root(), "Vehicle fly", {"vehfly"}, "I recommend setting a hotkey to this option.", function(on_click)
+menu.toggle(menu.my_root(), "载具飞行", {"vehfly"}, "我建议为此选项设置热键。", function(on_click)
     is_vehicle_flying = on_click
 end)
-menu.slider(menu.my_root(), "Speed", {"speed"}, "", 1, 100, 1, 1, function(on_change) 
+menu.slider(menu.my_root(), "速度", {"speed"}, "", 1, 100, 1, 1, function(on_change) 
     speed = on_change
 end)
-menu.toggle(menu.my_root(), "Don't stop after input", {"dontstop"}, "", function(on_click)
+menu.toggle(menu.my_root(), "输入后不要停止", {"dontstop"}, "", function(on_click)
     dont_stop = on_click
 end)
 
-menu.toggle(menu.my_root(), "No collision", {"nocolision"}, "", function(on_click)
+menu.toggle(menu.my_root(), "无碰撞", {"nocolision"}, "", function(on_click)
     no_collision = on_click
 end)
 veh = PED.GET_VEHICLE_PED_IS_IN(PLAYER.PLAYER_PED_ID(), false);
