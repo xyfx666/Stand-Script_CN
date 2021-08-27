@@ -1966,7 +1966,7 @@ menu.toggle(online_root, "自动踢广告机(请抢主机或者脚本主机）",
 end, false)
 
 infibounty = false
-menu.toggle(allplayers_root, "好人啊", {"infibounty"}, "每60秒奖励1万美元给所有玩家", function(on)
+menu.toggle(allplayers_root, "内奸", {"infibounty"}, "每60秒奖励1万美元给所有玩家", function(on)
     if on then
         infibounty = true
         start_infibounty_thread()
