@@ -773,10 +773,10 @@ menu.action(entity_root, "乘坐距离最近的载具", {"closestvehicle"}, "传
 end)
 
 blackhole = false
-menu.toggle(entity_root, "车辆黑洞", {"blackhole"}, "一个超级落后但有趣的黑洞.当你打开它时,它会设置你上方的黑洞位置.可重新启动它以改变位置.哦,还有,这是非常耗费cpu,可能会导致游戏崩溃.", function(on)
+menu.toggle(entity_root, "车辆黑洞", {"blackhole"}, "一个会出现在自己上方的黑洞. 开启之后游戏帧数会降低, 物体碰撞可能会失效. 如需更改位置请关闭后重新开启》", function(on)
     if on then
         holecoords = ENTITY.GET_ENTITY_COORDS(PLAYER.PLAYER_PED_ID(), true)
-        util.toast("黑洞位置在你的位置上方50单位.重新开关这个开关来改变位置.")
+        util.toast("黑洞生成在您上方50u的位置. 需更改位置请关闭后重新开启.")
         blackhole = true
         vehicle_uses = vehicle_uses + 1
     else
@@ -786,12 +786,12 @@ menu.toggle(entity_root, "车辆黑洞", {"blackhole"}, "一个超级落后但�
 end, false)
 
 hole_zoff = 50
-menu.click_slider(entity_root, "黑洞离你有多远", {"blackholeoffset"}, "黑洞离你多远.建议保持这个数值相当高.", 0, 100, 50, 10, function(s)
+menu.click_slider(entity_root, "黑洞距离", {"blackholeoffset"}, "黑洞和您之间的距离. 建议将此数值调高. ", 0, 100, 50, 10, function(s)
     hole_zoff = s
   end)
 
 vehicle_fuckup = false
-menu.toggle(entity_root, "附近所有车变扁", {"fuckupcars"}, "比附近所有的车都厉害.但这种损害只是局部的.", function(on)
+menu.toggle(entity_root, "压缩附近车辆", {"fuckupcars"}, "将附近车辆压扁, 仅自己可见. ", function(on)
     if on then
         vehicle_fuckup = true
         vehicle_uses = vehicle_uses + 1
@@ -802,7 +802,7 @@ menu.toggle(entity_root, "附近所有车变扁", {"fuckupcars"}, "比附近所�
 end, false)
 
 inferno = false
-menu.toggle(entity_root, "爆炸汽车", {"inferno"}, "爆炸附近汽车,是持续的,就算他已经损坏.", function(on)
+menu.toggle(entity_root, "爆炸汽车", {"inferno"}, "持续爆破附近车辆, 即使车辆已被炸毁也不会停止爆炸. ", function(on)
     if on then
         inferno = true
         vehicle_uses = vehicle_uses + 1
@@ -814,7 +814,7 @@ end, false)
 
 
 godmode_vehicles = false
-menu.toggle(entity_root, "npc车辆无敌", {"godmodecars"}, "使附近所有的汽车不会损坏.这是为NPC车设计的,所以当人炸了你的意大利车时,不要抱怨.", function(on)
+menu.toggle(entity_root, "npc车辆无敌", {"godmodecars"}, "使附近所有NPC驾驶的汽车不会损坏, 对自己驾驶的载具无效 ", function(on)
     if on then
         godmode_vehicles = true
         vehicle_uses = vehicle_uses + 1
@@ -825,7 +825,7 @@ menu.toggle(entity_root, "npc车辆无敌", {"godmodecars"}, "使附近所有的
 end)
 
 disable_veh_colls = false
-menu.toggle(entity_root, "附近汽车沉底", {"nocolcars"}, "让附近所有的汽车掉入世界,或者“掉进一个洞里”.", function(on)
+menu.toggle(entity_root, "附近汽车沉底", {"nocolcars"}, "让附近所有的汽车掉入世界, 看起来就像\"掉进一个洞里\". ", function(on)
     if on then
         disable_veh_colls = true
         vehicle_uses = vehicle_uses + 1
