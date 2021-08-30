@@ -1098,7 +1098,7 @@ end)
 
 --start_healthbar_thread()
 
-menu.action(entity_root, "Teleport into closest vehicle", {"closestvehicle"}, "Teleports into closest vehicle (excludes any you might be in already). If the closest vehicle has a player driver, it will put you in the next available seat, if any. Keep in mind that nearby vehicles may not actually be \"real\" vehicles and may just be LOD\'s.", function(on_click)
+menu.action(entity_root, "乘坐距离最近的载具", {"closestvehicle"}, "传送到最近的载具(不包括已经乘上的载具). 如果最近的载具有驾驶员, 它会把你安排到下一个空位(如果有的话). 记住, 根据LOD机制, 附近的载具可能\"不在附近\".", function(on_click)
     local coords = ENTITY.GET_ENTITY_COORDS(PLAYER.PLAYER_PED_ID(), true)
     local vehicles = util.get_all_vehicles()
     -- init this at some ridiculously large number we will never reach, ez
@@ -1128,7 +1128,7 @@ menu.action(entity_root, "Teleport into closest vehicle", {"closestvehicle"}, "T
                 end
             end
         else
-            util.toast("No nearby vehicles with available seats found :(")
+            util.toast("未能找到还有空位的载具 :(")
         end
     end
 end)
@@ -1264,20 +1264,20 @@ menu.click_slider(train_root, "Closest train speed", {"trainspeed"}, "Setting it
 end)
 
 
-menu.action(world_root, "Clear area", {"cleararea"}, "Clears the nearby area of everything", function(on_click)
+menu.action(world_root, "清除区域", {"cleararea"}, "清除附近的一切", function(on_click)
     clear_area(clear_radius)
     util.toast('Area cleared :)')
 end)
 
 -- SET_PED_SHOOTS_AT_COORD(Ped ped, float x, float y, float z, BOOL toggle)
 
-menu.action(world_root, "Clear world", {"clearworfld"}, "Clears literally everything that can be cleared within the world (well, everything that\'s rendered in). Don\'t tell them, but it\'s really just a huge number as radius.", function(on_click)
+menu.action(world_root, "清除一切", {"clearworfld"}, "细致的地清除世界上可以清除的所有东西（好吧,在中渲染的所有东西）.不要告诉他们,但事实上这只是一个巨大的数字.", function(on_click)
     clear_area(1000000)
     util.toast('World cleared :)')
 end)
 
 cont_clear = false
-menu.toggle(world_root, "Continuous area clear", {"contareaclear"}, "Area clear, but looped", function(on)
+menu.toggle(world_root, "持续清除区域", {"contareaclear"}, "区域清晰,但呈环形", function(on)
     if on then
         cont_clear = true
     else
@@ -1286,7 +1286,7 @@ menu.toggle(world_root, "Continuous area clear", {"contareaclear"}, "Area clear,
 end, false)
 
 rapidtraffic = false
-menu.toggle(world_root, "Party traffic lights", {"beep boop"}, "ITS TIME TO PARTY!!!!!! probably local, also it doesnt affect traffic behavior", function(on)
+menu.toggle(world_root, "混乱的交通灯", {"beep boop"}, "到了派对时间了!!!!!!可能是本地的,也不会影响交通行为", function(on)
     if on then
         rapidtraffic = true
         object_uses = object_uses + 1
@@ -1297,7 +1297,7 @@ menu.toggle(world_root, "Party traffic lights", {"beep boop"}, "ITS TIME TO PART
 end, false)
 
 object_rainbow = false
-menu.toggle(world_root, "Rainbow world lights", {"rainbowlights"}, "Rainbows all embedded light sources. EXTREME FPS KILLER, so use wisely.", function(on)
+menu.toggle(world_root, "世界彩虹灯", {"rainbowlights"}, "可以尝试自己的CPU有多好.", function(on)
     if on then
         object_rainbow = true
         object_uses = object_uses + 1
@@ -1308,16 +1308,16 @@ menu.toggle(world_root, "Rainbow world lights", {"rainbowlights"}, "Rainbows all
 end)
 
 
-menu.click_slider(world_root, "Clear radius", {"clearradius"}, "Radius to clear things within", 100, 10000, 100, 100, function(s)
+menu.click_slider(world_root, "清除的半径", {"clearradius"}, "清除内部事物的半径", 100, 10000, 100, 100, function(s)
     radius = s
   end)
 
-menu.click_slider(world_root, "World gravity level", {"worldgravity"}, "World gravity level (0 is normal, higher number = less gravity)", 0, 3, 1, 1, function(s)
+menu.click_slider(world_root, "世界的重力水平", {"worldgravity"}, "世界重力水平（0为正常值,数值越大=重力越小）", 0, 3, 1, 1, function(s)
   MISC.SET_GRAVITY_LEVEL(s)
 end)
 
 firework_spam = false
-menu.toggle(world_root, "Firework spam", {"fireworkspam"}, "airplanes in the night sky are like shooting stars", function(on)
+menu.toggle(world_root, "视角晃动", {"fireworkspam"}, "夜空中的飞机就像流星", function(on)
     if on then
         firework_spam = true
     else
@@ -1326,7 +1326,7 @@ menu.toggle(world_root, "Firework spam", {"fireworkspam"}, "airplanes in the nig
 end, false)
 --FORCE_LIGHTNING_FLASH()
 lightning_spam = false
-menu.toggle(world_root, "Lightning spam", {"lightningspam"}, "epileptic-hating zeus. not sure if its networked or not, probably not.", function(on)
+menu.toggle(world_root, "电闪雷鸣", {"lightningspam"}, "憎恨癫痫的宙斯.不确定它是否联网,可能不会.", function(on)
     if on then
         lightning_spam = true
     else
@@ -1335,7 +1335,7 @@ menu.toggle(world_root, "Lightning spam", {"lightningspam"}, "epileptic-hating z
 end, false)
 
 
-effects_root = menu.list(world_root, "Screen effects", {"lancescriptfx"}, "")
+effects_root = menu.list(world_root, "视觉效果", {"lancescriptfx"}, "")
 
 menu.toggle(effects_root, "DMT", {"dmt"}, "", function(on)
     if on then
@@ -1345,7 +1345,7 @@ menu.toggle(effects_root, "DMT", {"dmt"}, "", function(on)
     end
 end, false)
 
-menu.toggle(effects_root, "Clowns", {"clowns"}, "", function(on)
+menu.toggle(effects_root, "小丑", {"clowns"}, "", function(on)
     if on then
         GRAPHICS.ANIMPOSTFX_PLAY("DrugsTrevorClownsFight", 0, true)
     else
@@ -1353,7 +1353,7 @@ menu.toggle(effects_root, "Clowns", {"clowns"}, "", function(on)
     end
 end, false)
 
-menu.toggle(effects_root, "Dog vision", {"dogvision"}, "", function(on)
+menu.toggle(effects_root, "狗", {"dogvision"}, "", function(on)
     if on then
         GRAPHICS.ANIMPOSTFX_PLAY("ChopVision", 0, true)
     else
@@ -1361,7 +1361,7 @@ menu.toggle(effects_root, "Dog vision", {"dogvision"}, "", function(on)
     end
 end, false)
 
-menu.toggle(effects_root, "Rampage", {"rampage"}, "", function(on)
+menu.toggle(effects_root, "模糊的", {"rampage"}, "", function(on)
     if on then
         GRAPHICS.ANIMPOSTFX_PLAY("Rampage", 0, true)
     else
@@ -1369,19 +1369,19 @@ menu.toggle(effects_root, "Rampage", {"rampage"}, "", function(on)
     end
 end, false)
 
-menu.action(effects_root, "Input custom effect", {"effectinput"}, "Input a custom animpostFX to play.", function(on_click)
+menu.action(effects_root, "输入自定义视觉特效", {"effectinput"}, "输入要播放的自定义视觉特效.", function(on_click)
     util.toast("Please type the effect name")
     menu.show_command_box("effectinput ")
 end, function(on_command)
     GRAPHICS.ANIMPOSTFX_PLAY(on_command, 0, true)
 end)
 
-menu.action(effects_root, "Stop all effects", {"stopfx"}, "Use only as emergency, to stop custom inputted effects, or to stop regularly-triggered effects. If you can, try untoggling the effect first here.", function(on_click)
+menu.action(effects_root, "停止所有视觉特效", {"stopfx"}, "仅用于紧急情况,停止自定义输入效果,或停止定期触发的效果.如果可以,请先尝试在此处不改变效果.", function(on_click)
     GRAPHICS.ANIMPOSTFX_STOP_ALL()
 end)
 
 ascend_vehicles = false
-menu.toggle(entity_root, "Ascend all nearby vehicles", {"ascendvehicles"}, "It\'s supposed to neatly make them levitate.. but it just spends them spinning in mid air. Which is fucking hilarious.", function(on)
+menu.toggle(entity_root, "附近所有车辆飞天", {"ascendvehicles"}, "这应该能让他们飘浮起来.但它只是让它们在半空中旋转.这糟糕的代码了.", function(on)
     if on then
         ascend_vehicles = true
         vehicle_uses = vehicle_uses + 1
@@ -1392,7 +1392,7 @@ menu.toggle(entity_root, "Ascend all nearby vehicles", {"ascendvehicles"}, "It\'
 end)
 
 no_radio = false
-menu.toggle(entity_root, "Disable radio on all cars", {"noradio"}, "serenity.", function(on)
+menu.toggle(entity_root, "关闭所有车辆的无线电", {"noradio"}, "serenity.", function(on)
     if on then
         no_radio = true
         vehicle_uses = vehicle_uses + 1
@@ -1403,7 +1403,7 @@ menu.toggle(entity_root, "Disable radio on all cars", {"noradio"}, "serenity.", 
 end)
 
 loud_radio = false
-menu.toggle(entity_root, "Loud radio on all cars", {"loudradio"}, "I CAN\'T HEAR YOU OVER ALL THIS BULLSHIT", function(on)
+menu.toggle(entity_root, "所有的车都开大声的收音机", {"loudradio"}, "我听不见你说话在这些废话当中.", function(on)
     if on then
         loud_radio = true
         vehicle_uses = vehicle_uses + 1
@@ -1415,7 +1415,7 @@ end)
 
 
 halt_traffic = false
-menu.toggle(entity_root, "Halt traffic", {"halttraffic"}, "Prevents all nearby vehicles from moving, at all. Not even an inch. Irreversible so be careful.", function(on)
+menu.toggle(entity_root, "停止交通", {"halttraffic"}, "阻止附近所有车辆移动.连一英寸都没有.所以要小心使用.", function(on)
     if on then
         halt_traffic = true
         vehicle_uses = vehicle_uses + 1
@@ -1426,7 +1426,7 @@ menu.toggle(entity_root, "Halt traffic", {"halttraffic"}, "Prevents all nearby v
 end)
 
 reverse_traffic = false
-menu.toggle(entity_root, "Reverse traffic", {"reversetraffic"}, "Traffic, but flip it", function(on)
+menu.toggle(entity_root, "反向交通", {"reversetraffic"}, "交通,但翻转它", function(on)
     if on then
         reverse_traffic = true
         vehicle_uses = vehicle_uses + 1
@@ -1438,7 +1438,7 @@ end)
 
 
 vehicle_chaos = false
-menu.toggle(entity_root, "Vehicle chaos", {"chaos"}, "Enables the chaos...", function(on)
+menu.toggle(entity_root, "混乱的车辆", {"chaos"}, "开启即混乱混乱...", function(on)
     if on then
         vehicle_chaos = true
         vehicle_uses = vehicle_uses + 1
@@ -1449,7 +1449,7 @@ menu.toggle(entity_root, "Vehicle chaos", {"chaos"}, "Enables the chaos...", fun
 end, false)
 
 vc_gravity = true
-menu.toggle(entity_root, "Vehicle chaos gravity", {"chaosgravity"}, "Gravity on/off", function(on)
+menu.toggle(entity_root, "车辆混沌引力", {"chaosgravity"}, "重力 开/关", function(on)
     if on then
         vc_gravity = true
     else
@@ -1458,7 +1458,7 @@ menu.toggle(entity_root, "Vehicle chaos gravity", {"chaosgravity"}, "Gravity on/
 end, true)
 
 vc_speed = 100
-menu.click_slider(entity_root, "Vehicle chaos speed", {"chaosspeed"}, "The speed to force the vehicles to. Higher = more chaos.", 30, 300, 100, 10, function(s)
+menu.click_slider(entity_root, "车辆混沌速度", {"chaosspeed"}, "迫使车辆行驶的速度.越高=越混乱.", 30, 300, 100, 10, function(s)
   vc_speed = s
 end)
 
@@ -1483,21 +1483,21 @@ function spam_entity_on_player(ped, hash)
     util.toast('Done spamming entities.')
 end
 
-aircraft_root = menu.list(vehicle_root, "Aircraft", {"lanceaircraft"}, "")
+aircraft_root = menu.list(vehicle_root, "飞机", {"lanceaircraft"}, "")
 
-menu.action(vehicle_root, "Force leave vehicle", {"forceleave"}, "Force leave vehicle, in case of emergency or stuckedness", function(on_click)
+menu.action(vehicle_root, "强制离开载具", {"forceleave"}, "Force leave vehicle, in case of emergency or stuckedness", function(on_click)
     TASK.CLEAR_PED_TASKS_IMMEDIATELY(PLAYER.PLAYER_PED_ID())
     TASK.TASK_LEAVE_ANY_VEHICLE(PLAYER.PLAYER_PED_ID(), 0, 16)
 end)
 
-menu.action(aircraft_root, "Break rudder", {"breakrudder"}, "Breaks rudder. Good for stunts.", function(on_click)
+menu.action(aircraft_root, "破环船", {"breakrudder"}, "Breaks rudder. Good for stunts.", function(on_click)
     if player_cur_car then
         VEHICLE.SET_VEHICLE_RUDDER_BROKEN(player_cur_car, true)
     end
 end)
 --SET_PLANE_TURBULENCE_MULTIPLIER(Vehicle vehicle, float multiplier)
 instantspinup = false
-menu.toggle(aircraft_root, "Instant propeller spinup", {"instantspinup"}, "Immediately spins up the blades, with no wait", function(on)
+menu.toggle(aircraft_root, "瞬时螺旋桨加速", {"instantspinup"}, "螺旋桨立即旋转起来,无需等待.", function(on)
     if not player_cur_car then
         return
     end
@@ -1508,7 +1508,7 @@ menu.toggle(aircraft_root, "Instant propeller spinup", {"instantspinup"}, "Immed
     end
 end, false)
 
-menu.click_slider(aircraft_root, "Turbulence", {"turbulence"}, "Sets turbulence. 0 = no turbulence, 1 = default turbulence, 2 = heavy turbulence", 0, 2, 1, 1, function(s)
+menu.click_slider(aircraft_root, "湍流", {"turbulence"}, "设置湍流.0=无湍流,1=默认湍流,2=严重湍流", 0, 2, 1, 1, function(s)
     if not player_cur_car then
         return
     end
@@ -1522,11 +1522,11 @@ menu.click_slider(aircraft_root, "Turbulence", {"turbulence"}, "Sets turbulence.
 end)
 
 tesla_ped = 0
-menu.action(vehicle_root, "Tesla summon", {"teslasummon"}, "Have your car drive itself to you.", function(on_click)
+menu.action(vehicle_root, "特斯拉召唤", {"teslasummon"}, "使自己的车开来自己身边.", function(on_click)
     lastcar = PLAYER.GET_PLAYERS_LAST_VEHICLE()
     if lastcar ~= player_cur_car then
         if lastcar == 0 then
-            util.toast("Your last vehicle was not found.")
+            util.toast("没有找到你开过的最后一辆车")
             return
         end
         local plyr = PLAYER.PLAYER_PED_ID()
@@ -1549,7 +1549,7 @@ menu.action(vehicle_root, "Tesla summon", {"teslasummon"}, "Have your car drive 
     end
 end)
 
-menu.toggle(vehicle_root, "Invisible boatmobile", {"everythingproof"}, "Makes your vehicle everything-proof. But not invincible. Glass seems to be bulletproof though. Don\'t judge me, I didn\'t make this native.", function(on)
+menu.toggle(vehicle_root, "隐形载具", {"everythingproof"}, "使你的载具隐形.但不是无敌的.不过玻璃似乎是防弹的.", function(on)
     if not player_cur_car then
         return
     end
@@ -1562,7 +1562,7 @@ menu.toggle(vehicle_root, "Invisible boatmobile", {"everythingproof"}, "Makes yo
     end
 end)
 
-menu.action(vehicle_root, "Vehicle 180", {"vehicle180"}, "Turns your vehicle around with momentum preserved. Recommended to bind this.", function(on_click)
+menu.action(vehicle_root,  "180度掉头", {"vehicle180"}, "在保持动力的情况下转弯.建议使用快捷键绑定此功能.", function(on_click)
     if player_cur_car then
         util.toast(VEHICLE._GET_HYDRAULIC_WHEEL_VALUE(player_cur_car, 0))
         local rot = ENTITY.GET_ENTITY_ROTATION(player_cur_car, 0)
@@ -1573,7 +1573,7 @@ menu.action(vehicle_root, "Vehicle 180", {"vehicle180"}, "Turns your vehicle aro
 end)
 
 racemode = false
-menu.toggle(vehicle_root, "Vehicle race mode", {"racemode"}, "Tells the game the car is in \"race mode\". Not actually sure what it does lol.", function(on)
+menu.toggle(vehicle_root, "赛车模式", {"racemode"}, "告诉游戏汽车处于\"比赛模式\".不知道它到底是干什么的,哈哈.", function(on)
     if not player_cur_car then
         return
     end
@@ -1586,7 +1586,7 @@ menu.toggle(vehicle_root, "Vehicle race mode", {"racemode"}, "Tells the game the
 end)
 
 stickyground = false
-menu.toggle(vehicle_root, "Stick to ground", {"stick2ground"}, "Keeps your car on the ground.", function(on)
+menu.toggle(vehicle_root, "贴地行驶", {"stick2ground"}, "使你的车保持在地面上.", function(on)
     if not player_cur_car then
         return
     end
@@ -1598,12 +1598,12 @@ menu.toggle(vehicle_root, "Stick to ground", {"stick2ground"}, "Keeps your car o
 end)
 
 mph_plate = false
-menu.toggle(vehicle_root, "Speedometer plate", {"speedplate"}, "Unlike Ozark, which had this feature, I don\'t exit scam! Will reset your plate to what it was originally when you disable, also has KPH and MPH settings, so this is already better.", function(on)
+menu.toggle(vehicle_root, "车牌速度表", {"speedplate"}, "不像Ozark,它有这个功能,我不退出骗局! 当你禁用时,会将你的车牌重置为原来的样子,也有KPH和MPH设置,所以这已经是比较好的了.", function(on)
     if on then
         if player_cur_car then
             original_plate = VEHICLE.GET_VEHICLE_NUMBER_PLATE_TEXT(player_cur_car)
         else
-            util.toast("You were not in a vehicle when starting this. You won\'t be able to revert plate text.")
+           util.toast("启动时您不在车内.您将无法还原车牌号.")
             original_plate = "LANCE"
         end
         mph_plate = true
@@ -1619,7 +1619,7 @@ menu.toggle(vehicle_root, "Speedometer plate", {"speedplate"}, "Unlike Ozark, wh
 end)
 
 mph_unit = "kph"
-menu.toggle(vehicle_root, "Use MPH for speedometer plate", {"usemph"}, "Toggle off if you aren\'t American.", function(on)
+menu.toggle(vehicle_root, "使用英里的速度表板", {"usemph"}, "如果你不是美国人,请关掉.", function(on)
     if on then
         mph_unit = "mph"
     else
@@ -1628,7 +1628,7 @@ menu.toggle(vehicle_root, "Use MPH for speedometer plate", {"usemph"}, "Toggle o
 end, false)
 
 everythingproof = false
-menu.toggle(vehicle_root, "Everything-proof", {"everythingproof"}, "Makes your vehicle everything-proof. But not invincible. Glass seems to be bulletproof though. Don\'t judge me, I didn\'t make this native.", function(on)
+menu.toggle(vehicle_root, "防弹模式", {"everythingproof"}, "使你的车辆万无一失.但不是无敌的.不过玻璃似乎是防弹的.", function(on)
     if on then
         everythingproof = true
     else
@@ -1636,12 +1636,12 @@ menu.toggle(vehicle_root, "Everything-proof", {"everythingproof"}, "Makes your v
     end
 end)
 
-menu.click_slider(vehicle_root, "Vehicle top speed", {"topspeed"}, "Sets vehicle top speed (this is known as engine power multiplier elsewhere)", 1, 2000, 200, 50, function(s)
+menu.click_slider(vehicle_root,"载具最高速度", {"topspeed"}, "设定载具的最高速度（这在其他地方被称为发动机功率倍增器）)", 1, 2000, 200, 50, function(s)
     VEHICLE.MODIFY_VEHICLE_TOP_SPEED(player_cur_car, s)
 end)
 
 shift_drift = false
-menu.toggle(vehicle_root, "Hold shift to drift", {"shiftdrift"}, "You heard me.", function(on)
+menu.toggle(vehicle_root, "按住Shift键漂移", {"shiftdrift"}, "You heard me.", function(on)
     if on then
         shift_drift = true
     else
@@ -1651,7 +1651,7 @@ end)
 
 
 infcms = false
-menu.toggle(vehicle_root, "Infinite countermeasures", {"infinitecms"}, "We also don\'t charge $140 for this feature. It\'s a single native call lmao", function(on)
+menu.toggle(vehicle_root, "无限反追踪导弹烟雾", {"infinitecms"}, "让追踪导弹不会炸到载具上", function(on)
     if on then
         infcms = true
     else
@@ -1659,13 +1659,13 @@ menu.toggle(vehicle_root, "Infinite countermeasures", {"infinitecms"}, "We also 
     end
 end)
 
-menu.click_slider(vehicle_root, "Dirt level", {"dirtlevel"}, "Arctic Monkeys - Do I Wanna Know", 0, 15.0, 0, 1, function(s)
+menu.click_slider(vehicle_root, "载具肮脏程度", {"dirtlevel"}, "数值越高,你的载具就越脏.", 0, 15.0, 0, 1, function(s)
     if player_cur_car then
         VEHICLE.SET_VEHICLE_DIRT_LEVEL(player_cur_car, s)
     end
 end)
 
-menu.click_slider(vehicle_root, "Light multiplier", {"lightmultiplier"}, "Sets brightness of lights in the vehicle. Local only.", 0, 1000000, 1, 1, function(s)
+menu.click_slider(vehicle_root, "载具灯光亮度", {"lightmultiplier"}, "设定车内灯光的亮度.仅限本地.", 0, 1000000, 1, 1, function(s)
     if player_cur_car then
         VEHICLE.SET_VEHICLE_LIGHT_MULTIPLIER(player_cur_car, s)
     end
