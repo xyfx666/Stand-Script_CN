@@ -17,31 +17,31 @@ function set_up_groups()
 end
 set_up_groups()
 
-self_root = menu.list(menu.my_root(), "Self", {"lancescriptself"}, "Lets you do things to yourself/your ped")
-transport_root = menu.list(self_root, "Transportation", {"lancescripttransport"}, "Chauffeur.")
-weapons_root = menu.list(menu.my_root(), "Weapons", {"lancescriptweapons"}, "Weapon adjustments and tweaks")
-protections_root = menu.list(menu.my_root(), "Protections", {"lancescriptprotections"}, "Protect yourself before you wreck yourself.")
-noclip_root = menu.list(self_root, "Noclip", {"lancescriptnoclip"}, "Not quite levitation")
-world_root = menu.list(menu.my_root(), "World", {"lancescriptworld"}, "Rule the world")
-train_root = menu.list(world_root, "Train", {"lancescripttrain"}, "Control trains to your liking")
-entity_root = menu.list(menu.my_root(), "Nearby vehicles/objects", {"lancescriptentity"}, "Vehicle chaos, ascend vehicles, beep all vehicles, etc.")
-npc_root = menu.list(menu.my_root(), "Nearby NPCs", {"lancescriptnpcs"}, "NPC tasks and more")
-tasks_root = menu.list(npc_root, "Tasks", {"lancescripttasks"}, "")
-vehicle_root = menu.list(menu.my_root(), "Vehicle", {"lanceobjecttroll"}, "")
-online_root = menu.list(menu.my_root(), "Online", {"lancescriptonline"}, "")
-allplayers_root = menu.list(menu.my_root(), "All players", {"lancescriptallplayers"}, "")
-business_root = menu.list(online_root, "Business management", {"lancescriptbusiness"}, "Business manager allows you to monitor your businesses. It does NOT automatically sell or resupply, so there is no risk of being banned."..
+self_root = menu.list(menu.my_root(), "自我", {"lancescriptself"}, "Lets you do things to yourself/your ped")
+transport_root = menu.list(self_root, "交通", {"lancescripttransport"}, "Chauffeur.")
+weapons_root = menu.list(menu.my_root(), "武器", {"lancescriptweapons"}, "Weapon adjustments and tweaks")
+protections_root = menu.list(menu.my_root(), "保护", {"lancescriptprotections"}, "Protect yourself before you wreck yourself.")
+noclip_root = menu.list(self_root, "无碰撞", {"lancescriptnoclip"}, "Not quite levitation")
+world_root = menu.list(menu.my_root(), "世界", {"lancescriptworld"}, "Rule the world")
+train_root = menu.list(world_root, "火车", {"lancescripttrain"}, "Control trains to your liking")
+entity_root = menu.list(menu.my_root(), "附近载具/物体", {"lancescriptentity"}, "Vehicle chaos, ascend vehicles, beep all vehicles, etc.")
+npc_root = menu.list(menu.my_root(), "附近NPC", {"lancescriptnpcs"}, "NPC tasks and more")
+tasks_root = menu.list(npc_root, "动作", {"lancescripttasks"}, "")
+vehicle_root = menu.list(menu.my_root(), "车辆", {"lanceobjecttroll"}, "")
+online_root = menu.list(menu.my_root(), "在线", {"lancescriptonline"}, "")
+allplayers_root = menu.list(menu.my_root(), "所有玩家", {"lancescriptallplayers"}, "")
+business_root = menu.list(online_root, "产业管理", {"lancescriptbusiness"}, "Business manager allows you to monitor your businesses. It does NOT automatically sell or resupply, so there is no risk of being banned."..
 "\nAll values in business manager are reported by the game itself through stats. Lancescript does not miraculously come up with info. If there is an issue, it is an issue with how the game is reporting it, not Lancescript.")
-gametweaks_root = menu.list(menu.my_root(), "Game tweaks", {"lancescriptgametweaks"}, "")
-fakemessages_root = menu.list(gametweaks_root, "Fake messages", {"lancescriptfakemessages"}, "")
-labelpresets_root = menu.list(gametweaks_root, "Label presets", {"lancescriptlabelpresets"}, "Lets you HUD elements in the game say different things.")
-radio_root = menu.list(gametweaks_root, "Radio", {"lancescriptradio"}, "")
+gametweaks_root = menu.list(menu.my_root(), "游戏调整", {"lancescriptgametweaks"}, "")
+fakemessages_root = menu.list(gametweaks_root, "虚假信息", {"lancescriptfakemessages"}, "")
+labelpresets_root = menu.list(gametweaks_root, "标签预设", {"lancescriptlabelpresets"}, "Lets you HUD elements in the game say different things.")
+radio_root = menu.list(gametweaks_root, "广播", {"lancescriptradio"}, "")
 lancescript_root = menu.list(menu.my_root(), "LanceScript", {"lancescriptutil"}, "")
-sounds_root = menu.list(lancescript_root, "Sounds", {"lancescriptsounds"}, "")
-menu.action(menu.my_root(), "Players shortcut", {}, "Quickly opens session players list, for convenience", function(on_click)
+sounds_root = menu.list(lancescript_root, "声音", {"lancescriptsounds"}, "")
+menu.action(menu.my_root(), "玩家列表", {}, "Quickly opens session players list, for convenience", function(on_click)
     menu.trigger_commands("playerlist")
 end)
-credits_root = menu.list(menu.my_root(), "Credits", {"lancescriptcredits"}, "")
+credits_root = menu.list(menu.my_root(), "感谢列表", {"lancescriptcredits"}, "")
 
 function request_control_of_entity(ent)
     local netid = NETWORK.NETWORK_GET_NETWORK_ID_FROM_ENTITY(ent)
@@ -129,7 +129,7 @@ function file_exists(path)
 end
 
 if not file_exists(file_name) then
-  util.toast(file_name .. ' was not found, please make sure the script is installed correctly. READ THE INSTALL.TXT!!! AND FOLLOW THE INSTRUCTIONS IN THE FOLDER NAME.')
+  util.toast(file_name .. ' 未能找到,请确认脚本已正确安装.读INSTALL.TXT!!按照文件夹名称中的说明操作.')
   util.stop_script()
 else
     file = io.open(file_name, "r")
@@ -158,14 +158,14 @@ end
 util.async_http_get("pastebin.com", "/raw/zQHkAuEu", function(result)
     result = tonumber(result)
     if version < result then
-        util.toast("An update is available for Lancescript! Bringing you there now.")
+        util.toast("Lancescript有更新可用!可前往网站更新.")
         os.execute("start \"\" \"https://www.guilded.gg/stand/groups/x3ZgB10D/channels/7430c963-e9ee-40e3-ab20-190b8e4a4752/docs/265965\"")
     else
-        util.toast("Lancescript is up to date!")
+        util.toast("Lancescript 是最新的!!")
     end
 end,
 function (fail)
-    util.toast("Could not check for updates.")
+    util.toast("无法检查更新.")
 end)
 
 function show_custom_alert_until_enter(l1)
@@ -216,7 +216,7 @@ end)
 
 scaleform_thread = util.create_thread(function (thr)
     name = os.getenv("USERNAME")
-    util.toast("Hello " .. name .. "!")
+    util.toast("你好 " .. name .. "!")
     local scaleForm = GRAPHICS.REQUEST_SCALEFORM_MOVIE("HACKING_MESSAGE")
     local punchline = "~f~~italic~\"" .. punchlines[math.random(1, plct)] .. "\"~italic~"
     GRAPHICS.BEGIN_SCALEFORM_MOVIE_METHOD(scaleForm, "SET_DISPLAY")
@@ -234,16 +234,16 @@ scaleform_thread = util.create_thread(function (thr)
         if os.time() - starttime >= 5 then
             AUDIO.PLAY_SOUND_FRONTEND(55, "FocusOut", "HintCamSounds", true)
             if file_exists(filesystem.scripts_dir() .. 'Tox1cEssent1als.lua') and not file_exists(filesystem.scripts_dir() .. 'disclaimer_viewed.txt') then
-                local text = "~g~You are not banned. ~w~This is a notice from Lancescript. Toxicessentials (Tox1cEssent1als.lua) has been detected. Please read.~n~I won\'t stop you from using ToxicEssentials, that would be overstepping boundaries. But just be aware that the developer is a fucking asshole.~n~" .. 
-                "Toxicessentials consists of hard work that the developer (pnn) stole from others and proceeded to sell with no profits or even credit given to these developers."
-                local text2 = "You are free to keep using Toxicessentials, but one of its developers who is not a douchebag, ICYphoenix, has been maintaining a non-obfuscated, credited edition of it for months.~n~" .. 
-                "You are heavily encouraged to use Phoenixscript and/or Lancescript in replacement of pnn\'s skidded, stolen work. ~n~Phoenixscript IS Toxicessentials, after all.~n~"..
-                "I encourage you to no longer give people downloads of Toxicessentials. You do not have to listen to me. But Toxicessentials is poorly written, unmaintained, obfuscated, stolen code.~n~"..
-                "This will be the only time you see this message. Thanks for your time."
+                 local text = "~g~阁下没有被禁止进入GTA线上模式~n~ ~w~请注意, 这是来自Lancescript开发者的一则声明,恳请您仔细阅读.~n~我已注意到您或许在使用ToxicEssentials(ToxicEssent1als.lua).~n~我不能强迫您不再使用ToxicEssentials,但它的制作组不是他妈的什么好东西.~n~" .. 
+                "ToxicEssentials的内容中包括其他Lua脚本作者的辛苦创作.而它的制作组成员,pnn,在未有标明原作者,或征得原作者同意的情况下剽窃代码,并将其用于商业行为.~n~产生的任何盈利也没有回馈给这些代码的作者."
+                local text2 = "您可以继续使用ToxicEssentials.但制作ToxicEssential的成员之一,~n~ICYPhoenix,相较其他制作组成员拥有良好的品德.~n~他/她过去几个月来一直在维护一个没有混淆过代码,并标注代码来源的版本.~n~" .. 
+                "我强烈建议您使用Phoenixscript和/或 Lancescript 来代替pnn剽窃来的作品 ~n~毕竟Phoenixscript 本来就是 Toxicessentials.~n~"..
+                "我鼓励您不再向别人分享ToxicEssentials,因为ToxicEssentials的代码是剽窃来的,被混淆过的,且质量很差.但您也可以选择忽视这条信息,并继续分享."..
+                "您之后不会再看到这则声明,感谢阁下抽出您宝贵的时间阅读此声明."
                 show_custom_alert_until_enter(text)
                 show_custom_alert_until_enter(text2)
                 file = io.open(filesystem.scripts_dir() .. 'disclaimer_viewed.txt', "w")
-                file:write("This file exists in your Lua scripts to tell Lancescript you have viewed the disclaimer about Toxicessentials. If you remove it, you will see the disclaimer again.")
+                file:write("该文件存在于您的 Lua 脚本中,用于告诉 Lancescript 您已查看关于 Toxicessentials 的免责声明. 如果删除它,您将再次看到免责声明.")
                 file:close()
             end
             util.stop_thread()
@@ -257,7 +257,7 @@ end)
 
 function dispatch_griefer_jesus(target)
     griefer_jesus = util.create_thread(function(thr)
-        util.toast("Griefer jesus sent!")
+        util.toast("让耶稣伤心吧!")
         request_model_load(-835930287)
         local target_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(target)
         coords = ENTITY.GET_ENTITY_COORDS(target_ped, false)
@@ -285,12 +285,12 @@ function dispatch_griefer_jesus(target)
             end
             -- if jesus disappears we can just make another lmao
             if not ENTITY.DOES_ENTITY_EXIST(jesus) then
-                util.toast("Jesus apparently stopped existing. Stopping Jesus thread.")
+                util.toast("J耶稣不再在人间显灵了, 正在阻止耶稣的线程.")
                 util.stop_thread()
             end
             local target_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(target)
             if not players.exists(target) then
-                util.toast("The player target has been lost. The griefer Jesus thread is stopping.")
+                util.toast("T玩家已离开, 伤心的耶稣停止了思考.")
                 util.stop_thread()
             else
                 TASK.TASK_COMBAT_PED(jesus, target_ped, 0, 16)
@@ -299,7 +299,7 @@ function dispatch_griefer_jesus(target)
         end
     end)
 end
-menu.toggle(lancescript_root, "Show active entity pools", {"entitypoolupdates"}, "Toasts what entity pools are being updated every tick. The more you see, the more performance loss; getting all entities is a heavy task.", function(on)
+menu.toggle(lancescript_root, "显示活动的实体池", {"entitypoolupdates"}, "Toasts what entity pools are being updated every tick. The more you see, the more performance loss; getting all entities is a heavy task.", function(on)
     if on then
         show_updates = true
     else
@@ -317,17 +317,21 @@ end, function(on_command)
 end)
 
 
-menu.action(lancescript_root, "Watch Konosuba! ep 1", {"konosuba"}, "", function(on_click)
+menu.action(lancescript_root, "在YouTube上观看为美好的世界献上祝福!的第一集", {"konosuba"}, "", function(on_click)
     os.execute("start \"\" \"https://www.youtube.com/watch?v=H8CORxz5FKA\"")
 end)
 --memory.scan(string pattern)
 
-menu.action(lancescript_root, "Tweet about Lancescript", {"tweet"}, "", function(on_click)
+menu.action(lancescript_root, "发送推特以示对LanceScript的支持", {"tweet"}, "", function(on_click)
     os.execute("start \"\" \"https://twitter.com/compose/tweet?text=Lancescript is the best LUA script ever!\"")
 end)
 
+--menu.action(lancescript_root, "查看脚本汉化仓库", {"github"}, "", function(on_click)
+--    os.execute("start \"\" \"https://github.com/xyfx666/Stand-Script_CN\"")
+--end)
+
 joinsound = false
-menu.toggle(sounds_root, "Sound on player join", {"joinsound"}, "", function(on)
+menu.toggle(sounds_root, "玩家加入时的音效", {"joinsound"}, "", function(on)
     if on then
         joinsound = true
     else
@@ -336,7 +340,7 @@ menu.toggle(sounds_root, "Sound on player join", {"joinsound"}, "", function(on)
 end)
 
 leavesound = false
-menu.toggle(sounds_root, "Sound on player leave", {"leavesound"}, "", function(on)
+menu.toggle(sounds_root, "玩家离开时的音效", {"leavesound"}, "", function(on)
     if on then
         leavesound = true
     else
@@ -431,16 +435,16 @@ end
 function request_model_load(hash)
     request_time = os.time()
     if not STREAMING.IS_MODEL_VALID(hash) then
-        util.toast("Requested model was invalid and could not be loaded.")
+        util.toast("请求的模型无效, 无法加载.")
         return
     end
     STREAMING.REQUEST_MODEL(hash)
     while not STREAMING.HAS_MODEL_LOADED(hash) do
         if os.time() - request_time >= 10 then
-            util.toast("Model failed to load in 10 seconds.")
+            util.toast("模型将在十秒内加载.")
             break
         end
-        util.toast("Loading model hash " .. hash)
+        util.toast("正在加载模组HASH值 " .. hash)
         util.yield()
     end
 end
@@ -450,10 +454,10 @@ function request_ptfx_load(hash)
     STREAMING.REQUEST_NAMED_PTFX_ASSET(hash)
     while not STREAMING.HAS_PTFX_ASSET_LOADED(hash) do
         if os.time() - request_time >= 10 then
-            util.toast("PTFX failed to load in 5 seconds.")
+            util.toast("粒子特效 未能在5秒内加载完成.")
             break
         end
-        util.toast("Loading PTFX hash " .. hash)
+        util.toast("正在加载粒子特效HASH..." .. hash)
         util.yield()
     end
 end
