@@ -666,7 +666,7 @@
 
     menu.action(CAYO_TRUCK, "主码头 (西)", {}, "", function()
         STAT_SET_INT("H4CNF_TROJAN", 4)
-        Notify("补给卡车将在主码头附近出现(西)"")
+        Notify("补给卡车将在主码头附近出现(西)")
     end)
 
     menu.action(CAYO_TRUCK, "别墅", {}, "", function()
@@ -886,7 +886,7 @@
         Notify("兵不厌诈 (普通)\n\n目标: 钻石\n车辆: 埃弗隆\n车手: 切斯特·麦考伊\n\n武器: 步枪 + 手枪\n枪手: 古斯塔沃·莫塔\n\n黑客: 阿维·施瓦茨曼\n未发现: 3分30秒\n已发现: 2分26秒\n\n面具: 猎人套装")
     end)
 
-    menu.action(CASINO_PRESETS, "气势汹汹[困难]", {}, "气势汹汹[困难]\n\n目标: 钻石\n车辆: 埃弗隆(4名玩家)\n司机: 切斯特·麦考伊\n\n武器: 冲锋枪 + 霰弹枪\n枪手: 古斯塔沃·莫塔\n\n黑客: 阿维·施瓦茨曼\n未发现: 3分30秒\n已发现: 2分26秒\n\n面具: 猎人套装", "赌场抢劫!", function()
+    menu.action(CASINO_PRESETS, "气势汹汹[困难]", {}, "气势汹汹[困难]\n\n目标: 钻石\n车辆: 埃弗隆(4名玩家)\n司机: 切斯特·麦考伊\n\n武器: 冲锋枪 + 霰弹枪\n枪手: 古斯塔沃·莫塔\n\n黑客: 阿维·施瓦茨曼\n未发现: 3分30秒\n已发现: 2分26秒\n\n面具: 猎人套装", function()
         STAT_SET_INT("H3_COMPLETEDPOSIX", 0xFFFFFFF)
         STAT_SET_INT("CAS_HEIST_FLOW", 0xFFFFFFF)
         STAT_SET_INT("H3_LAST_APPROACH", 4)
