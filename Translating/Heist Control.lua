@@ -49,8 +49,8 @@
     local Heist_Control = menu.divider(menu.my_root(), LuaScriptName.." "..LuaScriptVersion)
 
     local PERICO_HEIST = menu.list(menu.my_root(), "佩里克抢劫", {}, "", function(); end)
-    local TELEPORT = menu.list(PERICO_HEIST, "快捷传送", {}, "", function(); end)
-    local STANDARD_SET = menu.list(PERICO_HEIST, "标注预设", {}, "", function(); end)
+    local TELEPORT = menu.list(PERICO_HEIST, "传送功能", {}, "", function(); end)
+    local STANDARD_SET = menu.list(PERICO_HEIST, "标准预设", {}, "", function(); end)
     local CAYO_VEHICLES = menu.list(PERICO_HEIST, "抢劫车辆", {}, "", function(); end)
     local CAYO_PRIMARY = menu.list(PERICO_HEIST, "主要目标", {}, "", function(); end)
     local CAYO_SECONDARY = menu.list(PERICO_HEIST, "次要目标", {}, "", function(); end)
@@ -62,7 +62,7 @@
     local CASINO_HEIST = menu.list(menu.my_root(), "钻石赌场抢劫", {}, "", function(); end)
     local CASINO_PRESETS = menu.list(CASINO_HEIST, "选择任务", {}, "", function(); end)
     local CAH_ADVCED = menu.list(CASINO_HEIST, "先进的功能", {}, "", function(); end)
-    local TELEPORT_CAH = menu.list(CASINO_HEIST, "快捷传送", {}, "", function(); end)
+    local TELEPORT_CAH = menu.list(CASINO_HEIST, "传送功能", {}, "", function(); end)
     local CASINO_BOARD1 = menu.list(CASINO_HEIST, "抢劫面板一〕", {}, "", function(); end)
     local BOARD1_APPROACH = menu.list(CASINO_BOARD1, "改变方法和难度", {}, "", function(); end)
     local CASINO_TARGET = menu.list(CASINO_BOARD1, "改变目标", {}, "", function(); end)
@@ -72,7 +72,7 @@
     local CASINO_MORE = menu.list(CASINO_HEIST, "更多的选择", {}, "", function(); end)
     local DOOMS_HEIST = menu.list(menu.my_root(), "末日豪劫", {}, "", function(); end)
     local DOOMS_PRESETS = menu.list(DOOMS_HEIST, "选择任务", {}, "", function(); end)
-    local TELEPORT_DOOMS = menu.list(DOOMS_HEIST, "快捷传送", {}, "", function(); end)
+    local TELEPORT_DOOMS = menu.list(DOOMS_HEIST, "传送功能", {}, "", function(); end)
     local CLASSIC_HEISTS = menu.list(menu.my_root(), "公寓抢劫", {}, "", function(); end)
     local LS_ROBBERY = menu.list(menu.my_root(), "LS抢劫案", {}, "", function(); end)
     local MASTER_UNLOCKR = menu.list(menu.my_root(), "主解锁器", {}, "", function(); end)
@@ -259,32 +259,32 @@
 
     menu.action(CAYO_PRIMARY, "猎豹雕像", {}, "", function()
         STAT_SET_INT("H4CNF_TARGET", 5)
-        Notify("主目标修改为蓝宝石豹\n\n- $1.900,000(普通)\n- $2.090,000(困难)")
+        Notify("主目标修改为蓝宝石豹\n\n- $1.900,000(普通)\n- $2.090,000[困难]")
     end)
 
     menu.action(CAYO_PRIMARY, "文件", {}, "", function()
         STAT_SET_INT("H4CNF_TARGET", 4)
-        Notify("主要目标修改为文件\n\n- $1.100,000 (普通)\n- $1.210,000 (困难)")
+        Notify("主要目标修改为文件\n\n- $1.100,000 (普通)\n- $1.210,000 [困难]")
     end)
 
     menu.action(CAYO_PRIMARY, "粉钻", {}, "", function()
         STAT_SET_INT("H4CNF_TARGET", 3)
-        Notify("主要目标修改为粉钻\n\n- $1.300,000 (普通)\n- $1.430,000 (困难)")
+        Notify("主要目标修改为粉钻\n\n- $1.300,000 (普通)\n- $1.430,000 [困难]")
     end)
 
     menu.action(CAYO_PRIMARY, "不记名债券", {}, "", function()
         STAT_SET_INT("H4CNF_TARGET", 2)
-        Notify("主要目标修改不记名债券\n\n- $1.100,000 (普通)\n- $1.210,000 (困难)")
+        Notify("主要目标修改不记名债券\n\n- $1.100,000 (普通)\n- $1.210,000 [困难]")
     end)
 
     menu.action(CAYO_PRIMARY, "红宝石项链", {}, "", function()
         STAT_SET_INT("H4CNF_TARGET", 1)
-        Notify("主要目标修改为红宝石项链\n\n- $1.000,000 (普通)\n- $1.100,000 (困难)")
+        Notify("主要目标修改为红宝石项链\n\n- $1.000,000 (普通)\n- $1.100,000 [困难]")
     end)
 
     menu.action(CAYO_PRIMARY, "西西米托龙舌兰", {}, "", function()
         STAT_SET_INT("H4CNF_TARGET", 0)
-        Notify("主要目标修改为西西米托龙舌兰\n\n- $900,000 (普通)\n- $990,000 (困难)")
+        Notify("主要目标修改为西西米托龙舌兰\n\n- $900,000 (普通)\n- $990,000 [困难]")
     end)
 
 ---
@@ -637,62 +637,62 @@
         Notify("这类物品将在码头旁边生成:\n\n- 抓钩\n- 防护服\n- 螺栓切割机", "装备所在位置")
     end)
 
-    menu.action(CAYO_EQUIPM, "Set to Equipments spawn next to Compound", {}, "", function()
+    menu.action(CAYO_EQUIPM, "刷在别墅", {}, "", function()
         STAT_SET_INT("H4CNF_GRAPPEL", 85324)
         STAT_SET_INT("H4CNF_UNIFORM", 61034)
         STAT_SET_INT("H4CNF_BOLTCUT", 4612)
         STAT_SET_INT("H4CNF_TROJAN", 5)
-        Notify("Equipments will spawn next to Compound:\n\n- Grappling Hook\n- Guard Clothing\n- Bolt Cutters")
+        Notify("这类物品将在别墅旁边生成:\n\n- 抓钩\n- 防护服\n- 螺栓切割机", "装备所在位置")
     end)
 
 ---
 
 --- Cayo Truck 
 
-    menu.action(CAYO_TRUCK, "Modify Supply Truck spawn to Airport", {}, "", function()
+    menu.action(CAYO_TRUCK, "飞机场", {}, "", function()
         STAT_SET_INT("H4CNF_TROJAN", 1)
-        Notify("Supply Truck will now spawn next to Airport.")
+        Notify("补给卡车将在机场附近出现.")
     end)
 
-    menu.action(CAYO_TRUCK, "Modify Supply Truck spawn to North Dock", {}, "", function()
+    menu.action(CAYO_TRUCK, "北码头", {}, "", function()
         STAT_SET_INT("H4CNF_TROJAN", 2)
-        Notify("Supply Truck will now spawn next to North Dock.")
+        Notify("补给卡车将在北码头附近出现.")
     end)
 
-    menu.action(CAYO_TRUCK, "Modify Supply Truck spawn to Main Dock (East)", {}, "", function()
+    menu.action(CAYO_TRUCK, "主码头 (东)", {}, "", function()
         STAT_SET_INT("H4CNF_TROJAN", 3)
-        Notify("Supply Truck will now spawn next to Main Dock - East.")
+        Notify("补给卡车将在主码头附近出现 (东).")
     end)
 
-    menu.action(CAYO_TRUCK, "Modify Supply Truck spawn to Main Dock (West)", {}, "", function()
+    menu.action(CAYO_TRUCK, "主码头 (西)", {}, "", function()
         STAT_SET_INT("H4CNF_TROJAN", 4)
-        Notify("Supply Truck will now spawn next to Main Dock - West.")
+        Notify("补给卡车将在主码头附近出现(西)"")
     end)
 
-    menu.action(CAYO_TRUCK, "Modify Supply Truck spawn next to Compound", {}, "", function()
+    menu.action(CAYO_TRUCK, "别墅", {}, "", function()
         STAT_SET_INT("H4CNF_TROJAN", 5)
-        Notify("Supply Truck will now spawn next to Compound.")
+        Notify("补给卡车将在别墅附近出现.")
     end)
 
 ---
 
 --- Cayo Difficulty
 
-    menu.action(CAYO_DFFCTY, "Change Difficulty to Normal", {}, "", function()
+    menu.action(CAYO_DFFCTY, "将难度改为普通", {}, "", function()
         STAT_SET_INT("H4_PROGRESS", 126823)
-        Notify("Difficulty has been changed to Normal.")
+        Notify("抢劫难度已更改为普通.")
     end)
 
-    menu.action(CAYO_DFFCTY, "Change Difficulty to Hard", {}, "", function()
+    menu.action(CAYO_DFFCTY, "将难度改为困难", {}, "", function()
         STAT_SET_INT("H4_PROGRESS", 131055)
-        Notify("Difficulty has been changed to Hard.")
+        Notify("抢劫难度已更改为困难.")
     end)
 
 ---
 
 --- More Options
 
-    menu.action(MORE_OPTIONS, "Unlock Cayo Perico Awards", {}, "", function()
+    menu.action(MORE_OPTIONS, "佩里科岛抢劫任务奖项", {}, "", function()
         STAT_SET_BOOL("AWD_INTELGATHER", true)
         STAT_SET_BOOL("AWD_COMPOUNDINFILT", true)
         STAT_SET_BOOL("AWD_LOOT_FINDER", true)
@@ -731,7 +731,7 @@
         Notify("Cayo Perico Awards Unlocked!")
     end)
 
-    menu.action(MORE_OPTIONS, "Complete all Missions only", {}, "", function()
+    menu.action(MORE_OPTIONS, "只完成所有任务", {}, "", function()
         STAT_SET_INT("H4_MISSIONS", 65535)
         STAT_SET_INT("H4CNF_APPROACH", 0xFFFFFFF)
         STAT_SET_INT("H4CNF_BS_ENTR", 63)
@@ -739,22 +739,22 @@
         STAT_SET_INT("H4CNF_WEP_DISRP", 3)
         STAT_SET_INT("H4CNF_ARM_DISRP", 3)
         STAT_SET_INT("H4CNF_HEL_DISRP", 3)
-        Notify("All missions are completed!")
+        Notify("所有的任务都已完成!")
     end)
 
-    menu.action(MORE_OPTIONS, "Force the longest final Cutscene", {}, "", function()
+    menu.action(MORE_OPTIONS, "强制跳过最后的过场动画", {}, "", function()
         STAT_SET_INT("H4_PLAYTHROUGH_STATUS", 0)
-        Notify("Keep in mind that you must use this option before starting the Heist\n\nDone!")
+        Notify("记住在开始抢劫之前,你必须使用这个选项\n\n完毕!")
     end)
 
-    menu.action(MORE_OPTIONS, "Set Heist to Default [Reset]", {}, "", function()
+    menu.action(MORE_OPTIONS, "重置抢劫任务", {}, "", function()
         STAT_SET_INT("H4_MISSIONS", 0)
         STAT_SET_INT("H4_PROGRESS", 0)
         STAT_SET_INT("H4CNF_APPROACH", 0)
         STAT_SET_INT("H4CNF_BS_ENTR", 0)
         STAT_SET_INT("H4CNF_BS_GEN", 0)
         STAT_SET_INT("H4_PLAYTHROUGH_STATUS", 0)
-        Notify("Heist has been restored.")
+        Notify("佩里科岛抢劫已重置.")
     end)
 
     -- menu.action(MORE_OPTIONS, "Remove Heist Cooldown", {}, "", function()
@@ -769,7 +769,7 @@
 
 --- Casino Presets
 
-    menu.action(CASINO_PRESETS, "Load Random Approach", {}, "You must pay to start the heist, then go outside the arcade/garage to apply the preset correctly!", function()
+    menu.action(CASINO_PRESETS, "随机抢劫任务", {}, "你必须付钱才能开始抢劫，然后到拱廊/车库外面去正确地应用预设!", function()
         STAT_SET_INT("H3_COMPLETEDPOSIX", 0xFFFFFFF)
         STAT_SET_INT("CAS_HEIST_FLOW", 0xFFFFFFF)
         STAT_SET_INT("H3OPT_POI", 0xFFFFFFF)
@@ -794,7 +794,7 @@
         Notify("Make sure you have paid the heist on the planning screen before using this option\n\nRandom Preset Loaded!")
     end)
 
-    menu.action(CASINO_PRESETS, "Silent & Sneaky Approach [Hard]", {}, "You must pay to start the heist, then go outside the arcade/garage to apply the preset correctly!", function()
+    menu.action(CASINO_PRESETS, "隐迹潜踪 [困难]", {}, "You must pay to start the heist, then go outside the arcade/garage to apply the preset correctly!", function()
         STAT_SET_INT("H3_COMPLETEDPOSIX", 0xFFFFFFF)
         STAT_SET_INT("CAS_HEIST_FLOW", 0xFFFFFFF)
         STAT_SET_INT("H3_LAST_APPROACH", 4)
@@ -814,7 +814,7 @@
         STAT_SET_INT("H3OPT_KEYLEVELS", 2)
         STAT_SET_INT("H3OPT_MASKS", 2)
         STAT_SET_INT("H3OPT_BITSET0", 0xFFFFFFF)
-        Notify("Silent & Sneaky Approach Hard Difficulty\n\nTarget: Diamond\nVehicle: Everon\nDriver Crew: Chester McCoy\n\nWeapon: Rifle + Shotgun\nGunman: Gustavo Mota\n\nHacker: Avi Schwartzman\nUndetected: 3 minutes 30s\nDetected: 2 minutes 26s\n\nMask: Hunter Set")
+        Notify("悄无声息、鬼鬼祟祟的接近[困难]\n\n目标: 钻石\n车辆: 埃弗隆\n车手: 切斯特·麦考伊\n\n武器: 步枪 + 霰弹枪\n枪手: 古斯塔沃·莫塔\n\n黑客: 阿维·施瓦茨曼\n未发现: 3分30秒\n已发现: 2分26秒\n\n面具: 猎人套装")
     end)
 
     menu.action(CASINO_PRESETS, "Silent & Sneaky Approach [Normal]", {}, "You must pay to start the heist, then go outside the arcade/garage to apply the preset correctly!", function()
@@ -837,10 +837,10 @@
         STAT_SET_INT("H3OPT_KEYLEVELS", 2)
         STAT_SET_INT("H3OPT_MASKS", 2)
         STAT_SET_INT("H3OPT_BITSET0", 0xFFFFFFF)
-        Notify("Silent & Sneaky Approach Normal Difficulty\n\nTarget: Diamond\nVehicle: Everon\nDriver Crew: Chester McCoy\n\nWeapon: Rifle + Shotgun\nGunman: Gustavo Mota\n\nHacker: Avi Schwartzman\nUndetected: 3 minutes 30s\nDetected: 2 minutes 26s\n\nMask: Hunter Set")
+        Notify("悄无声息、鬼鬼祟祟的接近[困难]\n\n目标: 钻石\n车辆: 埃弗隆\n车手: 切斯特·麦考伊\n\n武器: 步枪 + 霰弹枪\n枪手: 古斯塔沃·莫塔\n\n黑客: 阿维·施瓦茨曼\n未发现: 3分30秒\n已发现: 2分26秒\n\n面具: 猎人套装")
     end)
 
-    menu.action(CASINO_PRESETS, "BigCon Approach [Hard]", {}, "You must pay to start the heist, then go outside the arcade/garage to apply the preset correctly!", function()
+    menu.action(CASINO_PRESETS, "兵不厌诈 [困难]", {}, "兵不厌诈 [困难]\n\n目标: 钻石\n车辆: 埃弗隆\n车手: 切斯特·麦考伊\n\n武器: 步枪 + 手枪\n枪手: 古斯塔沃·莫塔\n\n黑客: 阿维·施瓦茨曼\n未发现: 3分30秒\n已发现: 2分26秒\n\n面具: 猎人套装!", function()
         STAT_SET_INT("H3_COMPLETEDPOSIX", 0xFFFFFFF)
         STAT_SET_INT("CAS_HEIST_FLOW", 0xFFFFFFF)
         STAT_SET_INT("H3_LAST_APPROACH", 4)
@@ -860,10 +860,10 @@
         STAT_SET_INT("H3OPT_KEYLEVELS", 2)
         STAT_SET_INT("H3OPT_MASKS", 2)
         STAT_SET_INT("H3OPT_BITSET0", 0xFFFFFFF)
-        Notify("BigCon Approach Hard Difficulty\n\nTarget: Diamond\nVehicle: Everon\nDriver Crew: Chester McCoy\n\nWeapon: Rifle + Shotgun\nGunman: Gustavo Mota\n\nHacker: Avi Schwartzman\nUndetected: 3 minutes 30s\nDetected: 2 minutes 26s\n\nMask: Hunter Set")
+        Notify("兵不厌诈 [困难]\n\n目标: 钻石\n车辆: 埃弗隆\n车手: 切斯特·麦考伊\n\n武器: 步枪 + 手枪\n枪手: 古斯塔沃·莫塔\n\n黑客: 阿维·施瓦茨曼\n未发现: 3分30秒\n已发现: 2分26秒\n\n面具: 猎人套装")
     end)
 
-    menu.action(CASINO_PRESETS, "BigCon Approach [Normal]", {}, "You must pay to start the heist, then go outside the arcade/garage to apply the preset correctly!", function()
+    menu.action(CASINO_PRESETS, "兵不厌诈 (普通)", {}, "兵不厌诈 (普通)\n\n目标: 钻石\n车辆: 埃弗隆\n车手: 切斯特·麦考伊\n\n武器: 步枪 + 手枪\n枪手: 古斯塔沃·莫塔\n\n黑客: 阿维·施瓦茨曼\n未发现: 3分30秒\n已发现: 2分26秒\n\n面具: 猎人套装!", function()
         STAT_SET_INT("H3_COMPLETEDPOSIX", 0xFFFFFFF)
         STAT_SET_INT("CAS_HEIST_FLOW", 0xFFFFFFF)
         STAT_SET_INT("H3_LAST_APPROACH", 4)
@@ -883,10 +883,10 @@
         STAT_SET_INT("H3OPT_KEYLEVELS", 2)
         STAT_SET_INT("H3OPT_MASKS", 2)
         STAT_SET_INT("H3OPT_BITSET0", 0xFFFFFFF)
-        Notify("BigCon Approach Normal Difficulty\n\nTarget: Diamond\nVehicle: Everon\nDriver Crew: Chester McCoy\n\nWeapon: Rifle + Shotgun\nGunman: Gustavo Mota\n\nHacker: Avi Schwartzman\nUndetected: 3 minutes 30s\nDetected: 2 minutes 26s\n\nMask: Hunter Set")
+        Notify("兵不厌诈 (普通)\n\n目标: 钻石\n车辆: 埃弗隆\n车手: 切斯特·麦考伊\n\n武器: 步枪 + 手枪\n枪手: 古斯塔沃·莫塔\n\n黑客: 阿维·施瓦茨曼\n未发现: 3分30秒\n已发现: 2分26秒\n\n面具: 猎人套装")
     end)
 
-    menu.action(CASINO_PRESETS, "Aggressive Approach [Hard]", {}, "You must pay to start the heist, then go outside the arcade/garage to apply the preset correctly!", function()
+    menu.action(CASINO_PRESETS, "气势汹汹[困难]", {}, "气势汹汹[困难]\n\n目标: 钻石\n车辆: 埃弗隆(4名玩家)\n司机: 切斯特·麦考伊\n\n武器: 冲锋枪 + 霰弹枪\n枪手: 古斯塔沃·莫塔\n\n黑客: 阿维·施瓦茨曼\n未发现: 3分30秒\n已发现: 2分26秒\n\n面具: 猎人套装", "赌场抢劫!", function()
         STAT_SET_INT("H3_COMPLETEDPOSIX", 0xFFFFFFF)
         STAT_SET_INT("CAS_HEIST_FLOW", 0xFFFFFFF)
         STAT_SET_INT("H3_LAST_APPROACH", 4)
@@ -906,10 +906,10 @@
         STAT_SET_INT("H3OPT_KEYLEVELS", 2)
         STAT_SET_INT("H3OPT_MASKS", 2)
         STAT_SET_INT("H3OPT_BITSET0", 0xFFFFFFF)
-        Notify("Aggressive Approach Hard Difficulty\n\nTarget: Diamond\nVehicle: Everon\nDriver Crew: Chester McCoy\n\nWeapon: Rifle + Shotgun\nGunman: Gustavo Mota\n\nHacker: Avi Schwartzman\nUndetected: 3 minutes 30s\nDetected: 2 minutes 26s\n\nMask: Hunter Set")
+        Notify("气势汹汹[困难]\n\n目标: 钻石\n车辆: 埃弗隆(4名玩家)\n司机: 切斯特·麦考伊\n\n武器: 冲锋枪 + 霰弹枪\n枪手: 古斯塔沃·莫塔\n\n黑客: 阿维·施瓦茨曼\n未发现: 3分30秒\n已发现: 2分26秒\n\n面具: 猎人套装", "赌场抢劫")
     end)
 
-    menu.action(CASINO_PRESETS, "Aggressive Approach [Normal]", {}, "You must pay to start the heist, then go outside the arcade/garage to apply the preset correctly!", function()
+    menu.action(CASINO_PRESETS, "气势汹汹[简单]", {}, "You must pay to start the heist, then go outside the arcade/garage to apply the preset correctly!", function()
         STAT_SET_INT("H3_COMPLETEDPOSIX", 0xFFFFFFF)
         STAT_SET_INT("CAS_HEIST_FLOW", 0xFFFFFFF)
         STAT_SET_INT("H3_LAST_APPROACH", 4)
@@ -929,28 +929,28 @@
         STAT_SET_INT("H3OPT_KEYLEVELS", 2)
         STAT_SET_INT("H3OPT_MASKS", 2)
         STAT_SET_INT("H3OPT_BITSET0", 0xFFFFFFF)
-        Notify("Aggressive Approach Normal Difficulty\n\nTarget: Diamond\nVehicle: Everon\nDriver Crew: Chester McCoy\n\nWeapon: Rifle + Shotgun\nGunman: Gustavo Mota\n\nHacker: Avi Schwartzman\nUndetected: 3 minutes 30s\nDetected: 2 minutes 26s\n\nMask: Hunter Set")
+        Notify("气势汹汹[普通]\n\n目标: 钻石\n车辆: : 埃弗龙\n车手: 切斯特·麦考伊\n\n武器: 步枪 + 手枪\n枪手: 古斯塔沃·莫塔\n\n黑客: 阿维·施瓦茨曼\n未发现: 3分30秒\n已发现: 2分钟26s\n\n面具: 猎人套装", "赌场抢劫")
     end)
 
 ---
 
 --- Advanced Features
 
-    menu.action(CAH_ADVCED, "Remove IA Crew Payout", {}, "", function()
+    menu.action(CAH_ADVCED, "取消内部人员分红", {}, "", function()
         STAT_SET_INT("H3OPT_CREWWEAP", 6)
         STAT_SET_INT("H3OPT_CREWDRIVER", 6)
         STAT_SET_INT("H3OPT_CREWHACKER", 6)
-        Notify("Use after stealing the target, before leaving the tunnel\n\nCrew removed.")
+        Notify("在偷窃目标后，在离开隧道前使用。.")
     end)
 
 ---
 
 --- Casino Board 1
 
-    menu.action(CASINO_BOARD1, "Unlock all Points of Interests & Access Points", {}, "", function()
+    menu.action(CASINO_BOARD1, "解锁兴趣点&出入口", {}, "", function()
         STAT_SET_INT("H3OPT_POI", 0xFFFFFFF)
         STAT_SET_INT("H3OPT_ACCESSPOINTS", 2047)
-        Notify("Unlocked Successfully!")
+        Notify("已成功解锁!")
     end)
 
 ---
