@@ -489,7 +489,7 @@ function spawn_object_in_front_of_ped(ped, hash, ang, room, zoff, setonground)
 end
 
 rainbow_tint = false
-menu.toggle(weapons_root, "Rainbow weapon tint", {"rainbowtint"}, "boogie", function(on)
+menu.toggle(weapons_root, "彩虹武器涂装", {"rainbowtint"}, "boogie", function(on)
     plyr = PLAYER.PLAYER_PED_ID()
     if on then
         local last_tint = WEAPON.GET_PED_WEAPON_TINT_INDEX(PLAYER.PLAYER_PED_ID(), WEAPON.GET_SELECTED_PED_WEAPON(PLAYER.PLAYER_PED_ID()))
@@ -500,7 +500,7 @@ menu.toggle(weapons_root, "Rainbow weapon tint", {"rainbowtint"}, "boogie", func
     end
 end, false)
 
-menu.toggle(weapons_root, "Invisible weapons", {"invisguns"}, "Makes your weapons invisible. Might be local only. You need to retoggle when switching weapons.", function(on)
+menu.toggle(weapons_root, "I隐藏武器", {"invisguns"}, "让你的武器不可见. 或许只对自己可见, 切换武器后需重新开启.", function(on)
     plyr = PLAYER.PLAYER_PED_ID()
     if on then
         WEAPON.SET_PED_CURRENT_WEAPON_VISIBLE(plyr, false, false, false, false) 
@@ -510,7 +510,7 @@ menu.toggle(weapons_root, "Invisible weapons", {"invisguns"}, "Makes your weapon
 end, false)
 
 aim_info = false
-menu.toggle(weapons_root, "Aim info", {"aiminfo"}, "Displays info of the entity you\'re aiming at", function(on)
+menu.toggle(weapons_root, "目标信息", {"aiminfo"}, "显示你所瞄准的实体信息", function(on)
     if on then
         aim_info = true
     else
@@ -519,7 +519,7 @@ menu.toggle(weapons_root, "Aim info", {"aiminfo"}, "Displays info of the entity 
 end, false)
 
 gun_stealer = false
-menu.toggle(weapons_root, "Car stealer gun", {"gunstealer"}, "Shoot a vehicle to steal it. If it is a car with a player driver, it will teleport you into the next available seat.", function(on)
+menu.toggle(weapons_root, "汽车偷窃者枪", {"gunstealer"}, "射击一辆车来偷它。如果是一辆有玩家司机的车，它会把你传送到下一个空位.", function(on)
     if on then
         gun_stealer = true
     else
@@ -528,7 +528,7 @@ menu.toggle(weapons_root, "Car stealer gun", {"gunstealer"}, "Shoot a vehicle to
 end, false)
 
 paintball = false
-menu.toggle(weapons_root, "Paintball", {"paintball"}, "Shoot a vehicle and it will turn into a random color! :)", function(on)
+menu.toggle(weapons_root, "彩弹射击", {"paintball"}, "射击一辆车，它会变成随机的颜色!:)", function(on)
     if on then
         paintball = true
     else
@@ -537,7 +537,7 @@ menu.toggle(weapons_root, "Paintball", {"paintball"}, "Shoot a vehicle and it wi
 end, false)
 
 noexplosives = false
-menu.toggle(protections_root, "No explosives", {"noexplosives"}, "Automatically removes all explosive projectiles from the world when they spawn, even rockets. Not sure if this works nicely on other players. This is not an extensive list, and only includes some player weapons; vehicle weapons may be unaffected.", function(on)
+menu.toggle(protections_root,  "禁止爆炸", {"noexplosives"}, "自动从世界中移除所有爆炸弹药, 包括火箭. 或许只对自己可见. 并不包括所有爆炸, 只包括一些玩家武器. 车载武器可能不受影响. ", function(on)
     plyr = PLAYER.PLAYER_PED_ID()
     if on then
         noexplosives = true
@@ -548,7 +548,7 @@ end, false)
 
 noclip = false
 noclip_height = 0
-menu.toggle(noclip_root, "Noclip", {"noclip"}, "Simple but smart noclip. Works for vehicles too.", function(on)
+menu.toggle(noclip_root, "无碰撞", {"noclip"}, "载具也同样适用.", function(on)
     plyr = PLAYER.PLAYER_PED_ID()
     veh = PED.GET_VEHICLE_PED_IS_IN(plyr, false)
     if on then
@@ -571,16 +571,16 @@ menu.toggle(noclip_root, "Noclip", {"noclip"}, "Simple but smart noclip. Works f
 end, false)
 
 noclip_hspeed = 0.1
-menu.click_slider(noclip_root, "Horizontal speed", {"nocliphspeed"}, "Horizontal speed for noclip, * 0.1", 1, 50, 5, 1, function(s)
+menu.click_slider(noclip_root,  "水平速度", {"nocliphspeed"}, "无碰撞的水平速度,, * 0.1", 1, 50, 5, 1, function(s)
     noclip_hspeed = s * 0.1
   end)
 
 noclip_vspeed = 0.1
-menu.click_slider(noclip_root, "Vertical speed", {"noclipvspeed"}, "Vertical speed for noclip, * 0.1", 1, 50, 2, 1, function(s)
+menu.click_slider(noclip_root,"垂直速度", {"noclipvspeed"}, "无碰撞的垂直速度, * 0.1", 1, 50, 2, 1, function(s)
     noclip_vspeed = s * 0.1
   end)
   
-menu.toggle(self_root, "Make me a cop", {"makemecop"}, "Sets your ped as a cop. To make you not a cop, it will suicide you. Will make you invisible to almost all cops, but you will report your own crimes, get a cop voice, have a vision cone, and will not be able to shoot at other cops. SWAT and army will still shoot you.", function(on)
+menu.toggle(self_root, "成为警察", {"makemecop"}, "将人物模型的属性设为警察. 几乎所有的警察都看不见你, 但犯下罪行后仍会被通缉. 有警察的声音, 有警察视角显示, 不能攻击其他警察. 特警和军队仍然会向你开火. 如果不想再当警察的话需自杀一次", function(on)
     local ped = PLAYER.PLAYER_PED_ID()
     if on then
         PED.SET_PED_AS_COP(ped, true)
@@ -589,7 +589,7 @@ menu.toggle(self_root, "Make me a cop", {"makemecop"}, "Sets your ped as a cop. 
     end
 end)
 
-menu.action(self_root, "Spawn hooker", {"hooker"}, "Spawns a hooker inside your car with the correct scripts. Works just like a regular one.", function(on_click)
+menu.action(self_root, "生成妓女", {"hooker"}, "用正确的脚本在你的车里生成一个妓女。就像普通的一样.", function(on_click)
     local ped = PLAYER.PLAYER_PED_ID()
     local clown_hash = 71929310
     request_model_load(71929310)
@@ -653,59 +653,59 @@ function create_chauffeur(vhash, phash)
     PED.SET_PED_FLEE_ATTRIBUTES(taxi_ped, 0, false)
     PED.SET_PED_CAN_BE_DRAGGED_OUT(taxi_ped, false)
     PED.SET_PED_INTO_VEHICLE(taxi_ped, taxi_veh, -1)
-    util.toast("Your chauffeur has been created! Enjoy!")
+    util.toast("您的司机已经创建,请尽情享受")
 end
 
-menu.action(transport_root, "Chauffeur: Create in kuruma", {"chkuruma"}, "Spawns chauffeur in a kuruma", function(on_click)
+menu.action(transport_root, "司机:在骷髅马中创造", {"chkuruma"}, "Spawns chauffeur in a kuruma", function(on_click)
     create_chauffeur(410882957, 988062523)
 end)
 
-menu.action(transport_root, "Chauffeur: Create in T20", {"cht20"}, "Spawns chauffeur in a kuruma", function(on_click)
+menu.action(transport_root, "司机:在T20中创造", {"cht20"}, "Spawns chauffeur in a kuruma", function(on_click)
     create_chauffeur(1663218586, 988062523)
 end)
 
-menu.action(transport_root, "Chauffeur: Create in Insurgent", {"chinsurgent"}, "Spawns chauffeur in a kuruma", function(on_click)
+menu.action(transport_root, "司机:在叛乱者中创造", {"chinsurgent"}, "Spawns chauffeur in a kuruma", function(on_click)
     create_chauffeur(-1860900134, 988062523)
 end)
 
-menu.action(transport_root, "Chauffeur: Create in Hakuchou", {"chhakuchou"}, "Spawns chauffeur in hakuchou", function(on_click)
+menu.action(transport_root, "司机“在Hakuchou中创造", {"chhakuchou"}, "Spawns chauffeur in hakuchou", function(on_click)
     create_chauffeur(1265391242, 988062523)
 end)
 --1265391242
 
 
-menu.action(transport_root, "Chauffeur: Drive to waypoint", {"chwaypoint"}, "Commands your chauffeur to go to the waypoint. HE WILL GET THERE, WHATEVER IT TAKES. This includes going the wrong way, hitting peds, etc.", function(on_click)
+menu.action(transport_root, "司机:自动开车到导航点", {"chwaypoint"}, "Commands your chauffeur to go to the waypoint. HE WILL GET THERE, WHATEVER IT TAKES. This includes going the wrong way, hitting peds, etc.", function(on_click)
     if taxi_ped == 0 then
-        util.toast("Create a chauffeur before doing this.")
+        util.toast("在这样做之前，先创造一个司机.")
         return
     end
     local goto_coords = get_waypoint_coords()
     TASK.TASK_VEHICLE_DRIVE_TO_COORD_LONGRANGE(taxi_ped, taxi_veh, goto_coords['x'], goto_coords['y'], goto_coords['z'], 300.0, 786996, 5)
 end)
 
-menu.action(transport_root, "Chauffeur: Teleport into car", {"chtp2car"}, "Teleports you into the chauffeur\'s car", function(on_click)
+menu.action(transport_root, "司机:传送到司机车里", {"chtp2car"}, "Teleports you into the chauffeur\'s car", function(on_click)
     if taxi_ped == 0 then
-        util.toast("Create a chauffeur before doing this.")
+        util.toast("在这样做之前，先创造一个司机.")
         return
     end
     local plyr = PLAYER.PLAYER_PED_ID()
     PED.SET_PED_INTO_VEHICLE(plyr, taxi_veh, 0)
 end)
 
-menu.action(transport_root, "Chauffeur: Drive to me", {"chtp2me"}, "Drives the chauffeur\'s car to you", function(on_click)
+menu.action(transport_root, "司机:开到我这儿来", {"chtp2me"}, "Drives the chauffeur\'s car to you", function(on_click)
     if taxi_veh == 0 then
-        util.toast("Create a chauffeur before doing this.")
+        util.toast("在这样做之前，先创造一个司机.")
         return
     end
     local plyr = PLAYER.PLAYER_PED_ID()
     goto_coords = ENTITY.GET_ENTITY_COORDS(plyr, true)
     TASK.TASK_VEHICLE_DRIVE_TO_COORD_LONGRANGE(taxi_ped, taxi_veh, goto_coords['x'], goto_coords['y'], goto_coords['z'], 300.0, 786996, 5)
-    util.toast("They\'re on their way.")
+    util.toast("他们已经在路上了.")
 end)
 
-menu.action(transport_root, "Chauffeur: Fix car", {"chfix"}, "Fixes/flips the car", function(on_click)
+menu.action(transport_root, "司机：修理汽车", {"chfix"}, "Fixes/flips the car", function(on_click)
     if taxi_veh == 0 then
-        util.toast("Create a chauffeur before doing this.")
+        util.toast("在这样做之前，先创造一个司机.")
         return
     end
     OBJECT.PLACE_OBJECT_ON_GROUND_PROPERLY(taxi_veh)
@@ -713,7 +713,7 @@ end)
 
 --PLACE_OBJECT_ON_GROUND_PROPERLY(Object object)
 
-menu.toggle(transport_root, "Chauffeur: Lock doors", {"chlock"}, "Locks the doors of chauffeur\'s car", function(on)
+menu.toggle(transport_root, "司机:关闭车门", {"chlock"}, "Locks the doors of chauffeur\'s car", function(on)
     if taxi_veh ~= 0 then
         if on then
             VEHICLE.SET_VEHICLE_DOORS_LOCKED_FOR_ALL_PLAYERS(taxi_veh, true)
@@ -723,7 +723,7 @@ menu.toggle(transport_root, "Chauffeur: Lock doors", {"chlock"}, "Locks the door
     end
 end)
 
-menu.toggle(transport_root, "Chauffeur: Open doors", {"chopen"}, "Opens/closes the doors of chauffeur\'s car", function(on)
+menu.toggle(transport_root, "司机：打开车门", {"chopen"}, "Opens/closes the doors of chauffeur\'s car", function(on)
     if taxi_veh ~= 0 then
         for i=0, 7 do
             if on then
@@ -735,13 +735,13 @@ menu.toggle(transport_root, "Chauffeur: Open doors", {"chopen"}, "Opens/closes t
     end
 end)
 
-menu.action(transport_root, "Chauffeur: Stop", {"chstop"}, "Tells the chauffeur to park the car and stop. You will need to tell them where to go again.", function(on_click)
+menu.action(transport_root, "司机：停止", {"chstop"}, "Tells the chauffeur to park the car and stop. You will need to tell them where to go again.", function(on_click)
     if taxi_veh ~= 0 then
         TASK.TASK_VEHICLE_TEMP_ACTION(taxi_ped, taxi_veh, 1, -1)
     end
 end)
 
-menu.action(transport_root, "Chauffeur: Delete", {"chdelete"}, "Deletes the chauffeur and his car", function(on_click)
+menu.action(transport_root, "司机：删除", {"chdelete"}, "Deletes the chauffeur and his car", function(on_click)
     if taxi_veh ~= 0 then
         util.delete_entity(taxi_veh)
         taxi_veh = 0
@@ -754,7 +754,7 @@ menu.action(transport_root, "Chauffeur: Delete", {"chdelete"}, "Deletes the chau
     taxi_blip = -1
 end)
 
-menu.action(transport_root, "Chauffeur: Self destruct", {"chdestruct"}, "do i need to explain?", function(on_click)
+menu.action(transport_root, "司机:自我销毁", {"chdestruct"}, "do i need to explain?", function(on_click)
     if taxi_veh ~= 0 then
         ENTITY.SET_ENTITY_INVINCIBLE(taxi_veh, false)
         ENTITY.SET_ENTITY_INVINCIBLE(taxi_ped, false)
@@ -768,7 +768,7 @@ end)
 
 
 hud_rainbow = false
-menu.toggle(gametweaks_root, "RGB hud", {"rgbhud"}, "RGB\'s your hud. This is AIDS, and requires a game restart to reset.", function(on)
+menu.toggle(gametweaks_root, "RGB hud", {"rgbhud"}, "让你的游戏UI变得RGB起来,可以提升100%的电脑性能,需重启游戏才能恢复原样.", function(on)
     if on then
         hud_rainbow = true
     else
@@ -777,19 +777,19 @@ menu.toggle(gametweaks_root, "RGB hud", {"rgbhud"}, "RGB\'s your hud. This is AI
 end)
 
 lodscale = 1
-menu.click_slider(gametweaks_root, "LOD Scale Override", {"lodscale"}, "Overrides extended distance scaling, lets you make distant objects \"look more HD\". This is an oversimplified explanation. May also make your game run like shit.", 1, 200, 1, 1, function(s)
+menu.click_slider(gametweaks_root, "细节层次系数", {"lodscale"}, "简单来说就是覆盖扩展距离缩放系数, 使远处的模型'看起来更清晰'. 控制不当会让你的游戏像狗屎一样运行 .", 1, 200, 1, 1, function(s)
     lodscale = s
   end)
 
-menu.action(labelpresets_root, "Joining GTA Online with Lancescript", {""}, "Usually says: \"Joining GTA online\"", function(on_click)
+menu.action(labelpresets_root, "加入GTA Online与Lancescript", {""}, "Usually says: \"Joining GTA online\"", function(on_click)
     do_label_preset("HUD_JOINING", "Joining GTA Online with Lancescript")
 end)
 
-menu.action(labelpresets_root, "Taking forever to load...", {""}, "Usually says: \"Loading\"", function(on_click)
+menu.action(labelpresets_root, "加载时间太长……", {""}, "Usually says: \"Loading\"", function(on_click)
     do_label_preset("MP_SPINLOADING", "Taking forever to load...")
 end)
 
-menu.action(labelpresets_root, "AIDS online", {""}, "Usually says: \"GTA online\"", function(on_click)
+menu.action(labelpresets_root, "艾滋病在线", {""}, "Usually says: \"GTA online\"", function(on_click)
     do_label_preset("HUD_LBD_FMF", "AIDS Online (Invite, ~1~)")
     do_label_preset("HUD_LBD_FMP", "AIDS Online (Public, ~1~)")
     do_label_preset("HUD_LBD_FMS", "AIDS Online (Solo, ~1~)")
@@ -813,7 +813,7 @@ menu.action(labelpresets_root, "you got caught kiddo", {""}, "Usually says: \"Yo
     do_label_preset("HUD_ROSBANPERM", "you got caught kiddo")
 end)
 
-menu.toggle(radio_root, "Music-only radio", {"musiconly"}, "Forces radio stations to only play music. No bullshit.", function(on)
+menu.toggle(radio_root, "只有音乐的电台", {"musiconly"}, "强制电台只播放音乐. 没有废话.", function(on)
     num_unlocked = AUDIO.GET_NUM_UNLOCKED_RADIO_STATIONS()
     if on then
         for i=1, num_unlocked do
@@ -844,7 +844,7 @@ menu.action(radio_root, "Tracklist override - \"Don\'t come close\"", {"dontcome
     AUDIO.SET_CUSTOM_RADIO_TRACK_LIST(station, "END_CREDITS_KILL_TREVOR", true)
 end)
 
-menu.action(radio_root, "Next track", {"radioskip"}, "Skips the current track", function(on_click)
+menu.action(radio_root, "下一首歌", {"radioskip"}, "跳过当前播放曲目", function(on_click)
     AUDIO.SKIP_RADIO_FORWARD()
 end)
 
@@ -853,76 +853,77 @@ end)
 ban_msg = "HUD_ROSBANPERM"
 --_SET_WARNING_MESSAGE_WITH_ALERT(char* labelTitle, char* labelMsg, int p2, int p3, char* labelMsg2, BOOL p5, int p6, int p7, char* p8, char* p9, BOOL background, int errorCode)
 
-menu.action(fakemessages_root, "Fake ban message 1", {"fakeban"}, "Shows a completely fake ban message. Maybe use this to get free accounts from cheat devs or cause a scare on r/Gta5modding.", function(on_click)
-    show_custom_alert_until_enter("You have been banned from Grand Theft Auto Online.~n~Return to Grand Theft Auto V.")
+menu.action(fakemessages_root, "虚假的封号消息 1", {"fakeban"}, "显示了一条完全虚假的禁令信息 .也许可以用它从作弊开发者那里获得免费帐户 ,或者在r/GTA5Moding上引起恐慌 .", function(on_click)
+    show_custom_alert_until_enter("你已被永久禁止进入GTA线上模式。~n~返回 Grand Theft Auto V。")
 end)
 
-menu.action(fakemessages_root, "Fake ban message 2", {"fakeban"}, "Shows a completely fake ban message. Maybe use this to get free accounts from cheat devs or cause a scare on r/Gta5modding.", function(on_click)
-    show_custom_alert_until_enter("You have been banned from Grand Theft Auto Online permanently.~n~Return to Grand Theft Auto V.")
+menu.action(fakemessages_root, "虚假的封号消息 2", {"fakeban"}, "显示了一条完全虚假的禁令信息 .也许可以用它从作弊开发者那里获得免费帐户 ,或者在r/GTA5Moding上引起恐慌 .", function(on_click)
+    show_custom_alert_until_enter("你已被永久禁止进入GTA线上模式。~n~返回 Grand Theft Auto V。")
 end)
 --0x252F03F2
 
-menu.action(fakemessages_root, "Services unavailable", {"fakeservicedown"}, "rOcKstaR GaMe ServICeS ArE UnAvAiLAbLe RiGht NoW", function(on_click)
-    show_custom_alert_until_enter("The Rockstar game services are unavailable right now.~n~Please return to Grand Theft Auto V.")
+menu.action(fakemessages_root, "服务不可用", {"fakeservicedown"}, "Rockstar 游戏服务现在不可用.", function(on_click)
+    show_custom_alert_until_enter("Rockstar 游戏服务现在不可用。~n~返回 Grand Theft Auto V。")
 end)
 
-menu.action(fakemessages_root, "Suspended until xyz", {"suspendeduntil"}, "Suspended until xyz. It will ask you to input the date to show, don\'t worry.", function(on_click)
+menu.action(fakemessages_root, "封号到 xyz", {"suspendeduntil"}, "暂停至 xyz .它会要求您输入要显示的日期 ,不要担心 .", function(on_click)
     util.toast("Input the date your \"suspension\" should end.")
     menu.show_command_box("suspendeduntil ")
 end, function(on_command)
     -- fuck it lol
-    show_custom_alert_until_enter("You have been suspended from Grand Theft Auto Online until " .. on_command .. ".~n~In addition, your Grand Theft Auto Online character(s) will be reset.~n~Return to Grand Theft Auto V.")
+    show_custom_alert_until_enter("你已被禁止进入GTA线上模式，直到 " .. on_command .. ".~n~另外,您GTA线上模式的角色会将被重置.~n~返回 Grand Theft Auto V。")
 end)
 
-menu.action(fakemessages_root, "Stand on TOP!", {"stand on top"}, "yep", function(on_click)
+menu.action(fakemessages_root, "Stand on TOP! (Stand 是最好的!)", {"stand on top"}, "yep", function(on_click)
     show_custom_alert_until_enter("Stand on TOP!")
 end)
 
-menu.action(fakemessages_root, "Yeeyee ass haircut", {"yeeyee"}, "maybe", function(on_click)
-    show_custom_alert_until_enter("Maybe if you got rid of that old ~r~yee yee ass haircut~w~ you'd get some bitches on your dick")
+menu.action(fakemessages_root, "拉玛嘴臭富兰克林", {"yeeyee"}, "maybe", function(on_click)
+    show_custom_alert_until_enter("如果你能换掉那个 ~r~土老帽的发型~w~ 可能会有一些婊子愿意让你操")
 end)
 
-menu.action(fakemessages_root, "Welcome to the Black Parade", {"blackparade"}, "", function(on_click)
-    show_custom_alert_until_enter("When I was a young boy, my father~n~"..
-    "Took me into the city to see a marching band~n~"..
-    "He said, \"Son, when you grow up would you be~n~"..
-    "The savior of the broken, the beaten and the damned?\"~n~"..
-    "He said, \"Will you defeat them? Your demons~n~"..
-    "And all the non-believers, the plans that they have made?~n~"..
-    "Because one day, I\'ll leave you a phantom~n~"..
-    "To lead you in the summer to join the black parade...\"~n~"..
-    "~n~"..
-    "When I was a young boy, my father~n~"..
-    "Took me into the city to see a marching band~n~"..
-    "He said, \"Son, when you grow up would you be~n~"..
-    "The savior of the broken, the beaten and the damned?\"")
+menu.action(fakemessages_root, "欢迎加入The Black Parade", {"blackparade"}, "", function(on_click)
+    local blkprdlrc1 = "当我还是个小孩的时候，我的父亲~n~" ..
+    "领着我进城，去观赏游行乐队。~n~" ..
+    "他问道：\"儿子，你长大后是否会成为~n~" ..
+    "失败之人，落魄之人和诅咒之人的救世主？\"~n~" ..
+    "父亲又问，\"你会打败那些恶魔和不信任你的人吗, ~n~" ..
+    "会挫败他们所创造的阴谋和诡计吗? ~n~" ..
+    "因为有那么一天，爸爸会化作幽灵，化作幻象~n~" ..
+    "在夏天带领你参加The Black Parade...\""
+    local blkprdlrc2 = "当我还是个小孩的时候，我的父亲~n~" ..
+    "领着我进城，去观赏游行乐队。~n~" ..
+    "他问道：\"儿子，你长大后是否会成为~n~" ..
+    "失败之人，落魄之人和诅咒之人的救世主？\""
+    show_custom_alert_until_enter(blkprdlrc1)
+    show_custom_alert_until_enter(blkprdlrc2)
 end)
 
 
-menu.action(fakemessages_root, "Reddit", {"henlo"}, "they be like \"um ackshully u should buy 2take1\"", function(on_click)
+menu.action(fakemessages_root, "Reddit (国外论坛)", {"henlo"}, "他们会说 \"嗯,你应该买2Take1的.\"", function(on_click)
     show_custom_alert_until_enter("Hello r/GTA5Modding!")
 end)
 
-menu.action(fakemessages_root, "Exit scam", {"exitscam"}, "you know the vibes", function(on_click)
-    show_custom_alert_until_enter("Dear beloved Ozark Users, PLEASE READ THIS MESSAGE IN ITS ENTIRETY.~n~"..
+menu.action(fakemessages_root, "Ozark的骗局", {"exitscam"}, "you know the vibes", function(on_click)
+    show_custom_alert_until_enter("亲爱的Ozark用户,请完整阅读此消息.~n~"..
 
-    "It is with a heavy heart I have to write this message.~n~"..
+    "我怀着沉重的心情写这封信.~n~"..
     
-    "I received correspondence today via a Law Firm in my local country from TakeTwo Interactive.~n~"..
+    "今天我通过我所在国家的一家律师事务所收到 TakeTwo Interactive 的来信.~n~"..
     
-    "Effective immediately, Ozark has shutdown and ceased all services."
+    "Ozark已关闭并停止所有服务,立即生效."
 )
 end)
 
-menu.action(fakemessages_root, "Custom alert", {"customalert"}, "Shows a custom alert of your liking. Credit to QuickNUT and Sainan for help with this.", function(on_click)
-    util.toast("Please type what you want the alert to say. Type ~n~ for new line, ie foo~n~bar will show up as 2 lines.")
+menu.action(fakemessages_root, "自定义警告", {"customalert"}, "显示您喜欢的自定义提醒, 感谢QuickNUT和Sainan提供的帮助. ", function(on_click)
+    util.toast("请输入您想要在警告下方显示的文字, 使用~n~转行")
     menu.show_command_box("customalert ")
 end, function(on_command)
     show_custom_alert_until_enter(on_command)
 end)
 
 make_peds_cops = false
-menu.toggle(npc_root, "Make nearby peds cops", {"makecops"}, "They\'re not actually real cops, but kind of are. They seem to flee very easily, but will snitch on you. Sort of like mall cops.", function(on)
+menu.toggle(npc_root, "全民保安", {"makecops"}, "此选项不会将NPC的属性设为警察. 他们的行为更会像保安, 发生犯罪事件会第一时间逃跑并报告警察.", function(on)
     if on then
         make_peds_cops = true
         ped_uses = ped_uses + 1
@@ -932,7 +933,7 @@ menu.toggle(npc_root, "Make nearby peds cops", {"makecops"}, "They\'re not actua
     end
 end, false)
 --SET_RIOT_MODE_ENABLED(BOOL toggle)
-menu.toggle(npc_root, "Riot mode", {"riotmode"}, "All nearby NPC\'s duel it out and are given weapons. Surprisingly this is handled by the game itself.", function(on)
+menu.toggle(npc_root,"全民保安", {"makecops"}, "此选项不会将NPC的属性设为警察. 他们的行为更会像保安, 发生犯罪事件会第一时间逃跑并报告警察.", function(on)
     if on then
         MISC.SET_RIOT_MODE_ENABLED(true)
     else
@@ -940,7 +941,7 @@ menu.toggle(npc_root, "Riot mode", {"riotmode"}, "All nearby NPC\'s duel it out 
     end
 end, false)
 
-menu.action(npc_root, "Make nearby peds musicians", {}, "now here\'s wonderwall", function(on_click)
+menu.action(npc_root, "全民音乐家", {}, "人人都是音乐家, 人人都听Wonderwall. ", function(on_click)
     local peds = util.get_all_peds()
     for k,ped in pairs(peds) do
         if not is_ped_player(ped) then
@@ -951,7 +952,7 @@ menu.action(npc_root, "Make nearby peds musicians", {}, "now here\'s wonderwall"
 end)
 
 roast_voicelines = false
-menu.toggle(npc_root, "Roast voicelines", {"npcroasts"}, "Very unethical.", function(on)
+menu.toggle(npc_root, "全民嘴臭", {"npcroasts"}, "素质低下", function(on)
     --make_all_peds_say("GENERIC_INSULT_MED", "SPEECH_PARAMS_FORCE_SHOUTED")
     if on then
         ped_uses = ped_uses + 1
@@ -963,7 +964,7 @@ menu.toggle(npc_root, "Roast voicelines", {"npcroasts"}, "Very unethical.", func
 end, false)
 
 sex_voicelines = false
-menu.toggle(npc_root, "Sex voicelines", {"sexlines"}, "oH FuCK YeAh", function(on)
+menu.toggle(npc_root, "全民高潮", {"sexlines"}, "哦, 我操你妈的, 这真是爽翻了", function(on)
     if on then
         ped_uses = ped_uses + 1
         sex_voicelines = true
@@ -974,7 +975,7 @@ menu.toggle(npc_root, "Sex voicelines", {"sexlines"}, "oH FuCK YeAh", function(o
 end, false)
 
 gluck_voicelines = false
-menu.toggle(npc_root, "Gluck gluck 9000 voicelines", {"gluckgluck9000"}, "I\'m begging you, touch some grass.", function(on)
+menu.toggle(npc_root, "全民口交", {"gluckgluck9000"}, "爱听这个的去飞点叶子吧, 没救了", function(on)
     if on then
         ped_uses = ped_uses + 1
         gluck_voicelines = true
@@ -985,7 +986,7 @@ menu.toggle(npc_root, "Gluck gluck 9000 voicelines", {"gluckgluck9000"}, "I\'m b
 end, false)
 
 screamall = false
-menu.toggle(npc_root, "Scream", {"screamall"}, "Makes all nearby peds scream horrifically. Awesome.", function(on)
+menu.toggle(npc_root, "全民尖叫", {"screamall"}, "让附近所有的行人惨叫. 这真是太让人兴奋了", function(on)
     if on then
         ped_uses = ped_uses + 1
         screamall = true
@@ -996,7 +997,7 @@ menu.toggle(npc_root, "Scream", {"screamall"}, "Makes all nearby peds scream hor
 end, false)
 
 play_ped_ringtones = false
-menu.toggle(npc_root, "Ring all peds phones", {"ringtones"}, "Turns all nearby ped ringtones on", function(on)
+menu.toggle(npc_root, "骚扰电话", {"ringtones"}, "给附近所有行人打电话, 包括自己.", function(on)
     if on then
         play_ped_ringtones = true
         ped_uses = ped_uses +1
