@@ -48,53 +48,53 @@
 
     local Heist_Control = menu.divider(menu.my_root(), LuaScriptName.." "..LuaScriptVersion)
 
-    local PERICO_HEIST = menu.list(menu.my_root(), "Cayo Perico Heist", {}, "", function(); end)
-    local TELEPORT = menu.list(PERICO_HEIST, "Custom Teleport", {}, "", function(); end)
-    local STANDARD_SET = menu.list(PERICO_HEIST, "Standard Preset", {}, "", function(); end)
-    local CAYO_VEHICLES = menu.list(PERICO_HEIST, "Heist Vehicles", {}, "", function(); end)
-    local CAYO_PRIMARY = menu.list(PERICO_HEIST, "Primary Target", {}, "", function(); end)
-    local CAYO_SECONDARY = menu.list(PERICO_HEIST, "Secondary Target", {}, "", function(); end)
-    local CAYO_WEAPONS = menu.list(PERICO_HEIST, "Weapon Loadouts", {}, "", function(); end)
-    local CAYO_EQUIPM = menu.list(PERICO_HEIST, "Equipments Spawn Location", {}, "", function(); end)
-    local CAYO_TRUCK = menu.list(PERICO_HEIST, "Supply Truck Location", {}, "", function(); end)
-    local CAYO_DFFCTY = menu.list(PERICO_HEIST, "Heist Difficulty", {}, "", function(); end)
-    local MORE_OPTIONS = menu.list(PERICO_HEIST, "More Options", {}, "", function(); end)
-    local CASINO_HEIST = menu.list(menu.my_root(), "Diamond Casino Heist", {}, "", function(); end)
-    local CASINO_PRESETS = menu.list(CASINO_HEIST, "Insta-Play [Presets]", {}, "", function(); end)
-    local CAH_ADVCED = menu.list(CASINO_HEIST, "Advanced Features", {}, "", function(); end)
-    local TELEPORT_CAH = menu.list(CASINO_HEIST, "Custom Teleport", {}, "", function(); end)
-    local CASINO_BOARD1 = menu.list(CASINO_HEIST, "Heist Planning [Board 1]", {}, "", function(); end)
-    local BOARD1_APPROACH = menu.list(CASINO_BOARD1, "Change Approach and Difficulty", {}, "", function(); end)
-    local CASINO_TARGET = menu.list(CASINO_BOARD1, "Change Target", {}, "", function(); end)
-    local CASINO_BOARD2 = menu.list(CASINO_HEIST, "Heist Planning [Board 2]", {}, "", function(); end)
-    local CASINO_BOARD3 = menu.list(CASINO_HEIST, "Heist Planning [Board 3]", {}, "", function(); end)
-    local CASINO_LBOARDS = menu.list(CASINO_HEIST, "Board Loader : Unloader", {}, "", function(); end)
-    local CASINO_MORE = menu.list(CASINO_HEIST, "More Options", {}, "", function(); end)
-    local DOOMS_HEIST = menu.list(menu.my_root(), "Doomsday Heist", {}, "", function(); end)
-    local DOOMS_PRESETS = menu.list(DOOMS_HEIST, "Insta-Play (Presets)", {}, "", function(); end)
-    local TELEPORT_DOOMS = menu.list(DOOMS_HEIST, "Custom Teleport", {}, "", function(); end)
-    local CLASSIC_HEISTS = menu.list(menu.my_root(), "Classic Heists", {}, "", function(); end)
-    local LS_ROBBERY = menu.list(menu.my_root(), "LS Tuners Robbery", {}, "", function(); end)
-    local MASTER_UNLOCKR = menu.list(menu.my_root(), "Master Unlocker", {}, "", function(); end)
-    local TOOLS = menu.list(menu.my_root(), "Tools",  {}, "", function(); end)
-    local Infos = menu.list(menu.my_root(), "About HC", {}, "", function(); end)
+    local PERICO_HEIST = menu.list(menu.my_root(), "佩里克抢劫", {}, "", function(); end)
+    local TELEPORT = menu.list(PERICO_HEIST, "快捷传送", {}, "", function(); end)
+    local STANDARD_SET = menu.list(PERICO_HEIST, "标注预设", {}, "", function(); end)
+    local CAYO_VEHICLES = menu.list(PERICO_HEIST, "抢劫车辆", {}, "", function(); end)
+    local CAYO_PRIMARY = menu.list(PERICO_HEIST, "主要目标", {}, "", function(); end)
+    local CAYO_SECONDARY = menu.list(PERICO_HEIST, "次要目标", {}, "", function(); end)
+    local CAYO_WEAPONS = menu.list(PERICO_HEIST, "武器种类", {}, "", function(); end)
+    local CAYO_EQUIPM = menu.list(PERICO_HEIST, "设备产生的位置", {}, "", function(); end)
+    local CAYO_TRUCK = menu.list(PERICO_HEIST, "供应卡车位置", {}, "", function(); end)
+    local CAYO_DFFCTY = menu.list(PERICO_HEIST, "困难模式", {}, "", function(); end)
+    local MORE_OPTIONS = menu.list(PERICO_HEIST, "更多的选择", {}, "", function(); end)
+    local CASINO_HEIST = menu.list(menu.my_root(), "钻石赌场抢劫", {}, "", function(); end)
+    local CASINO_PRESETS = menu.list(CASINO_HEIST, "选择任务", {}, "", function(); end)
+    local CAH_ADVCED = menu.list(CASINO_HEIST, "先进的功能", {}, "", function(); end)
+    local TELEPORT_CAH = menu.list(CASINO_HEIST, "快捷传送", {}, "", function(); end)
+    local CASINO_BOARD1 = menu.list(CASINO_HEIST, "抢劫面板一〕", {}, "", function(); end)
+    local BOARD1_APPROACH = menu.list(CASINO_BOARD1, "改变方法和难度", {}, "", function(); end)
+    local CASINO_TARGET = menu.list(CASINO_BOARD1, "改变目标", {}, "", function(); end)
+    local CASINO_BOARD2 = menu.list(CASINO_HEIST, "抢劫面板二〕", {}, "", function(); end)
+    local CASINO_BOARD3 = menu.list(CASINO_HEIST, "抢劫面板三〕", {}, "", function(); end)
+    local CASINO_LBOARDS = menu.list(CASINO_HEIST, "重新设置抢劫任务", {}, "", function(); end)
+    local CASINO_MORE = menu.list(CASINO_HEIST, "更多的选择", {}, "", function(); end)
+    local DOOMS_HEIST = menu.list(menu.my_root(), "末日豪劫", {}, "", function(); end)
+    local DOOMS_PRESETS = menu.list(DOOMS_HEIST, "选择任务", {}, "", function(); end)
+    local TELEPORT_DOOMS = menu.list(DOOMS_HEIST, "快捷传送", {}, "", function(); end)
+    local CLASSIC_HEISTS = menu.list(menu.my_root(), "公寓抢劫", {}, "", function(); end)
+    local LS_ROBBERY = menu.list(menu.my_root(), "LS抢劫案", {}, "", function(); end)
+    local MASTER_UNLOCKR = menu.list(menu.my_root(), "主解锁器", {}, "", function(); end)
+    local TOOLS = menu.list(menu.my_root(), "工具",  {}, "", function(); end)
+    local Infos = menu.list(menu.my_root(), "关于HC", {}, "", function(); end)
 
 ---
 
 
 --- Cayo Teleport
 
-    menu.action(TELEPORT, "Kosatka : Heist Board [Call Kosatka first]", {}, "", function()
-        Notify("If you teleport without calling it, you will be bugged.")
+    menu.action(TELEPORT, "传送到虎鲸任务面板[先叫虎鲸]", {}, "", function()
+        Notify("请呼叫虎鲸后使用")
         ENTITY.SET_ENTITY_COORDS(PLAYER.PLAYER_PED_ID(), 1561.224, 386.659, -49.685)
     end)
 
-    menu.action(TELEPORT, "Kosatka : Main Deck [Call Kosatka first]", {}, "", function()
+    menu.action(TELEPORT, "传送到虎鲸甲板上[先叫虎鲸]", {}, "", function()
         Notify("If you teleport without calling it, you will be bugged.")
         ENTITY.SET_ENTITY_COORDS(PLAYER.PLAYER_PED_ID(), 1563.218, 406.030, -49.667)
     end)
 
-    menu.action(TELEPORT, "Drainage Tunnel : Entrance", {}, "", function()
+    menu.action(TELEPORT, "下水道入口", {}, "", function()
         if PED.GET_VEHICLE_PED_IS_IN(PLAYER.PLAYER_PED_ID(), false) == 0 then
             ENTITY.SET_ENTITY_COORDS(PLAYER.PLAYER_PED_ID(), 5044.726, -5816.164, -11.213)
         else
@@ -103,32 +103,32 @@
         Notify("Teleported to Drainage Tunnel : Entrance.")
     end)
 
-    menu.action(TELEPORT, "Drainage Tunnel : 2nd Checkpoint", {}, "", function()
+    menu.action(TELEPORT, "下水道入口2", {}, "", function()
         Notify("Teleported to Drainage Tunnel : 2nd Checkpoint.")
         ENTITY.SET_ENTITY_COORDS(PLAYER.PLAYER_PED_ID(), 5054.630, -5771.519, -4.807)
     end)
 
-    menu.action(TELEPORT, "Main Target", {}, "", function()
+    menu.action(TELEPORT, "主要目标", {}, "", function()
         Notify("Teleported to Main Target.")
         ENTITY.SET_ENTITY_COORDS(PLAYER.PLAYER_PED_ID(), 5006.896, -5755.963, 15.487)
     end)
 
-    menu.action(TELEPORT, "Secondary Target room", {}, "", function()
+    menu.action(TELEPORT, "次要目标房间", {}, "", function()
         Notify("Teleported to Secondary Target room.")
         ENTITY.SET_ENTITY_COORDS(PLAYER.PLAYER_PED_ID(), 5003.467, -5749.352, 14.840)
     end)
 
-    menu.action(TELEPORT, "Vault (El Rubio room)", {}, "", function()
+    menu.action(TELEPORT, "保险柜", {}, "", function()
         Notify("Teleported to Vault.")
         ENTITY.SET_ENTITY_COORDS(PLAYER.PLAYER_PED_ID(), 5010.753, -5757.639, 28.845)
     end)
 
-    menu.action(TELEPORT, "Reduct Exit", {}, "", function()
+    menu.action(TELEPORT, "正门出口", {}, "", function()
         Notify("Teleported to Exit.")
         ENTITY.SET_ENTITY_COORDS(PLAYER.PLAYER_PED_ID(), 4992.854, -5718.537, 19.880)
     end)
 
-    menu.action(TELEPORT, "Ocean safe place", {}, "", function()
+    menu.action(TELEPORT, "海洋安全地方", {}, "", function()
         if PED.GET_VEHICLE_PED_IS_IN(PLAYER.PLAYER_PED_ID(), false) == 0 then
             ENTITY.SET_ENTITY_COORDS(PLAYER.PLAYER_PED_ID(), 4771.792, -6166.055, -40.266)
         else
@@ -141,12 +141,12 @@
 
 --- Casino Teleport
 
-    menu.action(TELEPORT_CAH, "Planning Boards", {}, "", function()
+    menu.action(TELEPORT_CAH, "计划版", {}, "", function()
         Notify("Teleported sucessfully.")
         ENTITY.SET_ENTITY_COORDS(PLAYER.PLAYER_PED_ID(), 2711.773, -369.458, -54.781)
     end)
 
-    menu.action(TELEPORT_CAH, "Garagem Exit", {}, "", function()
+    menu.action(TELEPORT_CAH, "车库出口", {}, "", function()
         Notify("Teleported sucessfully.")
         ENTITY.SET_ENTITY_COORDS(PLAYER.PLAYER_PED_ID(), 2677.237, -361.494, -55.187)
     end)
@@ -155,13 +155,13 @@
 
 --- Dooms Teleport
 
-    menu.action(TELEPORT_DOOMS, "Photo screen (Heist board) (ACT II)", {}, "", function()
-        Notify("Teleported sucessfully.")
+    menu.action(TELEPORT_DOOMS, "照片屏幕（抢劫板）（ACT II）。", {}, "", function()
+        Notify("传送成功.")
         ENTITY.SET_ENTITY_COORDS(PLAYER.PLAYER_PED_ID(), 515.528, 4835.353, -62.587)
     end)
 
-    menu.action(TELEPORT_DOOMS, "Prisoner cell (ACT II)", {}, "", function()
-        Notify("Teleported sucessfully.")
+    menu.action(TELEPORT_DOOMS, "囚室（ACT II)", {}, "", function()
+        Notify("传送成功.")
         ENTITY.SET_ENTITY_COORDS(PLAYER.PLAYER_PED_ID(), 512.888, 4833.033, -68.989)
     end)
 
@@ -218,12 +218,12 @@
 
 --- Cayo Vehicles
 
-    menu.action(CAYO_VEHICLES, "Submarine KOSATKA", {}, "", function()
+    menu.action(CAYO_VEHICLES, "虎鲸", {}, "", function()
         STAT_SET_INT("H4_MISSIONS", 65283)
         Notify("KOSATKA avaliable.")
     end)
 
-    menu.action(CAYO_VEHICLES, "Plane ALKONOST", {}, "", function()
+    menu.action(CAYO_VEHICLES, "阿尔科诺斯特飞机", {}, "", function()
         STAT_SET_INT("H4_MISSIONS", 65413)
         Notify("ALKONOST avaliable.")
     end)
@@ -233,22 +233,22 @@
         Notify("VELUM avaliable.")
     end)
 
-    menu.action(CAYO_VEHICLES, "Helicopter STEALTH ANNIHILATOR", {}, "", function()
+    menu.action(CAYO_VEHICLES, "直升机 STEALTH ANNIHILATOR", {}, "", function()
         STAT_SET_INT("H4_MISSIONS", 65425)
         Notify("STEALTH ANNIHILATOR avaliable.")
     end)
 
-    menu.action(CAYO_VEHICLES, "Boat PATROL BOAT", {}, "", function()
+    menu.action(CAYO_VEHICLES, "船只 PATROL BOAT", {}, "", function()
         STAT_SET_INT("H4_MISSIONS", 65313)
         Notify("PATROL BOAT avaliable.")
     end)
 
-    menu.action(CAYO_VEHICLES, "Boat LONGFIN", {}, "", function()
+    menu.action(CAYO_VEHICLES, "船只 LONGFIN", {}, "", function()
         STAT_SET_INT("H4_MISSIONS", 65345)
         Notify("LONGFIN avaliable.")
     end)
 
-    menu.action(CAYO_VEHICLES, "Unlock All Vehicles", {}, "", function()
+    menu.action(CAYO_VEHICLES, "解锁所有车辆", {}, "", function()
         STAT_SET_INT("H4_MISSIONS", 65535)
         Notify("All Vehicles are avaliable!")
     end)
@@ -257,41 +257,41 @@
 
 --- Cayo Primary
 
-    menu.action(CAYO_PRIMARY, "Change to Sapphire Panther", {}, "", function()
+    menu.action(CAYO_PRIMARY, "猎豹雕像", {}, "", function()
         STAT_SET_INT("H4CNF_TARGET", 5)
-        Notify("Primary Target Modified to Sapphire Panther\n\n- $1.900,000 (Normal)\n- $2.090,000 (Hard)")
+        Notify("主目标修改为蓝宝石豹\n\n- $1.900,000(普通)\n- $2.090,000(困难)")
     end)
 
-    menu.action(CAYO_PRIMARY, "Change to Madrazo Files", {}, "", function()
+    menu.action(CAYO_PRIMARY, "文件", {}, "", function()
         STAT_SET_INT("H4CNF_TARGET", 4)
-        Notify("Primary Target Modified to Madrazo Files\n\n- $1.100,000 (Normal)\n- $1.210,000 (Hard)")
+        Notify("主要目标修改为文件\n\n- $1.100,000 (普通)\n- $1.210,000 (困难)")
     end)
 
-    menu.action(CAYO_PRIMARY, "Change to Pink Diamond", {}, "", function()
+    menu.action(CAYO_PRIMARY, "粉钻", {}, "", function()
         STAT_SET_INT("H4CNF_TARGET", 3)
-        Notify("Primary Target Modified to Pink Diamond\n\n- $1.300,000 (Normal)\n- $1.430,000 (Hard)")
+        Notify("主要目标修改为粉钻\n\n- $1.300,000 (普通)\n- $1.430,000 (困难)")
     end)
 
-    menu.action(CAYO_PRIMARY, "Change to Bearer Bonds", {}, "", function()
+    menu.action(CAYO_PRIMARY, "不记名债券", {}, "", function()
         STAT_SET_INT("H4CNF_TARGET", 2)
-        Notify("Primary Target Modified to Bearer Bonds\n\n- $1.100,000 (Normal)\n- $1.210,000 (Hard)")
+        Notify("主要目标修改不记名债券\n\n- $1.100,000 (普通)\n- $1.210,000 (困难)")
     end)
 
-    menu.action(CAYO_PRIMARY, "Change to Ruby", {}, "", function()
+    menu.action(CAYO_PRIMARY, "红宝石项链", {}, "", function()
         STAT_SET_INT("H4CNF_TARGET", 1)
-        Notify("Primary Target Modified to Ruby\n\n- $1.000,000 (Normal)\n- $1.100,000 (Hard)")
+        Notify("主要目标修改为红宝石项链\n\n- $1.000,000 (普通)\n- $1.100,000 (困难)")
     end)
 
-    menu.action(CAYO_PRIMARY, "Change to Tequila", {}, "", function()
+    menu.action(CAYO_PRIMARY, "西西米托龙舌兰", {}, "", function()
         STAT_SET_INT("H4CNF_TARGET", 0)
-        Notify("Primary Target Modified to Tequila\n\n- $900,000 (Normal)\n- $990,000 (Hard)")
+        Notify("主要目标修改为西西米托龙舌兰\n\n- $900,000 (普通)\n- $990,000 (困难)")
     end)
 
 ---
 
 --- Cayo Secondary
 
-    menu.action(CAYO_SECONDARY, "Change to Mixed Loot", {}, "", function()
+    menu.action(CAYO_SECONDARY, "改变为混合战利品", {}, "", function()
         STAT_SET_INT("H4LOOT_CASH_I", 1319624)
         STAT_SET_INT("H4LOOT_CASH_C", 18)
         STAT_SET_INT("H4LOOT_CASH_V", 89400)
