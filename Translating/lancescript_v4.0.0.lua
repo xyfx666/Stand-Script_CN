@@ -17,28 +17,28 @@ function set_up_groups()
 end
 set_up_groups()
 
-self_root = menu.list(menu.my_root(), "自我", {"lancescriptself"}, "Lets you do things to yourself/your ped")
-transport_root = menu.list(self_root, "交通", {"lancescripttransport"}, "Chauffeur.")
-weapons_root = menu.list(menu.my_root(), "武器", {"lancescriptweapons"}, "Weapon adjustments and tweaks")
-protections_root = menu.list(menu.my_root(), "保护", {"lancescriptprotections"}, "Protect yourself before you wreck yourself.")
-noclip_root = menu.list(self_root, "无碰撞", {"lancescriptnoclip"}, "Not quite levitation")
-world_root = menu.list(menu.my_root(), "世界", {"lancescriptworld"}, "Rule the world")
-train_root = menu.list(world_root, "火车", {"lancescripttrain"}, "Control trains to your liking")
-entity_root = menu.list(menu.my_root(), "附近载具/物体", {"lancescriptentity"}, "Vehicle chaos, ascend vehicles, beep all vehicles, etc.")
-npc_root = menu.list(menu.my_root(), "附近NPC", {"lancescriptnpcs"}, "NPC tasks and more")
+self_root = menu.list(menu.my_root(), "自我", {"lancescriptself"}, "对自己和自己人物模型的选项")
+transport_root = menu.list(self_root, "交通", {"lancescripttransport"}, "雇佣一名司机")
+weapons_root = menu.list(menu.my_root(), "武器", {"lancescriptweapons"}, "调整武器的选项")
+protections_root = menu.list(menu.my_root(), "保护", {"lancescriptprotections"}, "不要把自己玩坏了")
+noclip_root = menu.list(self_root, "无碰撞", {"lancescriptnoclip"}, "和Stand里面的悬浮选项不同")
+world_root = menu.list(menu.my_root(), "世界", {"lancescriptworld"}, "征服世界")
+train_root = menu.list(world_root, "火车", {"lancescripttrain"}, "随心所欲地控制火车")
+entity_root = menu.list(menu.my_root(), "附近载具/物体", {"lancescriptentity"}, "车辆大暴走, 车辆飞升等选项")
+npc_root = menu.list(menu.my_root(), "附近NPC", {"lancescriptnpcs"}, "NPC动作和其他选项")
 tasks_root = menu.list(npc_root, "动作", {"lancescripttasks"}, "")
 vehicle_root = menu.list(menu.my_root(), "车辆", {"lanceobjecttroll"}, "")
 online_root = menu.list(menu.my_root(), "在线", {"lancescriptonline"}, "")
 allplayers_root = menu.list(menu.my_root(), "所有玩家", {"lancescriptallplayers"}, "")
-business_root = menu.list(online_root, "产业管理", {"lancescriptbusiness"}, "Business manager allows you to monitor your businesses. It does NOT automatically sell or resupply, so there is no risk of being banned."..
-"\nAll values in business manager are reported by the game itself through stats. Lancescript does not miraculously come up with info. If there is an issue, it is an issue with how the game is reporting it, not Lancescript.")
+business_root = menu.list(online_root, "产业管理", {"lancescriptbusiness"}, "产业管理让您可以安心监视您资产的状态. 此选项不会自动补货, 亦不会自动出货, 所以没有被封禁的风险"..
+"\n产业管理中所有的数值都是从游戏本体抓取的. 如果有任何数值不准确, 那则是游戏自己的问题.")
 gametweaks_root = menu.list(menu.my_root(), "游戏调整", {"lancescriptgametweaks"}, "")
 fakemessages_root = menu.list(gametweaks_root, "虚假信息", {"lancescriptfakemessages"}, "")
-labelpresets_root = menu.list(gametweaks_root, "标签预设", {"lancescriptlabelpresets"}, "Lets you HUD elements in the game say different things.")
+labelpresets_root = menu.list(gametweaks_root, "标签预设", {"lancescriptlabelpresets"}, "改变左下角HUD元素上显示的文字")
 radio_root = menu.list(gametweaks_root, "广播", {"lancescriptradio"}, "")
 lancescript_root = menu.list(menu.my_root(), "LanceScript", {"lancescriptutil"}, "")
 sounds_root = menu.list(lancescript_root, "声音", {"lancescriptsounds"}, "")
-menu.action(menu.my_root(), "玩家列表", {}, "Quickly opens session players list, for convenience", function(on_click)
+menu.action(menu.my_root(), "玩家列表", {}, "指向Stand自己玩家列表的快捷方式", function(on_click)
     menu.trigger_commands("playerlist")
 end)
 credits_root = menu.list(menu.my_root(), "感谢列表", {"lancescriptcredits"}, "")
@@ -54,7 +54,7 @@ function do_label_preset(label, text)
     local prep = "edit" .. string.gsub(label, "_", "") .. " " .. text
     menu.trigger_commands(prep)
     menu.trigger_commands("lancescriptlabelpresets")
-    util.toast("Label set!")
+    util.toast("标签更改完成")
 end
 
 function get_closest_vehicle_node(x, y, z)
@@ -67,7 +67,7 @@ function get_closest_vehicle_node(x, y, z)
         local pos = memory.read_vector3(pos)
         return pos
     else
-        util.toast("Vehicle node could not be found! Prevented a possible crash.")
+        util.toast("未找到载具导航节点, 已防止以此崩溃游戏")
         return {0, 0, 0}
     end
 end
@@ -129,7 +129,7 @@ function file_exists(path)
 end
 
 if not file_exists(file_name) then
-  util.toast(file_name .. ' 未能找到,请确认脚本已正确安装.读INSTALL.TXT!!按照文件夹名称中的说明操作.')
+  util.toast('未能找到'..file_name .. ' 请确保您已过目INSTALL.TXT, 并按指示正确安装脚本.')
   util.stop_script()
 else
     file = io.open(file_name, "r")
@@ -234,14 +234,15 @@ scaleform_thread = util.create_thread(function (thr)
         if os.time() - starttime >= 5 then
             AUDIO.PLAY_SOUND_FRONTEND(55, "FocusOut", "HintCamSounds", true)
             if file_exists(filesystem.scripts_dir() .. 'Tox1cEssent1als.lua') and not file_exists(filesystem.scripts_dir() .. 'disclaimer_viewed.txt') then
-                 local text = "~g~阁下没有被禁止进入GTA线上模式~n~ ~w~请注意, 这是来自Lancescript开发者的一则声明,恳请您仔细阅读.~n~我已注意到您或许在使用ToxicEssentials(ToxicEssent1als.lua).~n~我不能强迫您不再使用ToxicEssentials,但它的制作组不是他妈的什么好东西.~n~" .. 
+                local text = "~g~阁下没有被禁止进入GTA线上模式~n~ ~w~请注意, 这是来自Lancescript开发者的一则声明,恳请您仔细阅读.~n~我已注意到您或许在使用ToxicEssentials(ToxicEssent1als.lua).~n~我不能强迫您不再使用ToxicEssentials,但它的制作组不是他妈的什么好东西.~n~" .. 
                 "ToxicEssentials的内容中包括其他Lua脚本作者的辛苦创作.而它的制作组成员,pnn,在未有标明原作者,或征得原作者同意的情况下剽窃代码,并将其用于商业行为.~n~产生的任何盈利也没有回馈给这些代码的作者."
                 local text2 = "您可以继续使用ToxicEssentials.但制作ToxicEssential的成员之一,~n~ICYPhoenix,相较其他制作组成员拥有良好的品德.~n~他/她过去几个月来一直在维护一个没有混淆过代码,并标注代码来源的版本.~n~" .. 
                 "我强烈建议您使用Phoenixscript和/或 Lancescript 来代替pnn剽窃来的作品 ~n~毕竟Phoenixscript 本来就是 Toxicessentials.~n~"..
-                "我鼓励您不再向别人分享ToxicEssentials,因为ToxicEssentials的代码是剽窃来的,被混淆过的,且质量很差.但您也可以选择忽视这条信息,并继续分享."..
-                "您之后不会再看到这则声明,感谢阁下抽出您宝贵的时间阅读此声明."
+                "我鼓励您不再向别人分享ToxicEssentials,因为ToxicEssentials的代码是剽窃来的,被混淆过的,且质量很差.但您也可以选择忽视这条信息,并继续分享."
+                local text3 = "您之后不会再看到这则声明,感谢阁下抽出您宝贵的时间阅读此声明."
                 show_custom_alert_until_enter(text)
                 show_custom_alert_until_enter(text2)
+                show_custom_alert_until_enter(text3)
                 file = io.open(filesystem.scripts_dir() .. 'disclaimer_viewed.txt', "w")
                 file:write("该文件存在于您的 Lua 脚本中,用于告诉 Lancescript 您已查看关于 Toxicessentials 的免责声明. 如果删除它,您将再次看到免责声明.")
                 file:close()
@@ -290,7 +291,7 @@ function dispatch_griefer_jesus(target)
             end
             local target_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(target)
             if not players.exists(target) then
-                util.toast("T玩家已离开, 伤心的耶稣停止了思考.")
+                util.toast("玩家已离开, 伤心的耶稣停止了思考.")
                 util.stop_thread()
             else
                 TASK.TASK_COMBAT_PED(jesus, target_ped, 0, 16)
@@ -299,7 +300,7 @@ function dispatch_griefer_jesus(target)
         end
     end)
 end
-menu.toggle(lancescript_root, "显示活动的实体池", {"entitypoolupdates"}, "Toasts what entity pools are being updated every tick. The more you see, the more performance loss; getting all entities is a heavy task.", function(on)
+menu.toggle(lancescript_root, "显示活动的实体池", {"entitypoolupdates"}, "正在更新实体池. 你看到的越多, CPU的负载越重. 建议不要长期开启.", function(on)
     if on then
         show_updates = true
     else
@@ -307,7 +308,7 @@ menu.toggle(lancescript_root, "显示活动的实体池", {"entitypoolupdates"},
     end
 end)
 
-menu.action(lancescript_root, "Toast stat", {"toaststat"}, "Input a stat to toast", function(on_click)
+menu.action(lancescript_root, "数据查询", {"toaststat"}, "输入要查询的数据位置", function(on_click)
     util.toast("Please type the stat name")
     menu.show_command_box("toaststat ")
 end, function(on_command)
@@ -500,7 +501,7 @@ menu.toggle(weapons_root, "彩虹武器涂装", {"rainbowtint"}, "boogie", funct
     end
 end, false)
 
-menu.toggle(weapons_root, "I隐藏武器", {"invisguns"}, "让你的武器不可见. 或许只对自己可见, 切换武器后需重新开启.", function(on)
+menu.toggle(weapons_root, "隐藏武器", {"invisguns"}, "让你的武器不可见. 或许只对自己可见, 切换武器后需重新开启.", function(on)
     plyr = PLAYER.PLAYER_PED_ID()
     if on then
         WEAPON.SET_PED_CURRENT_WEAPON_VISIBLE(plyr, false, false, false, false) 
@@ -519,7 +520,7 @@ menu.toggle(weapons_root, "目标信息", {"aiminfo"}, "显示你所瞄准的实
 end, false)
 
 gun_stealer = false
-menu.toggle(weapons_root, "汽车偷窃者枪", {"gunstealer"}, "射击一辆车来偷它。如果是一辆有玩家司机的车，它会把你传送到下一个空位.", function(on)
+menu.toggle(weapons_root, "上车枪", {"gunstealer"}, "自己会被传送至被击中的载具中. 如驾驶位已经被占据则传送至下一个乘客位置. ", function(on)
     if on then
         gun_stealer = true
     else
@@ -528,7 +529,7 @@ menu.toggle(weapons_root, "汽车偷窃者枪", {"gunstealer"}, "射击一辆车
 end, false)
 
 paintball = false
-menu.toggle(weapons_root, "彩弹射击", {"paintball"}, "射击一辆车，它会变成随机的颜色!:)", function(on)
+menu.toggle(weapons_root, "彩弹射击", {"paintball"}, "被击中的载具会更换随机的颜色!:)", function(on)
     if on then
         paintball = true
     else
@@ -571,7 +572,7 @@ menu.toggle(noclip_root, "无碰撞", {"noclip"}, "载具也同样适用.", func
 end, false)
 
 noclip_hspeed = 0.1
-menu.click_slider(noclip_root,  "水平速度", {"nocliphspeed"}, "无碰撞的水平速度,, * 0.1", 1, 50, 5, 1, function(s)
+menu.click_slider(noclip_root,  "水平速度", {"nocliphspeed"}, "无碰撞的水平速度, * 0.1", 1, 50, 5, 1, function(s)
     noclip_hspeed = s * 0.1
   end)
 
@@ -589,7 +590,7 @@ menu.toggle(self_root, "成为警察", {"makemecop"}, "将人物模型的属性�
     end
 end)
 
-menu.action(self_root, "生成妓女", {"hooker"}, "用正确的脚本在你的车里生成一个妓女。就像普通的一样.", function(on_click)
+menu.action(self_root, "生成妓女", {"hooker"}, "用脚本在你的车里生成一个妓女. 和在街上叫鸡相似.", function(on_click)
     local ped = PLAYER.PLAYER_PED_ID()
     local clown_hash = 71929310
     request_model_load(71929310)
@@ -604,7 +605,7 @@ menu.action(self_root, "生成妓女", {"hooker"}, "用正确的脚本在你的�
         PED.SET_PED_COMBAT_ATTRIBUTES(clown, 46, true)
         TASK.TASK_COMBAT_PED(clown, ped, 0, 16)
     end
-    util.toast("imagine lmao")
+    util.toast("上当了吧 傻瓜<3")
 end)
 
 function get_waypoint_coords()
@@ -653,59 +654,59 @@ function create_chauffeur(vhash, phash)
     PED.SET_PED_FLEE_ATTRIBUTES(taxi_ped, 0, false)
     PED.SET_PED_CAN_BE_DRAGGED_OUT(taxi_ped, false)
     PED.SET_PED_INTO_VEHICLE(taxi_ped, taxi_veh, -1)
-    util.toast("您的司机已经创建,请尽情享受")
+    util.toast("您的专车已经到达, 欢迎您莅临乘坐")
 end
 
-menu.action(transport_root, "司机:在骷髅马中创造", {"chkuruma"}, "Spawns chauffeur in a kuruma", function(on_click)
+menu.action(transport_root, "车型: 骷髅马 (附装甲)", {"chkuruma"}, "生成一辆装甲骷髅马, 附有司机. ", function(on_click)
     create_chauffeur(410882957, 988062523)
 end)
 
-menu.action(transport_root, "司机:在T20中创造", {"cht20"}, "Spawns chauffeur in a kuruma", function(on_click)
+menu.action(transport_root, "车型: T20", {"cht20"}, "生成一辆T20, 附有司机. ", function(on_click)
     create_chauffeur(1663218586, 988062523)
 end)
 
-menu.action(transport_root, "司机:在叛乱者中创造", {"chinsurgent"}, "Spawns chauffeur in a kuruma", function(on_click)
+menu.action(transport_root, "车型: 叛乱分子货车", {"chinsurgent"}, "生成一辆叛乱分子货车, 附有司机. ", function(on_click)
     create_chauffeur(-1860900134, 988062523)
 end)
 
-menu.action(transport_root, "司机“在Hakuchou中创造", {"chhakuchou"}, "Spawns chauffeur in hakuchou", function(on_click)
+menu.action(transport_root, "车型: 白鸟", {"chhakuchou"}, "生成一辆白鸟, 附有司机. ", function(on_click)
     create_chauffeur(1265391242, 988062523)
 end)
 --1265391242
 
 
-menu.action(transport_root, "司机:自动开车到导航点", {"chwaypoint"}, "Commands your chauffeur to go to the waypoint. HE WILL GET THERE, WHATEVER IT TAKES. This includes going the wrong way, hitting peds, etc.", function(on_click)
+menu.action(transport_root, "司机:自动开车到导航点", {"chwaypoint"}, "让司机驾车至导航点. 无论涉及逆行, 撞人等违法行为, 他一定会到达目的地. ", function(on_click)
     if taxi_ped == 0 then
-        util.toast("在这样做之前，先创造一个司机.")
+        util.toast("执行此命令之前, 先生成一辆附有司机的专车")
         return
     end
     local goto_coords = get_waypoint_coords()
     TASK.TASK_VEHICLE_DRIVE_TO_COORD_LONGRANGE(taxi_ped, taxi_veh, goto_coords['x'], goto_coords['y'], goto_coords['z'], 300.0, 786996, 5)
 end)
 
-menu.action(transport_root, "司机:传送到司机车里", {"chtp2car"}, "Teleports you into the chauffeur\'s car", function(on_click)
+menu.action(transport_root, "司机:传送到司机车里", {"chtp2car"}, "将自己传送进专车之中", function(on_click)
     if taxi_ped == 0 then
-        util.toast("在这样做之前，先创造一个司机.")
+        util.toast("执行此行动之前, 先生成一辆附有司机的专车")
         return
     end
     local plyr = PLAYER.PLAYER_PED_ID()
     PED.SET_PED_INTO_VEHICLE(plyr, taxi_veh, 0)
 end)
 
-menu.action(transport_root, "司机:开到我这儿来", {"chtp2me"}, "Drives the chauffeur\'s car to you", function(on_click)
+menu.action(transport_root, "司机:开到我这儿来", {"chtp2me"}, "让司机驾车前往您的地点", function(on_click)
     if taxi_veh == 0 then
-        util.toast("在这样做之前，先创造一个司机.")
+        util.toast("执行此命令之前, 先生成一辆附有司机的专车")
         return
     end
     local plyr = PLAYER.PLAYER_PED_ID()
     goto_coords = ENTITY.GET_ENTITY_COORDS(plyr, true)
     TASK.TASK_VEHICLE_DRIVE_TO_COORD_LONGRANGE(taxi_ped, taxi_veh, goto_coords['x'], goto_coords['y'], goto_coords['z'], 300.0, 786996, 5)
-    util.toast("他们已经在路上了.")
+    util.toast("专车正前往您的地点")
 end)
 
-menu.action(transport_root, "司机：修理汽车", {"chfix"}, "Fixes/flips the car", function(on_click)
+menu.action(transport_root, "司机:修理汽车", {"chfix"}, "修复并摆正您的车辆", function(on_click)
     if taxi_veh == 0 then
-        util.toast("在这样做之前，先创造一个司机.")
+        util.toast("执行此行动之前, 先生成一辆附有司机的专车")
         return
     end
     OBJECT.PLACE_OBJECT_ON_GROUND_PROPERLY(taxi_veh)
@@ -713,7 +714,7 @@ end)
 
 --PLACE_OBJECT_ON_GROUND_PROPERLY(Object object)
 
-menu.toggle(transport_root, "司机:关闭车门", {"chlock"}, "Locks the doors of chauffeur\'s car", function(on)
+menu.toggle(transport_root, "司机:关闭并锁上车门", {"chlock"}, "关闭并锁上车门", function(on)
     if taxi_veh ~= 0 then
         if on then
             VEHICLE.SET_VEHICLE_DOORS_LOCKED_FOR_ALL_PLAYERS(taxi_veh, true)
@@ -723,7 +724,7 @@ menu.toggle(transport_root, "司机:关闭车门", {"chlock"}, "Locks the doors 
     end
 end)
 
-menu.toggle(transport_root, "司机：打开车门", {"chopen"}, "Opens/closes the doors of chauffeur\'s car", function(on)
+menu.toggle(transport_root, "司机：打开车门", {"chopen"}, "解锁并打开车门", function(on)
     if taxi_veh ~= 0 then
         for i=0, 7 do
             if on then
@@ -735,13 +736,13 @@ menu.toggle(transport_root, "司机：打开车门", {"chopen"}, "Opens/closes t
     end
 end)
 
-menu.action(transport_root, "司机：停止", {"chstop"}, "Tells the chauffeur to park the car and stop. You will need to tell them where to go again.", function(on_click)
+menu.action(transport_root, "司机：停止", {"chstop"}, "让司机靠路侧停车. 停车后需重新指定目的地. ", function(on_click)
     if taxi_veh ~= 0 then
         TASK.TASK_VEHICLE_TEMP_ACTION(taxi_ped, taxi_veh, 1, -1)
     end
 end)
 
-menu.action(transport_root, "司机：删除", {"chdelete"}, "Deletes the chauffeur and his car", function(on_click)
+menu.action(transport_root, "司机：删除", {"chdelete"}, "删除专车及其附有的司机", function(on_click)
     if taxi_veh ~= 0 then
         util.delete_entity(taxi_veh)
         taxi_veh = 0
@@ -754,7 +755,7 @@ menu.action(transport_root, "司机：删除", {"chdelete"}, "Deletes the chauff
     taxi_blip = -1
 end)
 
-menu.action(transport_root, "司机:自我销毁", {"chdestruct"}, "do i need to explain?", function(on_click)
+menu.action(transport_root, "司机:自我销毁", {"chdestruct"}, "不必我多言了吧? ", function(on_click)
     if taxi_veh ~= 0 then
         ENTITY.SET_ENTITY_INVINCIBLE(taxi_veh, false)
         ENTITY.SET_ENTITY_INVINCIBLE(taxi_ped, false)
@@ -768,7 +769,7 @@ end)
 
 
 hud_rainbow = false
-menu.toggle(gametweaks_root, "RGB hud", {"rgbhud"}, "让你的游戏UI变得RGB起来,可以提升100%的电脑性能,需重启游戏才能恢复原样.", function(on)
+menu.toggle(gametweaks_root, "RGB hud", {"rgbhud"}, "让你的游戏UI变得RGB起来, 可以提升100%的电脑性能, 需重启游戏才能恢复原样.", function(on)
     if on then
         hud_rainbow = true
     else
@@ -781,15 +782,15 @@ menu.click_slider(gametweaks_root, "细节层次系数", {"lodscale"}, "简单�
     lodscale = s
   end)
 
-menu.action(labelpresets_root, "加入GTA Online与Lancescript", {""}, "Usually says: \"Joining GTA online\"", function(on_click)
-    do_label_preset("HUD_JOINING", "Joining GTA Online with Lancescript")
+menu.action(labelpresets_root, "加入GTA线上模式并使用Lancescript", {""}, "原始文本: \"正在加入GTA线上模式\"", function(on_click)
+    do_label_preset("HUD_JOINING", "加入GTA线上模式并使用Lancescript")
 end)
 
-menu.action(labelpresets_root, "加载时间太长……", {""}, "Usually says: \"Loading\"", function(on_click)
-    do_label_preset("MP_SPINLOADING", "Taking forever to load...")
+menu.action(labelpresets_root, "加载耗时一世纪……", {""}, "原始文本: \"加载中\"", function(on_click)
+    do_label_preset("MP_SPINLOADING", "加载耗时一世纪……")
 end)
 
-menu.action(labelpresets_root, "艾滋病在线", {""}, "Usually says: \"GTA online\"", function(on_click)
+menu.action(labelpresets_root, "AIDS 线上模式", {""}, "原始文本: \"GTA线上模式\"", function(on_click)
     do_label_preset("HUD_LBD_FMF", "AIDS Online (Invite, ~1~)")
     do_label_preset("HUD_LBD_FMP", "AIDS Online (Public, ~1~)")
     do_label_preset("HUD_LBD_FMS", "AIDS Online (Solo, ~1~)")
@@ -1438,7 +1439,7 @@ end)
 
 
 vehicle_chaos = false
-menu.toggle(entity_root, "混乱的车辆", {"chaos"}, "开启即混乱混乱...", function(on)
+menu.toggle(entity_root, "车辆大暴走", {"chaos"}, "开启即混乱混乱...", function(on)
     if on then
         vehicle_chaos = true
         vehicle_uses = vehicle_uses + 1
