@@ -13,6 +13,22 @@ https://github.com/xyfx666/Stand-Script_CN/releases
 您只需在您翻译完后提交PR即可。
 
 ## 四.文件夹含义？
-根目录 正在翻译  
+Translating 正在翻译  
 To be proofread 待校对/正在校对  
 Completed 已完成  
+Origin 原版文件(部分)  
+
+## 五.团队成员
+排序为加入项目先后顺序，无其他含义  
+1.仓库创建者/前期翻译  
+xyfx666  
+2.校对  
+CollyZhang  
+3.前期翻译  
+godvi666  
+4.校对  
+angle180  
+5.前期翻译/校对  
+pingdeng1  
+6.吉祥物  
+MeterGargoye (石像兽鸭)  
